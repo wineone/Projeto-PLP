@@ -1,5 +1,6 @@
 #include <bits/stdc++.h>
-#include "auxiliares.h"
+#include "print.h"
+#include "estruturas.h"
 
 using namespace std;
 
@@ -12,7 +13,6 @@ int main(){
     cout << "digite seu nome: ";
     cin >> nome;
     getchar();
-    joga = {nome,50,5,5};
 
     while(true){
         switch(getChoice()){
