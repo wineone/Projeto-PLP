@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 #include "print.h"
 #include "estruturas.h"
+#include "fases.h"
 
 using namespace std;
 
 personagem joga;
-
 
 int main(){
     system("clear");
@@ -18,6 +18,7 @@ int main(){
         switch(getChoice()){
             case(1):
                 //fases();
+                selecaoDeFase();
                 printf("fases foi chamada\n");
                 break;
             case(2):

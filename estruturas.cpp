@@ -63,6 +63,18 @@ struct Inimigo{
     int agilidade;
 };
 
+struct Fase {
+    string nome;
+    string descricao;
+    bool terminada = false;
+
+    Inimigo enemies[200]; 
+}
+
+/* anotacoes sobre as fases
+Depois que o player derrota X inimigos ele "derrota" uma fase, ele ganha um loot especial que é único
+mas so ganha na primeira vez q derrota aquela fase, da segunda em diante nao tem mais loot especial.
+*/
 
 /*
 anotacoes

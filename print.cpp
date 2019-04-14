@@ -16,6 +16,27 @@ int getChoice(){
     return opcao;
 }
 
+int interfaceFases() {
+    printf("[1] -> ambiente mata atlantica\n");
+    printf("[2] -> usina hidreletrica de itaipu\n");
+    printf("[3] -> casa da mãe joana\n");
+    printf("[4] -> o meu quarto\n");
+    printf("[5] -> siençia da computasao\n");
+    printf("\nEscolha sabiamente a fase desejada... ");
+    int opcao;
+    scanf("%d", &opcao);
+    return opcao;
+}
 
+int mapaInterface(Fase f) {
+    printf(f.descricao);
+    printf("\n\n\n\n\n");
 
-
+    printf("[1] -> Entrar em uma batalha\n");
+    printf("[2] -> Vasculhar sua bolsa\n");
+    printf("[3] -> Pausa pro café\n");
+    printf("Qual a sua escolha?  ");
+    int opcao;
+    scanf("%d", &opcao);
+    return opcao;
+}
