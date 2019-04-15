@@ -39,11 +39,11 @@ struct Bolsa{
 struct personagem{
     string nome;
 
-    int dano = 0;
-    int defesa = 0;
-    int vida = 98;
-    int forca = 5;
-    int agilidade = 5;
+    int dano ;
+    int defesa;
+    int vida;
+    int forca;
+    int agilidade;
 
     int dinheiro;
 
@@ -66,10 +66,10 @@ struct Inimigo{
 struct Fase {
     string nome;
     string descricao;
-    bool terminada = false;
+    bool terminada;
 
     Inimigo enemies[200]; 
-}
+};
 
 /* anotacoes sobre as fases
 Depois que o player derrota X inimigos ele "derrota" uma fase, ele ganha um loot especial que é único

@@ -18,7 +18,6 @@ int main(){
         switch(getChoice()){
             case(1):
                 //fases();
-                selecaoDeFase();
                 printf("fases foi chamada\n");
                 break;
             case(2):
