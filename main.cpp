@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
-#include "print.h"
-#include "estruturas.h"
-#include "fases.h"
+#include "print/print.h"
+#include "estruturas/estruturas.h"
+#include "fases/fases.h"
 
 using namespace std;
 
