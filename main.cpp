@@ -2,6 +2,7 @@
 #include "print/print.h"
 #include "estruturas/estruturas.h"
 #include "fases/fases.h"
+#include "inventarios/inventario.h"
 
 using namespace std;
 
