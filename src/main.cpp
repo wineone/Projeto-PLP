@@ -1,8 +1,11 @@
+
 #include <bits/stdc++.h>
+#include "inventario/inventario.h"
 #include "estruturas/estruturas.h"
 #include "print/print.h"
 #include "fases/fases.h"
-#include "inventarios/inventario.h"
+// #include "entidades/entidades.h"
+
 
 using namespace std;
 

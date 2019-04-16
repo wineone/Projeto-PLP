@@ -1,4 +1,4 @@
-#include "inventario.cpp"
+#pragma once
 
 //bolsa carregavel
 int bag();

@@ -1,6 +1,33 @@
+// #pragma once
+
 #include <bits/stdc++.h>
+#include "../estruturas/estruturas.h"
+#include "../entidades/entidades.h"
+#include "../print/print.h"
+#include "fases.h"
 
 using namespace std;
+
+int mapa(Fase f) {
+    int opcao;
+
+    while (true) {
+        opcao = interfaceMapa(f);
+
+        switch (opcao) {
+            case 1:
+                // batalha()
+                break;
+            case 2:
+                // bolsa()
+                break;
+            case 3:     // opcao: voltar para o lobby
+                return 0;   // volta pra funcao anterior
+            default:
+                printf("O que você pensa que está fazendo??\n\n");
+        }
+    }
+}
 
 int selecaoDeFase() {
     bool keepGoing = true;
@@ -8,7 +35,7 @@ int selecaoDeFase() {
     while (keepGoing) {
         switch (interfaceFases()) {
             case 1:
-                // mapa(floresta);
+                mapa(piloto);
                 printf("mapa(floresta)\n\n");
                 keepGoing = false;
                 break;
@@ -40,27 +67,5 @@ int selecaoDeFase() {
                 printf("Você não sabe o que está fazendo.\n\n");
         }
     }    
-
     return 0;
-}
-
-int mapa(Fase f) {
-    int opcao;
-
-    while (true) {
-        opcao = interfaceMapa(f);
-
-        switch (opcao) {
-            case 1:
-                // batalha()
-                break;
-            case 2:
-                // bolsa()
-                break;
-            case 3:     // opcao: voltar para o lobby
-                return 0;   // volta pra funcao anterior
-            default:
-                printf("O que você pensa que está fazendo??\n\n");
-        }
-    }
 }

@@ -1,4 +1,11 @@
+// #pragma once
+
 #include <bits/stdc++.h>
+#include "../inventario/inventario.h"
+
+#include "../estruturas/estruturas.h"
+#include "../fases/fases.h"
+#include "print.h"
 
 using namespace std;
 
@@ -31,7 +38,7 @@ int interfaceFases() {
 
 int interfaceMapa(Fase f) {
     // printf(f.descricao.c_str());
-
+    cout << endl << f.nome << endl << endl;
     cout << f.descricao << endl;
     printf("\n\n\n\n\n");
 

@@ -1,17 +1,23 @@
+// #include "estruturas.cpp"
+
+#pragma once
+// #ifndef ESTRUTURAS_H
+// #define ESTRUTURAS_H
+
 #include <bits/stdc++.h>
 
 using namespace std;
 
-struct Arma{
+typedef struct Arma{
     string nome;
     string descricao;
     int preco;
     int dano;//100
     int forca;//5
     int agilidade;//0
-};
+} Arma;
 
-struct Armadura{
+typedef struct Armadura{
     string nome;
     string descricao;
     int preco;
@@ -19,26 +25,26 @@ struct Armadura{
     int forca;//5
     int agilidade;//0
     int vida;//5
-};
+} Armadura;
 
-struct Pocao{
+typedef struct Pocao{
     string nome;
     string descricao;
     int preco;
     int forca;//5
     int agilidade;//0
     int vida;//0
-};
+} Pocao;
 
-struct Bolsa{
+typedef struct Bolsa{
     int quantidade;
     int max;
     Pocao pocoes[200];
-};
+} Bolsa;
 
 
 
-struct personagem{
+typedef struct personagem{
     string nome;
 
     int dano ;
@@ -49,13 +55,16 @@ struct personagem{
 
     int dinheiro;
 
+
     Arma arma;
     Armadura armadura;
 
-    Bolsa bolsa;
-};
 
-struct Inimigo{
+    Bolsa bolsa;
+
+} personagem;
+
+typedef struct Inimigo{
     string nome;
     string descricao;
 
@@ -63,28 +72,21 @@ struct Inimigo{
     int dano;
     int forca;
     int agilidade;
-};
+} Inimigo;
 
-struct Fase {
+typedef struct GrupoDeInimigos {
+    Inimigo* gangue;
+    int quantidade;
+    int dinheiroLoot;
+} GrupoDeInimigos;
+
+typedef struct Fase {
     string nome;
     string descricao;
     bool terminada;
 
-    Inimigo enemies[200]; 
-};
+    GrupoDeInimigos n1, n2, n3;
+} Fase;
 
-/* anotacoes sobre as fases
-Depois que o player derrota X inimigos ele "derrota" uma fase, ele ganha um loot especial que é único
-mas so ganha na primeira vez q derrota aquela fase, da segunda em diante nao tem mais loot especial.
-*/
 
-/*
-anotacoes
-
-vida: 100 + forca*0.5 + vidaArmadura
-dano: 100 + 0.1*for
-esquiva: (rand() 1 .. 100) < (rand() 1 .. 10 + 0.40%agi)
-critico: (rand() 1 .. 100) < (rand() 1 .. 10 + 0.40%agi)
-armadura: danoTomado 
-
-*/
+// #endif 
