@@ -2,7 +2,7 @@
 #include "estruturas/estruturas.h"
 #include "print/print.h"
 #include "fases/fases.h"
-// #include "inventarios/inventario.h"
+#include "inventarios/inventario.h"
 
 using namespace std;
 
@@ -26,7 +26,7 @@ int main(){
                 printf("loja foi chamada\n");
                 break;
             case(3):
-                // bag();
+                bag();
                 printf("bolsa foi chamada\n");
                 break;
             case(4):

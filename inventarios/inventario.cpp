@@ -5,37 +5,14 @@ using namespace std;
 Bolsa bol;
 
 void fillBag(){
-        bol.pocoes[0].nome = "Maconha";
-        bol.pocoes[0].descricao = "Da boa"; 
-        bol.pocoes[0].preco = 1; 
-        bol.pocoes[0].forca = -1; 
-        bol.pocoes[0].agilidade = -1; 
-        bol.pocoes[0].vida = 10;
-
-        bol.pocoes[1].nome = "Cocaina"; 
-        bol.pocoes[1].descricao = "Branca fina"; 
-        bol.pocoes[1].preco = 10; 
-        bol.pocoes[1].forca = -10; 
-        bol.pocoes[1].agilidade = -20; 
-        bol.pocoes[1].vida = -100;
-                      
-        bol.pocoes[2].nome = "Crack";
-        bol.pocoes[2].descricao = "Onde é que eu to"; 
-        bol.pocoes[2].preco = 50; 
-        bol.pocoes[2].forca = -50; 
-        bol.pocoes[2].agilidade = -34; 
-        bol.pocoes[2].vida = -1000;
-        
-        bol.pocoes[3].nome = "Montila"; 
-        bol.pocoes[3].descricao = "Só desce com coca"; 
-        bol.pocoes[3].preco = 5; 
-        bol.pocoes[3].forca = -9; 
-        bol.pocoes[3].agilidade = -1; 
-        bol.pocoes[3].vida = +2;
-        
+        bol.pocoes[0] ={"Maconha","Da boa" , 1, -1, -1,10} ;
+        bol.pocoes[1] ={"Cocaina","Branca fina" , 10, -10, -20,-100} ;
+        bol.pocoes[2] ={"Crack","Onde é que eu to" , 50, -50, -34,100} ;
+        bol.pocoes[3] ={"Montila","Só desce com Coca" , 5, -9, -1,102} ;
+       
 }
 void listBag(){
-    for(int i = 0 ; i < 10 ; i++){
+    for(int i = 0 ; i < 4 ; i++){
         if(bol.pocoes[i].nome != "")
             cout << bol.pocoes[i].nome << " " << bol.pocoes[i].descricao << endl;
     }

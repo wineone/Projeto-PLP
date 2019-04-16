@@ -10,4 +10,4 @@ int interfaceFases();
 int interfaceMapa(Fase f);
 
 //funçao que imprime o menu de escolha de uso das poções
-// int escolhasDaBolsa();
+int escolhasDaBolsa();
