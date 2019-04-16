@@ -1,5 +1,7 @@
 #include <bits/stdc++.h>
 
+using namespace std;
+
 struct Arma{
     string nome;
     string descricao;

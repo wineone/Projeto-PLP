@@ -1,8 +1,8 @@
 #include <bits/stdc++.h>
-#include "print/print.h"
 #include "estruturas/estruturas.h"
+#include "print/print.h"
 #include "fases/fases.h"
-#include "inventarios/inventario.h"
+// #include "inventarios/inventario.h"
 
 using namespace std;
 
@@ -18,7 +18,7 @@ int main(){
     while(true){
         switch(getChoice()){
             case(1):
-                //fases();
+                selecaoDeFase();
                 printf("fases foi chamada\n");
                 break;
             case(2):
@@ -26,8 +26,7 @@ int main(){
                 printf("loja foi chamada\n");
                 break;
             case(3):
-                //bolsa();
-                bag();
+                // bag();
                 printf("bolsa foi chamada\n");
                 break;
             case(4):

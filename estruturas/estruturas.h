@@ -17,3 +17,6 @@ struct personagem;
 
 //definiçao do inimigo
 struct Inimigo;
+
+//definição de uma fase
+struct Fase;

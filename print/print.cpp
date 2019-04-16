@@ -16,13 +16,29 @@ int getChoice(){
     return opcao;
 }
 
+int interfaceFases() {
+    printf("[1] -> ambiente mata atlantica\n");
+    printf("[2] -> usina hidreletrica de itaipu\n");
+    printf("[3] -> casa da mãe joana\n");
+    printf("[4] -> o meu quarto\n");
+    printf("[5] -> siençia da computasao\n");
+    printf("[6] -> sair");
+    printf("\nEscolha sabiamente a fase desejada... ");
+    int opcao;
+    scanf("%d", &opcao);
+    return opcao;
+}
 
-int escolhasDaBolsa(){
-    printf("[1] -> vizualizar poções\n");
-    printf("[2] -> usar uma poção\n");
-    printf("[3] -> jogar uma poção fora\n");
-    printf("[4] -> voltar a uma batalha\n");
-    printf("\nEscolha o que quer fazer com a poção... ");
+int interfaceMapa(Fase f) {
+    // printf(f.descricao.c_str());
+
+    cout << f.descricao << endl;
+    printf("\n\n\n\n\n");
+
+    printf("[1] -> Entrar em uma batalha\n");
+    printf("[2] -> Vasculhar sua bolsa\n");
+    printf("[3] -> Pausa pro café\n");
+    printf("Qual a sua escolha?  ");
     int opcao;
     scanf("%d", &opcao);
     return opcao;
