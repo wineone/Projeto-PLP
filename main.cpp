@@ -27,6 +27,7 @@ int main(){
                 break;
             case(3):
                 //bolsa();
+                bag();
                 printf("bolsa foi chamada\n");
                 break;
             case(4):

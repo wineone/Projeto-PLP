@@ -4,7 +4,6 @@ using namespace std;
 
 Bolsa bol;
 
-
 void fillBag(){
         bol.pocoes[0].nome = "Maconha";
         bol.pocoes[0].descricao = "Da boa"; 
@@ -34,7 +33,12 @@ void fillBag(){
         bol.pocoes[3].agilidade = -1; 
         bol.pocoes[3].vida = +2;
         
-
+}
+void listBag(){
+    for(int i = 0 ; i < 10 ; i++){
+        if(bol.pocoes[i].nome != "")
+            cout << bol.pocoes[i].nome << " " << bol.pocoes[i].descricao << endl;
+    }
 }
 
 int bag(){
@@ -47,15 +51,14 @@ int bag(){
             case 1:
                 printf("Você quer vizualizar as poções que esta carregando\n");
                 fillBag();
-                for(int i = 0 ; i < 4 ; i++){
-                    cout << bol.pocoes[i].nome << bol.pocoes[i].descricao << endl;
-                }
+                listBag();
                 break;
             case 2 :
-                printf("Você quer usar uma poções\n"); 
+                printf("Você quer usar uma poção\n"); 
                 break;
             case 3 :
-                printf("Você quer lançar essa poção no limbo \n"); 
+                printf("Você quer lançar uma poção no limbo \n"); 
+                listBag();
                 break;
             case 4 :
                 printf("Você quer voltar para uma batalha muito empolgante \n"); 
