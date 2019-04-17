@@ -1,5 +1,3 @@
-// #pragma once
-
 #include <bits/stdc++.h>
 #include "../estruturas/estruturas.h"
 #include "../entidades/entidades.h"
@@ -35,7 +33,7 @@ int selecaoDeFase() {
     while (keepGoing) {
         switch (interfaceFases()) {
             case 1:
-                mapa(piloto);
+                mapa(piloto());
                 printf("mapa(floresta)\n\n");
                 keepGoing = false;
                 break;

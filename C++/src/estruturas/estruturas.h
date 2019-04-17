@@ -1,8 +1,4 @@
-// #include "estruturas.cpp"
-
 #pragma once
-// #ifndef ESTRUTURAS_H
-// #define ESTRUTURAS_H
 
 #include <bits/stdc++.h>
 

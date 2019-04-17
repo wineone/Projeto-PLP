@@ -1,4 +1,3 @@
-// #pragma once
 
 #include <bits/stdc++.h>
 #include "inventario.h"
@@ -6,6 +5,7 @@
 #include "../estruturas/estruturas.h"
 #include "../fases/fases.h"
 #include "../print/print.h"
+#include "../entidades/entidades.h"
 
 using namespace std;
 
