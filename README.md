@@ -1,5 +1,3 @@
-# PARA COMPILAR USEM : g++ main.cpp -o saida
+# Projeto de PLP - 2019.1
 
-## instruções basicas
-separem em arquivos .h e .cpp como esta definido e comentem as funções no arquivo .h para não deixar
-os colegas perdidos
+RPG com sistema de batalha em turnos e compra de itens
