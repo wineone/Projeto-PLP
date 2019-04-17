@@ -4,12 +4,11 @@
 #include "estruturas/estruturas.h"
 #include "print/print.h"
 #include "fases/fases.h"
-// #include "entidades/entidades.h"
+#include "entidades/entidades.h"
 
 
 using namespace std;
 
-personagem joga;
 
 int main(){
     system("clear");
@@ -17,11 +16,14 @@ int main(){
     cout << "digite seu nome: ";
     cin >> nome;
     getchar();
+    Personagem personagem = {nome,98,98,1,1,5,5,10,maos(),roupas(), bolsaInicial()};
 
     while(true){
+        StatusHeroi(personagem);
+
         switch(getChoice()){
             case(1):
-                selecaoDeFase();
+                selecaoDeFase(personagem);
                 printf("fases foi chamada\n");
                 break;
             case(2):
