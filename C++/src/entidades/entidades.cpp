@@ -19,22 +19,23 @@ Bolsa bolsaInicial() {
 }
 
 Inimigo nemesis() {
-    Inimigo a = {"Nemesis", "Fei que doi", 100, 15, 10, 10};
+    Inimigo a = {"Nemesis", "Fei que doi", 100, 100, 15, 10, 10};
     return a;
 }
 
 
 GrupoDeInimigos gangueDosGemeos(){
-    Inimigo gp[] = {nemesis(), nemesis()};
-    GrupoDeInimigos b = {gp,2,100};
+    // Inimigo gp[] = {nemesis(), nemesis()};
+    GrupoDeInimigos b = {{nemesis(), nemesis()},2,100};
     return b;
 }
 
 Fase piloto(){
-    GrupoDeInimigos gp[] = {gangueDosGemeos(), gangueDosGemeos(), gangueDosGemeos(),gangueDosGemeos(),gangueDosGemeos()};
+    // GrupoDeInimigos gp[3] = {gangueDosGemeos(), gangueDosGemeos(), gangueDosGemeos()};
     Fase a = {"Piloto", 
                 "fase de testes, cuidado senão ele te derruba",
                 false,
-                gp, 5};
+                {gangueDosGemeos(), gangueDosGemeos(), gangueDosGemeos()}, 
+                3};
     return a;
 }
