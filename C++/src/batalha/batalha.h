@@ -1,3 +1,4 @@
 #pragma once
 
-void batalhar(Personagem p, Fase f);
+// funcao que executa a batalha entre o jogador e um grupo de inimigos
+void batalhar(Personagem p, GrupoDeInimigos gp);
