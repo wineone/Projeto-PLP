@@ -5,23 +5,12 @@
 
 #include "../estruturas/estruturas.h"
 #include "../fases/fases.h"
+#include "../batalha/batalha.h"
 #include "print.h"
 
 using namespace std;
 
-int getChoice(){
-    // system("clear");
-    printf("fases (1)\n");
-    printf("loja (2)\n");
-    printf("bolsa (3)\n");
-    printf("inventário (4)\n");
-    printf("creditos (5)\n");
-    printf("sair (6)\n");
-    int opcao;
-    printf("\ndigite sua opcao: ");
-    scanf("%d",&opcao);
-    return opcao;
-}
+
 
 int interfaceFases() {
     printf("[1] -> ambiente mata atlantica\n");
@@ -36,8 +25,7 @@ int interfaceFases() {
     return opcao;
 }
 
-int interfaceMapa(Fase f) {
-    // printf(f.descricao.c_str());
+int interfaceMapa(Fase f) { 
     cout << endl << f.nome << endl << endl;
     cout << f.descricao << endl;
     printf("\n\n\n\n\n");
@@ -63,5 +51,28 @@ int escolhasDaBolsa(){
 }
 
 void StatusHeroi(Personagem heroi) {
-    cout << endl << heroi.nome << "          " << heroi.vidaAtual << "/" << heroi.totalVida << endl << endl;
+    cout << endl << heroi.nome << "          " << heroi.vidaAtual << "/" << heroi.vidaTotal << endl << endl;
+}
+
+int getChoice(Personagem p){
+    // system("clear");
+    StatusHeroi(p);
+    printf("fases (1)\n");
+    printf("loja (2)\n");
+    printf("bolsa (3)\n");
+    printf("inventário (4)\n");
+    printf("creditos (5)\n");
+    printf("sair (6)\n");
+    int opcao;
+    printf("\ndigite sua opcao: ");
+    scanf("%d",&opcao);
+    return opcao;
+}
+
+void interfaceDeBatalha(Personagem p, GrupoDeInimigos gp) {
+    cout << endl;
+    StatusHeroi(p);
+    for (int i = 0; i < gp.quantidade; i++) {
+        cout << gp.gangue[i].nome << "            " << gp.gangue[i].vidaAtual << "/" << gp.gangue[i].vidaTotal << endl;
+    }
 }

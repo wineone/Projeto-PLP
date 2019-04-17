@@ -31,10 +31,10 @@ GrupoDeInimigos gangueDosGemeos(){
 }
 
 Fase piloto(){
-    GrupoDeInimigos gp[] = {gangueDosGemeos(), gangueDosGemeos(), gangueDosGemeos()};
+    GrupoDeInimigos gp[] = {gangueDosGemeos(), gangueDosGemeos(), gangueDosGemeos(),gangueDosGemeos(),gangueDosGemeos()};
     Fase a = {"Piloto", 
                 "fase de testes, cuidado senão ele te derruba",
                 false,
-                gp, 3};
+                gp, 5};
     return a;
 }

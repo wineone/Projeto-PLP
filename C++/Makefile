@@ -1,5 +1,5 @@
 CC=g++
-CFLAGS = -std=c++14
+CFLAGS = -std=c++11
 
 DEPS = src/*.h
 
@@ -15,4 +15,5 @@ run: $(OBJS)
 	$(CC) -o $@ $^ 
 
 clean: 
+	rm -rf src/*.o
 	rm -rf src/*/*.o

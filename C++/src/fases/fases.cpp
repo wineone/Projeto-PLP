@@ -2,19 +2,23 @@
 #include "../estruturas/estruturas.h"
 #include "../entidades/entidades.h"
 #include "../print/print.h"
+#include "../batalha/batalha.h"
 #include "fases.h"
 
 using namespace std;
 
 int mapa(Fase f, Personagem p) {
     int opcao;
-
     while (true) {
         opcao = interfaceMapa(f);
-
+        cout << "mapa: " << endl;
+        for(int i = 0; i < f.qtdDeInimigos; i++) {
+        cout << &(f.grupo[i]) << endl;
+        cout << f.grupo[i].quantidade << endl;
+    }
         switch (opcao) {
             case 1:
-                // batalha()
+                batalhar(p, f);
                 break;
             case 2:
                 // bolsa()
@@ -32,11 +36,12 @@ int selecaoDeFase(Personagem p) {
 
     while (keepGoing) {
         switch (interfaceFases()) {
-            case 1:
+            case 1:{
                 mapa(piloto(), p);
                 printf("mapa(floresta)\n\n");
                 keepGoing = false;
                 break;
+            }
             case 2:
                 // mapa(agua);
                 printf("mapa(agua)\n\n");

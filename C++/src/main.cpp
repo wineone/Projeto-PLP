@@ -17,11 +17,10 @@ int main(){
     cin >> nome;
     getchar();
     Personagem personagem = {nome,98,98,1,1,5,5,10,maos(),roupas(), bolsaInicial()};
-
     while(true){
-        StatusHeroi(personagem);
+        
 
-        switch(getChoice()){
+        switch(getChoice(personagem)){
             case(1):
                 selecaoDeFase(personagem);
                 printf("fases foi chamada\n");

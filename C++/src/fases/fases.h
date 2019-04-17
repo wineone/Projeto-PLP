@@ -1,4 +1,3 @@
-// #ifndef
 #pragma once
 
 // o jogador seleciona a fase que quer jogar ou retorna ao lobby

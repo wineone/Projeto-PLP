@@ -1,7 +1,7 @@
 #pragma once
 
 //funcao que imprime o menu do lobby na tela
-int getChoice();
+int getChoice(Personagem p);
 
 // funcao que imprime o menu de escolha de fases
 int interfaceFases();
@@ -14,3 +14,6 @@ int escolhasDaBolsa();
 
 // funcao que imprime na tela o nome e a vida do heroi
 void StatusHeroi(Personagem heroi);
+
+// funcao que imprime a vida atual do personagem e dos inimigos
+void interfaceDeBatalha(Personagem p, GrupoDeInimigos gp);
