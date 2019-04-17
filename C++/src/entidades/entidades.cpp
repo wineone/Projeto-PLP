@@ -16,7 +16,7 @@ GrupoDeInimigos gangueDosGemeos(){
 }
 
 Fase piloto(){
-    Fase a = {"Piloto", 
+    Fase a = {"Piloto",
                 "fase de testes, cuidado senão ele te derruba",
                 false,
                 gangueDosGemeos(),

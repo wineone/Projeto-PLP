@@ -64,6 +64,6 @@ int selecaoDeFase() {
             default:
                 printf("Você não sabe o que está fazendo.\n\n");
         }
-    }    
+    }
     return 0;
 }

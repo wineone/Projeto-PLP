@@ -6,5 +6,5 @@ Inimigo nemesis();
 //primeiro grupo de inimigos
 GrupoDeInimigos gangueDosGemeos();
 
-//primeira fase 
+//primeira fase
 Fase piloto();

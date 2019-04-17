@@ -64,7 +64,7 @@ typedef struct Inimigo{
     string nome;
     string descricao;
 
-    int vida;  
+    int vida;
     int dano;
     int forca;
     int agilidade;
@@ -84,5 +84,21 @@ typedef struct Fase {
     GrupoDeInimigos n1, n2, n3;
 } Fase;
 
+typedef struct Bau{
+  Armadura armaduras[50];
+  Arma arma[50];
+  Pocao pocoes[50];
 
-// #endif 
+  int indArmas;
+  int indArmaduras;
+  int indPocoes;
+  Bau(){
+    indArmas = 0;
+    indArmaduras = 0;
+    indPocoes = 0;
+  }
+
+}
+
+
+// #endif
