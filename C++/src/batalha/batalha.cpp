@@ -2,14 +2,21 @@
 #include "../print/print.h"
 #include "batalha.h"
 
-void batalhar(Personagem p, Fase f) {
-    cout << "batalha: " << endl;
+void batalhar(Personagem p, GrupoDeInimigos gp) {
+    // while (p.vidaAtual > 0 && gp.vidaInimigos > 0) {}
     
-    for(int i = 0; i < f.qtdDeInimigos; i++) {
-        cout << &(f.grupo[i]) << endl;
-        cout << f.grupo[i].quantidade << " ";
-        cout  << f.grupo[i].dinheiroLoot << endl;
-    }
-    // interfaceDeBatalha(p, gp[0]);
+    HpCombate(p, gp);
+    int op = opcoesAtaque();
 
+    if (p.vidaAtual > 0) {
+        wonBattle(p, gp);
+        p.dinheiro += gp.dinheiroLoot;
+    } else {
+        lostBattle(gp);
+        p.dinheiro -= (gp.dinheiroLoot * 0.1);
+    }
+    // analisar valor da derrota 
 }
+
+// algoritmo ataque e critico
+// tem que fazer um algoritmo para ataques fortes ou fracos!!
