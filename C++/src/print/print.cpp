@@ -1,19 +1,14 @@
-// #pragma once
-
 #include <bits/stdc++.h>
 #include "../inventario/inventario.h"
-
 #include "../estruturas/estruturas.h"
 #include "../fases/fases.h"
 #include "../batalha/batalha.h"
+
 #include "print.h"
 
 using namespace std;
 
-
-
 int interfaceFases() {
-    printf("\n\n");
     printf("[1] -> ambiente mata atlantica\n");
     printf("[2] -> usina hidreletrica de itaipu\n");
     printf("[3] -> casa da mãe joana\n");
@@ -21,13 +16,16 @@ int interfaceFases() {
     printf("[5] -> siençia da computasao\n");
     printf("[6] -> sair");
     printf("\n\nEscolha sabiamente a fase desejada... ");
+
     int opcao;
     scanf("%d", &opcao);
     return opcao;
 }
 
+
 int interfaceMapa(Fase f) { 
     printf("Você está no mapa: \n");
+
     cout << endl << f.nome << endl << endl;
     cout << f.descricao << endl;
     printf("\n\n\n\n\n");
@@ -35,7 +33,9 @@ int interfaceMapa(Fase f) {
     printf("[1] -> Entrar em uma batalha\n");
     printf("[2] -> Vasculhar sua bolsa\n");
     printf("[3] -> Pausa pro café\n");
+
     printf("\nQual a sua escolha?  ");
+
     int opcao;
     scanf("%d", &opcao);
     return opcao;
@@ -65,6 +65,7 @@ int getChoice(Personagem p){
     printf("[4] -> Inventário\n");
     printf("[5] -> Creditos\n");
     printf("[6] -> Sair\n");
+    
     int opcao;
     printf("\n\nDigite sua opcao: ");
     scanf("%d",&opcao);

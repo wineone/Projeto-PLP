@@ -66,5 +66,6 @@ Fase piloto(){
             false,
             {gp1(), gp2(), gp3(), grupoNull(), grupoNull(), grupoNull()}, 
             3};
+
     return a;
 }

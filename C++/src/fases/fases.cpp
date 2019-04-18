@@ -3,6 +3,7 @@
 #include "../entidades/entidades.h"
 #include "../print/print.h"
 #include "../batalha/batalha.h"
+
 #include "fases.h"
 
 using namespace std;
@@ -14,10 +15,12 @@ int selectRandomEnemyGroup(int quantidadeDeGrupos) {
 
 int mapa(Fase f, Personagem p) {
     int opcao;
+
     while (true) {
         opcao = interfaceMapa(f);
 
         switch (opcao) {
+
             case 1: {
                 printf("Você acaba de entrar em uma batalha!!\n\n");
                 digite();
@@ -25,6 +28,7 @@ int mapa(Fase f, Personagem p) {
                 int grupoAleatorio = selectRandomEnemyGroup(f.qtdDeInimigos);
                 batalhar(p, f.grupo[grupoAleatorio]);
                 break;
+
             }case 2:
                 // bolsa()
                 break;
@@ -42,6 +46,7 @@ int selecaoDeFase(Personagem p) {
     
     while (keepGoing) {
         printf("    # SELEÇÃO DE MAPAS #    \n\n");
+
         switch (interfaceFases()) {            
             case 1:{
                 system("clear");
@@ -56,7 +61,6 @@ int selecaoDeFase(Personagem p) {
                 break;
             case 3:
                 system("clear");
-                // mapa(fogo);
                 printf("mapa(fogo)\n\n");
                 keepGoing = false;
                 break;

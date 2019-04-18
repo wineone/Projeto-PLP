@@ -75,11 +75,14 @@ typedef struct Inimigo{
     int defesa;
 } Inimigo;
 
+
 typedef struct GrupoDeInimigos {
     Inimigo gangue[6];
+
     int quantidade;
     int dinheiroLoot;
 } GrupoDeInimigos;
+
 
 typedef struct Fase {
     string nome;

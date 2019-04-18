@@ -1,4 +1,5 @@
 CC=g++
+
 CFLAGS = -std=c++11
 
 DEPS = src/*.h
@@ -9,10 +10,10 @@ OBJS := $(addsuffix .o,$(basename $(SRCS)))
 all: run
 
 src/%.o: src/%.cpp $(DEPS)
-	$(CC) -std=c++11 -c -o $@ $< $(CFLAGS)
+	$(CC) -c -o $@ $< $(CFLAGS)
 
 run: $(OBJS)
-	$(CC) -std=c++11 -o $@ $^ 
+	$(CC) -o $@ $^ 
 
 clean: 
 	rm -rf src/*.o
