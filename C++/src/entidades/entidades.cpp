@@ -19,7 +19,7 @@ Bolsa bolsaInicial() {
 }
 
 Inimigo nemesis() {
-    Inimigo a = {"Nemesis", "Fei que doi", 100, 100, 15, 10, 10};
+    Inimigo a = {"Nemesis", "Fei que doi", 100, 100, 15, 10, 10,10};
     return a;
 }
 

@@ -30,7 +30,7 @@ int mapa(Fase f, Personagem p) {
 
 int selecaoDeFase(Personagem p) {
     bool keepGoing = true;
-
+    
     while (keepGoing) {
         switch (interfaceFases()) {
             case 1:{

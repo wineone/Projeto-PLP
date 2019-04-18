@@ -11,12 +11,14 @@ using namespace std;
 
 
 int main(){
+    srand((unsigned)time(0));
     system("clear");
     string nome;
     cout << "digite seu nome: ";
     cin >> nome;
     getchar();
-    Personagem personagem = {nome,98,98,1,1,5,5,10,maos(),roupas(), bolsaInicial()};
+    Personagem personagem = {nome,98,98,10,10,5,5,10,maos(),roupas(), bolsaInicial()};
+
     while(true){
         
 

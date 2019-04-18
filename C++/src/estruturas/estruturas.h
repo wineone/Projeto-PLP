@@ -72,6 +72,7 @@ typedef struct Inimigo{
     int dano;
     int forca;
     int agilidade;
+    int defesa;
 } Inimigo;
 
 typedef struct GrupoDeInimigos {

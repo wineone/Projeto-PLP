@@ -79,25 +79,42 @@ void HpCombate(Personagem p, GrupoDeInimigos gp) {
 }
 
 int opcoesAtaque() {
-    printf("\n\n\n\n\n");
-    printf("Como você quer atacar?\n\n");
-    printf("[1] -> Ataque Forte\n");
-    printf("[2] -> Ataque Fraco\n");
-    printf("\nDigite sua opção: ");
     int opcao;
-    scanf("%d", &opcao);
-    
-    switch (opcao) {
-        case 1: {
-            printf("Você selecionou ataque FORTE\n");
-            break;
-        } case 2: {
-            printf("Você selecionou ataque FRACO\n");
-            break;
+    do{
+        printf("\n\n\n\n\n");
+        printf("Como você quer atacar?\n\n");
+        printf("[1] -> Ataque Forte\n");
+        printf("[2] -> Ataque Fraco\n");
+        printf("\nDigite sua opção: ");
+        
+        scanf("%d", &opcao);
+        
+        switch (opcao) {
+            case 1: {
+                printf("Você selecionou ataque FORTE\n");
+                break;
+            } case 2: {
+                printf("Você selecionou ataque FRACO\n");
+                break;
+            }
         }
-    }
+    }while(opcao != 1 && opcao != 2);
 
     return opcao;
+}
+
+
+int ataqueInimigo(GrupoDeInimigos gp){
+    int opcao;
+    do{
+        printf("\n\n\n\n");
+        
+        for(int i = 1; i <= gp.quantidade; i++){
+            cout << "atacar: " << gp.gangue[i-1].nome << " [" << i << "]\n\n";
+        }
+        printf("digite quem você quer atacar: ");
+        scanf("%d",&opcao);
+    }while(opcao < 1 || opcao > gp.quantidade);
 }
 
 void wonBattle(Personagem p, GrupoDeInimigos gp) {
@@ -108,4 +125,10 @@ void wonBattle(Personagem p, GrupoDeInimigos gp) {
 void lostBattle(GrupoDeInimigos gp) {
     printf("Oxe doido tu perdeu feião visse ;(\n");
     cout << "Você perdeu " << gp.dinheiroLoot * 0.1 << "moedas.\n\n";
+}
+
+void digite(){
+    setbuf(stdin,NULL);
+    printf("\ndigite alguma coisa pra continuar...");
+    getchar();
 }

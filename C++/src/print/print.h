@@ -26,3 +26,9 @@ void wonBattle(Personagem p, GrupoDeInimigos gp);
 
 // imprime mensagem de derrota
 void lostBattle(GrupoDeInimigos gp);
+
+//escolher qual inimigo vai ser atacado
+int ataqueInimigo(GrupoDeInimigos gp);
+
+//personagem digitar alguma coisa pra que passe pra proxima tela
+void digite();

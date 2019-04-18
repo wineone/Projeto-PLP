@@ -9,10 +9,10 @@ OBJS := $(addsuffix .o,$(basename $(SRCS)))
 all: run
 
 src/%.o: src/%.cpp $(DEPS)
-	$(CC) -c -o $@ $< $(CFLAGS)
+	$(CC) -std=c++11 -c -o $@ $< $(CFLAGS)
 
 run: $(OBJS)
-	$(CC) -o $@ $^ 
+	$(CC) -std=c++11 -o $@ $^ 
 
 clean: 
 	rm -rf src/*.o
