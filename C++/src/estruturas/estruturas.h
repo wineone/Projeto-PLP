@@ -98,7 +98,7 @@ typedef struct Bau{
     indPocoes = 0;
   }
 
-}
+};
 
 
 // #endif

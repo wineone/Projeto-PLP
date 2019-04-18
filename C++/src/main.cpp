@@ -4,14 +4,16 @@
 #include "estruturas/estruturas.h"
 #include "print/print.h"
 #include "fases/fases.h"
+#include "Baú/bau.h"
 // #include "entidades/entidades.h"
 
 
 using namespace std;
 
-personagem joga;
 
 int main(){
+    personagem joga;
+    Bau bau;
     system("clear");
     string nome;
     cout << "digite seu nome: ";
@@ -33,7 +35,7 @@ int main(){
                 printf("bolsa foi chamada\n");
                 break;
             case(4):
-                //inventario();
+                visualizarBau(bau, joga);
                 printf("inventario foi chamado\n");
                 break;
             case(5):

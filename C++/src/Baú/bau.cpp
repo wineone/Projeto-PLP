@@ -1,26 +1,26 @@
 #include "bau.h"
-#include "../entidades/entidade.h"
+#include "../entidades/entidades.h"
 #include "../estruturas/estruturas.h"
 
-void removeArmadura(Bau bau){
-  listArmaduras(bau);
+void removeArmadura(Bau bau, personagem joga){
+  listArmaduras(bau, joga);
   if(bau.indArmaduras != 0){
     int remover;
     cout << "digite o indice da armadura a ser removida: ";
     cin >> remover;
-    swap(bau.armaduras[remover], bau.armaduras[indArmaduras]);
+    swap(bau.armaduras[remover], bau.armaduras[bau.indArmaduras]);
     bau.indArmaduras--;
     cout << "A armadura foi removida com sucesso";
   }
 }
 
-void removeArma(Bau bau){
-  listArmas(bau);
+void removeArma(Bau bau, personagem joga){
+  listArmas(bau, joga);
   if(bau.indArmas != 0){
     int remover;
     cout << "digite o indice da arma a ser removida: ";
     cin >> remover;
-    swap(bau.armas[remover], bau.armas[bau.indArmas]);
+    swap(bau.arma[remover], bau.arma[bau.indArmas]);
     bau.indArmas--;
     cout << "A arma removida com sucesso";
   }
@@ -37,66 +37,66 @@ void removePocao(Bau bau){
     cout << "A poção foi removida com sucesso";
   }
 }
-void listArmaduras(Bau &bau){
+void listArmaduras(Bau bau, personagem joga){
     if(bau.indArmaduras == 0){
-      cout << "você ainda nao possui armaduras, vá jogar para conseguir"
-    }else {
-      for(int i = 0; i < indArmaduras; i++){
-        cout  << (i+1) << " - "<< bau.armaduras[i].nome << " (armadura: " << joga.armadura.defesa - bau.armaduras[i].defesa << ", força: " << joga.armadura.forca - bau.armaduras[i].forca << ", agilidade: " << (joga.armadura.agilidade - bau.armaduras[i].agilidade) << ", vida: " << (joga.armadura.vida - bau.armaduras[i].vida) << ")" << endl;
+      cout << "você ainda nao possui armaduras, vá jogar para conseguir";
+    } else {
+      for(int i = 0; i < bau.indArmaduras; i++){
+      cout  << (i+1) << " - " << bau.armaduras[i].nome << " (armadura: " << (joga.armadura.armadura - bau.armaduras[i].armadura) << ", forca: " << (joga.armadura.forca - bau.armaduras[i].forca) << ", agilidade: " << (joga.armadura.agilidade - bau.armaduras[i].agilidade) << ", vida: " << (joga.armadura.vida - bau.armaduras[i].vida) << endl;
       }
     }
 }
 
 
-void listArmas(Bau bau){
+void listArmas(Bau bau, personagem joga){
   if(bau.indArmas == 0){
-    cout << "você ainda nao possui armas, lute com suas mãos ate conseguir algo"
+    cout << "você ainda nao possui armas, lute com suas mãos ate conseguir algo";
   } else {
-    for(int j = 0; j < bau.indArmas; i++){
-      printf("%i - %s (dano: %i , forca: %i, agilidade: %i)", (i+1), bau.armas[i].nome, (joga.arma.dano - bau.armas[i].dano), (joga.arma.forca - bau.armaduras[i].forca), (joga.arma.agilidade - bau.armaduras[i].agilidade));
+    for(int j = 0; j < bau.indArmas; j++){
+      cout << (j+1) << " - " << (bau.arma[j].nome) << " (dano: " << (joga.arma.dano - bau.arma[j].dano) << ", força: " << (joga.arma.forca - bau.arma[j].forca) << ", agilidade: " << (joga.arma.agilidade - bau.arma[j].agilidade) << endl;
     }
   }
 }
 
 void listPocoes(Bau bau){
   if(bau.indPocoes == 0){
-    cout << "você ainda nao possui pocoes, vá tomar agua até la"
+    cout << "você ainda nao possui pocoes, vá tomar agua até la";
   } else {
     for(int k = 0 ; k < bau.indPocoes; k++){
-      printf("%i - %s (%s) : forca +%i, agilidade +%i  vida + %i", (i+1), bau.pocoes[i].nome, bau.pocoes[i].descricao, bau.pocoes[i].forca, bau.pocoes[i].agilidade, bau.pocoes[i].vida);
+      cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << "(forca: +" << bau.pocoes[k].forca << " , agilidade: +" << bau.pocoes[k].agilidade << ", vida: +" << bau.pocoes[k].vida << ")" << endl;
     }
   }
 }
 
 
-int visualizarBau(Bau bau){
+int visualizarBau(Bau bau, personagem joga){
   int opcao;
   while(true){
     cin >> opcao;
       switch(opcao){
         case 1:
         cout << "remover armadura";
-        removeArmadura();
+        removeArmadura(bau, joga);
         break;
 
         case 2:
-        cout << "remover arma"
-        removerArma(bau);
+        cout << "remover arma";
+        removeArma(bau, joga);
         break;
 
         case 3:
         cout << "remover pocoes";
-        removerPocoes(bau);
+        removePocao(bau);
         break;
 
         case 4:
         cout << "Somente listar as armaduras";
-        listArmaduras(bau);
+        listArmaduras(bau, joga);
         break;
 
         case 5:
         cout << "Somente listar as armas";
-        listArmas(bau);
+        listArmas(bau, joga);
         break;
 
         case 6:
@@ -104,7 +104,8 @@ int visualizarBau(Bau bau){
         listPocoes(bau);
         break;
 
-        case 7: cout << "Está retornando ao menu inicial, be safe!"
+        case 7:
+        cout << "Está retornando ao menu inicial, be safe!";
         return 0;
       }
 

@@ -3,16 +3,16 @@
 #include "../estruturas/estruturas.h"
 
 // permite interagir com  as opcoes disponiveis na interface do bau
-int visualizarBau();
+int visualizarBau(Bau bau, personagem joga);
 // lista todas as poções armazenadas no bau
-void listPocoes();
+void listPocoes(Bau bau);
 // lista todas as armaduras armazenadas no bau
-void listArmaduras();
+void listArmaduras(Bau bau, personagem joga);
 // lista todas as armas armazenadas no bau
-void listArmas();
+void listArmas(Bau bau, personagem joga);
 
-void removeArmadura();
+void removeArmadura(Bau bau, personagem joga);
 
-void removeArma();
+void removeArma(Bau bau, personagem joga);
 
-void removePocao();
+void removePocao(Bau bau);
