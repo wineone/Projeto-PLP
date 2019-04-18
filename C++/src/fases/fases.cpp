@@ -13,10 +13,10 @@ int mapa(Fase f, Personagem p) {
         opcao = interfaceMapa(f);
 
         switch (opcao) {
-            case 1:
+            case 1: {
                 batalhar(p, f.grupo[0]);
                 break;
-            case 2:
+            }case 2:
                 // bolsa()
                 break;
             case 3:     // opcao: voltar para o lobby
@@ -26,6 +26,7 @@ int mapa(Fase f, Personagem p) {
         }
     }
 }
+
 
 int selecaoDeFase(Personagem p) {
     bool keepGoing = true;
@@ -37,8 +38,7 @@ int selecaoDeFase(Personagem p) {
                 printf("mapa(floresta)\n\n");
                 keepGoing = false;
                 break;
-            }
-            case 2:
+            }case 2:
                 // mapa(agua);
                 printf("mapa(agua)\n\n");
                 keepGoing = false;

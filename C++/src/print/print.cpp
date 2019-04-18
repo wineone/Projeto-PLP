@@ -69,6 +69,7 @@ int getChoice(Personagem p){
     return opcao;
 }
 
+
 void HpCombate(Personagem p, GrupoDeInimigos gp) {
     cout << endl;
     StatusHeroi(p);
