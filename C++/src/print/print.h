@@ -14,3 +14,6 @@ int escolhasDaBolsa();
 
 // funcao que imprime na tela o nome e a vida do heroi
 void StatusHeroi(Personagem heroi);
+
+//Disponibiliza as opções disponiveis no Bau do heroi
+int escolhasDoBau();

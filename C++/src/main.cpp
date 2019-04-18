@@ -5,25 +5,25 @@
 #include "print/print.h"
 #include "fases/fases.h"
 #include "Baú/bau.h"
-// #include "entidades/entidades.h"
+#include "entidades/entidades.h"
 
 
 using namespace std;
 
 
 int main(){
-    Personagem joga;
-    Bau bau;
     system("clear");
     string nome;
     cout << "digite seu nome: ";
     cin >> nome;
     getchar();
+    Personagem personagem = {nome,98,98,1,1,5,5,10,maos(),roupas(), bolsaInicial()};
+    Bau bau = Bau();
 
     while(true){
         switch(getChoice()){
             case(1):
-                selecaoDeFase(joga);
+                selecaoDeFase(personagem);
                 printf("fases foi chamada\n");
                 break;
             case(2):
@@ -35,7 +35,7 @@ int main(){
                 printf("bolsa foi chamada\n");
                 break;
             case(4):
-                visualizarBau(bau, joga);
+                visualizarBau(bau, personagem);
                 printf("inventario foi chamado\n");
                 break;
             case(5):

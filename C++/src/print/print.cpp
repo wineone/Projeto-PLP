@@ -65,3 +65,13 @@ int escolhasDaBolsa(){
 void StatusHeroi(Personagem heroi) {
     cout << endl << heroi.nome << "          " << heroi.vidaAtual << "/" << heroi.totalVida << endl << endl;
 }
+
+int escolhasDoBau(){
+  printf("[1] -> excluir armadura\n");
+  printf("[2] -> excluir uma arma\n");
+  printf("[3] -> excluir uma poção\n");
+  printf("[4] -> somente listar as armaduras\n");
+  printf("[5] -> somente listar as armas\n");
+  printf("[6] -> somente listar poções\n");
+  printf("[7] -> voltar ao menu principal\n");
+}
