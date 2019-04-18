@@ -16,11 +16,10 @@ GrupoDeInimigos gangueDosGemeos(){
 }
 
 Fase piloto(){
+    GrupoDeInimigos gp[] = {gangueDosGemeos(), gangueDosGemeos(), gangueDosGemeos()};
     Fase a = {"Piloto",
                 "fase de testes, cuidado senão ele te derruba",
                 false,
-                gangueDosGemeos(),
-                gangueDosGemeos(),
-                gangueDosGemeos()};
+                gp, 3};
     return a;
 }
