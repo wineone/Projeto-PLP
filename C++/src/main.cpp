@@ -12,7 +12,7 @@ using namespace std;
 
 
 int main(){
-    personagem joga;
+    Personagem joga;
     Bau bau;
     system("clear");
     string nome;
@@ -23,7 +23,7 @@ int main(){
     while(true){
         switch(getChoice()){
             case(1):
-                selecaoDeFase();
+                selecaoDeFase(joga);
                 printf("fases foi chamada\n");
                 break;
             case(2):

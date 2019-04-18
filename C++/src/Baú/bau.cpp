@@ -2,7 +2,7 @@
 #include "../entidades/entidades.h"
 #include "../estruturas/estruturas.h"
 
-void removeArmadura(Bau bau, personagem joga){
+void removeArmadura(Bau bau, Personagem joga){
   listArmaduras(bau, joga);
   if(bau.indArmaduras != 0){
     int remover;
@@ -14,7 +14,7 @@ void removeArmadura(Bau bau, personagem joga){
   }
 }
 
-void removeArma(Bau bau, personagem joga){
+void removeArma(Bau bau, Personagem joga){
   listArmas(bau, joga);
   if(bau.indArmas != 0){
     int remover;
@@ -37,7 +37,7 @@ void removePocao(Bau bau){
     cout << "A poção foi removida com sucesso";
   }
 }
-void listArmaduras(Bau bau, personagem joga){
+void listArmaduras(Bau bau, Personagem joga){
     if(bau.indArmaduras == 0){
       cout << "você ainda nao possui armaduras, vá jogar para conseguir";
     } else {
@@ -48,7 +48,7 @@ void listArmaduras(Bau bau, personagem joga){
 }
 
 
-void listArmas(Bau bau, personagem joga){
+void listArmas(Bau bau, Personagem joga){
   if(bau.indArmas == 0){
     cout << "você ainda nao possui armas, lute com suas mãos ate conseguir algo";
   } else {
@@ -69,7 +69,7 @@ void listPocoes(Bau bau){
 }
 
 
-int visualizarBau(Bau bau, personagem joga){
+int visualizarBau(Bau bau, Personagem joga){
   int opcao;
   while(true){
     cin >> opcao;

@@ -33,19 +33,21 @@ typedef struct Pocao{
 } Pocao;
 
 typedef struct Bolsa{
-    int quantidade;
-    int max;
+    int quantidade;     // quantidade de itens dentro da bolsa
+    int max;            // máximo de itens que cabem na bolsa
     Pocao pocoes[200];
 } Bolsa;
 
 
 
-typedef struct personagem{
+typedef struct Personagem{
     string nome;
+
+    int vidaAtual;
+    int totalVida;
 
     int dano ;
     int defesa;
-    int vida;
     int forca;
     int agilidade;
 
@@ -58,7 +60,7 @@ typedef struct personagem{
 
     Bolsa bolsa;
 
-} personagem;
+} Personagem;
 
 typedef struct Inimigo{
     string nome;
@@ -81,7 +83,8 @@ typedef struct Fase {
     string descricao;
     bool terminada;
 
-    GrupoDeInimigos n1, n2, n3;
+    GrupoDeInimigos *grupo;
+    int qtdDeInimigos;
 } Fase;
 
 typedef struct Bau{

@@ -6,7 +6,7 @@
 
 using namespace std;
 
-int mapa(Fase f) {
+int mapa(Fase f, Personagem p) {
     int opcao;
 
     while (true) {
@@ -27,13 +27,13 @@ int mapa(Fase f) {
     }
 }
 
-int selecaoDeFase() {
+int selecaoDeFase(Personagem p) {
     bool keepGoing = true;
 
     while (keepGoing) {
         switch (interfaceFases()) {
             case 1:
-                mapa(piloto());
+                mapa(piloto(), p);
                 printf("mapa(floresta)\n\n");
                 keepGoing = false;
                 break;

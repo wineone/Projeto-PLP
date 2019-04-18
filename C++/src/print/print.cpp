@@ -61,3 +61,7 @@ int escolhasDaBolsa(){
     scanf("%d", &opcao);
     return opcao;
 }
+
+void StatusHeroi(Personagem heroi) {
+    cout << endl << heroi.nome << "          " << heroi.vidaAtual << "/" << heroi.totalVida << endl << endl;
+}
