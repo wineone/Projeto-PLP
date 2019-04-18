@@ -52,9 +52,8 @@ int main(){
                 break;
             case(6):        // sair do jogo
                 system("clear");
-                //inventario();
-                printf("inventario foi chamado\n");
-                break;
+                printf("quereu sair\n");
+                return 0;
             default:
                 printf("opcão invalida\n");
         }
