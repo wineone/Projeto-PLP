@@ -2,40 +2,107 @@
 #include "../entidades/entidades.h"
 #include "../estruturas/estruturas.h"
 #include "../print/print.h"
+#include <bits/stdc++.h>
 
 void removeArmadura(Bau bau, Personagem personagem){
   listArmaduras(bau, personagem);
   if(bau.indArmaduras != 0){
-    int remover;
-    cout << "digite o indice da armadura a ser removida: " << endl;
-    cin >> remover;
-    swap(bau.armaduras[remover], bau.armaduras[bau.indArmaduras]);
-    bau.indArmaduras--;
-    cout << "A armadura foi removida com sucesso" << endl;
+    string resposta;
+    cout << "Deseja remover alguma armadura? (s/n)" << endl;
+    cin >> resposta;
+    if(resposta == "s"){
+      int remover;
+      cout << "então digite o indice da armadura a ser removida" << endl;
+      cin >> remover;
+      if(remover < bau.indArmaduras){
+        swap(bau.armaduras[remover], bau.armaduras[bau.indArmaduras]);
+        bau.indArmaduras--;
+      } else {
+        cout << "esse indice é invalido";
+      }
+    }
   }
 }
 
 void removeArma(Bau bau, Personagem personagem){
   listArmas(bau, personagem);
   if(bau.indArmas != 0){
-    int remover;
-    cout << "digite o indice da arma a ser removida: " << endl;
-    cin >> remover;
-    swap(bau.arma[remover], bau.arma[bau.indArmas]);
-    bau.indArmas--;
-    cout << "A arma removida com sucesso" << endl;
+    string resposta;
+    cout << "Deseja remover alguma arma? (s/n)" << endl;
+    cin >> resposta;
+    if(resposta == "s"){
+      int remover;
+      cout << "então, digite o indice da arma a ser removida" << endl;
+      cin >> remover;
+      if(remover < bau.indArmas){
+        swap(bau.arma[remover], bau.arma[bau.indArmas]);
+        bau.indArmas--;
+      } else {
+        cout << "esse indice é invalido" << endl;
+      }
+    }
   }
 }
 
 void removePocao(Bau bau){
   listPocoes(bau);
   if(bau.indPocoes != 0){
-    int remover;
-    cout << "digite o indice da poção a ser removida: " << endl;
-    cin >> remover;
-    swap(bau.pocoes[remover], bau.pocoes[bau.indPocoes]);
-    bau.indPocoes--;
-    cout << "A poção foi removida com sucesso" << endl;
+    string resposta;
+    cout << "deseja remover uma poção? (s/n)" << endl;
+    cin >> resposta;
+    if(resposta == "s"){
+      int remover;
+      cout <<"então, digite o indice da poção a ser removida" << endl;
+      cin >> remover;
+      if(remover < bau.indPocoes){
+        swap(bau.pocoes[remover], bau.pocoes[bau.indPocoes]);
+        bau.indPocoes--;
+      } else {
+        cout << "esse é um indice invalido" << endl;
+      }
+    }
+  }
+}
+
+void trocaArmadura(Bau bau, Personagem personagem){
+  listArmaduras(bau, personagem);
+  if(bau.indArmaduras != 0){
+    string resposta;
+    cout << "deseja equipar uma armadura? (s/n)" << endl;
+    cin >> resposta;
+    if(resposta == "s"){
+      int trocar;
+      cout << "então, digite o dince da armadura que deseja" << endl;
+      cin >> trocar;
+      if(trocar < bau.indArmaduras){
+        Armadura aux = bau.armaduras[trocar];
+        bau.armaduras[trocar] = personagem.armadura;
+        personagem.armadura = aux;
+      } else {
+        cout << "indice invalido" << endl;
+      }
+    }
+  }
+}
+
+void trocaArma(Bau bau, Personagem personagem){
+  listArmas(bau, personagem);
+  if(bau.indArmas != 0){
+    string resposta;
+    cout << "deseja equipar uma arma? (s/n)" << endl;
+    cin >> resposta;
+    if(resposta == "s"){
+      int trocar;
+      cout << "então, digite o dince da arma que deseja" << endl;
+      cin >> trocar;
+      if(trocar < bau.indArmas){
+        Arma aux = bau.arma[trocar];
+        bau.arma[trocar] = personagem.arma;
+        personagem.arma = aux;
+      } else {
+        cout << "indice invalido" << endl;
+      }
+    }
   }
 }
 
@@ -76,34 +143,30 @@ int visualizarBau(Bau bau, Personagem personagem){
   while(true){
     escolhasDoBau();
     cin >> opcao;
+    system("clear");
       switch(opcao){
         case 1:
-        removeArmadura(bau, personagem);
+        trocarArmadura(bau, personagem);
         break;
 
         case 2:
-        removeArma(bau, personagem);
+        trocarArma(bau, personagem);
         break;
 
         case 3:
-        removePocao(bau);
+        removeArmadura(bau, personagem);
         break;
 
         case 4:
-        listArmaduras(bau, personagem);
+        removeArma(bau, personagem);
         break;
 
         case 5:
-        listArmas(bau, personagem);
+        removePocao(bau);
         break;
 
         case 6:
-        listPocoes(bau);
-        break;
-
-        case 7:
         return 0;
       }
-
   }
 }
