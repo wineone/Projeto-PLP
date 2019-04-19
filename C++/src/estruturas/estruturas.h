@@ -44,7 +44,7 @@ typedef struct Personagem{
     string nome;
 
     int vidaAtual;
-    int totalVida;
+    int vidaTotal;
 
     int dano ;
     int defesa;
@@ -66,24 +66,30 @@ typedef struct Inimigo{
     string nome;
     string descricao;
 
-    int vida;
+    int vidaAtual;
+    int vidaTotal;
+
     int dano;
     int forca;
     int agilidade;
+    int defesa;
 } Inimigo;
 
+
 typedef struct GrupoDeInimigos {
-    Inimigo* gangue;
+    Inimigo gangue[6];
+
     int quantidade;
     int dinheiroLoot;
 } GrupoDeInimigos;
+
 
 typedef struct Fase {
     string nome;
     string descricao;
     bool terminada;
 
-    GrupoDeInimigos *grupo;
+    GrupoDeInimigos grupo[6];
     int qtdDeInimigos;
 } Fase;
 
@@ -102,6 +108,3 @@ typedef struct Bau{
   }
 
 };
-
-
-// #endif

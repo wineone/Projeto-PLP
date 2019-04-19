@@ -18,23 +18,54 @@ Bolsa bolsaInicial() {
     return b;
 }
 
-Inimigo nemesis() {
-    Inimigo a = {"Nemesis", "Fei que doi", 100, 15, 10, 10};
+Inimigo inimigoNull() {
+    Inimigo a = {"","",0,0,0,0,0,0};
     return a;
 }
 
+GrupoDeInimigos grupoNull() {
+    GrupoDeInimigos gp = {inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()};
+    return gp;
+}
 
-GrupoDeInimigos gangueDosGemeos(){
-    Inimigo gp[] = {nemesis(), nemesis()};
-    GrupoDeInimigos b = {gp,2,100};
+Inimigo nemesis() {
+    Inimigo a = {"Nemesis", "Fei que doi", 50, 50, 5, 5, 5, 5};
+    return a;
+}
+
+Inimigo pauloGuedes() {
+    Inimigo p = {"Paulo Guedes", "Eu vo privatiza ese jogo", 17, 17, 3, 3, 3, 3};
+    return p;
+}
+
+Inimigo papaco() {
+    Inimigo z = {"Papaco", "Pistoleiro", 20, 20, 4, 4, 4, 4};
+    return z;
+}
+
+GrupoDeInimigos gp3(){
+    GrupoDeInimigos b = {{nemesis(), nemesis(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()},
+                        2,100};
     return b;
 }
 
+GrupoDeInimigos gp1() {
+    GrupoDeInimigos gp = {{papaco(), papaco(), pauloGuedes(),inimigoNull(),inimigoNull(),inimigoNull()},
+                          3, 100};
+    return gp;
+}
+
+GrupoDeInimigos gp2() {
+    GrupoDeInimigos gp = {{nemesis(), pauloGuedes(), inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()}, 2, 100};
+    return gp;
+}
+
 Fase piloto(){
-    GrupoDeInimigos gp[] = {gangueDosGemeos(), gangueDosGemeos(), gangueDosGemeos()};
     Fase a = {"Piloto",
-                "fase de testes, cuidado senão ele te derruba",
-                false,
-                gp, 3};
+            "fase de testes, cuidado senão ele te derruba",
+            false,
+            {gp1(), gp2(), gp3(), grupoNull(), grupoNull(), grupoNull()},
+            3};
+
     return a;
 }

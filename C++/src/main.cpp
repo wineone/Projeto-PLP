@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #include "inventario/inventario.h"
 #include "estruturas/estruturas.h"
@@ -12,25 +11,34 @@ using namespace std;
 
 
 int main(){
+    srand((unsigned)time(0));
     system("clear");
+
+    inicioDoJogo();
     string nome;
-    cout << "digite seu nome: ";
     cin >> nome;
     getchar();
-    Personagem personagem = {nome,98,98,1,1,5,5,10,maos(),roupas(), bolsaInicial()};
     Bau bau = Bau();
+    printf("\n\n\n");
+
+    Personagem personagem = {nome,98,98,10,10,5,5,10,maos(),roupas(), bolsaInicial()};
 
     while(true){
-        switch(getChoice()){
+        printf("    # LOBBY #    ");
+
+        switch(getChoice(personagem)){
             case(1):
+                system("clear");
                 selecaoDeFase(personagem);
                 printf("fases foi chamada\n");
                 break;
             case(2):
+                system("clear");
                 //loja();
                 printf("loja foi chamada\n");
                 break;
             case(3):
+                system("clear");
                 bag();
                 printf("bolsa foi chamada\n");
                 break;
@@ -39,11 +47,12 @@ int main(){
                 printf("inventario foi chamado\n");
                 break;
             case(5):
+                system("clear");
                 //creditos();
                 printf("creditos foi chamado\n");
                 break;
-            case(6):
-                //sair();
+            case(6):        // sair do jogo
+                system("clear");
                 printf("quereu sair\n");
                 return 0;
             default:

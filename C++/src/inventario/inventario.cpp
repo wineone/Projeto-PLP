@@ -1,4 +1,3 @@
-
 #include <bits/stdc++.h>
 #include "inventario.h"
 
@@ -12,10 +11,16 @@ using namespace std;
 Bolsa bol;
 
 void fillBag(){
-        bol.pocoes[0] ={"Maconha","Da boa" , 1, -1, -1,10} ;
-        bol.pocoes[1] ={"Cocaina","Branca fina" , 10, -10, -20,-100} ;
-        bol.pocoes[2] ={"Crack","Onde é que eu to" , 50, -50, -34,100} ;
-        bol.pocoes[3] ={"Montila","Só desce com Coca" , 5, -9, -1,102} ;
+
+        // bol.pocoes[0] ={"Maconha","Da boa" , 1, -1, -1,10};
+        // bol.pocoes[1] ={"Cocaina","Branca fina" , 10, -10, -20,-100};
+        // bol.pocoes[2] ={"Crack","Onde é que eu to" , 50, -50, -34,100};
+        // bol.pocoes[3] ={"Montilla","Só desce com Coca" , 5, -9, -1,102};
+
+        // bol.pocoes[0] ={"Maconha","Da boa" , 1, -1, -1,10} ;
+        // bol.pocoes[1] ={"Cocaina","Branca fina" , 10, -10, -20,-100} ;
+        // bol.pocoes[2] ={"Crack","Onde é que eu to" , 50, -50, -34,100} ;
+        // bol.pocoes[3] ={"Montila","Só desce com Coca" , 5, -9, -1,102} ;
        
 }
 void listBag(){
