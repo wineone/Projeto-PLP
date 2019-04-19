@@ -25,7 +25,6 @@ int main(){
 
     while(true){
         printf("    # LOBBY #    ");
-
         switch(getChoice(personagem)){
             case(1):
                 system("clear");

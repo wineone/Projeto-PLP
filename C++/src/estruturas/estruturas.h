@@ -102,9 +102,9 @@ typedef struct Bau{
   int indArmaduras;
   int indPocoes;
   Bau(){
-    indArmas = 0;
-    indArmaduras = 0;
-    indPocoes = 0;
+    indArmas = -1;
+    indArmaduras = -1;
+    indPocoes = -1;
   }
 
 };

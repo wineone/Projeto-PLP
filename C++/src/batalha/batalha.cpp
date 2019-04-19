@@ -26,7 +26,7 @@ bool critico(int a){
 }
 
 void batalhar(Personagem p, GrupoDeInimigos gp) {
-    
+
     while(!acabou(p,gp)){
         system("clear");
         float bd = 0;         // bonus de dano
@@ -43,7 +43,7 @@ void batalhar(Personagem p, GrupoDeInimigos gp) {
         // heroi ataca inimigos
         int inimigo = ataqueInimigo(gp) - 1;
         int dano = p.dano + p.forca * 0.10 + (p.dano * bd);
-        
+
         printf("\n");
         divisorias();
 
@@ -57,7 +57,7 @@ void batalhar(Personagem p, GrupoDeInimigos gp) {
 
         //esquiva do inimigo
         if(!esquiva(gp.gangue[inimigo].agilidade + (gp.gangue[inimigo].agilidade * be))){
-            
+
             // verifica se o player tenta atacar inimigo morto.
             if (gp.gangue[inimigo].vidaAtual > 0) {
                 int danoMenosArma = (dano - (dano * gp.gangue[inimigo].defesa)/100);
@@ -72,17 +72,17 @@ void batalhar(Personagem p, GrupoDeInimigos gp) {
 
         } else {
             cout << gp.gangue[inimigo].nome << " se esquivou do ataque" << endl;
-        } 
+        }
         //ate aqui
 
 
         //inimigo ataca heroi
         for(int enemy = 0; enemy < gp.quantidade; enemy++){
             if (gp.gangue[enemy].vidaAtual > 0) {
-                
+
                 //ataque do inimigo
                 int dano = gp.gangue[enemy].dano + gp.gangue[enemy].forca * 0.10;
-                
+
                 //ataque critico
                 if(critico(p.agilidade)){
                         dano *= 2;
@@ -93,7 +93,7 @@ void batalhar(Personagem p, GrupoDeInimigos gp) {
                 //esquiva do inimigo
                 if(!esquiva(p.agilidade)){
                     int danoMenosArma = (dano - (dano * p.defesa)/100);
-                    
+
                     cout << p.nome << " recebeu " << danoMenosArma << " de dano" << endl;
                     p.vidaAtual -= danoMenosArma;
 
@@ -119,7 +119,7 @@ void batalhar(Personagem p, GrupoDeInimigos gp) {
         p.dinheiro += gp.dinheiroLoot;
     } else {
         lostBattle(gp);
-        p.dinheiro -= (gp.dinheiroLoot * 0.2); 
+        p.dinheiro -= (gp.dinheiroLoot * 0.2);
         p.dinheiro = max(p.dinheiro, 0);    // evita que a carteira do jogador fique negativa
     }
     printf("*****************************\n");
