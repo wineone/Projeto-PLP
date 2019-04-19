@@ -61,10 +61,10 @@ GrupoDeInimigos gp2() {
 }
 
 Fase piloto(){
-    Fase a = {"Piloto", 
+    Fase a = {"Piloto",
             "fase de testes, cuidado senão ele te derruba",
             false,
-            {gp1(), gp2(), gp3(), grupoNull(), grupoNull(), grupoNull()}, 
+            {gp1(), gp2(), gp3(), grupoNull(), grupoNull(), grupoNull()},
             3};
 
     return a;

@@ -43,7 +43,7 @@ typedef struct Bolsa{
 typedef struct Personagem{
     string nome;
 
-    int vidaAtual;  
+    int vidaAtual;
     int vidaTotal;
 
     int dano ;
@@ -66,7 +66,7 @@ typedef struct Inimigo{
     string nome;
     string descricao;
 
-    int vidaAtual;  
+    int vidaAtual;
     int vidaTotal;
 
     int dano;
@@ -92,3 +92,19 @@ typedef struct Fase {
     GrupoDeInimigos grupo[6];
     int qtdDeInimigos;
 } Fase;
+
+typedef struct Bau{
+  Armadura armaduras[50];
+  Arma arma[50];
+  Pocao pocoes[50];
+
+  int indArmas;
+  int indArmaduras;
+  int indPocoes;
+  Bau(){
+    indArmas = -1;
+    indArmaduras = -1;
+    indPocoes = -1;
+  }
+
+};

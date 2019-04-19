@@ -23,7 +23,7 @@ int interfaceFases() {
 }
 
 
-int interfaceMapa(Fase f) { 
+int interfaceMapa(Fase f) {
     printf("Você está no mapa: \n");
 
     cout << endl << f.nome << endl << endl;
@@ -65,7 +65,7 @@ int getChoice(Personagem p){
     printf("[4] -> Inventário\n");
     printf("[5] -> Creditos\n");
     printf("[6] -> Sair\n");
-    
+
     int opcao;
     printf("\n\nDigite sua opcao: ");
     scanf("%d",&opcao);
@@ -89,9 +89,9 @@ int opcoesAtaque() {
         printf("[1] -> Ataque Forte\n");
         printf("[2] -> Ataque Fraco\n");
         printf("\nDigite sua opção: ");
-        
+
         scanf("%d", &opcao);
-        
+
         switch (opcao) {
             case 1: {
                 printf("\nVocê selecionou ataque FORTE\n");
@@ -128,7 +128,7 @@ int ataqueInimigo(GrupoDeInimigos gp){
 }
 
 void wonBattle(Personagem p, GrupoDeInimigos gp) {
-    cout << "Parabéns " << p.nome << "." << endl; 
+    cout << "Parabéns " << p.nome << "." << endl;
     printf("Você ganhou %d moedas.\n\n", gp.dinheiroLoot);
 }
 
@@ -168,4 +168,13 @@ void inicioDoJogo() {
 
 void divisorias() {
     printf("////////////////////////////////////////////////////////////////////////////////\n");
+}
+
+int escolhasDoBau(){
+  printf("[1] -> trocar armadura atual\n");
+  printf("[2] -> trocar  arma atual\n");
+  printf("[3] -> excluir uma armadura\n");
+  printf("[4] -> excluir uma arma\n");
+  printf("[5] -> excluir uma poção\n");
+  printf("[6] -> voltar ao menu principal\n");
 }

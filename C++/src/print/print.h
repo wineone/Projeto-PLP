@@ -41,3 +41,6 @@ void inicioDoJogo();
 
 // imprime barras para divisorias
 void divisorias();
+
+// função que demonstra as opções do Bau
+int escolhasDoBau();

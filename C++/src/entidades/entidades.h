@@ -12,7 +12,7 @@ Bolsa bolsaInicial();
 //primeiro inimigo
 Inimigo nemesis();
 
-//primeira fase 
+//primeira fase
 Fase piloto();
 
 Inimigo pauloGuedes();
@@ -22,5 +22,5 @@ Inimigo papaco();
 GrupoDeInimigos gp3();
 
 GrupoDeInimigos gp1();
- 
+
 GrupoDeInimigos gp2();

@@ -3,6 +3,7 @@
 #include "estruturas/estruturas.h"
 #include "print/print.h"
 #include "fases/fases.h"
+#include "Baú/bau.h"
 #include "entidades/entidades.h"
 
 
@@ -17,13 +18,13 @@ int main(){
     string nome;
     cin >> nome;
     getchar();
+    Bau bau = Bau();
     printf("\n\n\n");
 
     Personagem personagem = {nome,98,98,10,10,5,5,10,maos(),roupas(), bolsaInicial()};
 
     while(true){
         printf("    # LOBBY #    ");
-
         switch(getChoice(personagem)){
             case(1):
                 system("clear");
@@ -41,9 +42,8 @@ int main(){
                 printf("bolsa foi chamada\n");
                 break;
             case(4):
-                system("clear");
-                //inventario();
-                printf("baú foi chamado\n");
+                visualizarBau(bau, personagem);
+                printf("inventario foi chamado\n");
                 break;
             case(5):
                 system("clear");

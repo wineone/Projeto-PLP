@@ -24,7 +24,7 @@ int mapa(Fase f, Personagem p) {
             case 1: {
                 printf("Você acaba de entrar em uma batalha!!\n\n");
                 digite();
-                
+
                 int grupoAleatorio = selectRandomEnemyGroup(f.qtdDeInimigos);
                 batalhar(p, f.grupo[grupoAleatorio]);
                 break;
@@ -43,11 +43,11 @@ int mapa(Fase f, Personagem p) {
 
 int selecaoDeFase(Personagem p) {
     bool keepGoing = true;
-    
+
     while (keepGoing) {
         printf("    # SELEÇÃO DE MAPAS #    \n\n");
 
-        switch (interfaceFases()) {            
+        switch (interfaceFases()) {
             case 1:{
                 system("clear");
                 mapa(piloto(), p);
@@ -87,6 +87,6 @@ int selecaoDeFase(Personagem p) {
 
         digite();
         system("clear");
-    }    
+    }
     return 0;
 }
