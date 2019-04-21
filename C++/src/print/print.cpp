@@ -52,6 +52,7 @@ int escolhasDaBolsa(){
     return opcao;
 }
 
+
 void StatusHeroi(Personagem &heroi) {
     cout << endl << heroi.nome << "          " << heroi.vidaAtual << "/" << heroi.vidaTotal << endl << endl;
 }
@@ -65,9 +66,8 @@ int getChoice(Personagem &p){
     printf("[4] -> Baú\n");
     printf("[5] -> Créditos\n");
     printf("[6] -> Sair\n");
-
-    int opcao;
-    printf("\n\nDigite sua opção: ");
+	int opcao;
+    printf("\n\nDigite sua opcao: ");
     scanf("%d",&opcao);
     return opcao;
 }

@@ -6,6 +6,7 @@
 using namespace std;
 
 bool acabou(Personagem &p, GrupoDeInimigos gp){
+
     if(p.vidaAtual <= 0) return true;
 
     for(int i = 0; i < gp.quantidade; i++){

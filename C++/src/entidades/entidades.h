@@ -9,6 +9,7 @@ Armadura roupas();
 // bolsa inicial
 Bolsa bolsa();
 
+
 //primeiro inimigo
 Inimigo nemesis();
 

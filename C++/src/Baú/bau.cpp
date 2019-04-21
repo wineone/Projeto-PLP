@@ -6,7 +6,7 @@
 
 void removeArmadura(Bau &bau, Personagem &personagem){
   listArmaduras(bau, personagem);
-  
+
   if(bau.indArmaduras != -1){
     string resposta;
     cout << "Deseja remover alguma armadura? (s/n)" << endl;
@@ -90,11 +90,14 @@ void trocarArma(Bau &bau, Personagem &personagem){
   listArmas(bau, personagem);
   if(bau.indArmas != -1){
     string resposta;
+
     cout << "Deseja equipar uma arma? (s/n)" << endl;
     cin >> resposta;
+    
     if(resposta == "s"){
       int trocar;
       cout << "Então, digite o indice da arma que deseja: " << endl;
+
       cin >> trocar;
       if((trocar-1) <= bau.indArmas){
         Arma aux = bau.arma[trocar-1];
@@ -122,6 +125,7 @@ void listArmaduras(Bau &bau, Personagem &personagem){
 void listArmas(Bau &bau, Personagem &personagem){
   if(bau.indArmas == -1){
     cout << "Você ainda não possui armas, lute com suas mãos até conseguir algo." << endl;
+
   } else {
     for(int j = 0; j <= bau.indArmas; j++){
       cout << (j+1) << " - " << (bau.arma[j].nome) << " (dano: " << (bau.arma[j].dano -personagem.arma.dano) << ", força: " << (bau.arma[j].forca - personagem.arma.forca) << ", agilidade: " << (bau.arma[j].agilidade - personagem.arma.agilidade) << ")" << endl;
@@ -132,6 +136,7 @@ void listArmas(Bau &bau, Personagem &personagem){
 void listPocoes(Bau &bau){
   if(bau.indPocoes == -1){
     cout << "Você ainda nao possui pocoes, vá tomar agua até la" << endl;
+
   } else {
     for(int k = 0 ; k <= bau.indPocoes; k++){
       cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << "(forca: +" << bau.pocoes[k].forca << " , agilidade: +" << bau.pocoes[k].agilidade << ", vida: +" << bau.pocoes[k].vida << ")" << endl;

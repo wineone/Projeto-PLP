@@ -101,8 +101,9 @@ typedef struct Bau{
   int indArmas;
   int indArmaduras;
   int indPocoes;
+
   
-  Bau() {
+ Bau() {
     indArmas = -1;
     indArmaduras = -1;
     indPocoes = -1;

@@ -75,6 +75,7 @@ int selecaoDeFase(Personagem &p, Fase fases[]) {
                 break;
             case 5:
                 system("clear");
+
                 // fases[4]
                 printf("mapa(siencia)\n\n");
                 keepGoing = false;
