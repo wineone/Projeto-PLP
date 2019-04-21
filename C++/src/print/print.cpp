@@ -9,10 +9,10 @@
 using namespace std;
 
 int interfaceFases() {
-    printf("[1] -> ambiente mata atlantica\n");
-    printf("[2] -> usina hidreletrica de itaipu\n");
-    printf("[3] -> casa da mãe joana\n");
-    printf("[4] -> o meu quarto\n");
+    printf("[1] -> Piloto\n");
+    printf("[2] -> Barquinho\n");
+    printf("[3] -> Not Found\n");
+    printf("[4] -> NAN\n");
     printf("[5] -> siençia da computasao\n");
     printf("[6] -> sair");
     printf("\n\nEscolha sabiamente a fase desejada... ");
@@ -27,7 +27,7 @@ int interfaceMapa(Fase &f) {
     printf("Você está no mapa: \n");
 
     cout << endl << f.nome << endl << endl;
-    cout << f.descricao << endl;
+    cout <<  "    +-> " << f.descricao << endl;
     printf("\n\n\n\n\n");
 
     printf("[1] -> Entrar em uma batalha\n");
@@ -54,7 +54,10 @@ int escolhasDaBolsa(){
 
 
 void StatusHeroi(Personagem &heroi) {
-    cout << endl << heroi.nome << "          " << heroi.vidaAtual << "/" << heroi.vidaTotal << endl << endl;
+    cout << endl << heroi.nome ;
+    for(int i = 0; i < (30 - heroi.nome.size()); i++)
+        cout << " ";
+    cout << heroi.vidaAtual << "/" << heroi.vidaTotal << endl << endl;
 }
 
 int getChoice(Personagem &p){
@@ -77,7 +80,10 @@ void HpCombate(Personagem &p, GrupoDeInimigos gp) {
     cout << endl;
     StatusHeroi(p);
     for (int i = 0; i < gp.quantidade; i++) {
-        cout << gp.gangue[i].nome << "            " << gp.gangue[i].vidaAtual << "/" << gp.gangue[i].vidaTotal << endl;
+        cout << gp.gangue[i].nome;
+        for(int j = 0; j < (30 - gp.gangue[i].nome.size()); j++)
+            cout << " ";
+        cout  << gp.gangue[i].vidaAtual << "/" << gp.gangue[i].vidaTotal << endl;
     }
 }
 
@@ -177,4 +183,19 @@ int escolhasDoBau(){
   printf("[4] -> excluir uma arma\n");
   printf("[5] -> excluir uma poção\n");
   printf("[6] -> voltar ao menu principal\n");
+}
+
+void printInimigos(GrupoDeInimigos &gp){
+    system("clear");
+    printf("Conheça seus inimigos:\n\n");
+    for(int i = 0; i < gp.quantidade; i++){
+        Inimigo ini = gp.gangue[i];
+        cout << ini.nome << " " << ini.vidaAtual << "/" << ini.vidaTotal << endl;
+        cout << "    +-> " << ini.descricao << "\n\n";
+    }
+    digite();
+}
+
+void estrelinhas(){
+    printf("*****************************\n");
 }

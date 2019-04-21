@@ -26,8 +26,74 @@ bool critico(int a){
     return ((rand()%(100) + 1) < ((rand()%10 + 1) + a*0.4));
 }
 
-void batalhar(Personagem &p, GrupoDeInimigos gp) {
+int heroiAtaca(Personagem &p,int bd){
+    // heroi ataca inimigos
+    
+    int dano = p.dano + p.forca * 0.10 + (p.dano * bd);
 
+    printf("\n");
+    divisorias();
+
+    // ataque critico
+    if(critico(p.agilidade)){
+        dano *= 2;
+        cout << "ataque critico! ";
+    }
+    cout << p.nome << " deu " << dano << " de dano" << endl;
+    return dano;
+}
+
+
+int inimigoAtaca(Inimigo i){
+    //ataque do inimigo
+    int dano = i.dano + i.forca * 0.10;
+
+    //ataque critico
+    if(critico(i.agilidade)){
+            dano *= 2;
+            cout << "ataque critico! ";
+    }
+    cout << i.nome << " deu " << dano << " de dano" << endl;
+    return dano;
+}
+
+void heroiRecebeDano(Personagem &p,int danoinimigo){
+    if(!esquiva(p.agilidade)){
+        int danoMenosArma = (danoinimigo - (danoinimigo * p.defesa)/100);
+
+        cout << p.nome << " recebeu " << danoMenosArma << " de dano" << endl;
+        p.vidaAtual -= danoMenosArma;
+
+        // conserta vida negativa do heroi
+        p.vidaAtual = max(p.vidaAtual, 0);
+
+    }else{
+        cout << p.nome << " se esquivou " << endl;
+    }
+}
+
+void inimigoRecebeDano(Inimigo &i,int be,int dano){
+    if(!esquiva(i.agilidade + (i.agilidade * be))){
+
+        // verifica se o player tenta atacar inimigo morto.
+        if (i.vidaAtual > 0) {
+            int danoMenosArma = (dano - (dano * i.defesa)/100);
+            cout << i.nome << " recebeu " << danoMenosArma << " de dano" << endl;
+            i.vidaAtual -= danoMenosArma;
+        } else {
+            cout << "Você tá chutando cachorro morto...\n";
+        }
+
+        // conserta vida negativa do inimigo
+        i.vidaAtual = max(i.vidaAtual, 0);
+
+    } else {
+        cout << i.nome << " se esquivou do ataque" << endl;
+    }
+}
+
+void batalhar(Personagem &p, GrupoDeInimigos gp) {
+    printInimigos(gp);
     while(!acabou(p,gp)){
         system("clear");
         float bd = 0;         // bonus de dano
@@ -40,71 +106,14 @@ void batalhar(Personagem &p, GrupoDeInimigos gp) {
             bd = 0.5;
             be = 0.4;
         }
-
-        // heroi ataca inimigos
         int inimigo = ataqueInimigo(gp) - 1;
-        int dano = p.dano + p.forca * 0.10 + (p.dano * bd);
 
-        printf("\n");
-        divisorias();
-
-        // ataque critico
-        if(critico(p.agilidade)){
-            dano *= 2;
-            cout << "ataque critico! ";
-        }
-        cout << p.nome << " deu " << dano << " de dano" << endl;
-
-
-        //esquiva do inimigo
-        if(!esquiva(gp.gangue[inimigo].agilidade + (gp.gangue[inimigo].agilidade * be))){
-
-            // verifica se o player tenta atacar inimigo morto.
-            if (gp.gangue[inimigo].vidaAtual > 0) {
-                int danoMenosArma = (dano - (dano * gp.gangue[inimigo].defesa)/100);
-                cout << gp.gangue[inimigo].nome << " recebeu " << danoMenosArma << " de dano" << endl;
-                gp.gangue[inimigo].vidaAtual -= danoMenosArma;
-            } else {
-                cout << "Você tá chutando cachorro morto...\n";
-            }
-
-            // conserta vida negativa do inimigo
-            gp.gangue[inimigo].vidaAtual = max(gp.gangue[inimigo].vidaAtual, 0);
-
-        } else {
-            cout << gp.gangue[inimigo].nome << " se esquivou do ataque" << endl;
-        }
-        //ate aqui
-
+        inimigoRecebeDano(gp.gangue[inimigo],be,heroiAtaca(p,bd));
 
         //inimigo ataca heroi
         for(int enemy = 0; enemy < gp.quantidade; enemy++){
             if (gp.gangue[enemy].vidaAtual > 0) {
-
-                //ataque do inimigo
-                int dano = gp.gangue[enemy].dano + gp.gangue[enemy].forca * 0.10;
-
-                //ataque critico
-                if(critico(p.agilidade)){
-                        dano *= 2;
-                        cout << "ataque critico! ";
-                }
-                cout << gp.gangue[enemy].nome << " deu " << dano << " de dano" << endl;
-
-                //esquiva do inimigo
-                if(!esquiva(p.agilidade)){
-                    int danoMenosArma = (dano - (dano * p.defesa)/100);
-
-                    cout << p.nome << " recebeu " << danoMenosArma << " de dano" << endl;
-                    p.vidaAtual -= danoMenosArma;
-
-                    // conserta vida negativa do heroi
-                    p.vidaAtual = max(p.vidaAtual, 0);
-
-                }else{
-                    cout << p.nome << " se esquivou " << endl;
-                }
-
+                heroiRecebeDano(p,inimigoAtaca(gp.gangue[enemy]));
             }
         }
         divisorias();
@@ -113,7 +122,7 @@ void batalhar(Personagem &p, GrupoDeInimigos gp) {
         digite();
     }
 
-    printf("*****************************\n");
+    estrelinhas();
     // verifica quem ganhou e assimila o premio ou perda do jogador
     if(p.vidaAtual > 0) {
         wonBattle(p, gp);
@@ -123,7 +132,7 @@ void batalhar(Personagem &p, GrupoDeInimigos gp) {
         p.dinheiro -= (gp.dinheiroLoot * 0.2);
         p.dinheiro = max(p.dinheiro, 0);    // evita que a carteira do jogador fique negativa
     }
-    printf("*****************************\n");
+    estrelinhas();
 
     digite();
     system("clear");

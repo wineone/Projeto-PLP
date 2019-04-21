@@ -44,3 +44,7 @@ void divisorias();
 
 // função que demonstra as opções do Bau
 int escolhasDoBau();
+
+void printInimigos(GrupoDeInimigos &gp);
+
+void estrelinhas();

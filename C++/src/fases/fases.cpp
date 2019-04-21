@@ -22,11 +22,19 @@ int mapa(Fase &f, Personagem &p) {
         switch (opcao) {
 
             case 1: {
-                printf("Você acaba de entrar em uma batalha!!\n\n");
-                digite();
+                if(p.vidaAtual > 0){
+                    printf("Você acaba de entrar em uma batalha!!\n\n");
+                    digite();
 
-                int grupoAleatorio = selectRandomEnemyGroup(f.qtdDeInimigos);
-                batalhar(p, f.grupo[grupoAleatorio]);
+                    int grupoAleatorio = selectRandomEnemyGroup(f.qtdDeInimigos);
+                    batalhar(p, f.grupo[grupoAleatorio]);
+                }else{
+                    printf("\n");
+                    divisorias();
+                    printf("\nEi bixo, tais sem vida visse\n\n");
+                    divisorias();
+                    printf("\n");
+                }
                 break;
 
             }case 2:
