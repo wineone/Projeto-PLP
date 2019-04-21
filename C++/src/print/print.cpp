@@ -177,12 +177,13 @@ void divisorias() {
 }
 
 int escolhasDoBau(){
-  printf("[1] -> trocar armadura atual\n");
-  printf("[2] -> trocar  arma atual\n");
-  printf("[3] -> excluir uma armadura\n");
-  printf("[4] -> excluir uma arma\n");
-  printf("[5] -> excluir uma poção\n");
-  printf("[6] -> voltar ao menu principal\n");
+  printf("[1] -> Trocar armadura atual\n");
+  printf("[2] -> Trocar  arma atual\n");
+  printf("[3] -> Excluir uma armadura\n");
+  printf("[4] -> Excluir uma arma\n");
+  printf("[5] -> Excluir uma poção\n");
+  printf("[6] -> Visualizar personagem\n");
+  printf("[7] -> Voltar ao menu inicial");
 }
 
 void printInimigos(GrupoDeInimigos &gp){

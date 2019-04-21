@@ -32,5 +32,8 @@ void listArmas(Bau &bau, Personagem &personagem);
 // permite interagir com  as opcoes disponiveis na interface do bau
 int visualizarBau(Bau &bau, Personagem &personagem);
 
+//Permite visualizar os equipamentes atuais utilizado pelo personagem
+void visualizarEquips(Personagem personagem);
+
 // função com o proposito somente povoar o bau para testa-lo
 void test(Bau &bau);

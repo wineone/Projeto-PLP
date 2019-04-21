@@ -53,7 +53,7 @@ int main(){
                 bag();
                 break;
             case(4):
-                test(bau);
+                // test(bau);
                 system("clear");
                 visualizarBau(bau, personagem);
                 break;

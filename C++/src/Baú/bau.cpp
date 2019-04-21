@@ -79,6 +79,17 @@ void trocarArmadura(Bau &bau, Personagem &personagem){
         Armadura aux = bau.armaduras[trocar];
         bau.armaduras[trocar-1] = personagem.armadura;
         personagem.armadura = aux;
+
+        personagem.forca -= bau.armaduras[trocar-1].forca;
+        personagem.forca += aux.forca;
+
+        personagem.vidaTotal -= (bau.armaduras[trocar-1].forca / 2);
+        personagem.vidaTotal += (aux.forca/2);
+        personagem.vidaTotal -= (bau.armaduras[trocar-1].vida);
+        personagem.vidaTotal += aux.vida;
+
+        personagem.agilidade -= bau.armaduras[trocar-1].agilidade;
+        personagem.agilidade += aux.agilidade;
       } else {
         cout << "indice invalido" << endl;
       }
@@ -93,7 +104,7 @@ void trocarArma(Bau &bau, Personagem &personagem){
 
     cout << "Deseja equipar uma arma? (s/n)" << endl;
     cin >> resposta;
-    
+
     if(resposta == "s"){
       int trocar;
       cout << "Então, digite o indice da arma que deseja: " << endl;
@@ -103,6 +114,18 @@ void trocarArma(Bau &bau, Personagem &personagem){
         Arma aux = bau.arma[trocar-1];
         bau.arma[trocar-1] = personagem.arma;
         personagem.arma = aux;
+
+        personagem.dano -= bau.arma[trocar-1].dano;
+        personagem.dano += aux.dano;
+
+        personagem.vidaTotal -= (bau.arma[trocar-1].forca/2);
+        personagem.vidaTotal += (aux.forca/2);
+
+        personagem.forca -= (bau.arma[trocar-1].forca);
+        personagem.forca += (aux.forca);
+
+        personagem.agilidade -= (bau.arma[trocar-1].agilidade);
+        personagem.agilidade += aux.agilidade;
         cout << "arma equipada com sucesso" << endl;
       } else {
         cout << "indice inválido" << endl;
@@ -171,6 +194,25 @@ void addIten(Bau &bau, Pocao pocao){
   }
 };
 
+void visualizarEquips(Personagem personagem){
+  cout << "nome do heroi: " << personagem.nome << "\n\n";
+
+  cout << "HP: " << personagem.vidaTotal << "\n";
+  cout << "Dano: " << personagem.dano << "\n";
+  cout << "defesa: " << personagem.defesa << "\n";
+  cout << "força: " << personagem.forca << "\n";
+  cout << "agilidade: " << personagem.agilidade << "\n\n";
+
+  cout << "Atualmente você está com a arma: " << personagem.arma.nome << endl;
+  cout << "descrição da arma: " << personagem.arma.descricao << endl;
+  cout << "(dano: " << personagem.arma.dano << ", forca: " << personagem.arma.forca << ", agilidade: " << personagem.arma.agilidade << ", preço: " << personagem.arma.preco << ")\n\n";
+
+  cout << "Atualmente você está com a armadura: " << personagem.armadura.nome << endl;
+  cout << "descrição da armadura: " << personagem.armadura.descricao << endl;
+  cout << "(armadura: " << personagem.armadura.armadura << ", vida: " << personagem.armadura.vida << ", forca: " << personagem.armadura.forca << ", agilidade: " << personagem.armadura.agilidade << ", preço: " << personagem.armadura.preco << ")\n\n";
+
+}
+
 void test(Bau &bau){
   Arma teste1 = {"espada", "corta pessoas", 2000, 10, 4, 3};
   Arma teste2 = {"lança", "fura pessoas", 1000, 50, 10, 2};
@@ -203,6 +245,12 @@ void test(Bau &bau){
 int visualizarBau(Bau &bau, Personagem &personagem){
   int opcao;
   while(true){
+    string teste;
+    cout << "deseja testar? (s/n)" << endl;
+    cin >> teste;
+    if(teste == "s"){
+      test(bau);
+    }
     escolhasDoBau();
     cin >> opcao;
     system("clear");
@@ -228,6 +276,10 @@ int visualizarBau(Bau &bau, Personagem &personagem){
         break;
 
         case 6:
+        visualizarEquips(personagem);
+        break;
+
+        case 7:
         return 0;
       }
   }
