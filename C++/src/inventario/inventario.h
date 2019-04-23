@@ -11,3 +11,5 @@ int usaPocao(Personagem &p);
 //bolsa carregavel
 int bag(Personagem &p);
 
+int bagBatalha(Personagem &p);
+

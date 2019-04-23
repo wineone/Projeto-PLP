@@ -70,6 +70,29 @@ int bag(Personagem &p){
                 listBag(p);
                 break;
             case 2 :
+                printf("Você quer lançar uma poção no limbo \n"); 
+                jogaPocao(p);
+                break;
+            case 3 :
+                printf("Você quer voltar para uma batalha muito empolgante \n"); 
+                return 0;
+            default :
+                printf("você não suportou a responsabilidade de escolha \n");
+        }
+    }
+}
+
+int bagBatalha(Personagem &p){
+
+    while(true){
+        printf("        # INVENTÁRIO #      \n\n\n");
+
+        switch(escolhasDaBolsaBatalha()){
+            case 1:
+                printf("Você quer vizualizar as poções que esta carregando\n");
+                listBag(p);
+                break;
+            case 2 :
                 printf("Você quer usar uma poção\n");
                 usaPocao(p); 
                 break;
@@ -85,6 +108,7 @@ int bag(Personagem &p){
         }
     }
 }
+
 
 
 

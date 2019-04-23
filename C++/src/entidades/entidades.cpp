@@ -21,7 +21,7 @@ Pocao pocaoNull() {
 }
 
 Bolsa bolsa() {
-    Bolsa b = {2, 3,{{"Maconha", "da boa", 10,5,0,-10} ,{"Cocaina", "fica no cheirinho", 100,10,0,50},pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull()}};
+    Bolsa b = {2, 3,{{"Maconha", "da boa", 10,5,0,-10} ,{"Cocaina", "fica no cheirinho", 100,10,0,50},{"Poção de vida", "", 0,0,0,10},pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull()}};
     return b;
 }
 
