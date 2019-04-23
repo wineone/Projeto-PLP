@@ -48,3 +48,9 @@ int escolhasDoBau();
 void printInimigos(GrupoDeInimigos &gp);
 
 void estrelinhas();
+
+//interface basica da loja
+int printLoja();
+
+//lista as armas a serem compradas
+int listaArma(Loja &l);

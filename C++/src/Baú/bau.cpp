@@ -76,7 +76,7 @@ void trocarArmadura(Bau &bau, Personagem &personagem){
       cout << "então, digite o indice da armadura que deseja" << endl;
       cin >> trocar;
       if((trocar-1) <= bau.indArmaduras){
-        Armadura aux = bau.armaduras[trocar];
+        Armadura aux = bau.armaduras[trocar-1];
         bau.armaduras[trocar-1] = personagem.armadura;
         personagem.armadura = aux;
 

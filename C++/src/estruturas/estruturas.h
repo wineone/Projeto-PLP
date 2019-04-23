@@ -110,3 +110,12 @@ typedef struct Bau{
   }
 
 } Bau;
+
+typedef struct Loja{
+    int quantArmas;
+    Arma armas[50];
+    int quantArmaduras;
+    Armadura armaduras[50];
+    int quantPocoes;
+    Pocao pocoes[50];
+}Loja;

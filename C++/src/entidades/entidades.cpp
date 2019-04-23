@@ -4,7 +4,7 @@
 using namespace std;
 
 Arma maos(){
-    Arma a = {"Suas mãos", "Estilo minecraft", 1, 1, 0, 0};
+    Arma a = {"Suas mãos", "Estilo minecraft", 1, 1, 0, 1000};
     return a;
 }
 

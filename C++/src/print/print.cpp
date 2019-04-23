@@ -200,3 +200,37 @@ void printInimigos(GrupoDeInimigos &gp){
 void estrelinhas(){
     printf("*****************************\n");
 }
+
+
+int printLoja(){
+    system("clear");
+    setbuf(stdin,NULL);
+    int opcao;
+    do{
+        printf("#       LOJA      #\n\n");
+        printf("[1] -> Comprar uma arma\n");
+        printf("[2] -> Comprar uma armadura\n");
+        printf("[3] -> Comprar uma poção\n");
+        printf("[4] -> sair\n\n");
+        printf("Digite sua opção: ");
+        scanf("%d",&opcao);
+    }while(opcao < 0 || opcao > 4);
+    return opcao;
+}
+
+int listaArma(Loja &l){
+    int opcao;
+    setbuf(stdin,NULL);
+    do{
+        for(int i = 1; i <= l.quantArmas; i++){
+            Arma a = l.armas[i-1];
+            cout << "["<<  i << "] -> nome: " << a.nome << endl;
+            cout << "       descrição: " << a.descricao << endl;
+            cout << "       (" << a.dano << "/" << a.forca << "/" << a.agilidade << ")\n";
+            cout << "       preço: " << a.preco << endl;
+        }
+        printf("digite sua opcao: ");
+        scanf("%d",&opcao);
+    }while(opcao < 1 || opcao > l.quantArmas);
+    return opcao;
+}

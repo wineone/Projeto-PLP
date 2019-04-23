@@ -5,16 +5,24 @@
 #include "fases/fases.h"
 #include "Baú/bau.h"
 #include "entidades/entidades.h"
+#include "loja/loja.h"
 
 
 using namespace std;
 
 
-void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau &bau) {
+void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau &bau, Loja &loja) {
     personagem = {nome,100,100,10,10,5,5,10,maos(),roupas(), bolsa()}; 				// tem q mudar isso aqui
     bau = Bau();
     fases[0] = piloto();
     fases[1] = barquinho();
+
+    //loja
+    loja.armas[0] = maos();
+    loja.armas[1] = maos();
+    loja.armas[2] = maos();
+    loja.armas[3] = maos();
+    loja.quantArmas = 4;
 }
 
 int main(){
@@ -31,8 +39,9 @@ int main(){
     Personagem personagem;
     Fase fases[2];
     Bau bau;
+    Loja venda;
 
-    inicializaEstruturas(nome, personagem, fases, bau);
+    inicializaEstruturas(nome, personagem, fases, bau, venda);
 
     // loop do jogo
     while(true){
@@ -45,7 +54,7 @@ int main(){
                 break;
             case(2):
                 system("clear");
-                //loja();
+                loja(venda);
                 printf("loja foi chamada\n");
                 break;
             case(3):
@@ -53,7 +62,6 @@ int main(){
                 bag();
                 break;
             case(4):
-                // test(bau);
                 system("clear");
                 visualizarBau(bau, personagem);
                 break;
