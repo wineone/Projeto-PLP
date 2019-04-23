@@ -93,6 +93,20 @@ Inimigo conexaoRuim() {
     return c;
 }
 
+Inimigo gravidaTaubate() {
+    Inimigo a = {"Grávida de Taubaté",
+                "Grávida (quase).",
+                70,70, 7,7,1,2};
+    return a;
+}
+
+Inimigo filhoGravida() {
+    Inimigo a = {"Filho da Grávida",
+                "Filho de mentirinha",
+                10, 10, 2, 2, 2,2};
+    return a;
+}
+
 // Grupos de Inimigos
 
 GrupoDeInimigos grupoNull() {
@@ -131,5 +145,11 @@ GrupoDeInimigos gp5() {
 
 GrupoDeInimigos pinkyEcerebro() {
     GrupoDeInimigos g = {pinky(), cerebro(), inimigoNull(), inimigoNull(), inimigoNull(), inimigoNull(), 2, 20};
+    return g;
+}
+
+GrupoDeInimigos gravidaFilhos() {
+    GrupoDeInimigos g = {{gravidaTaubate(), filhoGravida(),filhoGravida(),filhoGravida(),filhoGravida(),filhoGravida()},
+                        6, 450};
     return g;
 }

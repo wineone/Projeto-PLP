@@ -43,6 +43,10 @@ Inimigo pinky();
 
 Inimigo cerebro();
 
+Inimigo gravidaTaubate();
+
+Inimigo filhoGravida();
+
 // GRUPOS DE INIMIGOS
 
 // grupo de inimigos de atributos vazios
@@ -65,3 +69,6 @@ GrupoDeInimigos gp4();
 
 // Inimigos: conexao Ruim
 GrupoDeInimigos gp5();
+
+// Inimigos: gravida de taubate, 5 filhos
+GrupoDeInimigos gravidaFilhos();
