@@ -1,6 +1,6 @@
 #pragma once
 
-// atributos iniciais do herói
+// ---------------- atributos iniciais do herói ------------------
 
 //arma inicial do jogador
 Arma maos();
@@ -8,18 +8,27 @@ Arma maos();
 // armadura inicial
 Armadura roupas();
 
+// pocao de atributos null
 Pocao pocaoNull();
 
 Bolsa bolsa();
 
-// estruturas do jogo
+// ------------- estruturas do jogo ---------------------
+
+// FASES
 
 // segunda fase
 Fase barquinho();
 
 //primeira fase
 Fase piloto();
+
+
+// INIMIGOS
+
+// inimigo com atributos vazios
 Inimigo inimigoNull();
+
 Inimigo nemesis();
 
 Inimigo pauloGuedes();
@@ -33,7 +42,12 @@ Inimigo oCaraAlho();
 Inimigo pinky();
 
 Inimigo cerebro();
+
+// GRUPOS DE INIMIGOS
+
+// grupo de inimigos de atributos vazios
 GrupoDeInimigos grupoNull();
+
 // Inimigos: pinky e cerebro
 GrupoDeInimigos pinkyEcerebro();
 

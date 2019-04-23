@@ -3,7 +3,7 @@
 
 using namespace std;
 
-// Atributos do Herói
+// ----------------- Atributos do Herói --------------------
 
 Arma maos(){
     Arma a = {"Suas mãos", "Estilo minecraft", 1, 1, 0, 0};
@@ -25,9 +25,10 @@ Bolsa bolsa() {
     return b;
 }
 
-// Estruturas do jogo
+// ----------------- Estruturas do jogo ------------------
 
 // Fases
+
 Fase piloto(){
     Fase a = {"Piloto",
             "fase de testes, cuidado senão ele te derruba",
@@ -49,6 +50,7 @@ Fase barquinho() {
 
 
 // Inimigos
+
 Inimigo inimigoNull() {
     Inimigo a = {"","",0,0,0,0,0,0};
     return a;
@@ -91,7 +93,7 @@ Inimigo conexaoRuim() {
     return c;
 }
 
-// Grupos
+// Grupos de Inimigos
 
 GrupoDeInimigos grupoNull() {
     GrupoDeInimigos gp = {inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()};
