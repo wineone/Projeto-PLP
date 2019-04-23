@@ -8,6 +8,8 @@ Arma maos();
 // armadura inicial
 Armadura roupas();
 
+Pocao pocaoNull();
+
 Bolsa bolsa();
 
 // estruturas do jogo
@@ -17,7 +19,7 @@ Fase barquinho();
 
 //primeira fase
 Fase piloto();
-
+Inimigo inimigoNull();
 Inimigo nemesis();
 
 Inimigo pauloGuedes();
@@ -31,7 +33,7 @@ Inimigo oCaraAlho();
 Inimigo pinky();
 
 Inimigo cerebro();
-
+GrupoDeInimigos grupoNull();
 // Inimigos: pinky e cerebro
 GrupoDeInimigos pinkyEcerebro();
 

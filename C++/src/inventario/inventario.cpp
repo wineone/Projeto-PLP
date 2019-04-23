@@ -9,12 +9,20 @@
 using namespace std;
 
 int listBag(Personagem &p){
-    for(int i = 0 ; i < p.bolsa.max ; i++){
-        if(p.bolsa.pocoes[i].nome != "")
-            cout << i + 1 <<p.bolsa.pocoes[i].nome << " " << p.bolsa.pocoes[i].descricao << endl;
+    
+    if(p.bolsa.quantidade == 0)
+       cout << "Sua Bolsa está vazia" << endl;
+    else{
+        for(int i = 0 ; i < p.bolsa.max ; i++){
+            if(p.bolsa.pocoes[i].nome != "")
+                cout << i + 1 << " " <<p.bolsa.pocoes[i].nome << " " << p.bolsa.pocoes[i].descricao << endl;
+        }
     }
+
     return 0;
 }
+
+
 
 int bag(Personagem &p){
 
@@ -26,7 +34,7 @@ int bag(Personagem &p){
                 break;
             case 2 :
                 printf("Você quer usar uma poção\n"); 
-                listBag(p);
+                usaPocao(p);
                 break;
             case 3 :
                 printf("Você quer lançar uma poção no limbo \n"); 
