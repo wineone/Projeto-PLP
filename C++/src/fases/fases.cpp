@@ -39,7 +39,7 @@ int mapa(Fase &f, Personagem &p) {
                 break;
 
             }case 2:
-                bag(p);
+                bagBatalha(p);
                 break;
             case 3:     // opcao: voltar para o lobby
                 return 0;   // volta pra funcao anterior

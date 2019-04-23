@@ -59,6 +59,16 @@ int interfaceMapa(Fase &f) {
 
 int escolhasDaBolsa(){
     printf("[1] -> Visualizar poções\n");
+    printf("[2] -> Jogar uma poção fora\n");
+    printf("[3] -> Voltar a batalhar\n");
+    printf("\nO que você quer fazer?... ");
+    int opcao;
+    scanf("%d", &opcao);
+    return opcao;
+}
+
+int escolhasDaBolsaBatalha(){
+    printf("[1] -> Visualizar poções\n");
     printf("[2] -> Usar uma poção\n");
     printf("[3] -> Jogar uma poção fora\n");
     printf("[4] -> Voltar a batalhar\n");
