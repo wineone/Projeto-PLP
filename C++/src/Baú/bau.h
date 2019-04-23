@@ -37,3 +37,9 @@ void visualizarEquips(Personagem personagem);
 
 // função com o proposito somente povoar o bau para testa-lo
 void test(Bau &bau);
+
+void addIten(Bau &bau, Armadura armadura);
+
+void addIten(Bau &bau, Arma arma);
+
+void addIten(Bau &bau, Pocao pocao);

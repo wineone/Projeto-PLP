@@ -23,6 +23,13 @@ void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau
     loja.armas[2] = maos();
     loja.armas[3] = maos();
     loja.quantArmas = 4;
+
+    loja.armaduras[0] = roupas();
+    loja.armaduras[1] = roupas();
+    loja.armaduras[2] = roupas();
+    loja.armaduras[3] = roupas();
+    loja.armaduras[4] = roupas();
+    loja.quantArmaduras = 5;
 }
 
 int main(){
@@ -55,7 +62,7 @@ int main(){
                 break;
             case(2):
                 system("clear");
-                loja(venda);
+                loja(venda,personagem,bau);
                 printf("loja foi chamada\n");
                 break;
             case(3):

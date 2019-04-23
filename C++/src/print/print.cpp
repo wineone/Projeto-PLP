@@ -232,3 +232,35 @@ int listaArma(Loja &l){
     }while(opcao < 1 || opcao > l.quantArmas);
     return opcao;
 }
+
+
+int listaArmadura(Loja &l){
+    int opcao;
+    setbuf(stdin,NULL);
+    do{
+        for(int i = 1; i <= l.quantArmaduras; i++){
+            Armadura a = l.armaduras[i-1];
+            cout << "["<<  i << "] -> nome: " << a.nome << endl;
+            cout << "       descrição: " << a.descricao << endl;
+            cout << "       (" << a.armadura << "/" << a.forca << "/" << a.agilidade << "/" << a.vida <<")\n";
+            cout << "       preço: " << a.preco << endl;
+        }
+        printf("digite sua opcao: ");
+        scanf("%d",&opcao);
+    }while(opcao < 1 || opcao > l.quantArmaduras);
+    return opcao;
+}
+
+int listaPocoes(Loja &l){
+    int opcao;
+    setbuf(stdin,NULL);
+    do{
+        for(int i = 1; i <= l.quantPocoes; i++){
+            Pocao a = l.pocoes[i-1];
+            cout << "["<<  i << "] -> nome: " << a.nome << endl;
+            cout << "       descrição: " << a.descricao << endl;
+            cout << "       (" << a.forca << "/" << a.agilidade << "/" << a.vida <<")\n";
+            cout << "       preço: " << a.preco << endl;
+        }
+    }while(opcao < 1 || opcao > l.quantPocoes);
+}

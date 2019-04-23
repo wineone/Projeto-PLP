@@ -56,3 +56,7 @@ int printLoja();
 
 //lista as armas a serem compradas
 int listaArma(Loja &l);
+
+int listaArmadura(Loja &l);
+
+int listaPocoes(Loja &l);

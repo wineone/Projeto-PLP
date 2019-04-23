@@ -213,44 +213,44 @@ void visualizarEquips(Personagem personagem){
 
 }
 
-void test(Bau &bau){
-  Arma teste1 = {"espada", "corta pessoas", 2000, 10, 4, 3};
-  Arma teste2 = {"lança", "fura pessoas", 1000, 50, 10, 2};
-  Arma teste3 = {"arco", "lança pessoas", 3000, 30, 15, 10};
+// void test(Bau &bau){
+//   Arma teste1 = {"espada", "corta pessoas", 2000, 10, 4, 3};
+//   Arma teste2 = {"lança", "fura pessoas", 1000, 50, 10, 2};
+//   Arma teste3 = {"arco", "lança pessoas", 3000, 30, 15, 10};
 
-  Armadura teste4 = {"cavaleiro de bronze", "ATHENAAAAAAA", 100, 40, 10, 20, 30};
-  Armadura teste5 = {"cavaleiro de prata", "ninguem lembra deles", 200, 50, 15, 25, 40};
-  Armadura teste6 = {"cavaleiro de ouro", "kanon >> all", 500, 60, 20, 30, 50};
+//   Armadura teste4 = {"cavaleiro de bronze", "ATHENAAAAAAA", 100, 40, 10, 20, 30};
+//   Armadura teste5 = {"cavaleiro de prata", "ninguem lembra deles", 200, 50, 15, 25, 40};
+//   Armadura teste6 = {"cavaleiro de ouro", "kanon >> all", 500, 60, 20, 30, 50};
 
-  Pocao teste7 = {"pocao de vida", "restaura sua vida", 100, 0, 0, 10};
-  Pocao teste8 = {"pocao de forca", "aumenta sua forca temporariamente", 200, 10, 0, 0};
-  Pocao teste9 = {"pocao de agilidade", "ficar naquele pique", 300, 0, 10, 0};
+//   Pocao teste7 = {"pocao de vida", "restaura sua vida", 100, 0, 0, 10};
+//   Pocao teste8 = {"pocao de forca", "aumenta sua forca temporariamente", 200, 10, 0, 0};
+//   Pocao teste9 = {"pocao de agilidade", "ficar naquele pique", 300, 0, 10, 0};
 
-  bau.arma[0] = teste1;
-  bau.arma[1] = teste2;
-  bau.arma[2] = teste3;
-  bau.indArmas = 2;
+//   bau.arma[0] = teste1;
+//   bau.arma[1] = teste2;
+//   bau.arma[2] = teste3;
+//   bau.indArmas = 2;
 
-  bau.armaduras[0] = teste4;
-  bau.armaduras[1] = teste5;
-  bau.armaduras[2] = teste6;
-  bau.indArmaduras = 2;
+//   bau.armaduras[0] = teste4;
+//   bau.armaduras[1] = teste5;
+//   bau.armaduras[2] = teste6;
+//   bau.indArmaduras = 2;
 
-  bau.pocoes[0] = teste7;
-  bau.pocoes[1] = teste8;
-  bau.pocoes[2] = teste9;
-  bau.indPocoes = 2;
-}
+//   bau.pocoes[0] = teste7;
+//   bau.pocoes[1] = teste8;
+//   bau.pocoes[2] = teste9;
+//   bau.indPocoes = 2;
+// }
 
 int visualizarBau(Bau &bau, Personagem &personagem){
   int opcao;
   while(true){
     string teste;
-    cout << "deseja testar? (s/n)" << endl;
-    cin >> teste;
-    if(teste == "s"){
-      test(bau);
-    }
+    // cout << "deseja testar? (s/n)" << endl;
+    // cin >> teste;
+    // if(teste == "s"){
+    //   test(bau);
+    // } 
     escolhasDoBau();
     cin >> opcao;
     system("clear");
