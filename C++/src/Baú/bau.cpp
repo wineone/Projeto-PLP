@@ -13,13 +13,13 @@ void removeArmadura(Bau &bau, Personagem &personagem){
     cin >> resposta;
     if(resposta == "s"){
       int remover;
-      cout << "então digite o indice da armadura a ser removida" << endl;
+      cout << "Então digite o indice da armadura a ser removida" << endl;
       cin >> remover;
       if((remover-1) <= bau.indArmaduras){
         swap(bau.armaduras[remover-1], bau.armaduras[bau.indArmaduras]);
         bau.indArmaduras--;
       } else {
-        cout << "esse indice é invalido";
+        cout << "Esse indice é inválido" << endl;
       }
     }
   }
@@ -33,13 +33,13 @@ void removeArma(Bau &bau, Personagem &personagem){
     cin >> resposta;
     if(resposta == "s"){
       int remover;
-      cout << "então, digite o indice da arma a ser removida" << endl;
+      cout << "Então, digite o indice da arma a ser removida" << endl;
       cin >> remover;
       if((remover-1) <= bau.indArmas){
         swap(bau.arma[remover-1], bau.arma[bau.indArmas]);
         bau.indArmas -= 1;
       } else {
-        cout << "esse indice é invalido" << endl;
+        cout << "Esse indice é invalido" << endl;
       }
     }
   }
@@ -49,17 +49,17 @@ void removePocao(Bau &bau){
   listPocoes(bau);
   if(bau.indPocoes != -1){
     string resposta;
-    cout << "deseja remover uma poção? (s/n)" << endl;
+    cout << "Deseja remover uma poção? (s/n)" << endl;
     cin >> resposta;
     if(resposta == "s"){
       int remover;
-      cout <<"então, digite o indice da poção a ser removida" << endl;
+      cout <<"Então, digite o indice da poção a ser removida" << endl;
       cin >> remover;
       if((remover-1) <= bau.indPocoes){
         swap(bau.pocoes[remover-1], bau.pocoes[bau.indPocoes]);
         bau.indPocoes--;
       } else {
-        cout << "esse é um indice invalido" << endl;
+        cout << "Esse é um indice invalido" << endl;
       }
     }
   }
@@ -69,11 +69,11 @@ void trocarArmadura(Bau &bau, Personagem &personagem){
   listArmaduras(bau, personagem);
   if(bau.indArmaduras != -1){
     string resposta;
-    cout << "deseja equipar uma armadura? (s/n)" << endl;
+    cout << "Deseja equipar uma armadura? (s/n)" << endl;
     cin >> resposta;
     if(resposta == "s"){
       int trocar;
-      cout << "então, digite o indice da armadura que deseja" << endl;
+      cout << "Então, digite o indice da armadura que deseja" << endl;
       cin >> trocar;
       if((trocar-1) <= bau.indArmaduras){
         Armadura aux = bau.armaduras[trocar-1];
@@ -91,7 +91,7 @@ void trocarArmadura(Bau &bau, Personagem &personagem){
         personagem.agilidade -= bau.armaduras[trocar-1].agilidade;
         personagem.agilidade += aux.agilidade;
       } else {
-        cout << "indice invalido" << endl;
+        cout << "Índice inválido" << endl;
       }
     }
   }
@@ -126,9 +126,9 @@ void trocarArma(Bau &bau, Personagem &personagem){
 
         personagem.agilidade -= (bau.arma[trocar-1].agilidade);
         personagem.agilidade += aux.agilidade;
-        cout << "arma equipada com sucesso" << endl;
+        cout << "Arma equipada com sucesso" << endl;
       } else {
-        cout << "indice inválido" << endl;
+        cout << "Índice inválido" << endl;
       }
     }
   }
@@ -158,7 +158,7 @@ void listArmas(Bau &bau, Personagem &personagem){
 
 void listPocoes(Bau &bau){
   if(bau.indPocoes == -1){
-    cout << "Você ainda nao possui pocoes, vá tomar agua até la" << endl;
+    cout << "Você ainda nao possui poções, vá tomar água até la" << endl;
 
   } else {
     for(int k = 0 ; k <= bau.indPocoes; k++){
@@ -187,7 +187,7 @@ void addIten(Bau &bau, Arma arma){
 
 void addIten(Bau &bau, Pocao pocao){
   if((bau.indPocoes+1) > 50){
-    cout << "você não tem mais espaço para armaduras, exclua alguma";
+    cout << "você não tem mais espaço para poções, exclua alguma";
   } else {
     bau.indPocoes += 1;
     bau.pocoes[bau.indPocoes] = pocao;
@@ -195,20 +195,20 @@ void addIten(Bau &bau, Pocao pocao){
 };
 
 void visualizarEquips(Personagem personagem){
-  cout << "nome do heroi: " << personagem.nome << "\n\n";
+  cout << "Nome do herói: " << personagem.nome << "\n\n";
 
   cout << "HP: " << personagem.vidaTotal << "\n";
   cout << "Dano: " << personagem.dano << "\n";
-  cout << "defesa: " << personagem.defesa << "\n";
-  cout << "força: " << personagem.forca << "\n";
-  cout << "agilidade: " << personagem.agilidade << "\n\n";
+  cout << "Defesa: " << personagem.defesa << "\n";
+  cout << "Força: " << personagem.forca << "\n";
+  cout << "Agilidade: " << personagem.agilidade << "\n\n";
 
   cout << "Atualmente você está com a arma: " << personagem.arma.nome << endl;
-  cout << "descrição da arma: " << personagem.arma.descricao << endl;
+  cout << "Descrição da arma: " << personagem.arma.descricao << endl;
   cout << "(dano: " << personagem.arma.dano << ", forca: " << personagem.arma.forca << ", agilidade: " << personagem.arma.agilidade << ", preço: " << personagem.arma.preco << ")\n\n";
 
   cout << "Atualmente você está com a armadura: " << personagem.armadura.nome << endl;
-  cout << "descrição da armadura: " << personagem.armadura.descricao << endl;
+  cout << "Descrição da armadura: " << personagem.armadura.descricao << endl;
   cout << "(armadura: " << personagem.armadura.armadura << ", vida: " << personagem.armadura.vida << ", forca: " << personagem.armadura.forca << ", agilidade: " << personagem.armadura.agilidade << ", preço: " << personagem.armadura.preco << ")\n\n";
 
 }
