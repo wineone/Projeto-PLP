@@ -35,7 +35,9 @@ typedef struct Pocao{
 typedef struct Bolsa{
     int quantidade;     // quantidade de itens dentro da bolsa
     int max;            // máximo de itens que cabem na bolsa
-    Pocao pocoes[200];
+    Pocao pocoes[20];
+
+
 } Bolsa;
 
 

@@ -3,6 +3,8 @@
 
 using namespace std;
 
+// ----------------- Atributos do Herói --------------------
+
 Arma maos(){
     Arma a = {"Suas mãos", "Estilo minecraft", 1, 1, 0, 1000};
     return a;
@@ -13,19 +15,45 @@ Armadura roupas() {
     return a;
 }
 
+Pocao pocaoNull() {
+    Pocao nula = {"", "", 0,0,0,0};
+    return nula;
+}
+
 Bolsa bolsa() {
-    Bolsa b = {0, 1};
+    Bolsa b = {2, 3,{{"Maconha", "da boa", 10,1,1,1} ,{"Cocaina", "fica no cheirinho", 1,100,-1,0},pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull()}};
     return b;
 }
+
+// ----------------- Estruturas do jogo ------------------
+
+// Fases
+
+Fase piloto(){
+    Fase a = {"Piloto",
+            "fase de testes, cuidado senão ele te derruba",
+            false,
+            {gp1(), gp2(), gp3(), grupoNull(), grupoNull(), grupoNull()},
+            3};
+
+    return a;
+}
+
+Fase barquinho() {
+    Fase b = { "Barquinho", "Cuidado pra não enjoar",
+                false, 
+                pinkyEcerebro(), gp4(), gp5(), grupoNull(), grupoNull(), grupoNull(),
+                3};
+    
+    return b;                
+}
+
+
+// Inimigos
 
 Inimigo inimigoNull() {
     Inimigo a = {"","",0,0,0,0,0,0};
     return a;
-}
-
-GrupoDeInimigos grupoNull() {
-    GrupoDeInimigos gp = {inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()};
-    return gp;
 }
 
 Inimigo nemesis() {
@@ -43,33 +71,6 @@ Inimigo papaco() {
     return z;
 }
 
-GrupoDeInimigos gp3(){
-    GrupoDeInimigos b = {{nemesis(), nemesis(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()},
-                        2,100};
-    return b;
-}
-
-GrupoDeInimigos gp1() {
-    GrupoDeInimigos gp = {{papaco(), papaco(), pauloGuedes(),inimigoNull(),inimigoNull(),inimigoNull()},
-                          3, 100};
-    return gp;
-}
-
-GrupoDeInimigos gp2() {
-    GrupoDeInimigos gp = {{nemesis(), pauloGuedes(), inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()}, 2, 100};
-    return gp;
-}
-
-Fase piloto(){
-    Fase a = {"Piloto",
-            "fase de testes, cuidado senão ele te derruba",
-            false,
-            {gp1(), gp2(), gp3(), grupoNull(), grupoNull(), grupoNull()},
-            3};
-
-    return a;
-}
-
 Inimigo pinky() {
     Inimigo p = {"Pinky", "Irmão do Cérebro", 25, 25, 3, 2, 4, 2};
     return p;
@@ -78,11 +79,6 @@ Inimigo pinky() {
 Inimigo cerebro() {
     Inimigo c = {"Cérebro", "Irmão do Pinky", 20, 20, 2, 2, 4, 2};
     return c;
-}
-
-GrupoDeInimigos pinkyEcerebro() {
-    GrupoDeInimigos g = {pinky(), cerebro(), inimigoNull(), inimigoNull(), inimigoNull(), inimigoNull(), 2, 20};
-    return g;
 }
 
 Inimigo oCaraAlho() {
@@ -97,6 +93,30 @@ Inimigo conexaoRuim() {
     return c;
 }
 
+// Grupos de Inimigos
+
+GrupoDeInimigos grupoNull() {
+    GrupoDeInimigos gp = {inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()};
+    return gp;
+}
+
+GrupoDeInimigos gp1() {
+    GrupoDeInimigos gp = {{papaco(), papaco(), pauloGuedes(),inimigoNull(),inimigoNull(),inimigoNull()},
+                          3, 100};
+    return gp;
+}
+
+GrupoDeInimigos gp2() {
+    GrupoDeInimigos gp = {{nemesis(), pauloGuedes(), inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()}, 2, 100};
+    return gp;
+}
+
+GrupoDeInimigos gp3(){
+    GrupoDeInimigos b = {{nemesis(), nemesis(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()},
+                        2,100};
+    return b;
+}
+
 GrupoDeInimigos gp4() {
     GrupoDeInimigos g = {conexaoRuim(), oCaraAlho(), cerebro(), inimigoNull(), inimigoNull(), inimigoNull(),
                         3, 200};
@@ -109,11 +129,7 @@ GrupoDeInimigos gp5() {
     return g;                    
 }
 
-Fase barquinho() {
-    Fase b = { "Barquinho", "Cuidado pra não enjoar",
-                false, 
-                pinkyEcerebro(), gp4(), gp5(), grupoNull(), grupoNull(), grupoNull(),
-                3};
-    
-    return b;                
+GrupoDeInimigos pinkyEcerebro() {
+    GrupoDeInimigos g = {pinky(), cerebro(), inimigoNull(), inimigoNull(), inimigoNull(), inimigoNull(), 2, 20};
+    return g;
 }

@@ -8,6 +8,21 @@
 
 using namespace std;
 
+int getChoice(Personagem &p){
+    printf("\n\n\n");
+    StatusHeroi(p);
+    printf("[1] -> Fases\n");
+    printf("[2] -> Loja\n");
+    printf("[3] -> Bolsa\n");
+    printf("[4] -> Baú\n");
+    printf("[5] -> Créditos\n");
+    printf("[6] -> Sair\n");
+	int opcao;
+    printf("\n\nDigite sua opcao: ");
+    scanf("%d",&opcao);
+    return opcao;
+}
+
 int interfaceFases() {
     printf("[1] -> Piloto\n");
     printf("[2] -> Barquinho\n");
@@ -38,6 +53,7 @@ int interfaceMapa(Fase &f) {
 
     int opcao;
     scanf("%d", &opcao);
+    printf("\n");
     return opcao;
 }
 
@@ -45,13 +61,12 @@ int escolhasDaBolsa(){
     printf("[1] -> Visualizar poções\n");
     printf("[2] -> Usar uma poção\n");
     printf("[3] -> Jogar uma poção fora\n");
-    printf("[4] -> Voltar a uma batalha\n");
-    printf("\nEscolha o que quer fazer com a poção... ");
+    printf("[4] -> Voltar a batalhar\n");
+    printf("\nO que você quer fazer?... ");
     int opcao;
     scanf("%d", &opcao);
     return opcao;
 }
-
 
 void StatusHeroi(Personagem &heroi) {
     cout << endl << heroi.nome ;
@@ -59,22 +74,6 @@ void StatusHeroi(Personagem &heroi) {
         cout << " ";
     cout << heroi.vidaAtual << "/" << heroi.vidaTotal << endl << endl;
 }
-
-int getChoice(Personagem &p){
-    printf("\n\n\n");
-    StatusHeroi(p);
-    printf("[1] -> Fases\n");
-    printf("[2] -> Loja\n");
-    printf("[3] -> Bolsa\n");
-    printf("[4] -> Baú\n");
-    printf("[5] -> Créditos\n");
-    printf("[6] -> Sair\n");
-	int opcao;
-    printf("\n\nDigite sua opcao: ");
-    scanf("%d",&opcao);
-    return opcao;
-}
-
 
 void HpCombate(Personagem &p, GrupoDeInimigos gp) {
     cout << endl;
@@ -111,7 +110,6 @@ int opcoesAtaque() {
 
     return opcao;
 }
-
 
 int ataqueInimigo(GrupoDeInimigos gp){
     int opcao;
