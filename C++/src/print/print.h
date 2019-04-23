@@ -21,16 +21,16 @@ void HpCombate(Personagem &p, GrupoDeInimigos gp);
 // funcao que recebe o tipo de ataque que o jogador quer executar
 int opcoesAtaque();
 
+//escolher qual inimigo vai ser atacado
+int ataqueInimigo(GrupoDeInimigos gp);
+
 // imprime mensagem de vitória
 void wonBattle(Personagem &p, GrupoDeInimigos gp);
 
 // imprime mensagem de derrota
 void lostBattle(GrupoDeInimigos gp);
 
-//escolher qual inimigo vai ser atacado
-int ataqueInimigo(GrupoDeInimigos gp);
-
-//personagem digitar alguma coisa pra que passe pra proxima tela
+// personagem digitar enter pra que passe pra proxima tela (com mensagem de aviso ao usuário)
 void digite();
 
 //o jogador deve apertar enter para prosseguir
@@ -45,6 +45,8 @@ void divisorias();
 // função que demonstra as opções do Bau
 int escolhasDoBau();
 
+// Imprime os inimigos de um grupo e seus respectivos status e descrições
 void printInimigos(GrupoDeInimigos &gp);
 
+// funcao que imprime asteriscos como divisórias
 void estrelinhas();
