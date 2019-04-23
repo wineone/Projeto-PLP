@@ -191,9 +191,11 @@ int escolhasDoBau(){
   printf("[4] -> Excluir uma arma\n");
   printf("[5] -> Excluir uma poção\n");
   printf("[6] -> Visualizar personagem\n");
-  printf("[7] -> Voltar ao menu inicial\n");
+  printf("[7] -> Organizar sua bolsa\n");
+  printf("[8] -> Voltar ao menu inicial\n");
   int opcao;
-  scanf("%d", opcao);
+  printf("\nO que você vai querer hoje? ");
+  scanf("%d", &opcao);
   return opcao;
 }
 

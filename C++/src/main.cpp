@@ -40,16 +40,18 @@ int main(){
     string nome;
     while (nome == "")
         getline(cin,nome);
-
     printf("\n\n\n");
 
     // declaração das estruturas
+
     Personagem personagem;
     Fase fases[2];
     Bau bau;
     Loja venda;
 
     inicializaEstruturas(nome, personagem, fases, bau, venda);
+
+    // ----------
 
     // loop do jogo
     while(true){
@@ -59,28 +61,33 @@ int main(){
             case(1):
                 system("clear");
                 selecaoDeFase(personagem, fases);
+                system("clear");
                 break;
             case(2):
                 system("clear");
                 loja(venda,personagem,bau);
-                printf("loja foi chamada\n");
+                system("clear");
                 break;
             case(3):
                 system("clear");
                 bag(personagem);
+                system("clear");
                 break;
             case(4):
                 system("clear");
                 visualizarBau(bau, personagem);
+                system("clear");
                 break;
             case(5):
                 system("clear");
                 //creditos();
+                system("clear");
                 printf("creditos foi chamado\n");
                 break;
             case(6):        // sair do jogo
                 system("clear");
                 printf("quereu sair\n");
+                system("clear");
                 return 0;
             default:
                 printf("opcão invalida\n");

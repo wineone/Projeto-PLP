@@ -20,17 +20,20 @@ void trocarArmadura(Bau &bau, Personagem &personagem);
 // demonstra a opção de trocar a arma atual do personagem, por uma do bau
 void trocarArma(Bau &bau, Personagem &personagem);
 
-// lista todas as poções armazenadas no bau
-void listPocoes(Bau &bau);
-
 // lista todas as armaduras armazenadas no bau
 void listArmaduras(Bau &bau, Personagem &personagem);
 
 // lista todas as armas armazenadas no bau
 void listArmas(Bau &bau, Personagem &personagem);
 
-// permite interagir com  as opcoes disponiveis na interface do bau
-int visualizarBau(Bau &bau, Personagem &personagem);
+// lista todas as poções armazenadas no bau
+void listPocoes(Bau &bau);
+
+void addIten(Bau &bau, Armadura armadura);
+
+void addIten(Bau &bau, Arma arma);
+
+void addIten(Bau &bau, Pocao pocao);
 
 //Permite visualizar os equipamentes atuais utilizado pelo personagem
 void visualizarEquips(Personagem personagem);
@@ -38,8 +41,5 @@ void visualizarEquips(Personagem personagem);
 // função com o proposito somente povoar o bau para testa-lo
 void test(Bau &bau);
 
-void addIten(Bau &bau, Armadura armadura);
-
-void addIten(Bau &bau, Arma arma);
-
-void addIten(Bau &bau, Pocao pocao);
+// permite interagir com  as opcoes disponiveis na interface do bau
+void visualizarBau(Bau &bau, Personagem &personagem);
