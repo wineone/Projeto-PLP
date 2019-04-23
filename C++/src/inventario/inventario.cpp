@@ -23,6 +23,18 @@ int listBag(Personagem &p){
 }
 
 
+int jogaPocao(Personagem &p){
+    listBag(p);
+    int indice;
+    cout << "Que poção voce quer jogar?" << endl;
+    cin >> indice;
+    if(indice < p.bolsa.quantidade){
+        p.bolsa.pocoes[indice-1] = {"", "", 0,0,0,0};
+        swap(p.bolsa.pocoes[indice-1],p.bolsa.pocoes[p.bolsa.quantidade-1]);
+    }
+    return 0;
+}
+
 
 int bag(Personagem &p){
 
@@ -34,11 +46,11 @@ int bag(Personagem &p){
                 break;
             case 2 :
                 printf("Você quer usar uma poção\n"); 
-                usaPocao(p);
+                
                 break;
             case 3 :
                 printf("Você quer lançar uma poção no limbo \n"); 
-                listBag(p);
+                jogaPocao(p);
                 break;
             case 4 :
                 printf("Você quer voltar para uma batalha muito empolgante \n"); 
