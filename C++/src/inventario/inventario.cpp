@@ -8,46 +8,29 @@
 
 using namespace std;
 
-Bolsa bol;
-
-void fillBag(){
-
-        // bol.pocoes[0] ={"Maconha","Da boa" , 1, -1, -1,10};
-        // bol.pocoes[1] ={"Cocaina","Branca fina" , 10, -10, -20,-100};
-        // bol.pocoes[2] ={"Crack","Onde é que eu to" , 50, -50, -34,100};
-        // bol.pocoes[3] ={"Montilla","Só desce com Coca" , 5, -9, -1,102};
-
-        // bol.pocoes[0] ={"Maconha","Da boa" , 1, -1, -1,10} ;
-        // bol.pocoes[1] ={"Cocaina","Branca fina" , 10, -10, -20,-100} ;
-        // bol.pocoes[2] ={"Crack","Onde é que eu to" , 50, -50, -34,100} ;
-        // bol.pocoes[3] ={"Montila","Só desce com Coca" , 5, -9, -1,102} ;
-       
-}
-void listBag(){
-    for(int i = 0 ; i < 4 ; i++){
-        if(bol.pocoes[i].nome != "")
-            cout << bol.pocoes[i].nome << " " << bol.pocoes[i].descricao << endl;
+int listBag(Personagem &p){
+    for(int i = 0 ; i < p.bolsa.max ; i++){
+        if(p.bolsa.pocoes[i].nome != "")
+            cout << i + 1 <<p.bolsa.pocoes[i].nome << " " << p.bolsa.pocoes[i].descricao << endl;
     }
+    return 0;
 }
 
-int bag(){
-    int escolha;
+int bag(Personagem &p){
 
     while(true){
-        escolha = escolhasDaBolsa();
-
-        switch(escolha){
+        switch(escolhasDaBolsa()){
             case 1:
                 printf("Você quer vizualizar as poções que esta carregando\n");
-                fillBag();
-                listBag();
+                listBag(p);
                 break;
             case 2 :
                 printf("Você quer usar uma poção\n"); 
+                listBag(p);
                 break;
             case 3 :
                 printf("Você quer lançar uma poção no limbo \n"); 
-                listBag();
+                listBag(p);
                 break;
             case 4 :
                 printf("Você quer voltar para uma batalha muito empolgante \n"); 

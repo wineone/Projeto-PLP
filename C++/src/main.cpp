@@ -50,7 +50,7 @@ int main(){
                 break;
             case(3):
                 system("clear");
-                bag();
+                bag(personagem);
                 break;
             case(4):
                 // test(bau);

@@ -13,8 +13,16 @@ Armadura roupas() {
     return a;
 }
 
+Pocao pocaoNull() {
+    Pocao nula = {"", "", 0,0,0,0};
+    return nula;
+}
+
 Bolsa bolsa() {
-    Bolsa b = {0, 1};
+    Pocao pocaoUsada[20] = {pocaoNull() ,pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull()};
+
+
+    Bolsa b = {0, 1,pocaoUsada};
     return b;
 }
 

@@ -1,8 +1,9 @@
 #pragma once
+#include "../estruturas/estruturas.h"
 
-//bolsa carregavel
-int bag();
-//METODO ADICIONAL FEITO PARA TESTAR SE A STRUCT BOLSA È CHAMADA
-void fillBag();
 //LISTA OS NEGOCIOS DA POÇAO
-void listBag();
+int listBag(Personagem &p);
+//bolsa carregavel
+int bag(Personagem &p);
+//METODO ADICIONAL FEITO PARA TESTAR SE A STRUCT BOLSA È CHAMADA
+// void fillBag();
