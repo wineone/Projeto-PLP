@@ -6,8 +6,8 @@ int listBag(Personagem &p);
 
 int jogaPocao(Personagem &p);
 
+int usaPocao(Personagem &p);
 
 //bolsa carregavel
 int bag(Personagem &p);
-//METODO ADICIONAL FEITO PARA TESTAR SE A STRUCT BOLSA È CHAMADA
 
