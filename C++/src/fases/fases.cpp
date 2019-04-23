@@ -3,6 +3,7 @@
 #include "../entidades/entidades.h"
 #include "../print/print.h"
 #include "../batalha/batalha.h"
+#include "../inventario/inventario.h"
 
 #include "fases.h"
 
@@ -38,7 +39,7 @@ int mapa(Fase &f, Personagem &p) {
                 break;
 
             }case 2:
-                // bolsa()
+                bag(p);
                 break;
             case 3:     // opcao: voltar para o lobby
                 return 0;   // volta pra funcao anterior

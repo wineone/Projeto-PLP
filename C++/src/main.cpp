@@ -23,7 +23,8 @@ int main(){
 
     inicioDoJogo();
     string nome;
-    getline(cin,nome);
+    while (nome == "")
+        getline(cin,nome);
 
     printf("\n\n\n");
 
@@ -36,7 +37,7 @@ int main(){
 
     // loop do jogo
     while(true){
-        printf("    # LOBBY #    \n");
+        printf("        # LOBBY #      \n");
 
         switch(getChoice(personagem)){
             case(1):
