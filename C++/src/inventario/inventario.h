@@ -2,16 +2,19 @@
 #include "../estruturas/estruturas.h"
 
 //LISTA OS NEGOCIOS DA POÇAO
-int listBag(Personagem &p);
+void listBag(Personagem &p);
 
-int jogaPocao(Personagem &p);
+// função que remove poção do array
+void removePocao(Personagem &p, int indice);
 
-int usaPocao(Personagem &p);
+void jogaPocao(Personagem &p);
+
+void usaPocao(Personagem &p);
 
 //bolsa carregavel
-int bag(Personagem &p);
+void bag(Personagem &p);
 
-int bagBatalha(Personagem &p);
+void bagBatalha(Personagem &p);
 
 // integração com baú
 void addItem(Personagem &p, Pocao &pocao);

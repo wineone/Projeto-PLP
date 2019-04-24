@@ -8,7 +8,7 @@
 
 using namespace std;
 
-int listBag(Personagem &p){
+void listBag(Personagem &p){
     
     if(p.bolsa.quantidade == 0)
        cout << "Sua Bolsa está vazia" << endl;
@@ -27,39 +27,48 @@ int listBag(Personagem &p){
         cout << endl;
     }
 
-    return 0;
+    return ;
 }
 
+void removePocao(Personagem &p, int indice) {
+    int qtd = p.bolsa.quantidade;
 
-int jogaPocao(Personagem &p){
-    listBag(p);
-    int indice;
-    cout << "Que poção voce quer jogar?" << endl;
-    cin >> indice;
-    if(indice <= p.bolsa.quantidade){
-        p.bolsa.pocoes[indice-1] = {"", "", 0,0,0,0};
-        swap(p.bolsa.pocoes[indice-1],p.bolsa.pocoes[p.bolsa.quantidade-1]);
+    if (indice >= 0 && indice < qtd) {
+        swap(p.bolsa.pocoes[indice], p.bolsa.pocoes[qtd - 1]);
+        p.bolsa.quantidade--;
     }
-    return 0;
 }
 
-int usaPocao(Personagem &p){
+void jogaPocao(Personagem &p){
+    listBag(p);
+    int indice = removePocao(p.bolsa.quantidade);
+    
+    if (indice == -1)
+        return;
+    else 
+        removePocao(p, indice);
+}
+
+void usaPocao(Personagem &p){
     int indice = tomaPocao(p);
     
-    if(indice < p.bolsa.quantidade){
-        p.vidaAtual += p.bolsa.pocoes[indice-1].vida;
-        p.forca += p.bolsa.pocoes[indice-1].forca;
-        p.agilidade += p.bolsa.pocoes[indice-1].agilidade;
+    if (indice == -1)
+        return;
+    else if (indice < p.bolsa.quantidade) {
+        p.vidaAtual += p.bolsa.pocoes[indice].vida;
     }
-    p.bolsa.pocoes[indice-1] = {"", "", 0,0,0,0};
-    swap(p.bolsa.pocoes[indice-1],p.bolsa.pocoes[p.bolsa.quantidade-1]);
+
+    if (p.vidaAtual > p.vidaTotal)
+        p.vidaAtual = p.vidaTotal;
+
+    removePocao(p, indice);
 }
 
 
-int bag(Personagem &p){
+void bag(Personagem &p){
 
     while(true){
-        printf("        # INVENTÁRIO #      \n\n\n");
+        printf("         # INVENTÁRIO #      \n\n\n");
 
         switch(escolhasDaBolsa()){
             case 1:
@@ -72,19 +81,17 @@ int bag(Personagem &p){
                 break;
             case 3 :
                 printf("Você quer voltar para uma batalha muito empolgante \n"); 
-                return 0;
+                return ;
             default :
-                printf("você não suportou a responsabilidade de escolha \n");
+                printf("Você não suportou a responsabilidade de escolha \n\n");
         }
     }
 }
 
-int bagBatalha(Personagem &p){
+void bagBatalha(Personagem &p){
 
     while(true){
         printf("        # INVENTÁRIO #      \n\n\n");
-
-        bool usouPocao = false;
 
         switch(escolhasDaBolsaBatalha()){
             case 1:
@@ -103,7 +110,7 @@ int bagBatalha(Personagem &p){
                 break;
             case 4 :
                 printf("Você quer voltar para uma batalha muito empolgante \n"); 
-                return 0;
+                return ;
             default :
                 printf("você não suportou a responsabilidade de escolha \n");
         }

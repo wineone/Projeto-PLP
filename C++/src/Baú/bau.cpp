@@ -255,11 +255,11 @@ void visualizarBau(Bau &bau, Personagem &personagem){
   while(true){
     system("clear");
     string teste;
-    // cout << "deseja testar? (s/n)" << endl;
-    // cin >> teste;
-    // if(teste == "s"){
-    //   test(bau);
-    // }
+    cout << "deseja testar? (s/n)" << endl;
+    cin >> teste;
+    if(teste == "s"){
+      test(bau);
+    }
 
     printf("              # BAÚ #       \n\n");
       switch(escolhasDoBau()){
@@ -299,13 +299,18 @@ void visualizarBau(Bau &bau, Personagem &personagem){
         digite();
         break;
 
-        case 7:
+        case 7:   // visualiza bolsa 
+        bag(personagem);
+        digite();
+        break;
+
+        case 8:
         printf("\n");
         organizarBolsa(bau, personagem);
         digite();
         break;
 
-        case 8:
+        case 9:
         digite();
         return ;
       }
