@@ -24,14 +24,20 @@ void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau
     loja.armas[3] = adagasSile();
     loja.armas[4] = donut();
     loja.armas[5] = tridente();
-    loja.quantArmas = 6;
+    loja.armas[6] = armaConfete();
+    loja.armas[7] = escudo();
+    loja.quantArmas = 8;
 
     loja.armaduras[0] = roupas();
-    loja.armaduras[1] = roupas();
-    loja.armaduras[2] = roupas();
-    loja.armaduras[3] = roupas();
-    loja.armaduras[4] = roupas();
-    loja.quantArmaduras = 5;
+    loja.armaduras[1] = mofi();
+    loja.armaduras[2] = barril();
+    loja.armaduras[3] = couro();
+    loja.armaduras[4] = tempes();
+    loja.armaduras[5] = armaDoFim();
+    loja.armaduras[6] = roupas();
+    loja.armaduras[7] = roupas();
+    loja.armaduras[8] = roupas();
+    loja.quantArmaduras = 9;
 }
 
 int main(){

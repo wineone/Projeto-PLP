@@ -6,7 +6,7 @@
 Arma maos();
 
 // armadura inicial
-Armadura roupas();
+
 
 //lança triste
 Arma lancaTris();
@@ -20,10 +20,31 @@ Arma donut();
 
 Arma tridente();
 
+Arma armaConfete();
+
+Arma escudo();
+
 // pocao de atributos null
 Pocao pocaoNull();
 
 Bolsa bolsa();
+
+
+//armaduras do personagem
+
+Armadura roupas();
+
+Armadura mofi();
+
+Armadura barril();
+
+Armadura couro();
+
+Armadura tempes();
+
+Armadura armaDoFim();
+
+
 
 // ------------- estruturas do jogo ---------------------
 

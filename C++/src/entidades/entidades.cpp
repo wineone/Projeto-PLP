@@ -33,17 +33,56 @@ Arma donut(){
 Arma tridente(){
     Arma a = {"tridente banguela","é... agora ele é um bidente",400,20,10,10};
     return a;
+
 }
+
+Arma armaConfete(){
+    Arma a = {"Arma de confete","É carnaval meu povo",200,10,5,2};
+    return a;
+}
+
+Arma escudo(){
+    Arma a = {"Escudo","a melhor defesa é um ataque",400,15,15,15};
+    return a;
+}
+
 
 
 // -------------------------------------- Armas até aqui --------------------------------------
 
-
+//---------------------------- Armaduras começam aqui -------------------------------------
 Armadura roupas() {
     Armadura a = {"Roupas rasgadas", "Você chegou só com as roupas do corpo",1,1,0,0,0};
     return a;
 }
 
+Armadura mofi(){
+    Armadura a = {"Mofi vestments","Nem precisa de descrição kk",200,5,5,5,5};
+    return a;
+}
+
+Armadura barril(){
+    Armadura a = {"Um barril de madeira","bixo, tu não tem dinheiro, vai ter que ser essa mesmo",350,7,8,3,10};
+    return a;
+}
+
+Armadura couro(){
+    Armadura a = {"Armadura de couro", "por que tem sangue pingando?",400,8,10,3,10};
+    return a;
+}
+
+Armadura tempes(){
+    Armadura a = {"Armadura da Tempestade","Tava chovendo nesse dia",500,12,10,5,15};
+    return a;
+}
+
+Armadura armaDoFim(){
+    Armadura a = {"Armadura do fim","Eu só queria terminar isso logo",700,15,10,10,20};
+    return a;
+}
+
+
+//------------------------------ Armaduras até aqui ---------------------------------
 
 Pocao pocaoNull() {
     Pocao nula = {"", "", 0,0,0,0};
@@ -54,6 +93,8 @@ Bolsa bolsa() {
     Bolsa b = {2, 3,{{"Maconha", "da boa", 10,5,0,-10} ,{"Cocaina", "fica no cheirinho", 100,10,0,50},{"Poção de vida", "", 0,0,0,10},pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull(),pocaoNull()}};
     return b;
 }
+
+
 
 // ----------------- Estruturas do jogo ------------------
 
