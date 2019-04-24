@@ -30,8 +30,10 @@ void removePocao(Personagem &p, int indice) {
     int qtd = p.bolsa.quantidade;
 
     if (indice >= 0 && indice < qtd) {
-        p.bolsa.pocoes[indice] = {"","",0,0};
-        swap(p.bolsa.pocoes[indice], p.bolsa.pocoes[qtd - 1]);
+        Pocao aux = p.bolsa.pocoes[qtd - 1];
+        p.bolsa.pocoes[qtd - 1] = {"","",0,0}; 
+        p.bolsa.pocoes[indice] = aux;
+
         p.bolsa.quantidade--;
     }
 }
@@ -66,6 +68,9 @@ void bagBatalha(Personagem &p){
     while(true){
         printf("        # INVENTÁRIO #      \n\n\n");
 
+        StatusHeroi(p);
+        printf("\n");
+
         switch(escolhasDaBolsa()){
             case 1:
                 system("clear");
@@ -97,6 +102,6 @@ void addItem(Personagem &p, Pocao &pocao) {
         int qtd = p.bolsa.quantidade;
         p.bolsa.pocoes[qtd - 1] = pocao;
         p.bolsa.quantidade++;
-        cout << pocao.nome << " adicionada\n\n";
+        cout << pocao.nome << " adicionada.\n\n";
     }
 }

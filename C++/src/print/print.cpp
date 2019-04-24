@@ -69,7 +69,7 @@ int escolhasDaBolsa(){
 }
 
 void StatusHeroi(Personagem &heroi) {
-    cout << endl << heroi.nome ;
+    cout << heroi.nome ;
     for(int i = 0; i < (30 - heroi.nome.size()); i++)
         cout << " ";
     cout << heroi.vidaAtual << "/" << heroi.vidaTotal << endl << endl;
@@ -265,7 +265,7 @@ int listaPocoes(Loja &l){
             Pocao a = l.pocoes[i-1];
             cout << "["<<  i << "] -> nome: " << a.nome << endl;
             cout << "       descrição: " << a.descricao << endl;
-            cout << "       (" << a.vida <<")\n";
+            cout << "       + Vida-> (" << a.vida <<")\n";
             cout << "       preço: " << a.preco << endl;
 
         }
@@ -279,24 +279,8 @@ void listaPocoes(Bau &bau) {
 	if (bau.indPocoes <= 0) {
 		printf("Você não tem poções! Vá tomar água enquanto isso.\n\n");
 	} else {
-		for (int i = 1; i <= bau.indPocoes; i++) {
+		for (int i = 1; i <= bau.indPocoes + 1; i++) {
 			Pocao p = bau.pocoes[i - 1];
-			cout << "[" << i << "] -> nome: " << p.nome << endl;
-			cout << "       descrição: " << p.descricao << endl;
-			cout << "       ("; 
-			verificaStatus(p.vida);
-			cout << ")\n";
-			cout << "       preço: " << p.preco << endl;
-		}
-	}
-}
-
-void listaPocoes(Bolsa &bolsa) {
-	if (bolsa.max <= 0) {
-		printf("Sua bolsa está vazia, vá tomar água enquanto isso.\n\n");
-	} else {
-		for (int i = 1; i <= bolsa.max; i++) {
-			Pocao p = bolsa.pocoes[i - 1];
 			cout << "[" << i << "] -> nome: " << p.nome << endl;
 			cout << "       descrição: " << p.descricao << endl;
 			cout << "       ("; 
@@ -331,15 +315,15 @@ int escolhaUmaPocao(int range) {
 
     do {
         printf("[0] -> Cancelar\n\n");
-        printf("Digite o número da poção escolhida [1, %d] ", range);
+        printf("Digite o número da poção escolhida [1, %d] ", range + 1);
         scanf("%d", &opcao);
 
-        if (opcao < 0 || opcao > range) {
+        if (opcao < 0 || opcao > range + 1) {
             printf("Esse número não fez sentido. Tente de novo\n");
         }
-    } while (opcao < 0 || opcao > range);
+    } while (opcao < 0 || opcao > range + 1);
     
-    return opcao ; // retorna como índice pronto para ser usado no array
+    return opcao - 1; // retorna como índice pronto para ser usado no array
 }
 
 int removePocao(int range) {
@@ -350,28 +334,27 @@ int removePocao(int range) {
         printf("Digite o índice da poção que deseja remover: ");
         scanf("%d", &opcao);
 
-        if (opcao < 0 || opcao > range) {
+        if (opcao < 0 || opcao > range + 1) {
             printf("Esse número não fez sentido. Tente de novo\n");
         }
-    } while (opcao < 0 || opcao > range);
+    } while (opcao < 0 || opcao > range + 1);
     
-    return opcao;
+    return opcao - 1;
 }
 
 int tomaPocao(Personagem &p) {
     int opcao = -1;
 
     do {
-        printf("Qual poção você quer usar?  \n");
-        printf("[0] -> Cancelar\n\n");
-        
+        printf("\n[0] -> Cancelar\n\n");
         listBag(p);
+        printf("\nQual poção você quer usar?  \n");
         scanf("%d", &opcao);
 
-        if (opcao > p.bolsa.quantidade || opcao < 0) {
-            printf("Índice inválido. Tente de novo.. ");
+        if (opcao >= p.bolsa.quantidade + 1 || opcao < 0) {
+            printf("Índice inválido. Tente de novo..");
         } 
-    } while (opcao > p.bolsa.quantidade || opcao < 0);
+    } while (opcao >= p.bolsa.quantidade + 1 || opcao < 0);
 
-    return opcao ;
+    return opcao - 1;
 }

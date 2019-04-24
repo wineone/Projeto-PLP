@@ -49,15 +49,20 @@ void removeArma(Bau &bau, Personagem &personagem){
 
 void removePocaoPrivate(Bau &bau, int indice) {
 	if (indice <= bau.indPocoes && indice >= 0) {
-		swap(bau.pocoes[indice], bau.pocoes[bau.indPocoes]);
+    Pocao aux = bau.pocoes[indice];
+    bau.pocoes[indice] = bau.pocoes[bau.indPocoes];
+    bau.pocoes[bau.indPocoes] = aux;
+
 		bau.indPocoes--;
 	}
 }
 
 void removePocao(Bau &bau){
   listPocoes(bau);
-  if(bau.indPocoes != -1){
+  if(bau.indPocoes != -1){  // bau nao esta vazio
 		int indice = removePocao(bau.indPocoes);
+    if (indice == -1)
+      return ;
 		removePocaoPrivate(bau, indice);
   } else {
 		printf("Você não tem poções, vá jogar.\n");
@@ -322,18 +327,29 @@ void organizarBolsa(Bau &bau, Personagem &p) {
           if (bau.indPocoes > -1) {
 					  int indice = escolhaUmaPocao(bau.indPocoes);
 
-            if (indice == -1)
+            if (indice == -1)   // opção: cancelar
               break;
 
-            Pocao pocao = bau.pocoes[indice];
-					  addItem(p, pocao);
+					  addItem(p, bau.pocoes[indice]);
 					  removePocaoPrivate(bau, indice);
           }
           break;
-        } case 2:		// bolsa to bau
-          printf("jaja eu faço isso\n");
+        } case 2: {		// bolsa to bau
+          printf("\n\n");
+          listBag(p);
+
+          if (p.bolsa.quantidade > 0) {    // bolsa está vazia
+            int indice = escolhaUmaPocao(p.bolsa.quantidade - 1);
+            
+            if (indice == -1)
+              break;
+            
+            addIten(bau, p.bolsa.pocoes[indice]);
+            removePocao(p, indice);
+          } 
+
           break;
-				case 3:		// cancela
+        } case 3:		// cancela
 					return;
         
 			}
