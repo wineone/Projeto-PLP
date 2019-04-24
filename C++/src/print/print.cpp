@@ -215,9 +215,10 @@ void estrelinhas(){
 }
 
 
-int printLoja(){
+int printLoja(Personagem &p){
     system("clear");
     setbuf(stdin,NULL);
+    cout << "Você tem : " << p.dinheiro << " de dinheiro" << endl;
     int opcao;
     do{
         printf("#       LOJA      #\n\n");
@@ -239,7 +240,7 @@ int listaArma(Loja &l){
             Arma a = l.armas[i-1];
             cout << "["<<  i << "] -> nome: " << a.nome << endl;
             cout << "       descrição: " << a.descricao << endl;
-            cout << "       (" << a.dano << "/" << a.forca << "/" << a.agilidade << ")\n";
+            cout << "       (dano: " << a.dano << "/ força: " << a.forca << "/ agilidade: " << a.agilidade << ")\n";
             cout << "       preço: " << a.preco << endl;
         }
         printf("digite sua opcao: ");
@@ -257,7 +258,7 @@ int listaArmadura(Loja &l){
             Armadura a = l.armaduras[i-1];
             cout << "["<<  i << "] -> nome: " << a.nome << endl;
             cout << "       descrição: " << a.descricao << endl;
-            cout << "       (" << a.armadura << "/" << a.forca << "/" << a.agilidade << "/" << a.vida <<")\n";
+            cout << "       ( armadura: " << a.armadura << "/ força: " << a.forca << "/ agilidade: " << a.agilidade << "/ vida: " << a.vida <<")\n";
             cout << "       preço: " << a.preco << endl;
         }
         printf("digite sua opcao: ");

@@ -8,8 +8,9 @@ using namespace std;
 
 
 void loja(Loja &loja,Personagem &p,Bau &bau){
+    
     while(true){
-        switch(printLoja()){
+        switch(printLoja(p)){
             case 1:
                 compraArma(loja,p,bau);
                 break;

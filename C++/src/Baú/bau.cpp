@@ -264,11 +264,11 @@ void visualizarBau(Bau &bau, Personagem &personagem){
 
   while(true){
     string teste;
-    cout << "deseja testar? (s/n)" << endl;
-    cin >> teste;
-    if(teste == "s"){
-      test(bau);
-    }
+    // cout << "deseja testar? (s/n)" << endl;
+    // cin >> teste;
+    // if(teste == "s"){
+    //   test(bau);
+    // }
 
     printf("        # BAÚ #       \n\n");
       switch(escolhasDoBau()){

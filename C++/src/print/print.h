@@ -55,7 +55,7 @@ void printInimigos(GrupoDeInimigos &gp);
 void estrelinhas();
 
 //interface basica da loja
-int printLoja();
+int printLoja(Personagem &p);
 
 //lista as armas a serem compradas
 int listaArma(Loja &l);
