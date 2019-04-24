@@ -15,7 +15,7 @@ int listBag(Personagem &p){
     else{
         for(int i = 0 ; i < p.bolsa.max ; i++){
             if(p.bolsa.pocoes[i].nome != ""){
-                cout << i + 1 << ") " <<p.bolsa.pocoes[i].nome << " +-> " << p.bolsa.pocoes[i].descricao << endl;
+                cout << "[" << i + 1 << "] -> " << p.bolsa.pocoes[i].nome << "\n    +-> " << p.bolsa.pocoes[i].descricao << endl;
                 if(p.bolsa.pocoes[i].vida != 0)
                     cout << "       Vida ->" << p.bolsa.pocoes[i].vida << endl;
                 if(p.bolsa.pocoes[i].forca != 0)
@@ -44,10 +44,7 @@ int jogaPocao(Personagem &p){
 }
 
 int usaPocao(Personagem &p){
-    listBag(p);
-    int indice;
-    cout << "Que poção quer usar?" << endl;
-    cin >> indice;
+    int indice = tomaPocao(p);
     
     if(indice < p.bolsa.quantidade){
         p.vidaAtual += p.bolsa.pocoes[indice-1].vida;
@@ -87,14 +84,18 @@ int bagBatalha(Personagem &p){
     while(true){
         printf("        # INVENTÁRIO #      \n\n\n");
 
+        bool usouPocao = false;
+
         switch(escolhasDaBolsaBatalha()){
             case 1:
-                printf("Você quer vizualizar as poções que esta carregando\n");
+                system("clear");
+                digite();
+                printf("                # SUAS POÇÕES #     \n\n\n");
                 listBag(p);
                 break;
             case 2 :
                 printf("Você quer usar uma poção\n");
-                usaPocao(p); 
+                usaPocao(p);
                 break;
             case 3 :
                 printf("Você quer lançar uma poção no limbo \n"); 
