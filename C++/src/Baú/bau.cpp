@@ -3,6 +3,7 @@
 #include "../estruturas/estruturas.h"
 #include "../print/print.h"
 #include <bits/stdc++.h>
+#include <string>
 
 void removeArmadura(Bau &bau, Personagem &personagem){
   listArmaduras(bau, personagem);
@@ -139,7 +140,12 @@ void listArmaduras(Bau &bau, Personagem &personagem){
       cout << "Você ainda não possui armaduras, vá jogar para conseguir." << endl;
     } else {
       for(int i = 0; i <= bau.indArmaduras; i++){
-      cout  << (i+1) << " - " << bau.armaduras[i].nome << " (armadura: " << (bau.armaduras[i].armadura - personagem.armadura.armadura) << ", forca: " << (bau.armaduras[i].forca - personagem.armadura.forca) << ", agilidade: " << (bau.armaduras[i].agilidade - personagem.armadura.agilidade) << ", vida: " << (bau.armaduras[i].vida - personagem.armadura.vida) << endl;
+        int armadura = (bau.armaduras[i].armadura - personagem.armadura.armadura);
+        int forca = (bau.armaduras[i].forca - personagem.armadura.forca);
+        int agilidade = (bau.armaduras[i].agilidade - personagem.armadura.agilidade);
+        int vida = (bau.armaduras[i].vida - personagem.armadura.vida);
+
+      cout  << (i+1) << " - " << bau.armaduras[i].nome << " (armadura: " << avalia(armadura) << armadura << ", forca: " << avalia(forca) << forca << ", agilidade: " << avalia(agilidade) << agilidade << ", vida: " <<    avalia(vida) << vida << endl;
       }
     }
 }
@@ -151,7 +157,11 @@ void listArmas(Bau &bau, Personagem &personagem){
 
   } else {
     for(int j = 0; j <= bau.indArmas; j++){
-      cout << (j+1) << " - " << (bau.arma[j].nome) << " (dano: " << (bau.arma[j].dano -personagem.arma.dano) << ", força: " << (bau.arma[j].forca - personagem.arma.forca) << ", agilidade: " << (bau.arma[j].agilidade - personagem.arma.agilidade) << ")" << endl;
+      int dano = (bau.arma[j].dano -personagem.arma.dano);
+      int forca = (bau.arma[j].forca - personagem.arma.forca);
+      int agilidade = (bau.arma[j].agilidade - personagem.arma.agilidade);
+
+      cout << (j+1) << " - " << (bau.arma[j].nome) << " (dano: " << avalia(dano) << dano << ", força: " << avalia(forca) << forca << ", agilidade: " << avalia(agilidade) << agilidade << ")" << endl;
     }
   }
 }
@@ -162,7 +172,7 @@ void listPocoes(Bau &bau){
 
   } else {
     for(int k = 0 ; k <= bau.indPocoes; k++){
-      cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << "(forca: +" << bau.pocoes[k].forca << " , agilidade: +" << bau.pocoes[k].agilidade << ", vida: +" << bau.pocoes[k].vida << ")" << endl;
+      cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << "(forca: " << avalia(bau.pocoes[k].forca) << bau.pocoes[k].forca << " , agilidade: " << avalia(bau.pocoes[k].agilidade)<< bau.pocoes[k].agilidade << ", vida: " << avalia(bau.pocoes[k].vida) << bau.pocoes[k].vida << ")" << endl;
     }
   }
 }
@@ -213,6 +223,14 @@ void visualizarEquips(Personagem personagem){
 
 }
 
+string avalia(int k){
+  if(k > 0){
+    return "+";
+  } else {
+    return "";
+   }
+}
+
 void test(Bau &bau){
   Arma teste1 = {"espada", "corta pessoas", 2000, 10, 4, 3};
   Arma teste2 = {"lança", "fura pessoas", 1000, 50, 10, 2};
@@ -245,12 +263,12 @@ void test(Bau &bau){
 void visualizarBau(Bau &bau, Personagem &personagem){
 
   while(true){
-    // string teste;
-    // cout << "deseja testar? (s/n)" << endl;
-    // cin >> teste;
-    // if(teste == "s"){
-    //   test(bau);
-    // } 
+    string teste;
+    cout << "deseja testar? (s/n)" << endl;
+    cin >> teste;
+    if(teste == "s"){
+      test(bau);
+    }
 
     printf("        # BAÚ #       \n\n");
       switch(escolhasDoBau()){
@@ -292,7 +310,7 @@ void visualizarBau(Bau &bau, Personagem &personagem){
 
         case 7:
         printf("\n");
-        organizarBolsa(personagem.bolsa);
+        organizarBolsa(bau ,personagem.bolsa);
         digite();
 
         case 8:
@@ -307,11 +325,11 @@ void organizarBolsa(Bau &bau, Bolsa &bolsa) {
 			switch(opcoesBolsaBau()) {
 				case 1:		// bau to bolsa
 					listaPocoes(bau);
-					
+          break;
 				case 2:		// bolsa to bau
-
+        break;
 				case 3:		// cancela
-
+        break;
 			}
 
 	}

@@ -41,8 +41,10 @@ void visualizarEquips(Personagem personagem);
 // função com o proposito somente povoar o bau para testa-lo
 void test(Bau &bau);
 
+string avalia(int k);
+
 // permite interagir com  as opcoes disponiveis na interface do bau
 void visualizarBau(Bau &bau, Personagem &personagem);
 
 // permite mover poções da bolsa para o inventário como o jogador bem entender
-void organizarBolsa(Bolsa &bolsa);
+void organizarBolsa(Bau &bau, Bolsa &bolsa);
