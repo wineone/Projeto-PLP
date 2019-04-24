@@ -14,7 +14,7 @@ int selectRandomEnemyGroup(int quantidadeDeGrupos) {
     return (rand()%quantidadeDeGrupos);
 }
 
-int mapa(Fase &f, Personagem &p) {
+void mapa(Fase &f, Personagem &p) {
     int opcao;
 
     while (true) {
@@ -42,7 +42,7 @@ int mapa(Fase &f, Personagem &p) {
                 bagBatalha(p);
                 break;
             case 3:     // opcao: voltar para o lobby
-                return 0;   // volta pra funcao anterior
+                return ;   // volta pra funcao anterior
             default:
                 printf("O que você pensa que está fazendo??\n\n");
         }
@@ -55,6 +55,8 @@ int selecaoDeFase(Personagem &p, Fase fases[]) {
 
     while (keepGoing) {
         printf("    # SELEÇÃO DE MAPAS #    \n\n");
+
+        printf("Com grandes escolhas vem grande responsabilidades.\nEscolha sabiamente.\n\n\n");
 
         switch (interfaceFases()) {
             case 1:{
@@ -95,7 +97,7 @@ int selecaoDeFase(Personagem &p, Fase fases[]) {
                 keepGoing = false;
                 break;
             default:
-                printf("Você não sabe o que está fazendo.\n\n");
+                printf("Você não escolheu sabiamente.\n\n");
         }
 
         digite();

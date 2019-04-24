@@ -170,7 +170,7 @@ void listPocoes(Bau &bau){
 
   } else {
     for(int k = 0 ; k <= bau.indPocoes; k++){
-      cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << "(forca: " << bau.pocoes[k].forca << " , agilidade: " << bau.pocoes[k].agilidade << ", vida: " << bau.pocoes[k].vida << ")" << endl;
+      cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << ", vida: " << bau.pocoes[k].vida << ")" << endl;
     }
   }
 }
@@ -230,9 +230,9 @@ void test(Bau &bau){
   Armadura teste5 = {"cavaleiro de prata", "ninguem lembra deles", 200, 50, 15, 25, 40};
   Armadura teste6 = {"cavaleiro de ouro", "kanon >> all", 500, 60, 20, 30, 50};
 
-  Pocao teste7 = {"pocao de vida", "restaura sua vida", 100, 0, 0, 10};
-  Pocao teste8 = {"pocao de forca", "aumenta sua forca temporariamente", 200, 10, 0, 0};
-  Pocao teste9 = {"pocao de agilidade", "ficar naquele pique", 300, 0, 10, 0};
+  Pocao teste7 = {"pocao de vida", "restaura sua vida", 100, 10};
+  Pocao teste8 = {"pocao de forca", "aumenta sua forca temporariamente", 200, 10};
+  Pocao teste9 = {"pocao de agilidade", "ficar naquele pique", 300, 10};
 
   bau.arma[0] = teste1;
   bau.arma[1] = teste2;
@@ -255,11 +255,11 @@ void visualizarBau(Bau &bau, Personagem &personagem){
   while(true){
     system("clear");
     string teste;
-    // cout << "deseja testar? (s/n)" << endl;
-    // cin >> teste;
-    // if(teste == "s"){
-    //   test(bau);
-    // }
+    cout << "deseja testar? (s/n)" << endl;
+    cin >> teste;
+    if(teste == "s"){
+      test(bau);
+    }
 
     printf("              # BAÚ #       \n\n");
       switch(escolhasDoBau()){
@@ -299,13 +299,18 @@ void visualizarBau(Bau &bau, Personagem &personagem){
         digite();
         break;
 
-        case 7:
+        case 7:   // visualiza bolsa 
+        bagBatalha(personagem);
+        digite();
+        break;
+
+        case 8:
         printf("\n");
         organizarBolsa(bau, personagem);
         digite();
         break;
 
-        case 8:
+        case 9:
         digite();
         return ;
       }

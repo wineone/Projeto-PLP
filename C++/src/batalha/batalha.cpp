@@ -26,7 +26,7 @@ bool critico(int a){
     return ((rand()%(100) + 1) < ((rand()%10 + 1) + a*0.4));
 }
 
-int heroiAtaca(Personagem &p,int bd){
+int heroiAtaca(Personagem &p, int bd){
     // heroi ataca inimigos
     
     int dano = p.dano + p.forca * 0.10 + (p.dano * bd);
@@ -57,7 +57,7 @@ int inimigoAtaca(Inimigo i){
     return dano;
 }
 
-void heroiRecebeDano(Personagem &p,int danoinimigo){
+void heroiRecebeDano(Personagem &p, int danoinimigo){
     if(!esquiva(p.agilidade)){
         int danoMenosArma = (danoinimigo - (danoinimigo * p.defesa)/100);
 
@@ -72,7 +72,7 @@ void heroiRecebeDano(Personagem &p,int danoinimigo){
     }
 }
 
-void inimigoRecebeDano(Inimigo &i,int be,int dano){
+void inimigoRecebeDano(Inimigo &i, int be, int dano){
     if(!esquiva(i.agilidade + (i.agilidade * be))){
 
         // verifica se o player tenta atacar inimigo morto.
@@ -92,8 +92,10 @@ void inimigoRecebeDano(Inimigo &i,int be,int dano){
     }
 }
 
+// tem q ajeitar;;;;;
 void batalhar(Personagem &p, GrupoDeInimigos gp) {
     printInimigos(gp);
+
     while(!acabou(p,gp)){
         system("clear");
         float bd = 0;         // bonus de dano
@@ -108,12 +110,12 @@ void batalhar(Personagem &p, GrupoDeInimigos gp) {
         }
         int inimigo = ataqueInimigo(gp) - 1;
 
-        inimigoRecebeDano(gp.gangue[inimigo],be,heroiAtaca(p,bd));
+        inimigoRecebeDano(gp.gangue[inimigo],be,heroiAtaca(p, bd));
 
         //inimigo ataca heroi
         for(int enemy = 0; enemy < gp.quantidade; enemy++){
             if (gp.gangue[enemy].vidaAtual > 0) {
-                heroiRecebeDano(p,inimigoAtaca(gp.gangue[enemy]));
+                heroiRecebeDano(p, inimigoAtaca(gp.gangue[enemy]));
             }
         }
         divisorias();

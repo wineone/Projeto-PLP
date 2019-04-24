@@ -59,16 +59,6 @@ int interfaceMapa(Fase &f) {
 
 int escolhasDaBolsa(){
     printf("[1] -> Visualizar poções\n");
-    printf("[2] -> Jogar uma poção fora\n");
-    printf("[3] -> Voltar a batalhar\n");
-    printf("\nO que você quer fazer?... ");
-    int opcao;
-    scanf("%d", &opcao);
-    return opcao;
-}
-
-int escolhasDaBolsaBatalha(){
-    printf("[1] -> Visualizar poções\n");
     printf("[2] -> Usar uma poção\n");
     printf("[3] -> Jogar uma poção fora\n");
     printf("[4] -> Voltar a batalhar\n");
@@ -191,8 +181,9 @@ int escolhasDoBau(){
   printf("[4] -> Excluir uma arma\n");
   printf("[5] -> Excluir uma poção\n");
   printf("[6] -> Visualizar personagem\n");
-  printf("[7] -> Organizar sua bolsa\n");
-  printf("[8] -> Voltar ao menu inicial\n");
+  printf("[7] -> Visualizar sua bolsa\n");
+  printf("[8] -> Organizar sua bolsa\n");
+  printf("[9] -> Voltar ao menu inicial\n");
   int opcao;
   printf("\nO que você vai querer hoje? ");
   scanf("%d", &opcao);
@@ -275,10 +266,14 @@ int listaPocoes(Loja &l){
             Pocao a = l.pocoes[i-1];
             cout << "["<<  i << "] -> nome: " << a.nome << endl;
             cout << "       descrição: " << a.descricao << endl;
-            cout << "       (" << a.forca << "/" << a.agilidade << "/" << a.vida <<")\n";
+            cout << "       (" << a.vida <<")\n";
             cout << "       preço: " << a.preco << endl;
+
         }
+        printf("Digite sua opçao");
+        scanf("%d",&opcao);
     }while(opcao < 1 || opcao > l.quantPocoes);
+    return opcao;
 }
 
 void listaPocoes(Bau &bau) {
@@ -290,10 +285,6 @@ void listaPocoes(Bau &bau) {
 			cout << "[" << i << "] -> nome: " << p.nome << endl;
 			cout << "       descrição: " << p.descricao << endl;
 			cout << "       ("; 
-			verificaStatus(p.forca); 
-			cout << "/";
-			verificaStatus(p.agilidade);
-			cout << "/";
 			verificaStatus(p.vida);
 			cout << ")\n";
 			cout << "       preço: " << p.preco << endl;
@@ -310,10 +301,6 @@ void listaPocoes(Bolsa &bolsa) {
 			cout << "[" << i << "] -> nome: " << p.nome << endl;
 			cout << "       descrição: " << p.descricao << endl;
 			cout << "       ("; 
-			verificaStatus(p.forca); 
-			cout << "/";
-			verificaStatus(p.agilidade);
-			cout << "/";
 			verificaStatus(p.vida);
 			cout << ")\n";
 			cout << "       preço: " << p.preco << endl;
