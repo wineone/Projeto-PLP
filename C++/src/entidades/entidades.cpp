@@ -35,6 +35,67 @@ Arma tridente(){
     return a;
 }
 
+//-------------------------Poções vendidadas na loja ------------------------
+
+Pocao pocaoRestauraVida() {
+    Pocao poc = {"Liquido Filosofal", "a pedra derreteu", 400,0,0,100};
+    return poc;
+}
+
+Pocao pocaoBebada() {
+    Pocao poc = {"Agua que passarinho nao bebe", "vamos tomar uma", 30,10,-5,0};
+    return poc;
+}
+
+Pocao pocaoNinja() {
+    Pocao poc = {"Uma liquido dos ninjas", "em pleno ar se condensa em Lion Man...", 60,0,10,0};
+    return poc;
+}
+
+Pocao pocaoAjudaAosDogs() {
+    Pocao poc = {"Ajude-nos na iniciativa DOGadores", "essas poção não te melhora em nada, mas o dinheiro ira ajudar os animais de rua", 500,0,0,0};
+    return poc;
+}
+
+Pocao pocaoStronda() {
+    Pocao poc = {"Líquido Stronda", "o monstro chegou!", 40,20,0,0};
+    return poc;
+}
+
+Pocao pocaoTransformice() {
+    Pocao poc = {"Transformice", "um rato em busca do seu queijo", 10,0,2,0};
+    return poc;
+}
+
+Pocao pocaoTranquila() {
+    Pocao poc = {"Líquido tranquilo", "não fala do meu pai", 80,15,10,0};
+    return poc;
+}
+
+Pocao pocaoApelona() {
+    Pocao poc = {"um hack", "não deixe o dono do jogo saber dela", 9999,99,99,99};
+    return poc;
+}
+
+Pocao pocaoCapitao() {
+    Pocao poc = {"Soro do Super Soldado", "te deixará forte por pouco tempo", 120,40,0,0};
+    return poc;
+}
+
+Pocao pocaoRedbull() {
+    Pocao poc = {"RedBull", "te dará asas", 44,0,10,0};
+    return poc;
+}
+
+Pocao pocaoRedBullDupla() {
+    Pocao poc = {"RedBull com Café", "te dará 4 asas", 88,0,20,0};
+    return poc;
+}
+
+Pocao pocaoCafeComGuarana() {
+    Pocao poc = {"Cafe com Guarana", "Te despertará de um jeito...", 10,0,35,0};
+    return poc;
+}
 
 // -------------------------------------- Armas até aqui --------------------------------------
 
