@@ -4,16 +4,46 @@
 using namespace std;
 
 // ----------------- Atributos do Herói --------------------
-
+//-------------------------Armas vendidadas na loja ------------------------
 Arma maos(){
-    Arma a = {"Suas mãos", "Estilo minecraft", 1, 1, 0, 1000};
+    Arma a = {"Suas mãos", "Estilo minecraft", 1, 1, 0, 10};
     return a;
 }
+
+Arma lancaTris(){
+    Arma a = {"lança da tristeza","mata seus inimigos de suicidio",300,10,2,3};
+    return a;
+}
+
+Arma armaADura(){
+    Arma a = {"Arma A dura", "dizem que essa arma é feita de rapadura",400,15,7,5};
+    return a;
+}
+
+Arma adagasSile(){
+    Arma a = {"Adagas Silenciosas","Aqueles que gritam são seus inimigos",500,15,5,15};
+    return a;
+}
+
+Arma donut(){
+    Arma a = {"Um donut","não tem piadinha, é só um donut muito gostoso",600,20,5,5};
+    return a;
+}
+
+Arma tridente(){
+    Arma a = {"tridente banguela","é... agora ele é um bidente",400,20,10,10};
+    return a;
+}
+
+
+// -------------------------------------- Armas até aqui --------------------------------------
+
 
 Armadura roupas() {
     Armadura a = {"Roupas rasgadas", "Você chegou só com as roupas do corpo",1,1,0,0,0};
     return a;
 }
+
 
 Pocao pocaoNull() {
     Pocao nula = {"", "", 0,0,0,0};

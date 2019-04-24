@@ -55,7 +55,7 @@ void printInimigos(GrupoDeInimigos &gp);
 void estrelinhas();
 
 //interface basica da loja
-int printLoja();
+int printLoja(Personagem &p);
 
 //lista as armas a serem compradas
 int listaArma(Loja &l);
@@ -80,3 +80,6 @@ int escolhaUmaPocao(int range);
 
 // recebe um numero que é a quantidade de pocoes disponiveis.
 int removePocao(int range);
+
+// interface para o jogador tomar poção
+int tomaPocao(Personagem &p);

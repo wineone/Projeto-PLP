@@ -2,6 +2,7 @@
 #include "../entidades/entidades.h"
 #include "../estruturas/estruturas.h"
 #include "../print/print.h"
+#include "../inventario/inventario.h"
 #include <bits/stdc++.h>
 #include <string>
 
@@ -47,8 +48,8 @@ void removeArma(Bau &bau, Personagem &personagem){
 }
 
 void removePocaoPrivate(Bau &bau, int indice) {
-	if (indice - 1 <= bau.indPocoes) {
-		swap(bau.pocoes[indice - 1], bau.pocoes[bau.indPocoes]);
+	if (indice <= bau.indPocoes && indice >= 0) {
+		swap(bau.pocoes[indice], bau.pocoes[bau.indPocoes]);
 		bau.indPocoes--;
 	}
 }
@@ -142,7 +143,7 @@ void listArmaduras(Bau &bau, Personagem &personagem){
         int agilidade = (bau.armaduras[i].agilidade - personagem.armadura.agilidade);
         int vida = (bau.armaduras[i].vida - personagem.armadura.vida);
 
-      cout  << (i+1) << " - " << bau.armaduras[i].nome << " (armadura: " << avalia(armadura) << armadura << ", forca: " << avalia(forca) << forca << ", agilidade: " << avalia(agilidade) << agilidade << ", vida: " <<    avalia(vida) << vida << endl;
+      cout  << (i+1) << " - " << bau.armaduras[i].nome << " (armadura: " << armadura << ", forca: " << forca << ", agilidade: " << agilidade << ", vida: " << vida << endl;
       }
     }
 }
@@ -158,7 +159,7 @@ void listArmas(Bau &bau, Personagem &personagem){
       int forca = (bau.arma[j].forca - personagem.arma.forca);
       int agilidade = (bau.arma[j].agilidade - personagem.arma.agilidade);
 
-      cout << (j+1) << " - " << (bau.arma[j].nome) << " (dano: " << avalia(dano) << dano << ", força: " << avalia(forca) << forca << ", agilidade: " << avalia(agilidade) << agilidade << ")" << endl;
+      cout << (j+1) << " - " << (bau.arma[j].nome) << " (dano: " << dano << ", força: " << forca << ", agilidade: " << agilidade << ")" << endl;
     }
   }
 }
@@ -169,7 +170,7 @@ void listPocoes(Bau &bau){
 
   } else {
     for(int k = 0 ; k <= bau.indPocoes; k++){
-      cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << "(forca: " << avalia(bau.pocoes[k].forca) << bau.pocoes[k].forca << " , agilidade: " << avalia(bau.pocoes[k].agilidade)<< bau.pocoes[k].agilidade << ", vida: " << avalia(bau.pocoes[k].vida) << bau.pocoes[k].vida << ")" << endl;
+      cout << bau.pocoes[k].nome << " - " << bau.pocoes[k].descricao << "(forca: " << bau.pocoes[k].forca << " , agilidade: " << bau.pocoes[k].agilidade << ", vida: " << bau.pocoes[k].vida << ")" << endl;
     }
   }
 }
@@ -220,14 +221,6 @@ void visualizarEquips(Personagem personagem){
 
 }
 
-string avalia(int k){
-  if(k > 0){
-    return "+";
-  } else {
-    return "";
-   }
-}
-
 void test(Bau &bau){
   Arma teste1 = {"espada", "corta pessoas", 2000, 10, 4, 3};
   Arma teste2 = {"lança", "fura pessoas", 1000, 50, 10, 2};
@@ -260,14 +253,15 @@ void test(Bau &bau){
 void visualizarBau(Bau &bau, Personagem &personagem){
 
   while(true){
+    system("clear");
     string teste;
-    cout << "deseja testar? (s/n)" << endl;
-    cin >> teste;
-    if(teste == "s"){
-      test(bau);
-    }
+    // cout << "deseja testar? (s/n)" << endl;
+    // cin >> teste;
+    // if(teste == "s"){
+    //   test(bau);
+    // }
 
-    printf("        # BAÚ #       \n\n");
+    printf("              # BAÚ #       \n\n");
       switch(escolhasDoBau()){
         case 1:
         printf("\n");
@@ -307,8 +301,9 @@ void visualizarBau(Bau &bau, Personagem &personagem){
 
         case 7:
         printf("\n");
-        organizarBolsa(bau ,personagem);
+        organizarBolsa(bau, personagem);
         digite();
+        break;
 
         case 8:
         digite();
@@ -320,17 +315,24 @@ void visualizarBau(Bau &bau, Personagem &personagem){
 void organizarBolsa(Bau &bau, Personagem &p) {
 	while(true) {
 			switch(opcoesBolsaBau()) {
-				case 1:		// bau to bolsa
+        case 1: {		// bau to bolsa
           printf("\n\n");
 					listaPocoes(bau);
-					int indice = escolhaUmaPocao(bau.indPocoes);
-					Pocao pocao = bau.pocoes[indice];
-					addItem(p, pocao);
-					removePocaoPrivate(bau, indice);
+
+          if (bau.indPocoes > -1) {
+					  int indice = escolhaUmaPocao(bau.indPocoes);
+
+            if (indice == -1)
+              break;
+
+            Pocao pocao = bau.pocoes[indice];
+					  addItem(p, pocao);
+					  removePocaoPrivate(bau, indice);
+          }
           break;
-				case 2:		// bolsa to bau
-				printf("jaja eu faço isso\n");
-        break;
+        } case 2:		// bolsa to bau
+          printf("jaja eu faço isso\n");
+          break;
 				case 3:		// cancela
 					return;
         

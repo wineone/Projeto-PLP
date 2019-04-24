@@ -8,6 +8,18 @@ Arma maos();
 // armadura inicial
 Armadura roupas();
 
+//lança triste
+Arma lancaTris();
+
+//arma a dura
+Arma armaADura();
+
+Arma adagasSile();
+
+Arma donut();
+
+Arma tridente();
+
 // pocao de atributos null
 Pocao pocaoNull();
 

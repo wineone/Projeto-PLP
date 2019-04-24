@@ -30,9 +30,6 @@ int listBag(Personagem &p){
     return 0;
 }
 
-// int removePocao(int indice, Personagem &p) {
-
-// }
 
 int jogaPocao(Personagem &p){
     listBag(p);
@@ -47,16 +44,15 @@ int jogaPocao(Personagem &p){
 }
 
 int usaPocao(Personagem &p){
-    tomaPocao(p);
+    int indice = tomaPocao(p);
     
     if(indice < p.bolsa.quantidade){
         p.vidaAtual += p.bolsa.pocoes[indice-1].vida;
         p.forca += p.bolsa.pocoes[indice-1].forca;
         p.agilidade += p.bolsa.pocoes[indice-1].agilidade;
     }
-
+    p.bolsa.pocoes[indice-1] = {"", "", 0,0,0,0};
     swap(p.bolsa.pocoes[indice-1],p.bolsa.pocoes[p.bolsa.quantidade-1]);
-
 }
 
 

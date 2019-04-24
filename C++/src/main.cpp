@@ -12,17 +12,19 @@ using namespace std;
 
 
 void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau &bau, Loja &loja) {
-    personagem = {nome,100,100,10,10,5,5,10,maos(),roupas(), bolsa()}; 				// tem q mudar isso aqui
+    personagem = {nome,100,100,10,10,5,5,10000,maos(),roupas(), bolsa()}; 				// tem q mudar isso aqui
     bau = Bau();
     fases[0] = piloto();
     fases[1] = barquinho();
 
     //loja
     loja.armas[0] = maos();
-    loja.armas[1] = maos();
-    loja.armas[2] = maos();
-    loja.armas[3] = maos();
-    loja.quantArmas = 4;
+    loja.armas[1] = lancaTris();
+    loja.armas[2] = armaADura();
+    loja.armas[3] = adagasSile();
+    loja.armas[4] = donut();
+    loja.armas[5] = tridente();
+    loja.quantArmas = 6;
 
     loja.armaduras[0] = roupas();
     loja.armaduras[1] = roupas();
