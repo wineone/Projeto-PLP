@@ -74,3 +74,9 @@ void verificaStatus(int status);
 
 // Lista as opções para o jogador organizar sua Bolsa
 int opcoesBolsaBau();
+
+// recebe um inteiro (quantidade de poçoes disponiveis no baú ou na bolsa) para o jogador escolher (para usar ou guardar)
+int escolhaUmaPocao(int range);
+
+// recebe um numero que é a quantidade de pocoes disponiveis.
+int removePocao(int range);

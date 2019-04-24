@@ -46,24 +46,21 @@ void removeArma(Bau &bau, Personagem &personagem){
   }
 }
 
+void removePocaoPrivate(Bau &bau, int indice) {
+	if (indice - 1 <= bau.indPocoes) {
+		swap(bau.pocoes[indice - 1], bau.pocoes[bau.indPocoes]);
+		bau.indPocoes--;
+	}
+}
+
 void removePocao(Bau &bau){
   listPocoes(bau);
   if(bau.indPocoes != -1){
-    string resposta;
-    cout << "Deseja remover uma poção? (s/n)" << endl;
-    cin >> resposta;
-    if(resposta == "s"){
-      int remover;
-      cout <<"Então, digite o indice da poção a ser removida" << endl;
-      cin >> remover;
-      if((remover-1) <= bau.indPocoes){
-        swap(bau.pocoes[remover-1], bau.pocoes[bau.indPocoes]);
-        bau.indPocoes--;
-      } else {
-        cout << "Esse é um indice invalido" << endl;
-      }
-    }
-  }
+		int indice = removePocao(bau.indPocoes);
+		removePocaoPrivate(bau, indice);
+  } else {
+		printf("Você não tem poções, vá jogar.\n");
+	}
 }
 
 void trocarArmadura(Bau &bau, Personagem &personagem){
@@ -310,7 +307,7 @@ void visualizarBau(Bau &bau, Personagem &personagem){
 
         case 7:
         printf("\n");
-        organizarBolsa(bau ,personagem.bolsa);
+        organizarBolsa(bau ,personagem);
         digite();
 
         case 8:
@@ -320,16 +317,23 @@ void visualizarBau(Bau &bau, Personagem &personagem){
   }
 }
 
-void organizarBolsa(Bau &bau, Bolsa &bolsa) {
+void organizarBolsa(Bau &bau, Personagem &p) {
 	while(true) {
 			switch(opcoesBolsaBau()) {
 				case 1:		// bau to bolsa
+          printf("\n\n");
 					listaPocoes(bau);
+					int indice = escolhaUmaPocao(bau.indPocoes);
+					Pocao pocao = bau.pocoes[indice];
+					addItem(p, pocao);
+					removePocaoPrivate(bau, indice);
           break;
 				case 2:		// bolsa to bau
+				printf("jaja eu faço isso\n");
         break;
 				case 3:		// cancela
-        break;
+					return;
+        
 			}
 
 	}
