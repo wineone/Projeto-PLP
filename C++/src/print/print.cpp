@@ -181,9 +181,8 @@ int escolhasDoBau(){
   printf("[4] -> Excluir uma arma\n");
   printf("[5] -> Excluir uma poção\n");
   printf("[6] -> Visualizar personagem\n");
-  printf("[7] -> Visualizar sua bolsa\n");
-  printf("[8] -> Organizar sua bolsa\n");
-  printf("[9] -> Voltar ao menu inicial\n");
+  printf("[7] -> Organizar sua bolsa\n");
+  printf("[8] -> Voltar ao menu inicial\n");
   int opcao;
   printf("\nO que você vai querer hoje? ");
   scanf("%d", &opcao);
@@ -340,7 +339,7 @@ int escolhaUmaPocao(int range) {
         }
     } while (opcao < 0 || opcao > range);
     
-    return opcao - 1; // retorna como índice pronto para ser usado no array
+    return opcao ; // retorna como índice pronto para ser usado no array
 }
 
 int removePocao(int range) {
@@ -356,7 +355,7 @@ int removePocao(int range) {
         }
     } while (opcao < 0 || opcao > range);
     
-    return opcao - 1;
+    return opcao;
 }
 
 int tomaPocao(Personagem &p) {
@@ -374,5 +373,5 @@ int tomaPocao(Personagem &p) {
         } 
     } while (opcao > p.bolsa.quantidade || opcao < 0);
 
-    return opcao - 1;
+    return opcao ;
 }

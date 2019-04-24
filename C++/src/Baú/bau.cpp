@@ -255,11 +255,11 @@ void visualizarBau(Bau &bau, Personagem &personagem){
   while(true){
     system("clear");
     string teste;
-    cout << "deseja testar? (s/n)" << endl;
-    cin >> teste;
-    if(teste == "s"){
-      test(bau);
-    }
+    // cout << "deseja testar? (s/n)" << endl;
+    // cin >> teste;
+    // if(teste == "s"){
+    //   test(bau);
+    // }
 
     printf("              # BAÚ #       \n\n");
       switch(escolhasDoBau()){
@@ -299,18 +299,13 @@ void visualizarBau(Bau &bau, Personagem &personagem){
         digite();
         break;
 
-        case 7:   // visualiza bolsa 
-        bagBatalha(personagem);
-        digite();
-        break;
-
-        case 8:
+        case 7:
         printf("\n");
         organizarBolsa(bau, personagem);
         digite();
         break;
 
-        case 9:
+        case 8:
         digite();
         return ;
       }
@@ -323,7 +318,7 @@ void organizarBolsa(Bau &bau, Personagem &p) {
         case 1: {		// bau to bolsa
           printf("\n\n");
 					listaPocoes(bau);
-
+          //verifica se o bau tem poções
           if (bau.indPocoes > -1) {
 					  int indice = escolhaUmaPocao(bau.indPocoes);
 
