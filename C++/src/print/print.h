@@ -12,9 +12,6 @@ int interfaceMapa(Fase &f);
 //funçao que imprime o menu de escolha de uso das poções
 int escolhasDaBolsa();
 
-//funçao que imprime o menu de escolha de uso das poções dentro da batalha
-int escolhasDaBolsaBatalha();
-
 // funcao que imprime na tela o nome e a vida do heroi
 void StatusHeroi(Personagem &heroi);
 

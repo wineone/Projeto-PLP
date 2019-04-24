@@ -27,8 +27,6 @@ typedef struct Pocao{
     string nome;
     string descricao;
     int preco;
-    int forca;//5
-    int agilidade;//0
     int vida;//0
 } Pocao;
 

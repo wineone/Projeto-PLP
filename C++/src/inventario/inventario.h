@@ -12,8 +12,6 @@ void jogaPocao(Personagem &p);
 void usaPocao(Personagem &p);
 
 //bolsa carregavel
-void bag(Personagem &p);
-
 void bagBatalha(Personagem &p);
 
 // integração com baú

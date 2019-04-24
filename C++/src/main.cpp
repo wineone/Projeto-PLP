@@ -32,6 +32,18 @@ void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau
     loja.armaduras[3] = roupas();
     loja.armaduras[4] = roupas();
     loja.quantArmaduras = 5;
+
+    loja.pocoes[0] = pocaoRestauraVida();
+    loja.pocoes[1] = pocaoBebada();
+    loja.pocoes[2] = pocaoNinja();
+    loja.pocoes[3] = pocaoAjudaAosDogs();
+    loja.pocoes[4] = pocaoStronda();
+    loja.pocoes[5] = pocaoTransformice();
+    loja.pocoes[6] = pocaoTranquila();
+    loja.pocoes[7] = pocaoApelona();
+    loja.quantPocoes = 8;
+
+
 }
 
 int main(){
@@ -72,7 +84,7 @@ int main(){
                 break;
             case(3):
                 system("clear");
-                bag(personagem);
+                bagBatalha(personagem);
                 system("clear");
                 break;
             case(4):
