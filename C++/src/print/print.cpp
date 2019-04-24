@@ -334,6 +334,58 @@ int opcoesBolsaBau() {
 	printf("[1] -> Mover poção do Baú para a Bolsa\n");
 	printf("[2] -> Mover poção da Bolsa para o Baú\n");
 	printf("[3] -> Cancelar\n");
+
+    printf("O que você quer fazer? ");
 	scanf("%d", &opcao);
 	return opcao;
+}
+
+int escolhaUmaPocao(int range) {
+    int opcao = -1;
+
+    do {
+        printf("[0] -> Cancelar\n\n");
+        printf("Digite o número da poção escolhida [1, %d] ", range);
+        scanf("%d", &opcao);
+
+        if (opcao < 0 || opcao > range) {
+            printf("Esse número não fez sentido. Tente de novo\n");
+        }
+    } while (opcao < 0 || opcao > range);
+    
+    return opcao - 1; // retorna como índice pronto para ser usado no array
+}
+
+int removePocao(int range) {
+    int opcao = -1;
+
+    do {
+        printf("[0] -> Cancelar\n\n");
+        printf("Digite o índice da poção que deseja remover: ");
+        scanf("%d", &opcao);
+
+        if (opcao < 0 || opcao > range) {
+            printf("Esse número não fez sentido. Tente de novo\n");
+        }
+    } while (opcao < 0 || opcao > range);
+    
+    return opcao - 1;
+}
+
+int tomaPocao(Personagem &p) {
+    int opcao = -1;
+
+    do {
+        printf("Qual poção você quer usar?  \n");
+        printf("[0] -> Cancelar\n\n");
+        
+        listBag(p);
+        scanf("%d", &opcao);
+
+        if (opcao > p.bolsa.quantidade || opcao < 0) {
+            printf("Índice inválido. Tente de novo.. ");
+        } 
+    } while (opcao > p.bolsa.quantidade || opcao < 0);
+
+    return opcao - 1;
 }

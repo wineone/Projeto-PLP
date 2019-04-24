@@ -19,6 +19,31 @@ Arma adagasSile();
 Arma donut();
 
 Arma tridente();
+//-------------------------Poções vendidadas na loja ------------------------
+
+Pocao pocaoRestauraVida();
+
+Pocao pocaoBebada();
+
+Pocao pocaoNinja();
+
+Pocao pocaoAjudaAosDogs();
+
+Pocao pocaoStronda();
+
+Pocao pocaoTransformice();
+
+Pocao pocaoTranquila();
+
+Pocao pocaoApelona();
+
+Pocao pocaoCapitao();
+
+Pocao pocaoRedbull();
+
+Pocao pocaoRedBullDupla();
+
+Pocao pocaoCafeComGuarana();
 
 Arma armaConfete();
 

@@ -47,4 +47,7 @@ string avalia(int k);
 void visualizarBau(Bau &bau, Personagem &personagem);
 
 // permite mover poções da bolsa para o inventário como o jogador bem entender
-void organizarBolsa(Bau &bau, Bolsa &bolsa);
+void organizarBolsa(Bau &bau, Personagem &p);
+
+// função generica para remoção de poções do baú.
+void removePocaoPrivate(Bau &bau, int indice);
