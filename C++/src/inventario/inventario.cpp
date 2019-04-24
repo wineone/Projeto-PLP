@@ -109,7 +109,13 @@ int bagBatalha(Personagem &p){
     }
 }
 
-
-
-
-
+void addItem(Personagem &p, Pocao &pocao) {
+    if (p.bolsa.quantidade + 1 == p.bolsa.max) {
+        printf("Sua bolsa está cheia, jogue algo fora.\n\n");
+    } else {
+        int qtd = p.bolsa.quantidade;
+        p.bolsa.pocoes[qtd - 1] = pocao;
+        p.bolsa.quantidade++;
+        cout << pocao.nome << " adicionada\n\n";
+    }
+}

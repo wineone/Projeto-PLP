@@ -51,7 +51,7 @@ int escolhasDoBau();
 // Imprime os inimigos de um grupo e seus respectivos status e descrições
 void printInimigos(GrupoDeInimigos &gp);
 
-
+// função que imprime asteriscos para ser usado como divisória
 void estrelinhas();
 
 //interface basica da loja
@@ -60,6 +60,17 @@ int printLoja();
 //lista as armas a serem compradas
 int listaArma(Loja &l);
 
+// Lista armaduras disponíveis na loja
 int listaArmadura(Loja &l);
 
+// Lista poções disponíveis na loja
 int listaPocoes(Loja &l);
+
+// Lista as poções do Baú
+void listaPocoes(Bau &bau);
+
+// Verifica se o atributo de algum item é positivo ou negativo e imprime +10 ou -10 (ex.)
+void verificaStatus(int status);
+
+// Lista as opções para o jogador organizar sua Bolsa
+int opcoesBolsaBau();

@@ -291,12 +291,28 @@ void visualizarBau(Bau &bau, Personagem &personagem){
         break;
 
         case 7:
+        printf("\n");
+        organizarBolsa(personagem.bolsa);
+        digite();
+
+        case 8:
         digite();
         return ;
       }
   }
 }
 
-void organizarBolsa(Bolsa &bolsa) {
+void organizarBolsa(Bau &bau, Bolsa &bolsa) {
+	while(true) {
+			switch(opcoesBolsaBau()) {
+				case 1:		// bau to bolsa
+					listaPocoes(bau);
+					
+				case 2:		// bolsa to bau
 
+				case 3:		// cancela
+
+			}
+
+	}
 }

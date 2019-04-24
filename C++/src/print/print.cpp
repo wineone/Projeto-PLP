@@ -279,3 +279,60 @@ int listaPocoes(Loja &l){
         }
     }while(opcao < 1 || opcao > l.quantPocoes);
 }
+
+void listaPocoes(Bau &bau) {
+	if (bau.indPocoes <= 0) {
+		printf("Você não tem poções! Vá tomar água enquanto isso.\n\n");
+	} else {
+		for (int i = 1; i <= bau.indPocoes; i++) {
+			Pocao p = bau.pocoes[i - 1];
+			cout << "[" << i << "] -> nome: " << p.nome << endl;
+			cout << "       descrição: " << p.descricao << endl;
+			cout << "       ("; 
+			verificaStatus(p.forca); 
+			cout << "/";
+			verificaStatus(p.agilidade);
+			cout << "/";
+			verificaStatus(p.vida);
+			cout << ")\n";
+			cout << "       preço: " << p.preco << endl;
+		}
+	}
+}
+
+void listaPocoes(Bolsa &bolsa) {
+	if (bolsa.max <= 0) {
+		printf("Sua bolsa está vazia, vá tomar água enquanto isso.\n\n");
+	} else {
+		for (int i = 1; i <= bolsa.max; i++) {
+			Pocao p = bolsa.pocoes[i - 1];
+			cout << "[" << i << "] -> nome: " << p.nome << endl;
+			cout << "       descrição: " << p.descricao << endl;
+			cout << "       ("; 
+			verificaStatus(p.forca); 
+			cout << "/";
+			verificaStatus(p.agilidade);
+			cout << "/";
+			verificaStatus(p.vida);
+			cout << ")\n";
+			cout << "       preço: " << p.preco << endl;
+		}
+	}
+}
+
+void verificaStatus(int status) {
+	if (status >= 0)
+		cout << "+" << status;
+	else
+		cout << status;
+}
+
+int opcoesBolsaBau() {
+	int opcao;
+	printf("Como você deseja organizar a sua bolsa?\n\n");
+	printf("[1] -> Mover poção do Baú para a Bolsa\n");
+	printf("[2] -> Mover poção da Bolsa para o Baú\n");
+	printf("[3] -> Cancelar\n");
+	scanf("%d", &opcao);
+	return opcao;
+}

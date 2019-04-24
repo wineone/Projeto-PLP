@@ -43,3 +43,6 @@ void test(Bau &bau);
 
 // permite interagir com  as opcoes disponiveis na interface do bau
 void visualizarBau(Bau &bau, Personagem &personagem);
+
+// permite mover poções da bolsa para o inventário como o jogador bem entender
+void organizarBolsa(Bolsa &bolsa);

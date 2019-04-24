@@ -13,3 +13,5 @@ int bag(Personagem &p);
 
 int bagBatalha(Personagem &p);
 
+// integração com baú
+void addItem(Personagem &p, Pocao &pocao);
