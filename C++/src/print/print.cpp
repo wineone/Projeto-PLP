@@ -350,10 +350,10 @@ int tomaPocao(Personagem &p) {
         printf("\nQual poção você quer usar?  \n");
         scanf("%d", &opcao);
 
-        if (opcao >= p.bolsa.quantidade + 1 || opcao < 0) {
+        if (opcao > p.bolsa.quantidade || opcao < 0) {
             printf("Índice inválido. Tente de novo..");
         } 
-    } while (opcao >= p.bolsa.quantidade + 1 || opcao < 0);
+    } while (opcao > p.bolsa.quantidade || opcao < 0);
 
     return opcao - 1;
 }

@@ -31,8 +31,8 @@ void removePocao(Personagem &p, int indice) {
 
     if (indice >= 0 && indice < qtd) {
         Pocao aux = p.bolsa.pocoes[qtd - 1];
-        p.bolsa.pocoes[qtd - 1] = {"","",0,0}; 
         p.bolsa.pocoes[indice] = aux;
+        p.bolsa.pocoes[qtd - 1] = {"","",0,0}; 
 
         p.bolsa.quantidade--;
     }

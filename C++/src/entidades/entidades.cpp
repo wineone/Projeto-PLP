@@ -336,6 +336,12 @@ Inimigo seneca() {
     return a;
 }
 
+
+// Inimigo boss(){
+//     Inimigo a = {""};
+//     return a;
+// }
+
 // Grupos de Inimigos
 
 GrupoDeInimigos grupoNull() {
@@ -430,3 +436,4 @@ GrupoDeInimigos tributos4fase3() {
                         3, 600};
     return g;
 }
+
