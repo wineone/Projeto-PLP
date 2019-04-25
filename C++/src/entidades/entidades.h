@@ -75,12 +75,17 @@ Armadura armaDoFim();
 
 // FASES
 
-// segunda fase
-Fase barquinho();
-
-//primeira fase
+//primeira fase BETA
 Fase piloto();
 
+// segunda fase BETA
+Fase barquinho();
+
+// nivel 2
+Fase casa();
+
+// nivel 3
+Fase jogosVoraz();
 
 // INIMIGOS
 
@@ -104,6 +109,33 @@ Inimigo cerebro();
 Inimigo gravidaTaubate();
 
 Inimigo filhoGravida();
+
+Inimigo louca();
+
+Inimigo chao();
+
+Inimigo parede();
+
+Inimigo meia();
+
+Inimigo ventila();
+
+Inimigo bixo();
+
+Inimigo katenisse();
+
+Inimigo pita();
+
+Inimigo finique();
+
+Inimigo gueiou();
+
+Inimigo esnou();
+
+Inimigo reimite();
+
+Inimigo seneca();
+
 
 // GRUPOS DE INIMIGOS
 
@@ -130,3 +162,30 @@ GrupoDeInimigos gp5();
 
 // Inimigos: gravida de taubate, 5 filhos
 GrupoDeInimigos gravidaFilhos();
+
+// 3 meias
+GrupoDeInimigos gru1();
+
+// meia, bixo, parede
+GrupoDeInimigos gru2();
+
+// bixo, ventila, chao
+GrupoDeInimigos gru3();
+
+// louca, chao, 2 meia
+GrupoDeInimigos gru4();
+
+// 2 meia, louca, ventila
+GrupoDeInimigos gru5();
+
+// seneca, reimite
+GrupoDeInimigos tributos1fase3();
+
+// pita, katenisse
+GrupoDeInimigos tributos2fase3();
+
+// pita, ketenisse, gueiou
+GrupoDeInimigos tributos3fase3();
+
+// esnou, katenisse, finique
+GrupoDeInimigos tributos4fase3(); 

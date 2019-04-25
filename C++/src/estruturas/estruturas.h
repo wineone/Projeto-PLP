@@ -87,7 +87,6 @@ typedef struct GrupoDeInimigos {
 typedef struct Fase {
     string nome;
     string descricao;
-    bool terminada;
 
     GrupoDeInimigos grupo[6];
     int qtdDeInimigos;

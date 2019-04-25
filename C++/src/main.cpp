@@ -14,8 +14,12 @@ using namespace std;
 void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau &bau, Loja &loja) {
     personagem = {nome,100,100,10,10,5,5,10000,maos(),roupas(), bolsa()}; 				// tem q mudar isso aqui
     bau = Bau();
-    fases[0] = piloto();
-    fases[1] = barquinho();
+    // fases[0] = ; MINHAAAA
+    fases[1] = casa();
+    fases[2] = jogosVoraz();
+    fases[3] = piloto();
+    fases[4] = barquinho();
+    // fases[5] = ; BOSSSSS
 
     //loja
     loja.armas[0] = maos();
@@ -65,7 +69,7 @@ int main(){
     // declaração das estruturas
 
     Personagem personagem;
-    Fase fases[2];
+    Fase fases[6];
     Bau bau;
     Loja venda;
 

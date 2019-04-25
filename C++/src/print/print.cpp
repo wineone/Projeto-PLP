@@ -24,12 +24,13 @@ int getChoice(Personagem &p){
 }
 
 int interfaceFases() {
-    printf("[1] -> Piloto\n");
-    printf("[2] -> Barquinho\n");
-    printf("[3] -> Not Found\n");
-    printf("[4] -> NAN\n");
-    printf("[5] -> siençia da computasao\n");
-    printf("[6] -> sair");
+    printf("[1] -> MINHA FALTA FAZER\n");
+    printf("[2] -> Casa\n");
+    printf("[3] -> Jogoses Voraz\n");
+    printf("[4] -> Piloto\n");
+    printf("[5] -> Barquinho\n");
+    printf("[6] -> BOSS\n");
+    printf("[7] -> sair");
     printf("\n\nEscolha sabiamente a fase desejada... ");
 
     int opcao;
@@ -178,8 +179,9 @@ int escolhasDoBau(){
   printf("[1] -> Troque seu equipamento\n");
   printf("[2] -> Excluir um item do Baú\n");
   printf("[3] -> Visualizar equipamento\n");
-  printf("[4] -> Organizar sua bolsa\n");
-  printf("[5] -> Voltar ao menu inicial\n");
+  printf("[4] -> Vasculhar sua bolsa\n");
+  printf("[5] -> Organizar sua bolsa\n");
+  printf("[6] -> Voltar ao menu inicial\n");
   int opcao;
   printf("\nO que você vai querer hoje? ");
   scanf("%d", &opcao);

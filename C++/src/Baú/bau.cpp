@@ -299,10 +299,15 @@ void visualizarBau(Bau &bau, Personagem &personagem){
 
         case 4:
         printf("\n");
-        organizarBolsa(bau, personagem);
+        bagBatalha(personagem);
         break;
 
         case 5:
+        printf("\n");
+        organizarBolsa(bau, personagem);
+        break;
+
+        case 6:
         digite();
         return ;
       }

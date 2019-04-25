@@ -114,8 +114,6 @@ Pocao pocaoCafeComGuarana() {
 
 
 
-
-
 //---------------------------- Armaduras começam aqui -------------------------------------
 Armadura roupas() {
     Armadura a = {"Roupas rasgadas", "Você chegou só com as roupas do corpo",1,1,0,0,0};
@@ -166,25 +164,40 @@ Bolsa bolsa() {
 
 // Fases
 
+// Fase 1 BETA
 Fase piloto(){
     Fase a = {"Piloto",
             "fase de testes, cuidado senão ele te derruba",
-            false,
             {gp1(), gp2(), gp3(), grupoNull(), grupoNull(), grupoNull()},
             3};
 
     return a;
 }
 
+// Fase 2 BETA
 Fase barquinho() {
     Fase b = { "Barquinho", "Cuidado pra não enjoar",
-                false, 
-                pinkyEcerebro(), gp4(), gp5(), grupoNull(), grupoNull(), grupoNull(),
+                {pinkyEcerebro(), gp4(), gp5(), grupoNull(), grupoNull(), grupoNull()},
                 3};
     
     return b;                
 }
 
+// nivel 2
+Fase casa(){
+    Fase a = {"Casa da mãe Joana","Tem coisas aqui que os deixariam enojados",
+                {gru1(),gru2(),gru3(),gru4(),gru5(),grupoNull()},5};
+    return a;
+}
+
+// nivel 3
+Fase jogosVoraz() {
+    Fase b = { "Jogoses Voraz", "tributos contra os zinimigo",
+                {tributos4fase3(),tributos3fase3(), tributos2fase3(),tributos1fase3(), grupoNull()},
+                5};
+    
+    return b;                
+}
 
 // Inimigos
 
@@ -244,6 +257,85 @@ Inimigo filhoGravida() {
     return a;
 }
 
+Inimigo louca(){
+    Inimigo a = {"Louça suja","Ela passou tanto tempo na pia que criou vida",50,50,10,10,10,7};
+    return a;
+}
+
+Inimigo chao(){
+    Inimigo a = {"Chao movediço","Quando você tentou entrar o chão quase lhe engoliu",35,35,7,7,7,5};
+    return a;
+}
+
+Inimigo parede(){
+    Inimigo a = {"Parede mofada","Lança esporos que podem te deixar doidao rs",40,40,8,5,5,3};
+    return a;
+}
+
+Inimigo meia(){
+    Inimigo a = {"Meia chulelenta","Bem fedida mesmo",20,20,5,5,2,2};
+    return a;
+}
+
+Inimigo ventila(){
+    Inimigo a = {"Ventilador de teto","Ele vai cair em cima de você, eu sei que você já imaginou isso",60,60,15,10,5,5};
+    return a;
+}
+
+Inimigo bixo(){
+    Inimigo a = {"Bixo Papão","De baixo da sua cama, é... sempre esteve",55,55,12,10,8,2};
+    return a;
+}
+ 
+Inimigo katenisse() {
+    Inimigo a = {"katenisse",
+                "ela é o tordo, visse",
+                90 , 90, 12, 11, 12,13};
+    return a;
+}
+
+Inimigo pita() {
+    Inimigo a = {"pita",
+                "perdeu a perna mas passa bem ",
+                85, 85, 10, 15, 7,8};
+    return a;
+}
+
+Inimigo finique() {
+    Inimigo a = {"finique",
+                "perdeu a cabeca, algo compreensivel",
+                95, 95, 13, 15, 12,11};
+    return a;
+}
+
+Inimigo esnou() {
+    Inimigo a = {"esnou",
+                "sou o presidente, talkei",
+                80, 80, 16, 8, 8,15};
+    return a;
+}
+
+Inimigo reimite() {
+    Inimigo a = {"reimite",
+                "onde está a pinga?",
+                100, 100, 10, 15, 8,14};
+    return a;
+}
+
+Inimigo gueiou() {
+    Inimigo a = {"gueiou",
+                "eu estou apaixonado por katinesse",
+                80, 80, 9, 12, 7,10};
+    return a;
+}
+
+Inimigo seneca() {
+    Inimigo a = {"seneca",
+                "nao sou soneca, sou seneca",
+                70, 70, 8, 8, 7,8};
+    return a;
+}
+
 // Grupos de Inimigos
 
 GrupoDeInimigos grupoNull() {
@@ -288,5 +380,53 @@ GrupoDeInimigos pinkyEcerebro() {
 GrupoDeInimigos gravidaFilhos() {
     GrupoDeInimigos g = {{gravidaTaubate(), filhoGravida(),filhoGravida(),filhoGravida(),filhoGravida(),filhoGravida()},
                         6, 450};
+    return g;
+}
+
+GrupoDeInimigos gru1(){
+    GrupoDeInimigos a = {meia(),meia(),meia(),inimigoNull(),inimigoNull(),inimigoNull(),3,200};
+    return a;
+}
+
+GrupoDeInimigos gru2(){
+    GrupoDeInimigos a = {meia(),bixo(),parede(),inimigoNull(),inimigoNull(),inimigoNull(),3,300};
+    return a;
+}
+
+GrupoDeInimigos gru3(){
+    GrupoDeInimigos a = {bixo(),ventila(),chao(),inimigoNull(),inimigoNull(),inimigoNull(),3,400};
+    return a;
+}
+
+GrupoDeInimigos gru4(){
+    GrupoDeInimigos a = {louca(),chao(),meia(),meia(),inimigoNull(),inimigoNull(),4,400};
+    return a;
+}
+GrupoDeInimigos gru5(){
+    GrupoDeInimigos a = {meia(),meia(),louca(),ventila(),inimigoNull(),inimigoNull(),4,500};
+    return a;
+}
+
+GrupoDeInimigos tributos1fase3() {
+    GrupoDeInimigos g = {{seneca(), reimite(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()},
+                        2, 600};
+    return g;
+}
+
+GrupoDeInimigos tributos2fase3() {
+    GrupoDeInimigos g = {{pita(), katenisse(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull()},
+                        2, 600};
+    return g;
+}
+
+GrupoDeInimigos tributos3fase3() {
+    GrupoDeInimigos g = {{pita(), katenisse(),gueiou(),inimigoNull(),inimigoNull(),inimigoNull()},
+                        3, 600};
+    return g;
+}
+
+GrupoDeInimigos tributos4fase3() {
+    GrupoDeInimigos g = {{esnou(), katenisse(),finique(),inimigoNull(),inimigoNull(),inimigoNull()},
+                        3, 600};
     return g;
 }
