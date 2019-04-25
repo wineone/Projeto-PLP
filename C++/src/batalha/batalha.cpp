@@ -125,6 +125,7 @@ void batalhar(Personagem &p, GrupoDeInimigos gp) {
     }
 
     estrelinhas();
+    printf("\n");
     // verifica quem ganhou e assimila o premio ou perda do jogador
     if(p.vidaAtual > 0) {
         wonBattle(p, gp);
@@ -135,6 +136,7 @@ void batalhar(Personagem &p, GrupoDeInimigos gp) {
         p.dinheiro = max(p.dinheiro, 0);    // evita que a carteira do jogador fique negativa
     }
     estrelinhas();
+    printf("\n");
 
     digite();
     system("clear");

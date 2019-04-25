@@ -69,7 +69,7 @@ int escolhasDaBolsa(){
 }
 
 void StatusHeroi(Personagem &heroi) {
-    cout << heroi.nome ;
+    cout << heroi.nome;
     for(int i = 0; i < (30 - heroi.nome.size()); i++)
         cout << " ";
     cout << heroi.vidaAtual << "/" << heroi.vidaTotal << endl << endl;
@@ -175,14 +175,11 @@ void divisorias() {
 }
 
 int escolhasDoBau(){
-  printf("[1] -> Trocar armadura atual\n");
-  printf("[2] -> Trocar  arma atual\n");
-  printf("[3] -> Excluir uma armadura\n");
-  printf("[4] -> Excluir uma arma\n");
-  printf("[5] -> Excluir uma poção\n");
-  printf("[6] -> Visualizar personagem\n");
-  printf("[7] -> Organizar sua bolsa\n");
-  printf("[8] -> Voltar ao menu inicial\n");
+  printf("[1] -> Troque seu equipamento\n");
+  printf("[2] -> Excluir um item do Baú\n");
+  printf("[3] -> Visualizar equipamento\n");
+  printf("[4] -> Organizar sua bolsa\n");
+  printf("[5] -> Voltar ao menu inicial\n");
   int opcao;
   printf("\nO que você vai querer hoje? ");
   scanf("%d", &opcao);
@@ -201,7 +198,7 @@ void printInimigos(GrupoDeInimigos &gp){
 }
 
 void estrelinhas(){
-    printf("*****************************\n");
+    printf("*****************************");
 }
 
 
@@ -357,4 +354,40 @@ int tomaPocao(Personagem &p) {
     } while (opcao >= p.bolsa.quantidade + 1 || opcao < 0);
 
     return opcao - 1;
+}
+
+int excluirItem() {
+    int opcao = -1;
+
+    do {
+        printf("[1] -> Excluir uma Armadura\n");
+        printf("[2] -> Excluir uma Arma\n");
+        printf("[3] -> Excluir uma Poção\n");
+        printf("[4] -> Sair\n");
+        printf("\nQual a sua opção? ");
+        scanf("%d", &opcao);
+
+        if (opcao < 1 || opcao > 4)
+            printf("Opção inválida. Tente de novo\n");
+    } while (opcao < 1 || opcao > 4);
+
+    return opcao;
+}
+
+int trocarEquipamento() {
+    int opcao = -1;
+
+    do {
+        printf("[1] -> Trocar uma Arma\n");
+        printf("[2] -> Trocar uma Armadura\n");
+        printf("[3] -> Sair\n");
+        
+        printf("\nQual a sua opção? ");
+        scanf("%d", &opcao);
+
+        if (opcao < 1 || opcao > 3)
+            printf("Opção inválida. Tente de novo\n");
+    } while (opcao < 1 || opcao > 3);
+
+    return opcao;
 }

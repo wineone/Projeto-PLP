@@ -36,12 +36,10 @@ void addIten(Bau &bau, Arma arma);
 void addIten(Bau &bau, Pocao pocao);
 
 //Permite visualizar os equipamentes atuais utilizado pelo personagem
-void visualizarEquips(Personagem personagem);
+void visualizarEquips(Personagem &personagem);
 
 // função com o proposito somente povoar o bau para testa-lo
 void test(Bau &bau);
-
-string avalia(int k);
 
 // permite interagir com  as opcoes disponiveis na interface do bau
 void visualizarBau(Bau &bau, Personagem &personagem);
@@ -51,3 +49,9 @@ void organizarBolsa(Bau &bau, Personagem &p);
 
 // função generica para remoção de poções do baú.
 void removePocaoPrivate(Bau &bau, int indice);
+
+// menu para selecionar uma categoria de item para excluir
+void excluirItemBau(Bau &bau, Personagem &p);
+
+// menu para troca de equipamento
+void trocaEquipamento(Bau &bau, Personagem &p);

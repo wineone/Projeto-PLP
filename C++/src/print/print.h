@@ -80,3 +80,9 @@ int removePocao(int range);
 
 // interface para o jogador tomar poção
 int tomaPocao(Personagem &p);
+
+// menu para excluir um item do baú
+int excluirItem();
+
+// menu para trocar de equipamento no baú
+int trocarEquipamento();
