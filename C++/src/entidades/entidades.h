@@ -87,6 +87,9 @@ Fase casa();
 // nivel 3
 Fase jogosVoraz();
 
+//boss
+Fase fBoss();
+
 // INIMIGOS
 
 // inimigo com atributos vazios
@@ -135,6 +138,9 @@ Inimigo esnou();
 Inimigo reimite();
 
 Inimigo seneca();
+
+//bossssssssssss
+Inimigo boss();
 
 
 // GRUPOS DE INIMIGOS
@@ -189,3 +195,6 @@ GrupoDeInimigos tributos3fase3();
 
 // esnou, katenisse, finique
 GrupoDeInimigos tributos4fase3(); 
+
+//grupo do boss
+GrupoDeInimigos gBoss();

@@ -92,9 +92,9 @@ int selecaoDeFase(Personagem &p, Fase fases[]) {
                 break;
             case 6:
                 system("clear");
-                printf("BOSSSSS\n");
+                // printf("BOSSSSS\n");
                 // BOSSS
-                // mapa(fases[5], p);
+                mapa(fases[5], p);
                 keepGoing = false;
                 break;
             case 7:

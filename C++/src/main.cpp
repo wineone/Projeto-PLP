@@ -19,7 +19,7 @@ void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau
     fases[2] = jogosVoraz();
     fases[3] = piloto();
     fases[4] = barquinho();
-    // fases[5] = ; BOSSSSS
+    fases[5] = fBoss();
 
     //loja
     loja.armas[0] = maos();

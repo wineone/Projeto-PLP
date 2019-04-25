@@ -199,6 +199,13 @@ Fase jogosVoraz() {
     return b;                
 }
 
+
+//ultima fase
+Fase fBoss(){
+    Fase a  = {"Ultima fase do jogo","Se ligue não",{gBoss(),gBoss(),gBoss(),gBoss(),gBoss(),gBoss()},6};
+    return a;
+}
+
 // Inimigos
 
 Inimigo inimigoNull() {
@@ -337,10 +344,10 @@ Inimigo seneca() {
 }
 
 
-// Inimigo boss(){
-//     Inimigo a = {""};
-//     return a;
-// }
+Inimigo boss(){
+    Inimigo a = {"Light Theme IDE","Fiquei ceguin",500,500,40,30,30,30};
+    return a;
+}
 
 // Grupos de Inimigos
 
@@ -434,6 +441,11 @@ GrupoDeInimigos tributos3fase3() {
 GrupoDeInimigos tributos4fase3() {
     GrupoDeInimigos g = {{esnou(), katenisse(),finique(),inimigoNull(),inimigoNull(),inimigoNull()},
                         3, 600};
+    return g;
+}
+
+GrupoDeInimigos gBoss(){
+    GrupoDeInimigos g = {boss(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),1,20000};
     return g;
 }
 
