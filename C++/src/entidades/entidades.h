@@ -78,6 +78,9 @@ Armadura armaDoFim();
 //primeira fase BETA
 Fase piloto();
 
+// primeira fase(realmente)
+Fase manguezal();
+
 // segunda fase BETA
 Fase barquinho();
 
@@ -139,6 +142,13 @@ Inimigo reimite();
 
 Inimigo seneca();
 
+Inimigo cururu();
+
+Inimigo jacare();
+
+Inimigo pato();
+
+Inimigo slime();
 //bossssssssssss
 Inimigo boss();
 
@@ -194,7 +204,17 @@ GrupoDeInimigos tributos2fase3();
 GrupoDeInimigos tributos3fase3();
 
 // esnou, katenisse, finique
-GrupoDeInimigos tributos4fase3(); 
+GrupoDeInimigos tributos4fase3();
+
+// sapo, jacare, sapo
+GrupoDeInimigos grup1Fase1();
+
+// pato, slime, slime
+GrupoDeInimigos grup2Fase1();
+
+// pato, jacare, sapo
+GrupoDeInimigos grup3Fase1();
+
 
 //grupo do boss
 GrupoDeInimigos gBoss();

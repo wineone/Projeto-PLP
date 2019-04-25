@@ -14,7 +14,7 @@ using namespace std;
 void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau &bau, Loja &loja) {
     personagem = {nome,100,100,10,10,5,5,10000,maos(),roupas(), bolsa()}; 				// tem q mudar isso aqui
     bau = Bau();
-    // fases[0] = ; MINHAAAA
+    fases[0] = manguezal();
     fases[1] = casa();
     fases[2] = jogosVoraz();
     fases[3] = piloto();

@@ -61,9 +61,8 @@ int selecaoDeFase(Personagem &p, Fase fases[]) {
         switch (interfaceFases()) {
             case 1:{
                 system("clear");
-                printf("FALTA IMPLEMENTAAAR\n");
-                // jogoses Voraz
-                // mapa(fases[0], p);
+                // manguezal
+                mapa(fases[0], p);
                 keepGoing = false;
                 break;
             }case 2:

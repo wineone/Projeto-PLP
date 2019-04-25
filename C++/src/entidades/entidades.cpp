@@ -164,7 +164,7 @@ Bolsa bolsa() {
 
 // Fases
 
-// Fase 1 BETA
+// Fase  BETA
 Fase piloto(){
     Fase a = {"Piloto",
             "fase de testes, cuidado senão ele te derruba",
@@ -174,13 +174,20 @@ Fase piloto(){
     return a;
 }
 
+// Fase 1
+Fase manguezal(){
+  Fase m = {"Manguezal", "Se não estiver usando botas, vai se sujar de lama",
+            {grup1Fase1(), grup2Fase1(), grup3Fase1(), grupoNull(), grupoNull(), grupoNull()},
+              3};
+  return m;
+}
 // Fase 2 BETA
 Fase barquinho() {
     Fase b = { "Barquinho", "Cuidado pra não enjoar",
                 {pinkyEcerebro(), gp4(), gp5(), grupoNull(), grupoNull(), grupoNull()},
                 3};
-    
-    return b;                
+
+    return b;
 }
 
 // nivel 2
@@ -195,8 +202,8 @@ Fase jogosVoraz() {
     Fase b = { "Jogoses Voraz", "tributos contra os zinimigo",
                 {tributos4fase3(),tributos3fase3(), tributos2fase3(),tributos1fase3(), grupoNull()},
                 5};
-    
-    return b;                
+
+    return b;
 }
 
 
@@ -244,7 +251,7 @@ Inimigo oCaraAlho() {
 }
 
 Inimigo conexaoRuim() {
-    Inimigo c = {"Conexão Ruim", 
+    Inimigo c = {"Conexão Ruim",
                 "Seu maior inimigo em dias de jogar ou de enviar o trabalho de última hora",
                 50, 50, 5, 6, 1, 2};
     return c;
@@ -293,7 +300,7 @@ Inimigo bixo(){
     Inimigo a = {"Bixo Papão","De baixo da sua cama, é... sempre esteve",55,55,12,10,8,2};
     return a;
 }
- 
+
 Inimigo katenisse() {
     Inimigo a = {"katenisse",
                 "ela é o tordo, visse",
@@ -343,6 +350,27 @@ Inimigo seneca() {
     return a;
 }
 
+Inimigo cururu(){
+  Inimigo a = {"Sapo cururu", "Imune ao frio", 40, 40, 7, 5 , 6, 6};
+  return a;
+}
+
+Inimigo jacare(){
+  Inimigo a = {"Jacaré da UFCG", "aparece de vez em nunca na lagoa para assustar estudantes",
+                35, 35, 6, 6, 5, 6};
+  return a;
+}
+
+Inimigo pato(){
+  Inimigo a = {"Pato no Tucupi", "ABC da amanzônia", 34, 34, 5, 6, 6, 6};
+  return a;
+}
+
+Inimigo slime(){
+  Inimigo a = {"Slime de lama", "parece uma poça, cuidado para nao pisar em cima",
+                30, 30, 5, 5, 5, 5};
+  return a;
+}
 
 Inimigo boss(){
     Inimigo a = {"Light Theme IDE","Fiquei ceguin",500,500,40,30,30,30};
@@ -376,13 +404,13 @@ GrupoDeInimigos gp3(){
 GrupoDeInimigos gp4() {
     GrupoDeInimigos g = {conexaoRuim(), oCaraAlho(), cerebro(), inimigoNull(), inimigoNull(), inimigoNull(),
                         3, 200};
-    return g;                       
+    return g;
 }
 
 GrupoDeInimigos gp5() {
     GrupoDeInimigos g = {conexaoRuim(), inimigoNull(), inimigoNull(), inimigoNull(), inimigoNull(), inimigoNull(),
                         1, 50};
-    return g;                    
+    return g;
 }
 
 GrupoDeInimigos pinkyEcerebro() {
@@ -444,8 +472,22 @@ GrupoDeInimigos tributos4fase3() {
     return g;
 }
 
+GrupoDeInimigos grup1Fase1(){
+  GrupoDeInimigos g = {{cururu(), jacare(), cururu(), inimigoNull(), inimigoNull(), inimigoNull()}, 3, 120};
+  return g;
+}
+
+GrupoDeInimigos grup2Fase1(){
+  GrupoDeInimigos g = {{pato(), slime(), slime(), inimigoNull(), inimigoNull(), inimigoNull()}, 3, 100};
+  return g;
+}
+
+GrupoDeInimigos grup3Fase1(){
+  GrupoDeInimigos g = {{pato(), jacare(), cururu(), inimigoNull(), inimigoNull(), inimigoNull()}, 3, 110};
+  return g;
+}
+
 GrupoDeInimigos gBoss(){
     GrupoDeInimigos g = {boss(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),1,20000};
     return g;
 }
-

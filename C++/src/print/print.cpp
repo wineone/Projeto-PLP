@@ -24,7 +24,7 @@ int getChoice(Personagem &p){
 }
 
 int interfaceFases() {
-    printf("[1] -> MINHA FALTA FAZER\n");
+    printf("[1] -> Manguezal\n");
     printf("[2] -> Casa\n");
     printf("[3] -> Jogoses Voraz\n");
     printf("[4] -> Piloto\n");
@@ -282,7 +282,7 @@ void listaPocoes(Bau &bau) {
 			Pocao p = bau.pocoes[i - 1];
 			cout << "[" << i << "] -> nome: " << p.nome << endl;
 			cout << "       descrição: " << p.descricao << endl;
-			cout << "       ("; 
+			cout << "       (";
 			verificaStatus(p.vida);
 			cout << ")\n";
 			cout << "       preço: " << p.preco << endl;
@@ -321,7 +321,7 @@ int escolhaUmaPocao(int range) {
             printf("Esse número não fez sentido. Tente de novo\n");
         }
     } while (opcao < 0 || opcao > range + 1);
-    
+
     return opcao - 1; // retorna como índice pronto para ser usado no array
 }
 
@@ -337,7 +337,7 @@ int removePocao(int range) {
             printf("Esse número não fez sentido. Tente de novo\n");
         }
     } while (opcao < 0 || opcao > range + 1);
-    
+
     return opcao - 1;
 }
 
@@ -352,7 +352,7 @@ int tomaPocao(Personagem &p) {
 
         if (opcao > p.bolsa.quantidade || opcao < 0) {
             printf("Índice inválido. Tente de novo..");
-        } 
+        }
     } while (opcao > p.bolsa.quantidade || opcao < 0);
 
     return opcao - 1;
@@ -383,7 +383,7 @@ int trocarEquipamento() {
         printf("[1] -> Trocar uma Arma\n");
         printf("[2] -> Trocar uma Armadura\n");
         printf("[3] -> Sair\n");
-        
+
         printf("\nQual a sua opção? ");
         scanf("%d", &opcao);
 
