@@ -275,7 +275,7 @@ int listaPocoes(Loja &l){
 }
 
 void listaPocoes(Bau &bau) {
-	if (bau.indPocoes <= 0) {
+	if (bau.indPocoes < 0) {
 		printf("Você não tem poções! Vá tomar água enquanto isso.\n\n");
 	} else {
 		for (int i = 1; i <= bau.indPocoes + 1; i++) {
