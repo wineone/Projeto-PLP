@@ -86,3 +86,9 @@ int excluirItem();
 
 // menu para trocar de equipamento no baú
 int trocarEquipamento();
+
+// creditoss
+void creditos();
+
+// fim do jogo
+void fimDoJogo(Personagem &p);

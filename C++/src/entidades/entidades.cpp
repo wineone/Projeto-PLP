@@ -36,7 +36,6 @@ Arma tridente(){
 
 }
 
-
 Arma armaConfete(){
     Arma a = {"Arma de confete","É carnaval meu povo",200,10,5,2};
     return a;
@@ -112,8 +111,6 @@ Pocao pocaoCafeComGuarana() {
 
 }
 
-
-
 //---------------------------- Armaduras começam aqui -------------------------------------
 Armadura roupas() {
     Armadura a = {"Roupas rasgadas", "Você chegou só com as roupas do corpo",1,1,0,0,0};
@@ -121,7 +118,7 @@ Armadura roupas() {
 }
 
 Armadura mofi(){
-    Armadura a = {"Mofi vestments","Nem precisa de descrição kk",200,5,5,5,5};
+    Armadura a = {"Mofi's vestments","Nem precisa de descrição kk",200,5,5,5,5};
     return a;
 }
 
@@ -183,9 +180,9 @@ Fase manguezal(){
 }
 // Fase 2 BETA
 Fase barquinho() {
-    Fase b = { "Barquinho", "Cuidado pra não enjoar",
-                {pinkyEcerebro(), gp4(), gp5(), grupoNull(), grupoNull(), grupoNull()},
-                3};
+    Fase b = { "Área 51", "Ninguém sabe o que tem aí dentro.",
+                {pinkyEcerebro(), gp4(), gp5(), gp7(), grupoNull(), grupoNull()},
+                4};
 
     return b;
 }
@@ -377,6 +374,11 @@ Inimigo boss(){
     return a;
 }
 
+Inimigo etBilu() {
+    Inimigo a = {"Et Bilu", "busquem conhecimento *-*", 50,50,5,6,6,6};
+    return a;
+}
+
 // Grupos de Inimigos
 
 GrupoDeInimigos grupoNull() {
@@ -489,5 +491,10 @@ GrupoDeInimigos grup3Fase1(){
 
 GrupoDeInimigos gBoss(){
     GrupoDeInimigos g = {boss(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),inimigoNull(),1,20000};
+    return g;
+}
+
+GrupoDeInimigos gp7() {
+    GrupoDeInimigos g = {{pinky(), cerebro(), etBilu(), inimigoNull(),inimigoNull(),inimigoNull()}, 3, 400};
     return g;
 }

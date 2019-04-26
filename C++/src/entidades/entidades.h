@@ -152,6 +152,7 @@ Inimigo slime();
 //bossssssssssss
 Inimigo boss();
 
+Inimigo etBilu();
 
 // GRUPOS DE INIMIGOS
 
@@ -218,3 +219,5 @@ GrupoDeInimigos grup3Fase1();
 
 //grupo do boss
 GrupoDeInimigos gBoss();
+
+GrupoDeInimigos gp7();

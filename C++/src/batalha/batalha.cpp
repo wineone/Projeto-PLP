@@ -130,6 +130,10 @@ void batalhar(Personagem &p, GrupoDeInimigos gp) {
     if(p.vidaAtual > 0) {
         wonBattle(p, gp);
         p.dinheiro += gp.dinheiroLoot;
+
+        if (gp.gangue[0].nome == "Light Theme IDE") {
+            fimDoJogo(p);
+        }
     } else {
         lostBattle(gp);
         p.dinheiro -= (gp.dinheiroLoot * 0.2);

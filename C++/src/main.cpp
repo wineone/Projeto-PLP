@@ -40,9 +40,7 @@ void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau
     loja.armaduras[4] = tempes();
     loja.armaduras[5] = armaDoFim();
     loja.armaduras[6] = roupas();
-    loja.armaduras[7] = roupas();
-    loja.armaduras[8] = roupas();
-    loja.quantArmaduras = 9;
+    loja.quantArmaduras = 7;
 
     loja.pocoes[0] = pocaoRestauraVida();
     loja.pocoes[1] = pocaoBebada();
@@ -104,9 +102,9 @@ int main(){
                 break;
             case(5):
                 system("clear");
-                //creditos();
+                creditos();
+                digite();
                 system("clear");
-                printf("creditos foi chamado\n");
                 break;
             case(6):        // sair do jogo
                 system("clear");

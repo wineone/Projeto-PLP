@@ -28,7 +28,7 @@ int interfaceFases() {
     printf("[2] -> Casa\n");
     printf("[3] -> Jogoses Voraz\n");
     printf("[4] -> Piloto\n");
-    printf("[5] -> Barquinho\n");
+    printf("[5] -> Área 51\n");
     printf("[6] -> BOSS\n");
     printf("[7] -> sair");
     printf("\n\nEscolha sabiamente a fase desejada... ");
@@ -165,7 +165,7 @@ void inicioDoJogo() {
     enter();
     printf("Tudo o que você sabe é o que você leu no bilhete que estava na sua mão quando acordou...");
     enter();
-    printf("Para escapar desse mundo, você deve derrotar o temível *insira o nome aqui*.\n");
+    printf("Para escapar desse mundo, você deve derrotar a temível LIGHT THEME IDE.\n");
     enter();
 
     printf("Você lembra do seu nome?...  ");
@@ -268,7 +268,7 @@ int listaPocoes(Loja &l){
             cout << "       preço: " << a.preco << endl;
 
         }
-        printf("Digite sua opçao");
+        printf("Digite sua opçao: ");
         scanf("%d",&opcao);
     }while(opcao < 1 || opcao > l.quantPocoes);
     return opcao;
@@ -392,4 +392,50 @@ int trocarEquipamento() {
     } while (opcao < 1 || opcao > 3);
 
     return opcao;
+}
+
+void creditos() {
+    system("clear");
+    estrelinhas();
+    estrelinhas();
+    printf("\n\n\n");
+
+    printf("            #       CRIADORES DO JOGO       #           \n\n\n");
+
+    printf("Rafaela de Amorim\n");
+    printf("Matheus Lisboa\n");
+    printf("Igor Pereira\n");
+    printf("Gabriel de Carvalho\n");
+    printf("Bruno Henrique\n");
+    printf("Kamila da Silva\n");
+
+    printf("\n\n\n");
+    estrelinhas();
+    estrelinhas();
+    printf("\n");
+}
+
+void fimDoJogo(Personagem &p) {
+    system("clear");
+    estrelinhas();
+    estrelinhas();
+    printf("\n\n\n");
+    
+    printf("Digite enter para prosseguir.\n");
+
+    cout << "Parabéns " << p.nome << " você derrotou a famigerada LIGHT THEME IDE!!!\n";
+    enter();
+    cout << "...\n";
+    enter();
+    printf("Mas infelizmente nada acontece.\n");
+    enter();
+    printf("...\n");
+    enter();
+    printf("Você pode jogar mais se quiser...\n");
+    enter();
+    printf("é isso.\n");
+
+    estrelinhas();
+    estrelinhas();
+    printf("\n\n");
 }

@@ -77,6 +77,7 @@ void bagBatalha(Personagem &p){
                 digite();
                 printf("                # SUAS POÇÕES #     \n\n\n");
                 listBag(p);
+                digite();
                 break;
             case 2 :
                 printf("Você quer usar uma poção\n");
