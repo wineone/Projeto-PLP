@@ -30,7 +30,8 @@ void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau
     loja.armas[5] = tridente();
     loja.armas[6] = armaConfete();
     loja.armas[7] = escudo();
-    loja.quantArmas = 8;
+    loja.armas[8] = metralha();
+    loja.quantArmas = 9;
 
     loja.armaduras[0] = roupas();
 
@@ -40,7 +41,8 @@ void inicializaEstruturas(string nome, Personagem &personagem, Fase fases[], Bau
     loja.armaduras[4] = tempes();
     loja.armaduras[5] = armaDoFim();
     loja.armaduras[6] = roupas();
-    loja.quantArmaduras = 7;
+    loja.armaduras[7] = divina();
+    loja.quantArmaduras = 8;
 
     loja.pocoes[0] = pocaoRestauraVida();
     loja.pocoes[1] = pocaoBebada();

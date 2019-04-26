@@ -46,12 +46,17 @@ Arma escudo(){
     return a;
 }
 
+Arma metralha() {
+    Arma a = {"Metralhadora de Golfinhos", "Vem dos confins do espaço...", 2000, 200,200,200};
+    return a;
+}
+
 // -------------------------------------- Armas até aqui --------------------------------------
 
 //-------------------------Poções vendidadas na loja ------------------------
 
 Pocao pocaoRestauraVida() {
-    Pocao poc = {"Liquido Filosofal", "a pedra derreteu", 400,100};
+    Pocao poc = {"Liquido Filosofal", "a pedra derreteu", 400,1000};
     return poc;
 }
 
@@ -142,6 +147,10 @@ Armadura armaDoFim(){
     return a;
 }
 
+Armadura divina() {
+    Armadura a = {"Armadura de Virgem", "Quem veste isso se torna o mais próximo possível de Deus.", 2000, 200,200,200,200};
+    return a;
+}
 
 //------------------------------ Armaduras até aqui ---------------------------------
 

@@ -416,7 +416,6 @@ void creditos() {
 }
 
 void fimDoJogo(Personagem &p) {
-    system("clear");
     estrelinhas();
     estrelinhas();
     printf("\n\n\n");
@@ -435,7 +434,6 @@ void fimDoJogo(Personagem &p) {
     enter();
     printf("é isso.\n");
 
-    estrelinhas();
     estrelinhas();
     printf("\n\n");
 }

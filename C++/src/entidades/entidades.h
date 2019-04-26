@@ -19,6 +19,9 @@ Arma adagasSile();
 Arma donut();
 
 Arma tridente();
+
+//apelona
+Arma metralha();
 //-------------------------Poções vendidadas na loja ------------------------
 
 Pocao pocaoRestauraVida();
@@ -68,6 +71,8 @@ Armadura couro();
 Armadura tempes();
 
 Armadura armaDoFim();
+
+Armadura divina();
 
 
 
