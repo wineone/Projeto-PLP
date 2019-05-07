@@ -7,3 +7,5 @@ data Personagem = Personagem
 
      deriving (Show)
 
+
+
