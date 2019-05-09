@@ -1,51 +1,33 @@
 import Estruturas
-import Print
 
 
-loja :: Personagem -> Personagem
-loja (Personagem { nome = a, vidaAtual = c, vidaMax = b }) = Personagem a (c + 10) b
+escolheDes :: Personagem -> Int -> Personagem
+escolheDes (Personagem {nome = a, idade = b}) c | (c == 1) = (Personagem a (b+10)) -- funções do jogo aqui
+                                            | (c == 2) = (Personagem a (b + 25)) -- funções do jogo aqui
+                                            | otherwise = (Personagem a b) -- funções do jogo aqui
 
-returnCardList :: Personagem -> IO Personagem
+loop :: Personagem -> (IO ()) -> IO ()
+loop p  func =  do
+                func
+                print p
+                a <- readLn::IO Int
+                loop (escolheDes p a) func
+                return ()
 
-returnCardList acc = do 
-    line <- getLine
-    if line == "."
-    then return acc
-      -- ^^^^^^ turn the plain value into an IO computation
-    else returnCardList ((convertCard (line !! 0) (line !! 1)):acc)
 
-loop :: IO Personagem -> IO Personagem
-loop per =  do
-        entry <- readLn::IO Int
-        if (entry == 1) then
-            return (loop (returnCardList (loja (read per))))
-        else do
-            return (returnCardList per)
+a ::  IO ()
+a = do
+    putStrLn "primeira função de testes"
+    return ()
 
-main :: IO()
+b ::  IO ()
+b = do
+    putStrLn "segunda função de testes"
+    return ()
+
+
+main:: IO ()
 main =  do
-        let per = Personagem "mathesu" 10 1111
-        loop (returnCardList per)
+        let p = Personagem "matheus" 0
+        loop p b
         return ()
-
-        -- let per = Personagem "mathesu" 10 1111
-        -- let a = if(entry == 1) then
-        --     let per = (loja per)
-        -- if (entry == 2) then
-        --     let a = 2
-        -- else if(entry == 3) then 
-        --     -- putStrLn "bolsa()"
-        --     let b = 10
-        -- else if (entry == 4) then 
-        --     -- putStrLn "bau()"
-        --     let c = 10
-        -- else if (entry == 5) then 
-        --     -- putStrLn "creditos()"
-        --     let q = 10
-        -- else if (entry == 6) then
-        --     -- putStrLn "sair()"
-        --     let e = 23
-        -- else do
-        --     -- putStrLn "opcao inválida\n\n"
-        --     let g = 234
-        -- main
