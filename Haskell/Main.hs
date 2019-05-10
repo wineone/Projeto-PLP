@@ -2,26 +2,29 @@ import Estruturas
 import System.IO.Unsafe
 import Print
 
-fases :: IO Personagem ->  IO Personagem
+fases :: Personagem ->  IO Personagem
 fases per =   do
-              let p = unsafePerformIO per
-              return p            
+              
+              print "olha aqui vai da bom"
+              return (Personagem (nome per) ((idade per) + 20))          
 
-menu :: IO Personagem -> IO Personagem
+menu :: Personagem -> IO Personagem
 menu p =  do
         printa
+        print p
         op <- readLn::IO Int
+        
         if(op == 1) then
-            menu (fases p)
+            menu (unsafePerformIO (fases p))
         else 
             menu p
-
+        return p
 
 main :: IO ()
 main =  do
         nome <- getLine
         let p = Personagem nome 21
-        menu (p :: IO Personagem)
+        menu (p)
         return ()
 
 
