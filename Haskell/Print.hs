@@ -9,11 +9,12 @@ printaVida p =  do
                 putStrLn ""
                 return ()
 
-printaFases :: Personagem -> IO ()
+printaFases :: Personagem -> IO Int
 printaFases per =   do
                     putStrLn "aaaaaa"
                     putStrLn "bbbbbbbbbb"
-                    return () 
+                    a <- readLn :: IO Int
+                    return a
 
 
 printLobby :: Personagem -> IO Int
