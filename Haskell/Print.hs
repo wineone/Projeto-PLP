@@ -11,8 +11,15 @@ printaVida p =  do
 
 printaFases :: Personagem -> IO Int
 printaFases per =   do
-                    putStrLn "aaaaaa"
-                    putStrLn "bbbbbbbbbb"
+                    putStrLn "Com grandes escolhas vem grande responsabilidades.\nEscolha sabiamente.\n"
+                    putStrLn "[1] -> Manguezal"
+                    putStrLn "[2] -> Casa"
+                    putStrLn "[3] -> Jogoses Voraz"
+                    putStrLn "[4] -> Piloto"
+                    putStrLn "[5] -> Área 51"
+                    putStrLn "[6] -> BOSS"
+                    putStrLn "[7] -> sair"
+                    putStrLn "\nEscolha sabiamente a fase desejada... "
                     a <- readLn :: IO Int
                     return a
 
