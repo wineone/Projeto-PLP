@@ -2,76 +2,32 @@ import Estruturas
 import System.IO.Unsafe
 import Print
 
-fases :: Personagem ->  IO Personagem
-fases per =   do
-              
-              print "olha aqui vai da bom"
-              return (Personagem (nome per) ((idade per) + 20))          
 
-menu :: Personagem -> IO Personagem
-menu p =  do
-        printa
-        print p
-        op <- readLn::IO Int
-        
-        if(op == 1) then
-            menu (unsafePerformIO (fases p))
-        else 
-            menu p
-        return p
+
+lobby :: Personagem -> IO Personagem
+lobby per = do
+            let o = unsafePerformIO (printLobby per)
+            if(o == 1) then
+                putStrLn "fases"
+            else if (o == 2) then
+                putStrLn "Loja"
+            else if (o == 3) then
+                putStrLn "Bolsa"
+            else if (o ==  4) then
+                putStrLn "Bau"
+            else if (o == 5) then
+                putStrLn "Creditos"
+            else if (o == 6) then
+                putStrLn "Sair"
+            else
+                putStrLn "opcaoInvalida"
+            lobby per
+
 
 main :: IO ()
 main =  do
-        nome <- getLine
-        let p = Personagem nome 21
-        menu (p)
+        boasVindas 
+        a <- getLine
+        let per = Personagem a 70 100 5 5 5 5 10000
+        lobby per
         return ()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
--- escolheDes :: Personagem -> Int -> Personagem
--- escolheDes (Personagem {nome = a, idade = b}) c | (c == 1) = (Personagem a (b+10)) -- funções do jogo aqui
---                                                 | (c == 2) = (Personagem a (b + 25)) -- funções do jogo aqui
---                                                 | otherwise = (Personagem a b) -- funções do jogo aqui
-
--- loop :: Personagem -> (IO ()) -> IO ()
--- loop p  func =  do
---                 func
---                 print p
---                 a <- readLn::IO Int
---                 loop (escolheDes p a) func
---                 return ()
-
--- a ::  IO ()
--- a = do
---     putStrLn "primeira função de testes"
---     return ()
-
--- b ::  IO ()
--- b = do
---     putStrLn "segunda função de testes"
---     return ()
-
-
--- main:: IO ()
--- main =  do
---         let p = Personagem "matheus" 0
---         loop p b
---         return ()
