@@ -3,22 +3,33 @@ import System.IO.Unsafe
 import Print
 
 
+fases :: Personagem -> IO Personagem
+fases per = do
+            -- printaFases per
+            -- a <- readLn:: IO Int
+            -- if(a == 1) then
+            --     lobby per
+            -- else
+            --     fases per
+            -- print per
+            return per
 
 lobby :: Personagem -> IO Personagem
 lobby per = do
             let o = unsafePerformIO (printLobby per)
             if(o == 1) then
-                putStrLn "fases"
+                fases per
+                -- print per
             else if (o == 2) then
                 putStrLn "Loja"
             else if (o == 3) then
                 putStrLn "Bolsa"
             else if (o ==  4) then
-                putStrLn "Bau"
+                putStrLn "bolsa completa"
             else if (o == 5) then
                 putStrLn "Creditos"
             else if (o == 6) then
-                putStrLn "Sair"
+                putStrLn "sair"
             else
                 putStrLn "opcaoInvalida"
             lobby per
