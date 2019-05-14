@@ -1,8 +1,6 @@
 module Print where
 import Estruturas
 
-
-
 printaVida :: Personagem -> IO()
 printaVida p =  do
                 putStrLn ((personagemNome p ) ++ "               " ++ (show (personagemVidaAtual p)) ++ "/" ++ (show (personagemVidaMax p)))
@@ -26,7 +24,9 @@ printaFases per =   do
 
 printLobby :: Personagem -> IO Int
 printLobby p =  do
+                putStrLn "\n\n"
                 printaVida p
+                putStrLn ""
                 putStrLn "[1] -> Fases"
                 putStrLn "[2] -> Loja"
                 putStrLn "[3] -> Bolsa"
@@ -46,4 +46,15 @@ boasVindas =    do
                 putStrLn "Você não sabe onde está..."
                 putStrLn "Tudo o que você sabe é o que você leu no bilhete que estava na sua mão quando acordou..."
                 putStrLn "Para escapar desse mundo, você deve derrotar a temível LIGHT THEME IDE."
-                putStrLn "Você lembra do seu nome?..."
+                putStr "Você lembra do seu nome?... "
+
+                
+printMapa :: IO Int
+printMapa = do
+    putStrLn "[1] -> Entrar em uma batalha"
+    putStrLn "[2] -> Vasculhar sua bolsa"
+    putStrLn "[3] -> Pausa para o café"
+    putStr "\nQual a sua escolha? "
+
+    a <- readLn :: IO Int
+    return a

@@ -40,3 +40,24 @@ data Personagem = Personagem{
 
     
 } deriving (Show)
+
+data Inimigo = Inimigo {
+    inimigoNome :: String,
+    inimigoDescricao :: String,
+
+    inimigoVidaAtual :: Int,
+    inimigoVidaMax :: Int,
+    
+    inimigoDano :: Int,
+    inimigoForca :: Int,
+    inimigoAgilidade :: Int,
+    inimigoDefesa :: Int
+
+} deriving (Show)
+ 
+data Fase = Fase {
+    faseNome :: String,
+    faseDescricao :: String,
+    faseQtdInimigos :: Int
+    -- lista de inimigos
+} deriving (Show)
