@@ -5,14 +5,14 @@ import Print
 
 fases :: Personagem -> IO Personagem
 fases per = do
-            -- printaFases per
-            -- a <- readLn:: IO Int
-            -- if(a == 1) then
-            --     lobby per
-            -- else
-            --     fases per
-            -- print per
-            return per
+            printaFases per
+            a <- readLn:: IO Int
+            if(a == 1) then
+                lobby per
+            else
+                fases per
+            print per
+            -- return per
 
 lobby :: Personagem -> IO Personagem
 lobby per = do
