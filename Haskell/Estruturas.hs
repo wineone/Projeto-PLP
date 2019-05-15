@@ -22,9 +22,25 @@ data Armadura = Armadura {
     armaduraVida :: Int
 } deriving (Show)
 
+data Pocao = Pocao {
+    pocaoNome :: String,
+    pocaoDescricao :: String,
+
+    pocaoPreco :: Int,
+    pocaoVida :: Int
+} deriving(Show)
+
+
+data Bolsa = Bolsa {
+   bolsaPocao :: [Pocao],
+   bolsaArmadura :: [Armadura],
+   bolsaArma :: [Arma]
+
+} deriving(Show)
+
 data Personagem = Personagem{
     personagemNome :: String,
-    
+
     personagemVidaAtual :: Int,
     personagemVidaMax :: Int,
 
@@ -38,7 +54,7 @@ data Personagem = Personagem{
     -- arma :: Arma, ageitar
     -- armadura :: Armadura ajeitar
 
-    
+
 } deriving (Show)
 
 data Inimigo = Inimigo {
@@ -47,14 +63,14 @@ data Inimigo = Inimigo {
 
     inimigoVidaAtual :: Int,
     inimigoVidaMax :: Int,
-    
+
     inimigoDano :: Int,
     inimigoForca :: Int,
     inimigoAgilidade :: Int,
     inimigoDefesa :: Int
 
 } deriving (Show)
- 
+
 data Fase = Fase {
     faseNome :: String,
     faseDescricao :: String,

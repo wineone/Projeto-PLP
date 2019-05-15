@@ -2,7 +2,7 @@ import Estruturas
 import System.IO.Unsafe
 import Print
 import Fases
-
+import Bau 
 lobby :: Personagem -> IO Personagem
 lobby per = do
             let o = unsafePerformIO (printLobby per)
@@ -25,8 +25,9 @@ lobby per = do
 
 main :: IO ()
 main =  do
-        boasVindas 
+        boasVindas
         a <- getLine
+        let bol = Bolsa [] [] []
         let per = Personagem a 70 100 5 5 5 5 10000
         lobby per
         return ()
