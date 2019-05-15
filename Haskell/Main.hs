@@ -1,8 +1,11 @@
+
 import Estruturas
 import System.IO.Unsafe
 import Print
 import Fases
 import Bau
+
+
 lobby :: Personagem -> IO Personagem
 lobby per = do
             let o = unsafePerformIO (printLobby per)

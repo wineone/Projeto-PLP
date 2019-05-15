@@ -26,6 +26,7 @@ fases per = do
                 putStrLn "Opção invalida"
                 fases per
 
+                
 mapa :: Personagem -> Fase -> IO Personagem
 mapa heroi fase = do
     descrMapa fase
