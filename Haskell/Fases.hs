@@ -3,6 +3,7 @@ module Fases where
 import Estruturas
 import System.IO.Unsafe
 import Print
+import Entidades
 
 
 fases :: Personagem -> IO Personagem

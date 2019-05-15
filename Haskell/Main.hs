@@ -4,6 +4,7 @@ import System.IO.Unsafe
 import Print
 import Fases
 import Bau
+import Entidades
 
 
 lobby :: Personagem -> IO Personagem

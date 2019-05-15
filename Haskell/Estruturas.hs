@@ -81,5 +81,5 @@ data Fase = Fase {
     faseNome :: String,
     faseDescricao :: String,
     faseQtdGrupos :: Int,
-    faseGrupo :: GrupoDeInimigos
+    faseGrupo :: [GrupoDeInimigos]
 } deriving (Show)
