@@ -6,6 +6,6 @@ Implementação da idéia do projeto de plp em Haskell
 
 ```runhaskell Main.hs```
 
-      ou ainda
+ou ainda
       
 ```runghc Main.hs```
