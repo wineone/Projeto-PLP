@@ -49,10 +49,10 @@ data Personagem = Personagem{
     personagemForca :: Int,
     personagemAgilidade :: Int,
 
-    personagemDinheiro :: Int
+    personagemDinheiro :: Int,
 
-    -- arma :: Arma, ageitar
-    -- armadura :: Armadura ajeitar
+    arma :: Arma,    --, ageitar
+    armadura :: Armadura    --ajeitar
 
 
 } deriving (Show)
@@ -71,9 +71,24 @@ data Inimigo = Inimigo {
 
 } deriving (Show)
 
+<<<<<<< HEAD
 data Fase = Fase {
     faseNome :: String,
     faseDescricao :: String,
     faseQtdInimigos :: Int
     -- lista de inimigos
 } deriving (Show)
+=======
+data GrupoDeInimigos = GrupoDeInimigos {
+    grupoQuantidade :: Int,
+    grupoLoot :: Int,
+    grupoInimigos :: [Inimigo]
+} deriving(Show)
+
+data Fase = Fase {
+    faseNome :: String,
+    faseDescricao :: String,
+    faseQtdGrupos :: Int,
+    faseGrupo :: GrupoDeInimigos
+} deriving (Show)
+>>>>>>> 5afb1009434b1b795c250c7afe4c84fb65a8e422

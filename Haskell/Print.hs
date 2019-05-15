@@ -58,3 +58,14 @@ printMapa = do
 
     a <- readLn :: IO Int
     return a
+
+descrMapa :: Fase -> IO()
+descrMapa mapa = do
+    putStrLn "Você está no mapa:\n"
+    putStrLn $ (faseNome mapa) ++ "\n"
+    putStrLn $ "    +-> " ++ (faseDescricao mapa)
+    putStr "\n\n\n\n"
+
+estrelinhas :: IO()
+estrelinhas = do
+    putStr "****************************************"
