@@ -33,10 +33,10 @@ data Personagem = Personagem{
     personagemForca :: Int,
     personagemAgilidade :: Int,
 
-    personagemDinheiro :: Int
+    personagemDinheiro :: Int,
 
-    -- arma :: Arma, ageitar
-    -- armadura :: Armadura ajeitar
+    arma :: Arma,    --, ageitar
+    armadura :: Armadura    --ajeitar
 
     
 } deriving (Show)
@@ -54,10 +54,16 @@ data Inimigo = Inimigo {
     inimigoDefesa :: Int
 
 } deriving (Show)
- 
+
+data GrupoDeInimigos = GrupoDeInimigos {
+    grupoQuantidade :: Int,
+    grupoLoot :: Int,
+    grupoInimigos :: [Inimigo]
+} deriving(Show)
+
 data Fase = Fase {
     faseNome :: String,
     faseDescricao :: String,
-    faseQtdInimigos :: Int
-    -- lista de inimigos
+    faseQtdGrupos :: Int,
+    faseGrupo :: GrupoDeInimigos
 } deriving (Show)
