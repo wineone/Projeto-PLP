@@ -14,4 +14,10 @@ pauloGuedes :: Inimigo
 
 -- ++++++++++++++++++++    GRUPOS    ++++++++++++++++++++
 
+gp1 :: GrupoDeInimigos
+    gp1 = GrupoDeInimigos 2 50 [nemesis, pauloGuedes]
+
 -- ++++++++++++++++++++    FASES    ++++++++++++++++++++ 
+
+teste :: Fase
+    teste = Fase "Teste"
