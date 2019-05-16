@@ -42,16 +42,54 @@ inimigoAtaca enemy = do
         printInimigoAtaca enemy dano
         return dano
 
--- heroiTomaDano :: Personagem -> Int -> IO Personagem
--- heroiTomaDano p danoInimigo = do
---     if (esquiva (personagemAgilidade p)) then do
---         putStrLn $ (personagemNome p) ++ " se esquivou."
---         return p
---     else do
---         let dano_Armadura = ( danoInimigo - (div (danoInimigo * (personagemDefesa p)) 100) )
---         let pRetorno = Personagem (personagemNome p) max(((personagemVidaAtual p) - dano_Armadura), 0) (personagemVidaMax p) (personagemDano p) (personagemDefesa p) (personagemForca p) (personagemAgilidade p) (personagemDinheiro p) (arma p) (armadura p)
+heroiTomaDano :: Personagem -> Int -> IO Personagem
+heroiTomaDano p danoInimigo = do
+    if (esquiva (personagemAgilidade p)) then do
+        putStrLn $ (personagemNome p) ++ " se esquivou."
+        return p
+    else do
+        let dano_Armadura = ( danoInimigo - (div (danoInimigo * (personagemDefesa p)) 100) )
+        let pRetorno = Personagem (personagemNome p) (max((personagemVidaAtual p) - dano_Armadura) 0) (personagemVidaMax p) (personagemDano p) (personagemDefesa p) (personagemForca p) (personagemAgilidade p) (personagemDinheiro p) (personagemArma p) (personagemArmadura p)
         
---         printHeroiTomaDano p dano_Armadura
---         return pRetorno
+        printHeroiTomaDano p dano_Armadura
+        return pRetorno
 
--- inimigoRecebeDano :: Inimigo -> 
+inimigoRecebeDano :: Inimigo -> Int -> IO Inimigo
+inimigoRecebeDano ini danoHeroi = do
+    if(esquiva (inimigoAgilidade ini)) then do
+        putStrLn $ (inimigoNome ini) ++ " se esquivou"
+        return ini
+    else do
+        let danoArmadura = (danoHeroi - (div (danoHeroi * (inimigoDefesa ini)) 100 ))
+        let iniRetorno = Inimigo (inimigoNome ini) (inimigoDescricao ini) (max ((inimigoVidaAtual ini) - danoArmadura) 0) (inimigoVidaMax ini) (inimigoDano ini) (inimigoForca ini) (inimigoAgilidade ini) (inimigoDefesa ini)
+        
+        return iniRetorno
+
+
+verPer :: Personagem -> Bool
+verPer per = ((personagemVidaAtual per) == 0)
+
+verGru :: [Inimigo] -> Bool
+verGru [] = True
+verGru (x:xs) | ((inimigoVidaAtual x) == 0) = verGru xs
+              | otherwise = False   
+
+penalidade :: Personagem -> Int -> Personagem
+penalidade per pena = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (max ((personagemDinheiro per) - pena) 0) (personagemArma per) (personagemArmadura per)
+
+
+ganha :: Personagem -> Int -> Personagem
+ganha per pena = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) ((personagemDinheiro per) + pena) (personagemArma per) (personagemArmadura per)
+
+
+
+batalha :: Personagem -> GrupoDeInimigos -> IO Personagem
+batalha per gru = do
+    if(verPer per) then do
+        lostBattle (div (grupoLoot gru) 10)
+        return (penalidade per (div (grupoLoot gru) 10))
+    else if (verGru (grupoInimigos gru)) then do
+        wonBattle per (grupoLoot gru)
+        return (ganha per (grupoLoot gru))
+    else
+        return per

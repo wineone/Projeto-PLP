@@ -89,3 +89,14 @@ printInimigoAtaca i dano = do
 printHeroiTomaDano :: Personagem -> Int -> IO()
 printHeroiTomaDano p dano = do
     putStrLn ((personagemNome p) ++ " recebeu " ++ (show dano) ++ " de dano.")
+
+
+lostBattle :: Int -> IO ()
+lostBattle per = do
+    putStrLn "Oxe doido tu perdeu feião visse ;(\n"
+    putStrLn ("Você perdeu " ++ (show per) ++ " moedas.\n\n")
+
+wonBattle :: Personagem -> Int -> IO ()
+wonBattle per num = do
+    putStrLn ("Parebéns " ++ (personagemNome per) ++ ".\n")
+    putStrLn ("Você ganhou " ++ (show num) ++ " moedas.\n\n")
