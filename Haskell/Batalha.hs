@@ -92,6 +92,14 @@ bonusBatalha opcao = do
 -- substituiIni :: [Inimigo] -> Inimigo -> Int -> Int -> Int -> [Inimigo]
 -- substituiIni gp ini i var end = do
 --     -- if (i == var) then do
+
+auxRepla :: [Inimigo] -> [Inimigo] -> Inimigo -> Int -> Int -> [Inimigo]
+auxRepla [] nova  _ _ _ = nova
+auxRepla (x:xs) nova ini atu dese | (atu == dese) = auxRepla xs (nova ++ [ini]) ini (atu + 1) dese
+                                  | otherwise = auxRepla xs (nova ++ [x]) ini (atu + 1) dese
+
+replaceIni :: GrupoDeInimigos -> Inimigo -> Int -> GrupoDeInimigos
+replaceIni gru ini index = GrupoDeInimigos (grupoQuantidade gru) (grupoLoot gru) (auxRepla (grupoInimigos gru) [] ini 0 index)
         
 
 
@@ -113,6 +121,7 @@ batalha per gru = do
         let opInim = unsafePerformIO (escolheInimigo gru)
  
         let ini = inimigoRecebeDano  (snd tupla) (unsafePerformIO (heroiAtaca per (fst tupla))) ((grupoInimigos gru) !! opInim)
-        print (unsafePerformIO ini) -- ISSO E EXTREMAMENTE NESSECASRIO (NAO E BAIT)
+        let saida = replaceIni gru (unsafePerformIO ini) opInim
+        print saida 
         return per
         
