@@ -2,7 +2,6 @@ module Batalha where
 
 import System.IO.Unsafe
 import System.Random (randomRIO)
-import Fases
 import Estruturas
 import Print
 
@@ -54,8 +53,8 @@ heroiTomaDano p danoInimigo = do
         printHeroiTomaDano p dano_Armadura
         return pRetorno
 
-inimigoRecebeDano :: Inimigo -> Int -> Int -> IO Inimigo
-inimigoRecebeDano ini bonusEsquiva danoHeroi = do
+inimigoRecebeDano :: Int -> Int -> Inimigo ->  IO Inimigo
+inimigoRecebeDano bonusEsquiva danoHeroi ini   = do
     if(esquiva ((inimigoAgilidade ini) + bonusEsquiva)) then do
         putStrLn $ (inimigoNome ini) ++ " se esquivou"
         return ini
@@ -98,6 +97,7 @@ bonusBatalha opcao = do
 
 batalha :: Personagem -> GrupoDeInimigos -> IO Personagem
 batalha per gru = do
+
     if(verificaMortoP per) then do
         lostBattle (div (grupoLoot gru) 10)
         return (penalidade per (div (grupoLoot gru) 10))
@@ -105,11 +105,14 @@ batalha per gru = do
         wonBattle per (grupoLoot gru)
         return (ganha per (grupoLoot gru))
     else do
-        let op = escolhaAtaque
-        let tupla = bonusBatalha (unsafePerformIO op)    -- tupla (Int, Int) = (BonusDano, BonusEsquiva)
+        
+        let op = (unsafePerformIO escolhaAtaque)
+        fazNada op
+        let tupla = bonusBatalha op  -- tupla (Int, Int) = (BonusDano, BonusEsquiva)
+        
         let opInim = unsafePerformIO (escolheInimigo gru)
-
-        let ini = inimigoRecebeDano ((grupoInimigos gru) !! opInim) (snd tupla) (unsafePerformIO (heroiAtaca per (fst tupla)))
-
+ 
+        let ini = inimigoRecebeDano  (snd tupla) (unsafePerformIO (heroiAtaca per (fst tupla))) ((grupoInimigos gru) !! opInim)
+        print (unsafePerformIO ini) -- ISSO E EXTREMAMENTE NESSECASRIO (NAO E BAIT)
         return per
         

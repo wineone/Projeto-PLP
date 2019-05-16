@@ -1,5 +1,6 @@
 module Print where
 import Estruturas
+import System.IO.Unsafe
 
 printaVida :: Personagem -> IO()
 printaVida p =  do
@@ -82,6 +83,13 @@ printHeroiAtaca :: Personagem -> Int -> IO()
 printHeroiAtaca p dano = do
     putStrLn ((personagemNome p) ++ " deu " ++ (show dano) ++ " de dano.")
 
+fazNada :: Int -> IO ()
+fazNada a = do
+    if(a == -4675859550) then
+        print a
+    else
+        putStr ""
+
 printInimigoAtaca :: Inimigo -> Int -> IO()
 printInimigoAtaca i dano = do
     putStrLn ((inimigoNome i) ++ " deu " ++ (show (inimigoDano i)) ++ " de dano.")
@@ -121,7 +129,7 @@ escolhaAtaque = do
     else if (a == 2) then do
         putStrLn "Você selecionou ataque FRACO.\n"
         return a
-    else
+    else do
         escolhaAtaque
 
 printAtkInimigo :: [Inimigo] -> Int -> String
