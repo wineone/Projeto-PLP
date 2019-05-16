@@ -90,6 +90,12 @@ printHeroiTomaDano :: Personagem -> Int -> IO()
 printHeroiTomaDano p dano = do
     putStrLn ((personagemNome p) ++ " recebeu " ++ (show dano) ++ " de dano.")
 
+printInimigoTomaDano :: Inimigo -> Int -> IO()
+printInimigoTomaDano i dano = do
+    if ((inimigoVidaAtual i - dano) <= 0) then
+        putStrLn "Você tá chutando cachorro morto..."
+    else
+        putStrLn ( (inimigoNome i) ++ " recebeu " ++ (show dano) ++ " de dano." )
 
 lostBattle :: Int -> IO ()
 lostBattle per = do
@@ -100,3 +106,39 @@ wonBattle :: Personagem -> Int -> IO ()
 wonBattle per num = do
     putStrLn ("Parebéns " ++ (personagemNome per) ++ ".\n")
     putStrLn ("Você ganhou " ++ (show num) ++ " moedas.\n\n")
+
+escolhaAtaque :: IO Int
+escolhaAtaque = do
+    putStrLn "Como você quer atacar?\n"
+    putStrLn "[1] -> Ataque Forte"
+    putStrLn "[2] -> Ataque Fraco"
+    putStr "\nDigite sua opção: "
+    a <- readLn :: IO Int
+
+    if (a == 1) then do
+        putStrLn "Você selecionou ataque FORTE.\n"
+        return a
+    else if (a == 2) then do
+        putStrLn "Você selecionou ataque FRACO.\n"
+        return a
+    else
+        escolhaAtaque
+
+printAtkInimigo :: [Inimigo] -> Int -> String
+printAtkInimigo [] i = ""
+printAtkInimigo (gp:gpt) i = ("Atacar: " ++ (inimigoNome gp) ++ 
+                            "[" ++ (show i) ++ "]" ++ 
+                            (show (inimigoVidaAtual gp)) ++ "/" ++ 
+                            (show (inimigoVidaMax gp)) ++ "\n" ++ 
+                            (printAtkInimigo gpt (i+1)) )
+
+escolheInimigo :: GrupoDeInimigos -> IO Int
+escolheInimigo gp = do
+    putStrLn (printAtkInimigo (grupoInimigos gp) 1)
+    putStr "Digite quem você quer atacar: "
+    a <- readLn :: IO Int
+    
+    if ( (a <= (grupoQuantidade gp)) && (a > 0) ) then
+        return (a - 1)
+    else
+        escolheInimigo gp
