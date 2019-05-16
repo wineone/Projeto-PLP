@@ -69,3 +69,23 @@ descrMapa mapa = do
 estrelinhas :: IO()
 estrelinhas = do
     putStr "****************************************"
+
+divisorias :: IO()
+divisorias = do
+    putStr "////////////////////////////////////////////////////////////////////////////////"
+
+atkCritico :: IO()
+atkCritico = do
+    putStrLn "Ataque Crítico!  "
+
+printHeroiAtaca :: Personagem -> Int -> IO()
+printHeroiAtaca p dano = do
+    putStrLn ((personagemNome p) ++ " deu " ++ (show dano) ++ " de dano.")
+
+printInimigoAtaca :: Inimigo -> Int -> IO()
+printInimigoAtaca i dano = do
+    putStrLn ((inimigoNome i) ++ " deu " ++ (show (inimigoDano i)) ++ " de dano.")
+
+printHeroiTomaDano :: Personagem -> Int -> IO()
+printHeroiTomaDano p dano = do
+    putStrLn ((personagemNome p) ++ " recebeu " ++ (show dano) ++ " de dano.")

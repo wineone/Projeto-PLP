@@ -10,7 +10,7 @@ fases :: Personagem -> IO Personagem
 fases per = do
             let a = unsafePerformIO (printaFases per) 
             if(a == 1) then do
-                return per --função que chama o manguezal
+                return (unsafePerformIO (mapa per manguezal))
             else if (a == 2) then do
                 return per -- função que chama a casa
             else if (a == 3) then do
@@ -27,7 +27,7 @@ fases per = do
                 putStrLn "Opção invalida"
                 fases per
 
-                
+
 mapa :: Personagem -> Fase -> IO Personagem
 mapa heroi fase = do
     descrMapa fase

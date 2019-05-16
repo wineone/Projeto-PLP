@@ -5,6 +5,7 @@ import Print
 import Fases
 import Bau
 import Entidades
+import Batalha
 
 
 lobby :: Personagem -> IO Personagem
