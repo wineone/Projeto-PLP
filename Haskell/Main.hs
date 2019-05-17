@@ -1,6 +1,7 @@
 
 import Estruturas
 import System.IO.Unsafe
+import System.IO
 import Print
 import Fases
 import Bau
@@ -32,10 +33,11 @@ lobby per = do
 main :: IO ()
 main =  do
         boasVindas
-        a <- getLine
+        nome <- getLine
+
         let ar = Arma "pei pei" "esse é o barulho dela, que nem pokemons." 10 4 4 4
         let ma = Armadura "bola gato" "em ingles" 10 4 4 4 50
         let bol = Bolsa [] [] []
-        let per = Personagem a 70 100 5 5 5 5 10000 ar ma bol
+        let per = Personagem nome 70 100 5 5 5 5 10000 ar ma bol
         lobby per
         return ()

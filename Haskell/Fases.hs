@@ -39,6 +39,7 @@ mapa heroi fase = do
         let num = (unsafePerformIO $ randomRIO (0,((faseQtdGrupos fase) - 1) :: Int) )
         let grup = ((faseGrupo fase) !! num)
 
+        digite
         entraBatalha (grupoInimigos grup)
 
         let perso = (unsafePerformIO (batalha heroi  grup) )

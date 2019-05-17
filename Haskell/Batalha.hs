@@ -129,7 +129,7 @@ batalha per gru = do
         return (ganha per (grupoLoot gru))
     else do
         
-        let op = (unsafePerformIO escolhaAtaque)
+        let op = (unsafePerformIO ( escolhaAtaque per (grupoInimigos gru) ) )
         fazNada op
         let tupla = bonusBatalha op  -- tupla (Int, Int) = (BonusDano, BonusEsquiva)
         
@@ -139,5 +139,6 @@ batalha per gru = do
         let grupoNovo = replaceIni gru (unsafePerformIO ini) opInim
         
         let atk = ataqueDoGrupo (grupoInimigos grupoNovo) per
-
+        digite
+        
         batalha atk grupoNovo
