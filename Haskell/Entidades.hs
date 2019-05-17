@@ -2,8 +2,6 @@ module Entidades where
 
 import Estruturas
 
-
-
 -- ++++++++++++++++++++++++++ FASE 1 ++++++++++++++++++++++
 
 cururu :: Inimigo
@@ -156,8 +154,8 @@ gru4Fase4 = GrupoDeInimigos 3 800 [pinky,cerebro,conexaoRuim]
 gru5Fase4 :: GrupoDeInimigos
 gru5Fase4 = GrupoDeInimigos 3 900 [conexaoRuim,oCaraAlho,cerebro]
 
-area51 :: Fase
-area51 = Fase "Piloto" "Fase de testes, cuidado senão ela ele te derruba" 5 [gru1Fase4,gru2Fase4,gru3Fase4,gru4Fase4,gru5Fase4]
+piloto :: Fase
+piloto = Fase "Piloto" "Fase de testes, cuidado senão ela ele te derruba" 5 [gru1Fase4,gru2Fase4,gru3Fase4,gru4Fase4,gru5Fase4]
 
 -- +++++++++++++++++++++++++++++++++++++++++ FIM DA FASE 4 +++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -190,8 +188,8 @@ gru3Fase5 = GrupoDeInimigos 1000 1 [cowboy]
 gru4Fase5 :: GrupoDeInimigos
 gru4Fase5 = GrupoDeInimigos 1200 3 [gravida,jovem,etBilu]
 
-area :: Fase
-area = Fase "Área 51" "Ninguém sabe o que tem aí dentro" 4 [gru1Fase5,gru2Fase5,gru3Fase5,gru4Fase5]
+area51 :: Fase
+area51 = Fase "Área 51" "Ninguém sabe o que tem aí dentro" 4 [gru1Fase5,gru2Fase5,gru3Fase5,gru4Fase5]
 
 -- ++++++++++++++++++++++++++++++++++++ FIM DA FASE 5 +++++++++++++++++++++++++++++++++++++++++++
 

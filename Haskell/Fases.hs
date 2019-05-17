@@ -14,17 +14,17 @@ fases per = do
             if(a == 1) then do
                 return (unsafePerformIO (mapa per manguezal)) -- função que chama o manguezal
             else if (a == 2) then do
-                return (unsafePerformIO (mapa per manguezal)) -- função que chama a casa
+                return (unsafePerformIO (mapa per casa)) -- função que chama a casa
             else if (a == 3) then do
-                return (unsafePerformIO (mapa per manguezal)) -- função que chama o jogoses Voraz
+                return (unsafePerformIO (mapa per jogosVoraz)) -- função que chama o jogoses Voraz
             else if (a == 4) then do
-                return (unsafePerformIO (mapa per manguezal)) -- função que cham o piloto
+                return (unsafePerformIO (mapa per piloto)) -- função que cham o piloto
             else if (a == 5) then do
-                return (unsafePerformIO (mapa per manguezal)) -- função que chama a Area 51
+                return (unsafePerformIO (mapa per area51)) -- função que chama a Area 51
             else if (a == 6) then do 
-                return (unsafePerformIO (mapa per manguezal)) -- função qeu chama o BOSS
+                return (unsafePerformIO (mapa per faseBoss)) -- função qeu chama o BOSS
             else if (a == 7) then do
-                return (unsafePerformIO (mapa per manguezal)) -- função que sai
+                return per -- função que sai
             else do
                 putStrLn "Opção invalida"
                 fases per
