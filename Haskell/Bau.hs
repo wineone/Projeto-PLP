@@ -59,7 +59,9 @@ percorrePocao indPocao (x:xs)
            | null xs = pocaoNome x            
            | otherwise = show (indPocao) ++ " - " ++ pocaoNome x ++ pocaoDescricao x ++ "\n" ++ percorrePocao (indPocao + 1) xs
 
--- +++++++++++++++++++++++++++++ Funcões que percorrem arrays +++++++++++++++++++++++++++++
+-- +++++++++++++++++++++++++++++ lê entrada e executa as funções do bau +++++++++++++++++++++++++++++
 
 
-
+bau :: Personagem -> IO Personagem 
+bau p =
+    return p

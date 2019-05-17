@@ -202,6 +202,32 @@ meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
                          "    +-> " ++ (inimigoDescricao i) ++ "\n\n" ++
                          (meetYourEnemies is)
 
+opcoesBau :: IO Int     
+opcoesBau = do
+    putStrLn "[1] -> Troque seu equipamento"
+    putStrLn "[2] -> Excluir iten da Bau"
+    putStrLn "[3] -> Visualizar Equipamento"
+    putStrLn "[4] -> Vasculhar sua Bolsa"
+    putStrLn "[5] -> Voltar ao menu inicial"
+    escolha <- readLn :: IO Int
+    return escolha
+
+opcoesTroca :: IO Int 
+opcoesTroca = do
+    putStrLn "[1] -> Troque sua armadura"
+    putStrLn "[2] -> Troque sua arma"
+    putStrLn "[3] -> voltar"
+    escolha <- readLn :: IO Int
+    return escolha
+
+opcoesRemove :: IO Int 
+opcoesRemove = do
+    putStrLn "[1] -> remova sua armadura"
+    putStrLn "[2] -> remova sua arma"
+    putStrLn "[3] -> voltar"
+    escolha <- readLn :: IO Int
+    return escolha
+                         
 -- enter :: IO()
 -- enter = do
 --     hSetBuffering stdin NoBuffering

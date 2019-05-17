@@ -50,7 +50,7 @@ heroiTomaDano p danoInimigo = do
         return p
     else do
         let dano_Armadura = ( danoInimigo - (div (danoInimigo * (personagemDefesa p)) 100) )
-        let pRetorno = Personagem (personagemNome p) (max((personagemVidaAtual p) - dano_Armadura) 0) (personagemVidaMax p) (personagemDano p) (personagemDefesa p) (personagemForca p) (personagemAgilidade p) (personagemDinheiro p) (personagemArma p) (personagemArmadura p)
+        let pRetorno = Personagem (personagemNome p) (max((personagemVidaAtual p) - dano_Armadura) 0) (personagemVidaMax p) (personagemDano p) (personagemDefesa p) (personagemForca p) (personagemAgilidade p) (personagemDinheiro p) (personagemArma p) (personagemArmadura p) (bolsa p)
         
         printHeroiTomaDano p dano_Armadura
         return pRetorno
@@ -86,11 +86,11 @@ verificaMortoI (x:xs) | ((inimigoVidaAtual x) == 0) = verificaMortoI xs
               | otherwise = False   
 
 penalidade :: Personagem -> Int -> Personagem
-penalidade per pena = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (max ((personagemDinheiro per) - pena) 0) (personagemArma per) (personagemArmadura per)
+penalidade per pena = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (max ((personagemDinheiro per) - pena) 0) (personagemArma per) (personagemArmadura per) (bolsa per)
 
 
 ganha :: Personagem -> Int -> Personagem
-ganha per pena = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) ((personagemDinheiro per) + pena) (personagemArma per) (personagemArmadura per)
+ganha per pena = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) ((personagemDinheiro per) + pena) (personagemArma per) (personagemArmadura per) (bolsa per)
 
 
 bonusBatalha :: Int -> (Int, Int)

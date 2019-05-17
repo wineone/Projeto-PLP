@@ -52,7 +52,9 @@ data Personagem = Personagem{
     personagemDinheiro :: Int,
 
     personagemArma :: Arma,    --, ageitar
-    personagemArmadura :: Armadura    --ajeitar
+    personagemArmadura :: Armadura,    --ajeitar
+    
+    bolsa :: Bolsa
 
 } deriving (Show)
 
