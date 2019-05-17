@@ -4,7 +4,7 @@ import Estruturas
 import System.IO.Unsafe
 import Print
 import Entidades
--- import System.Random (randomRIO)
+import System.Random (randomRIO)
 import Batalha
 
 
@@ -36,8 +36,8 @@ mapa heroi fase = do
     let op = unsafePerformIO printMapa
 
     if (op == 1) then do
-        -- let num = (unsafePerformIO $ randomRIO (0,((faseQtdGrupos fase) - 1) :: Int) )
-        let num = 0
+        let num = (unsafePerformIO $ randomRIO (0,((faseQtdGrupos fase) - 1) :: Int) )
+        print num
         let grup = ((faseGrupo fase) !! num)
         let perso = (unsafePerformIO (batalha heroi  grup) )
         printaVida perso

@@ -1,23 +1,23 @@
 module Batalha where
 
 import System.IO.Unsafe
--- import System.Random (randomRIO)
+import System.Random (randomRIO)
 import Estruturas
 import Print
 
 esquiva :: Int -> Bool
 esquiva agilidade = do
-    -- let rValue = unsafePerformIO (randomRIO (1,100 :: Int))
-    -- let rValue2 = ((unsafePerformIO (randomRIO (1,10 :: Int))) + (div (agilidade * 4) 100) )
-    -- (rValue < rValue2)
-    False
+    let rValue = unsafePerformIO (randomRIO (1,100 :: Int))
+    let rValue2 = ((unsafePerformIO (randomRIO (1,10 :: Int))) + (div (agilidade * 4) 100) )
+    (rValue < rValue2)
+
 
 critico :: Int -> Bool
 critico agilidade = do
-    -- let rValue = unsafePerformIO (randomRIO (1,100 :: Int))
-    -- let rValue2 = ((unsafePerformIO (randomRIO (1,10 :: Int))) + (div (agilidade * 4) 100) )
-    -- (rValue < rValue2)
-    False
+    let rValue = unsafePerformIO (randomRIO (1,100 :: Int))
+    let rValue2 = ((unsafePerformIO (randomRIO (1,10 :: Int))) + (div (agilidade * 4) 100) )
+    (rValue < rValue2)
+    
 
 heroiAtaca :: Personagem -> Int -> IO Int
 heroiAtaca heroi bonusDano = do
