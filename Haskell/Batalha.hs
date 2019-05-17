@@ -17,7 +17,7 @@ critico agilidade = do
     let rValue = unsafePerformIO (randomRIO (1,100 :: Int))
     let rValue2 = ((unsafePerformIO (randomRIO (1,10 :: Int))) + (div (agilidade * 4) 100) )
     (rValue < rValue2)
-    
+
 
 heroiAtaca :: Personagem -> Int -> IO Int
 heroiAtaca heroi bonusDano = do
@@ -57,12 +57,21 @@ heroiTomaDano p danoInimigo = do
 
 inimigoRecebeDano :: Int -> Int -> Inimigo ->  IO Inimigo
 inimigoRecebeDano bonusEsquiva danoHeroi ini   = do
+
+    -- divisorias == função que imprime barras de divisória
+    
     if(esquiva ((inimigoAgilidade ini) + bonusEsquiva)) then do
+        putStrLn ""
+        divisorias
+
         putStrLn $ (inimigoNome ini) ++ " se esquivou"
         return ini
     else do
         let danoArmadura = (danoHeroi - (div (danoHeroi * (inimigoDefesa ini)) 100 ))
         let iniRetorno = Inimigo (inimigoNome ini) (inimigoDescricao ini) (max ((inimigoVidaAtual ini) - danoArmadura) 0) (inimigoVidaMax ini) (inimigoDano ini) (inimigoForca ini) (inimigoAgilidade ini) (inimigoDefesa ini)
+
+        putStrLn ""
+        divisorias
 
         printInimigoTomaDano ini danoArmadura
         return iniRetorno
@@ -109,7 +118,6 @@ ataqueDoGrupo (i:is) per = do
     else
         ataqueDoGrupo is per
 
-
 batalha :: Personagem -> GrupoDeInimigos -> IO Personagem
 batalha per gru = do
 
@@ -126,9 +134,10 @@ batalha per gru = do
         let tupla = bonusBatalha op  -- tupla (Int, Int) = (BonusDano, BonusEsquiva)
         
         let opInim = unsafePerformIO (escolheInimigo gru)
- 
+        
         let ini = inimigoRecebeDano  (snd tupla) (unsafePerformIO (heroiAtaca per (fst tupla))) ((grupoInimigos gru) !! opInim)
         let grupoNovo = replaceIni gru (unsafePerformIO ini) opInim
         
         let atk = ataqueDoGrupo (grupoInimigos grupoNovo) per
+
         batalha atk grupoNovo

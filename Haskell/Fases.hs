@@ -37,10 +37,12 @@ mapa heroi fase = do
 
     if (op == 1) then do
         let num = (unsafePerformIO $ randomRIO (0,((faseQtdGrupos fase) - 1) :: Int) )
-        print num
         let grup = ((faseGrupo fase) !! num)
+
+        entraBatalha (grupoInimigos grup)
+
         let perso = (unsafePerformIO (batalha heroi  grup) )
-        printaVida perso
+        printaVida perso 
         mapa perso fase
     else if (op == 2) then do
         putStrLn "função bolsa"

@@ -1,6 +1,8 @@
 module Print where
 import Estruturas
 import System.IO.Unsafe
+import System.Process
+import System.IO
 
 printaVida :: Personagem -> IO()
 printaVida p =  do
@@ -18,7 +20,7 @@ printaFases per =   do
                     putStrLn "[5] -> Área 51"
                     putStrLn "[6] -> BOSS"
                     putStrLn "[7] -> sair"
-                    putStrLn "\nEscolha sabiamente a fase desejada... "
+                    putStr   "\nEscolha sabiamente a fase desejada... "
                     a <- readLn :: IO Int
                     return a
 
@@ -42,16 +44,26 @@ printLobby p =  do
 
 boasVindas :: IO()
 boasVindas =    do
-                putStrLn "Você acorda em um local que você nunca viu antes,"
-                putStrLn "somente com as roupas do seu corpo."
-                putStrLn "Você não sabe onde está..."
-                putStrLn "Tudo o que você sabe é o que você leu no bilhete que estava na sua mão quando acordou..."
-                putStrLn "Para escapar desse mundo, você deve derrotar a temível LIGHT THEME IDE."
-                putStr "Você lembra do seu nome?... "
+                system "clear"
+                putStrLn "Tecle enter para prosseguir."
+                -- enter
+    
+                putStr "Você acorda em um local que você nunca viu antes,"
+                -- enter
+                putStr "somente com as roupas do seu corpo."
+                -- enter
+                putStr "Você não sabe onde está..."
+                -- enter
+                putStr "Tudo o que você sabe é o que você leu no bilhete que estava na sua mão quando acordou..."
+                -- enter
+                putStr "Para escapar desse mundo, você deve derrotar a temível LIGHT THEME IDE."
+                -- enter
+                putStr "\nVocê lembra do seu nome?... "
 
                 
 printMapa :: IO Int
 printMapa = do
+    putStr "\n"
     putStrLn "[1] -> Entrar em uma batalha"
     putStrLn "[2] -> Vasculhar sua bolsa"
     putStrLn "[3] -> Pausa para o café"
@@ -62,18 +74,19 @@ printMapa = do
 
 descrMapa :: Fase -> IO()
 descrMapa mapa = do
-    putStrLn "Você está no mapa:\n"
+    putStrLn "\n\nVocê está no mapa:\n"
     putStrLn $ (faseNome mapa) ++ "\n"
     putStrLn $ "    +-> " ++ (faseDescricao mapa)
     putStr "\n\n\n\n"
 
 estrelinhas :: IO()
 estrelinhas = do
-    putStr "****************************************"
+    putStr "****************************************\n"
 
 divisorias :: IO()
 divisorias = do
-    putStr "////////////////////////////////////////////////////////////////////////////////"
+    putStr "////////////////////////////////////////////////////////////////////////////////\n"
+
 
 atkCritico :: IO()
 atkCritico = do
@@ -81,7 +94,7 @@ atkCritico = do
 
 printHeroiAtaca :: Personagem -> Int -> IO()
 printHeroiAtaca p dano = do
-    putStrLn ((personagemNome p) ++ " deu " ++ (show dano) ++ " de dano.")
+    putStrLn $ "\n" ++ (personagemNome p) ++ " deu " ++ (show dano) ++ " de dano."
 
 fazNada :: Int -> IO ()
 fazNada a = do
@@ -107,17 +120,25 @@ printInimigoTomaDano i dano = do
 
 lostBattle :: Int -> IO ()
 lostBattle per = do
+    putStr "\n\n"
+    estrelinhas
     putStrLn "Oxe doido tu perdeu feião visse ;(\n"
-    putStrLn ("Você perdeu " ++ (show per) ++ " moedas.\n\n")
+    putStrLn ("Você perdeu " ++ (show per) ++ " moedas.")
+    estrelinhas
+    putStrLn "\n"
 
 wonBattle :: Personagem -> Int -> IO ()
 wonBattle per num = do
-    putStrLn ("Parebéns " ++ (personagemNome per) ++ ".\n")
-    putStrLn ("Você ganhou " ++ (show num) ++ " moedas.\n\n")
+    putStr "\n\n"
+    estrelinhas
+    putStrLn ("Parabéns " ++ (personagemNome per) ++ ".\n")
+    putStrLn ("Você ganhou " ++ (show num) ++ " moedas.")
+    estrelinhas
+    putStrLn "\n"
 
 escolhaAtaque :: IO Int
 escolhaAtaque = do
-    putStrLn "Como você quer atacar?\n"
+    putStrLn "\nComo você quer atacar?\n"
     putStrLn "[1] -> Ataque Forte"
     putStrLn "[2] -> Ataque Fraco"
     putStr "\nDigite sua opção: "
@@ -134,8 +155,8 @@ escolhaAtaque = do
 
 printAtkInimigo :: [Inimigo] -> Int -> String
 printAtkInimigo [] i = ""
-printAtkInimigo (gp:gpt) i = ("Atacar: " ++ (inimigoNome gp) ++ 
-                            "[" ++ (show i) ++ "]" ++ 
+printAtkInimigo (gp:gpt) i = ("Atacar: [" ++ (show i) ++ "] "
+                             ++ (inimigoNome gp) ++ " " ++
                             (show (inimigoVidaAtual gp)) ++ "/" ++ 
                             (show (inimigoVidaMax gp)) ++ "\n" ++ 
                             (printAtkInimigo gpt (i+1)) )
@@ -143,10 +164,31 @@ printAtkInimigo (gp:gpt) i = ("Atacar: " ++ (inimigoNome gp) ++
 escolheInimigo :: GrupoDeInimigos -> IO Int
 escolheInimigo gp = do
     putStrLn (printAtkInimigo (grupoInimigos gp) 1)
-    putStr "Digite quem você quer atacar: "
+    putStr "\nDigite quem você quer atacar: "
     a <- readLn :: IO Int
     
     if ( (a <= (grupoQuantidade gp)) && (a > 0) ) then
         return (a - 1)
     else
         escolheInimigo gp
+
+entraBatalha :: [Inimigo] -> IO()
+entraBatalha grupo = do
+    putStrLn "\nVocê acaba de entrar em uma batalha!!\n"
+    --digite()
+    putStrLn "Conheça seus inimigos:\n"
+    putStrLn $ (meetYourEnemies grupo) ++ "\n"
+
+meetYourEnemies :: [Inimigo] -> String
+meetYourEnemies [] = ""
+meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++ 
+                         (show (inimigoVidaAtual i) ) ++ "/" ++ 
+                         (show (inimigoVidaMax i) ) ++ "\n" ++
+                         "    +-> " ++ (inimigoDescricao i) ++ "\n\n" ++
+                         (meetYourEnemies is)
+
+-- enter :: IO()
+-- enter = do
+--     hSetBuffering stdin NoBuffering
+--     c <- getChar
+--     return c
