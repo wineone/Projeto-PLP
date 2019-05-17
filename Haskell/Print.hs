@@ -38,6 +38,21 @@ printLobby p =  do
                 a <- readLn :: IO Int
                 return a
                 
+printLoja :: Personagem -> IO Int
+printLoja p =  do
+                    putStrLn "#       LOJA      #\n\n"
+                    putStrLn "[1] -> Comprar uma arma\n"
+                    putStrLn "[2] -> Comprar uma armadura\n"
+                    putStrLn "[3] -> Comprar uma poção\n"
+                    putStrLn "[4] -> sair\n\n"
+                    putStrLn "Digite sua opção: "
+                    a <- readLn :: IO Int
+                    return a
+
+
+
+
+
 
 
 boasVindas :: IO()
