@@ -52,7 +52,9 @@ data Personagem = Personagem{
     personagemDinheiro :: Int,
 
     personagemArma :: Arma,    --, ageitar
-    personagemArmadura :: Armadura    --ajeitar
+    personagemArmadura :: Armadura,    --ajeitar
+    
+    bolsa :: Bolsa
 
 } deriving (Show)
 
@@ -82,3 +84,15 @@ data Fase = Fase {
     faseQtdGrupos :: Int,
     faseGrupo :: [GrupoDeInimigos]
 } deriving (Show)
+
+data Loja = Loja {
+
+    quantArmas :: Int,
+    armas :: [Arma],
+    quantArmaduras :: Int,
+    armaduras :: Armadura,
+    quantPocoes :: Int,
+    pocoes :: Pocao
+
+} deriving (Show)
+
