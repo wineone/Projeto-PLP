@@ -11,11 +11,13 @@ esquiva agilidade = do
     let rValue2 = ((unsafePerformIO (randomRIO (1,10 :: Int))) + (div (agilidade * 4) 100) )
     (rValue < rValue2)
 
+
 critico :: Int -> Bool
 critico agilidade = do
     let rValue = unsafePerformIO (randomRIO (1,100 :: Int))
     let rValue2 = ((unsafePerformIO (randomRIO (1,10 :: Int))) + (div (agilidade * 4) 100) )
     (rValue < rValue2)
+    
 
 heroiAtaca :: Personagem -> Int -> IO Int
 heroiAtaca heroi bonusDano = do
@@ -89,10 +91,6 @@ bonusBatalha opcao = do
     else
         (0, 0)
 
--- substituiIni :: [Inimigo] -> Inimigo -> Int -> Int -> Int -> [Inimigo]
--- substituiIni gp ini i var end = do
---     -- if (i == var) then do
-
 auxRepla :: [Inimigo] -> [Inimigo] -> Inimigo -> Int -> Int -> [Inimigo]
 auxRepla [] nova  _ _ _ = nova
 auxRepla (x:xs) nova ini atu dese | (atu == dese) = auxRepla xs (nova ++ [ini]) ini (atu + 1) dese
@@ -100,7 +98,16 @@ auxRepla (x:xs) nova ini atu dese | (atu == dese) = auxRepla xs (nova ++ [ini]) 
 
 replaceIni :: GrupoDeInimigos -> Inimigo -> Int -> GrupoDeInimigos
 replaceIni gru ini index = GrupoDeInimigos (grupoQuantidade gru) (grupoLoot gru) (auxRepla (grupoInimigos gru) [] ini 0 index)
-        
+
+
+ataqueDoGrupo :: [Inimigo] -> Personagem -> Personagem
+ataqueDoGrupo [] per = per
+ataqueDoGrupo (i:is) per = do
+    if ( (inimigoVidaAtual i) > 0 ) then do
+        let p = heroiTomaDano per (inimigoDano i)
+        ataqueDoGrupo is (unsafePerformIO p)
+    else
+        ataqueDoGrupo is per
 
 
 batalha :: Personagem -> GrupoDeInimigos -> IO Personagem
@@ -121,7 +128,7 @@ batalha per gru = do
         let opInim = unsafePerformIO (escolheInimigo gru)
  
         let ini = inimigoRecebeDano  (snd tupla) (unsafePerformIO (heroiAtaca per (fst tupla))) ((grupoInimigos gru) !! opInim)
-        let saida = replaceIni gru (unsafePerformIO ini) opInim
-        print saida 
-        return per
+        let grupoNovo = replaceIni gru (unsafePerformIO ini) opInim
         
+        let atk = ataqueDoGrupo (grupoInimigos grupoNovo) per
+        batalha atk grupoNovo
