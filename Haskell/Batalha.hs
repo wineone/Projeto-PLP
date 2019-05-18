@@ -67,11 +67,14 @@ inimigoRecebeDano bonusEsquiva danoHeroi ini   = do
         putStrLn $ (inimigoNome ini) ++ " se esquivou"
         return ini
     else do
-        let danoArmadura = (danoHeroi - (div (danoHeroi * (inimigoDefesa ini)) 100 ))
-        let iniRetorno = Inimigo (inimigoNome ini) (inimigoDescricao ini) (max ((inimigoVidaAtual ini) - danoArmadura) 0) (inimigoVidaMax ini) (inimigoDano ini) (inimigoForca ini) (inimigoAgilidade ini) (inimigoDefesa ini)
-
         putStrLn ""
         divisorias
+        
+        let danoArmadura = (danoHeroi - (div (danoHeroi * (inimigoDefesa ini)) 100 ))
+        fazNada danoArmadura
+        let iniRetorno = Inimigo (inimigoNome ini) (inimigoDescricao ini) (max ((inimigoVidaAtual ini) - danoArmadura) 0) (inimigoVidaMax ini) (inimigoDano ini) (inimigoForca ini) (inimigoAgilidade ini) (inimigoDefesa ini)
+
+        
 
         printInimigoTomaDano ini danoArmadura
         return iniRetorno
@@ -123,9 +126,11 @@ batalha per gru = do
 
     if(verificaMortoP per) then do
         lostBattle (div (grupoLoot gru) 10)
+        digite
         return (penalidade per (div (grupoLoot gru) 10))
     else if (verificaMortoI (grupoInimigos gru)) then do
         wonBattle per (grupoLoot gru)
+        digite
         return (ganha per (grupoLoot gru))
     else do
         

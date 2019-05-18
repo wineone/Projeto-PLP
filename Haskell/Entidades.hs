@@ -5,16 +5,16 @@ import Estruturas
 -- ++++++++++++++++++++++++++ FASE 1 ++++++++++++++++++++++
 
 cururu :: Inimigo
-cururu = Inimigo "Sapo Cururu" "Imune ao frio" 40 40 7 5 6 6 
+cururu = Inimigo "Sapo Cururu" "Imune ao frio" 10 10 5 2 3 4 
 
 jacare :: Inimigo
-jacare = Inimigo "Jacaré da UFCG" "Aparece de vez em nunca na lagoa para assustar os estudantes" 35 35 6 6 5 6 
+jacare = Inimigo "Jacaré da UFCG" "Aparece de vez em nunca na lagoa para assustar os estudantes" 7 7 3 3 4 2 
 
 slime :: Inimigo
-slime = Inimigo "Slime de Lama" "Parece uma poça, cuidado para não pisar em cima" 30 30 5 5 5 5
+slime = Inimigo "Slime de Lama" "Parece uma poça, cuidado para não pisar em cima" 4 4 3 3 4 3
 
 pato :: Inimigo
-pato = Inimigo "Pato no Tucupi" "ABC da Amazonia" 34 34 5 6 6 6
+pato = Inimigo "Pato no Tucupi" "ABC da Amazonia" 10 10 3 4 5 4
 
 
 gru1Fase1 :: GrupoDeInimigos

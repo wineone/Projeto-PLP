@@ -128,7 +128,7 @@ printHeroiTomaDano p dano = do
 
 printInimigoTomaDano :: Inimigo -> Int -> IO()
 printInimigoTomaDano i dano = do
-    if ((inimigoVidaAtual i - dano) <= 0) then
+    if ((inimigoVidaAtual i) <= 0) then
         putStrLn "Você tá chutando cachorro morto..."
     else
         putStrLn ( (inimigoNome i) ++ " recebeu " ++ (show dano) ++ " de dano." )
