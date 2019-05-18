@@ -53,6 +53,7 @@ printLoja p =  do
                     return a
 
 
+
 boasVindas :: IO()
 boasVindas =    do
                 system "clear"
@@ -91,6 +92,7 @@ descrMapa mapa = do
     putStrLn $ (faseNome mapa) ++ "\n"
     putStrLn $ "    +-> " ++ (faseDescricao mapa)
     putStr "\n\n\n\n"
+
 
 estrelinhas :: IO()
 estrelinhas = do
@@ -221,6 +223,22 @@ meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
                          (show (inimigoVidaMax i) ) ++ "\n" ++
                          "    +-> " ++ (inimigoDescricao i) ++ "\n\n" ++
                          (meetYourEnemies is)
+
+listaArma :: [Arma] -> IO()
+listaArma ar = do
+    putStr (conhecaArmas ar)
+
+conhecaArmas :: [Arma] -> String
+conhecaArmas [] = ""
+conheceArmas (x:xs) = (armaNome x) ++ " " ++ 
+                      (armaDescricao x) ++ "\n" ++ 
+                      "Força: " ++ show ((armaPreco x)) ++ "\n" ++
+                      "Dano: " ++ show((armaDano x)) ++
+                      "Força: " ++ show((armaForca x)) ++
+                      "Agilidade: " ++show( (armaAgilidade x)) ++
+                      (conheceArmas xs)
+
+
 
 opcoesBau :: IO Int     
 opcoesBau = do

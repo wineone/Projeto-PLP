@@ -292,9 +292,46 @@ pocaoRedbull = Pocao "RedBull" "te dará asas" 44 10
 pocaoRedBullDupla :: Pocao  
 pocaoRedBullDupla = Pocao "RedBull com Café" "te dará 4 asas" 88 20
     
-
-
 pocaoCafeComGuarana :: Pocao  
 pocaoCafeComGuarana = Pocao "Cafe com Guarana" "Te despertará de um jeito..." 100 (-35)
  
 -- +++++++++++++++++  FIM POCAO   ++++++++++++++++++
+
+
+-- +++++++++++++++++  ARMADURAS   ++++++++++++++++++
+roupas :: Armadura
+roupas = Armadura "Roupas rasgadas" "Você chegou só com as roupas do corpo" 1 1 0 0 0
+
+
+mofi :: Armadura
+mofi = Armadura "Mofi's vestments" "Nem precisa de descrição kk" 200 5 5 5 5
+
+
+barril :: Armadura
+barril = Armadura "Um barril de madeira""bixo, tu não tem dinheiro, vai ter que ser essa mesmo" 350 7 8 3 10
+
+couro :: Armadura
+couro = Armadura "Armadura de couro" "por que tem sangue pingando?" 400 8 10 3 10
+
+
+tempes :: Armadura
+tempes = Armadura "Armadura da Tempestade" "Tava chovendo nesse dia" 500 12 10 5 15
+
+armaDoFim :: Armadura
+armaDoFim = Armadura "Armadura do fim" "Eu só queria terminar isso logo" 700 15 10 10 20
+    
+
+divina :: Armadura
+divina = Armadura "Armadura de Virgem" "Quem veste isso se torna o mais próximo possível de Deus." 2000 200 200 200 200
+
+-- +++++++++++++++++  FIM ARMADURAS   ++++++++++++++++++
+
+-- +++++++++++++++++ LOJA ++++++++++++++++++
+
+lojao :: Lojas
+lojao = Lojas 9 [maos,lancaTris,armaADura,adagasSile,donut,tridente,armaConfete,escudo,metralha] 7 [roupas,mofi,barril,couro,tempes,armaDoFim,divina] 12 [pocaoRestauraVida,pocaoBebada,pocaoNinja,pocaoAjudaAosDogs,pocaoStronda,pocaoTransformice,pocaoTranquila,pocaoApelona,pocaoCapitao,pocaoRedbull,pocaoRedBullDupla,pocaoCafeComGuarana]
+
+--7 armaduras
+--12 pocoes
+--9 armas
+-- +++++++++++++++++ FIM LOJA ++++++++++++++++++

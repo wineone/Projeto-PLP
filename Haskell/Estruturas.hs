@@ -85,14 +85,14 @@ data Fase = Fase {
     faseGrupo :: [GrupoDeInimigos]
 } deriving (Show)
 
-data Loja = Loja {
+data Lojas = Lojas {
 
     quantArmas :: Int,
     armas :: [Arma],
     quantArmaduras :: Int,
-    armaduras :: Armadura,
+    armaduras :: [Armadura],
     quantPocoes :: Int,
-    pocoes :: Pocao
+    pocoes :: [Pocao]
 
 } deriving (Show)
 
