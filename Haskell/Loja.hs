@@ -9,28 +9,34 @@ import Entidades
 import Bau
 
 
-floja :: Personagem -> IO Personagem
-floja per = do
+floja :: Personagem -> Lojas-> IO Personagem
+floja per loj = do
     let a = unsafePerformIO (printLoja per) 
     if(a == 1) then do -- função que chama arma
-        let todasArmas = [maos,lancaTris,armaADura,adagasSile,donut,tridente,armaConfete,escudo,metralha]
-        listaArma(todasArmas)
+                
+        listaArma((armas loj))
+
         --compraArma(per donut)
         --addArma(maos bols)
-        floja per
+        lerOpcoes
+        floja per loj
     else if (a == 2) then do
-        let todasArmaduras = [roupas,mofi,barril,couro,tempes,armaDoFim,divina]
-        listaArmadura(todasArmaduras)-- função que chama armadura
-        floja per
+
+        listaArmadura((armaduras loj))-- função que chama armadura
+
+        lerOpcoes
+        floja per loj
     else if (a == 3) then do
-        let todasPocoes = [pocaoRestauraVida,pocaoBebada,pocaoNinja,pocaoAjudaAosDogs,pocaoStronda,pocaoTransformice,pocaoTranquila,pocaoApelona,pocaoCapitao,pocaoRedbull,pocaoRedBullDupla,pocaoCafeComGuarana]
-        listaPocao(todasPocoes)-- função que chama pocao
-        floja per
+        
+        listaPocao(pocoes loj)-- função que chama pocao
+
+        lerOpcoes
+        floja per loj
     else if (a == 4) then do
         return per -- função que sai
     else do
         putStrLn "Opção invalida"
-        floja per
+        floja per loj
         return per
 
 -- compraArma :: Personagem -> Arma -> IO Personagem

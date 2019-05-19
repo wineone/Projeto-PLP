@@ -328,8 +328,8 @@ divina = Armadura "Armadura de Virgem" "Quem veste isso se torna o mais próximo
 
 -- +++++++++++++++++ LOJA ++++++++++++++++++
 
---lojao :: Lojas
---lojao = Lojas 9 [maos,lancaTris,armaADura,adagasSile,donut,tridente,armaConfete,escudo,metralha] 7 [roupas,mofi,barril,couro,tempes,armaDoFim,divina] 12 [pocaoRestauraVida,pocaoBebada,pocaoNinja,pocaoAjudaAosDogs,pocaoStronda,pocaoTransformice,pocaoTranquila,pocaoApelona,pocaoCapitao,pocaoRedbull,pocaoRedBullDupla,pocaoCafeComGuarana]
+lojao :: Lojas
+lojao = Lojas 9 [maos,lancaTris,armaADura,adagasSile,donut,tridente,armaConfete,escudo,metralha] 7 [roupas,mofi,barril,couro,tempes,armaDoFim,divina] 12 [pocaoRestauraVida,pocaoBebada,pocaoNinja,pocaoAjudaAosDogs,pocaoStronda,pocaoTransformice,pocaoTranquila,pocaoApelona,pocaoCapitao,pocaoRedbull,pocaoRedBullDupla,pocaoCafeComGuarana]
 
 --7 armaduras
 --12 pocoes

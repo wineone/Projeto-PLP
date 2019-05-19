@@ -269,6 +269,7 @@ conhecaPocao (x:xs) = (pocaoNome x) ++ "\n" ++
 
 lerOpcoes :: IO Int     
 lerOpcoes = do
+    putStrLn "Digite sua escolha"
     escolhaopcao <- readLn :: IO Int
     return escolhaopcao
 
