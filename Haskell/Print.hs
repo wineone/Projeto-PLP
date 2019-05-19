@@ -224,20 +224,53 @@ meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
                          "    +-> " ++ (inimigoDescricao i) ++ "\n\n" ++
                          (meetYourEnemies is)
 
+
 listaArma :: [Arma] -> IO()
 listaArma ar = do
     putStr (conhecaArmas ar)
 
 conhecaArmas :: [Arma] -> String
 conhecaArmas [] = ""
-conheceArmas (x:xs) = (armaNome x) ++ " " ++ 
+conhecaArmas (x:xs) = (armaNome x) ++ "\n" ++ 
                       (armaDescricao x) ++ "\n" ++ 
-                      "Força: " ++ show ((armaPreco x)) ++ "\n" ++
-                      "Dano: " ++ show((armaDano x)) ++
-                      "Força: " ++ show((armaForca x)) ++
-                      "Agilidade: " ++show( (armaAgilidade x)) ++
-                      (conheceArmas xs)
+                      "Preço: " ++ show ((armaPreco x)) ++
+                      "     Dano: " ++ show((armaDano x)) ++
+                      "     Força: " ++ show((armaForca x)) ++
+                      "     Agilidade: " ++show( (armaAgilidade x)) ++ "\n\n" ++
+                      (conhecaArmas xs)
 
+
+listaArmadura :: [Armadura] -> IO()
+listaArmadura armadur = do
+    putStr (conhecaArmadura armadur)
+
+conhecaArmadura :: [Armadura] -> String
+conhecaArmadura [] = ""
+conhecaArmadura (x:xs) = (armaduraNome x) ++ "\n" ++ 
+                      (armaduraDescricao x) ++ "\n" ++ 
+                      "Preço: " ++ show ((armaduraPreco x)) ++
+                      "     Dano: " ++ show((armaduraArmadura x)) ++
+                      "     Força: " ++ show((armaduraForca x)) ++
+                      "     Agilidade: " ++show( (armaduraAgilidade x)) ++
+                      "     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++
+                      (conhecaArmadura xs)
+
+listaPocao :: [Pocao] -> IO()
+listaPocao po = do
+    putStr (conhecaPocao po)
+
+conhecaPocao :: [Pocao] -> String
+conhecaPocao [] = ""
+conhecaPocao (x:xs) = (pocaoNome x) ++ "\n" ++ 
+                      (pocaoDescricao x) ++ "\n" ++ 
+                      "Preço: " ++ show ((pocaoPreco x)) ++
+                      "     Vida: " ++ show((pocaoVida x)) ++
+                      (conhecaPocao xs)
+
+lerOpcoes :: IO Int     
+lerOpcoes = do
+    escolhaopcao <- readLn :: IO Int
+    return escolhaopcao
 
 
 opcoesBau :: IO Int     
