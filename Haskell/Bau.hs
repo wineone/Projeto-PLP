@@ -31,13 +31,13 @@ removeArmadura indArmaduraSair indArmaduraAtual (x:xs)
             | otherwise =  x : (removeArmadura indArmaduraSair (indArmaduraAtual + 1) xs)
 
 
-removeArma :: Int -> Int -> [Arma] -> [Arma]   
+removeArma :: Int -> Int -> [Arma] -> [Arma]
 removeArma indArmaSair indArmaAtual [] = []
 removeArma indArmaSair indArmaAtual (x:xs)
         | (indArmaSair == indArmaAtual) = removeArma indArmaSair (indArmaAtual + 1) xs
         | otherwise =  x : (removeArma indArmaSair (indArmaAtual + 1) xs)
-            
-removePocao :: Int -> Int -> [Pocao] -> [Pocao]   
+
+removePocao :: Int -> Int -> [Pocao] -> [Pocao]
 removePocao indPocaoSair indPocaoAtual [] = []
 removePocao indPocaoSair indPocaoAtual (x:xs)
                 | (indPocaoSair == indPocaoAtual) = removePocao indPocaoSair (indPocaoAtual + 1) xs
@@ -45,35 +45,52 @@ removePocao indPocaoSair indPocaoAtual (x:xs)
 
 -- +++++++++++++++++++++++++++++ Funcões que percorrem arrays +++++++++++++++++++++++++++++
 percorreArma :: Int -> [Arma] -> String
-percorreArma indArma (x:xs)
-           | null xs = armaNome x            
-           | otherwise = show (indArma) ++ " - " ++ armaNome x ++ armaDescricao x ++ "\n" ++ percorreArma (indArma + 1) xs 
+percorreArma indArma (x:[]) = show (indArma) ++ " - " ++ armaNome x ++ " " ++ armaDescricao x ++ "\n" ++ (percorreArma (indArma + 1) [])
+percorreArma indArma [] = ""
+percorreArma indArma (x:xs) = show (indArma) ++ " - " ++ armaNome x ++ " " ++ armaDescricao x ++ "\n" ++ percorreArma (indArma + 1) xs
 
 percorreArmadura :: Int -> [Armadura] -> String
-percorreArmadura indArmadura (x:xs)
-            | null xs = armaduraNome x            
-            | otherwise = show (indArmadura) ++ " - " ++ armaduraNome x ++ armaduraDescricao x ++ "\n" ++ percorreArmadura (indArmadura + 1) xs
+percorreArmadura indArmadura (x:[]) = show (indArmadura) ++ " - " ++ (armaduraNome x) ++ " " ++ (armaduraDescricao x) ++ "\n" ++ (percorreArmadura (indArmadura + 1) [])
+percorreArmadura indArmadura [] = ""
+percorreArmadura indArmadura (x:xs) =  show (indArmadura) ++ " - " ++ (armaduraNome x) ++ " " ++ (armaduraDescricao x) ++ "\n" ++ percorreArmadura (indArmadura + 1) xs
 
 percorrePocao :: Int -> [Pocao] -> String
-percorrePocao indPocao (x:xs)
-           | null xs = pocaoNome x            
-           | otherwise = show (indPocao) ++ " - " ++ pocaoNome x ++ pocaoDescricao x ++ "\n" ++ percorrePocao (indPocao + 1) xs
+percorrePocao indPocao (x:[]) = show (indPocao) ++ " - " ++ pocaoNome x ++ " " ++ pocaoDescricao x ++ "\n" ++ ( percorrePocao (indPocao + 1) [])
+percorrePocao indPocao [] = ""
+percorrePocao indPocao (x:xs) = show (indPocao) ++ " - " ++ pocaoNome x ++ " " ++ pocaoDescricao x ++ "\n" ++ percorrePocao (indPocao + 1) xs
 
 -- +++++++++++++++++++++++++++++ lê entrada e executa as funções do bau +++++++++++++++++++++++++++++
 
+remove :: Bolsa -> IO Bolsa
+remove bol = do
+            op2 <- opcoesRemove -- remover iten do bau
+            if(op2 == 1) then do
+                putStrLn (percorreArmadura 0 (bolsaArmadura bol))
+                putStrLn "digite qual armadura deseja remover"
+                remover <- readLn :: IO Int
 
-bau :: Personagem -> IO Personagem 
-bau p = do
-    let op <- opcoesBau
-    let bol = bolsa p
-    if (op == 1) then do
-        opcoesRemove bol
-        return p
-    else if(op == 2) then
-        return p
-    else if(op == 3) then
-        return p
-    else if(op == 4) then
-        return p
-    else
-        return p
+                return (Bolsa (bolsaPocao bol) (removeArmadura remover 0 (bolsaArmadura bol)) (bolsaArma bol))
+            else if(op2 == 2) then do
+                putStrLn (percorreArma 0 (bolsaArma bol))
+                putStrLn "digite qual arma deseja remover"
+                remover <- readLn :: IO Int
+
+                return (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma remover 0 (bolsaArma bol)))
+            else
+                return bol
+
+bau :: Personagem -> IO Personagem
+bau per = do
+        op <- opcoesBau
+        let bol = bolsa per
+        if (op == 1) then do
+            return per
+        else if(op == 2) then do
+            newBolsa <- remove bol
+            return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa)
+        else if(op == 3) then
+            return per
+        else if(op == 4) then
+            return per
+        else
+            return per

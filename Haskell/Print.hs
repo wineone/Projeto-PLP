@@ -43,7 +43,7 @@ printLobby p =  do
                 putStr "\n\nDigite sua opção: "
                 a <- readLn :: IO Int
                 return a
-                
+
 printLoja :: Personagem -> IO Int
 printLoja p =  do
                     putStrLn "#       LOJA      #\n\n"
@@ -62,7 +62,7 @@ boasVindas =    do
                 system "clear"
                 putStrLn "Tecle enter para prosseguir.\n"
                 enter
-    
+
                 putStrLn "Você acorda em um local que você nunca viu antes,"
                 enter
                 putStrLn "somente com as roupas do seu corpo."
@@ -76,7 +76,7 @@ boasVindas =    do
                 hSetEcho stdin True     -- volta a mostrar no terminal o que o user esta escrevendo
                 putStr "Você lembra do seu nome?... "
 
-                
+
 printMapa :: IO Int
 printMapa = do
     putStr "\n"
@@ -196,8 +196,8 @@ printAtkInimigo :: [Inimigo] -> Int -> String
 printAtkInimigo [] i = ""
 printAtkInimigo (gp:gpt) i = (auxAtkInim i) ++ ("Atacar: [" ++ (show i) ++ "] "
                             ++ (inimigoNome gp) ++ " " ++
-                            (show (inimigoVidaAtual gp)) ++ "/" ++ 
-                            (show (inimigoVidaMax gp)) ++ "\n" ++ 
+                            (show (inimigoVidaAtual gp)) ++ "/" ++
+                            (show (inimigoVidaMax gp)) ++ "\n" ++
                             (printAtkInimigo gpt (i+1)) )
 
 escolheInimigo :: GrupoDeInimigos -> IO Int
@@ -205,7 +205,7 @@ escolheInimigo gp = do
     putStrLn (printAtkInimigo (grupoInimigos gp) 1)
     putStr "\nDigite quem você quer atacar: "
     a <- readLn :: IO Int
-    
+
     if ( (a <= (grupoQuantidade gp)) && (a > 0) ) then
         return (a - 1)
     else
@@ -221,8 +221,8 @@ entraBatalha grupo = do
 
 meetYourEnemies :: [Inimigo] -> String
 meetYourEnemies [] = ""
-meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++ 
-                         (show (inimigoVidaAtual i) ) ++ "/" ++ 
+meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
+                         (show (inimigoVidaAtual i) ) ++ "/" ++
                          (show (inimigoVidaMax i) ) ++ "\n" ++
                          "    +-> " ++ (inimigoDescricao i) ++ "\n\n" ++
                          (meetYourEnemies is)
@@ -234,8 +234,8 @@ listaArma ar = do
 
 conhecaArmas :: [Arma] -> String
 conhecaArmas [] = ""
-conhecaArmas (x:xs) = (armaNome x) ++ "\n" ++ 
-                      (armaDescricao x) ++ "\n" ++ 
+conhecaArmas (x:xs) = (armaNome x) ++ "\n" ++
+                      (armaDescricao x) ++ "\n" ++
                       "Preço: " ++ show ((armaPreco x)) ++
                       "     Dano: " ++ show((armaDano x)) ++
                       "     Força: " ++ show((armaForca x)) ++
@@ -249,8 +249,8 @@ listaArmadura armadur = do
 
 conhecaArmadura :: [Armadura] -> String
 conhecaArmadura [] = ""
-conhecaArmadura (x:xs) = (armaduraNome x) ++ "\n" ++ 
-                      (armaduraDescricao x) ++ "\n" ++ 
+conhecaArmadura (x:xs) = (armaduraNome x) ++ "\n" ++
+                      (armaduraDescricao x) ++ "\n" ++
                       "Preço: " ++ show ((armaduraPreco x)) ++
                       "     Dano: " ++ show((armaduraArmadura x)) ++
                       "     Força: " ++ show((armaduraForca x)) ++
@@ -264,20 +264,20 @@ listaPocao po = do
 
 conhecaPocao :: [Pocao] -> String
 conhecaPocao [] = ""
-conhecaPocao (x:xs) = (pocaoNome x) ++ "\n" ++ 
-                      (pocaoDescricao x) ++ "\n" ++ 
+conhecaPocao (x:xs) = (pocaoNome x) ++ "\n" ++
+                      (pocaoDescricao x) ++ "\n" ++
                       "Preço: " ++ show ((pocaoPreco x)) ++
                       "     Vida: " ++ show((pocaoVida x)) ++
                       (conhecaPocao xs)
 
-lerOpcoes :: IO Int     
+lerOpcoes :: IO Int
 lerOpcoes = do
     putStrLn "Digite sua escolha"
     escolhaopcao <- readLn :: IO Int
     return escolhaopcao
 
 
-opcoesBau :: IO Int     
+opcoesBau :: IO Int
 opcoesBau = do
     putStrLn "[1] -> Troque seu equipamento"
     putStrLn "[2] -> Excluir item da Bau"
@@ -285,10 +285,10 @@ opcoesBau = do
     putStrLn "[4] -> Vasculhar sua Bolsa"
     putStrLn "[5] -> Voltar ao menu inicial"
     escolha <- readLn :: IO Int
-    
+
     return escolha
 
-opcoesTroca :: IO Int 
+opcoesTroca :: IO Int
 opcoesTroca = do
     putStrLn "[1] -> Troque sua armadura"
     putStrLn "[2] -> Troque sua arma"
@@ -296,20 +296,12 @@ opcoesTroca = do
     escolha <- readLn :: IO Int
     return escolha
 
-opcoesRemove :: Bolsa -> IO Int
-opcoesRemove bol = do
+opcoesRemove :: IO Int
+opcoesRemove = do
     putStrLn "[1] -> remova sua armadura"
     putStrLn "[2] -> remova sua arma"
     putStrLn "[3] -> voltar"
     escolha <- readLn :: IO Int
-
-    if(escolha == 1) then do
-        putStrLn "escolha a armadura a ser removida pelo indice"
-        putStrLn $ percorreArmadura 0 ( bolsaArmadura bol)
-        return escolha
-    else 
-        return escolha
-
     return escolha
 
 
