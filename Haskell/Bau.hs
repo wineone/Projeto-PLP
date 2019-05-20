@@ -63,5 +63,17 @@ percorrePocao indPocao (x:xs)
 
 
 bau :: Personagem -> IO Personagem 
-bau p =
-    return p
+bau p = do
+    let op <- opcoesBau
+    let bol = bolsa p
+    if (op == 1) then do
+        opcoesRemove bol
+        return p
+    else if(op == 2) then
+        return p
+    else if(op == 3) then
+        return p
+    else if(op == 4) then
+        return p
+    else
+        return p

@@ -285,6 +285,7 @@ opcoesBau = do
     putStrLn "[4] -> Vasculhar sua Bolsa"
     putStrLn "[5] -> Voltar ao menu inicial"
     escolha <- readLn :: IO Int
+    
     return escolha
 
 opcoesTroca :: IO Int 
@@ -295,13 +296,27 @@ opcoesTroca = do
     escolha <- readLn :: IO Int
     return escolha
 
-opcoesRemove :: IO Int 
-opcoesRemove = do
+opcoesRemove :: Bolsa -> IO Int
+opcoesRemove bol = do
     putStrLn "[1] -> remova sua armadura"
     putStrLn "[2] -> remova sua arma"
     putStrLn "[3] -> voltar"
     escolha <- readLn :: IO Int
+
+    if(escolha == 1) then do
+        putStrLn "escolha a armadura a ser removida pelo indice"
+        putStrLn $ percorreArmadura 0 ( bolsaArmadura bol)
+        return escolha
+    else 
+        return escolha
+
     return escolha
+
+
+
+
+
+
 
 digite :: IO()
 digite = do
