@@ -103,13 +103,13 @@ bonusBatalha opcao = do
     else
         (0, 0)
 
-auxRepla :: [Inimigo] -> [Inimigo] -> Inimigo -> Int -> Int -> [Inimigo]
-auxRepla [] nova  _ _ _ = nova
-auxRepla (x:xs) nova ini atu dese | (atu == dese) = auxRepla xs (nova ++ [ini]) ini (atu + 1) dese
-                                  | otherwise = auxRepla xs (nova ++ [x]) ini (atu + 1) dese
+auxReplace :: [Inimigo] -> [Inimigo] -> Inimigo -> Int -> Int -> [Inimigo]
+auxReplace [] nova  _ _ _ = nova
+auxReplace (x:xs) nova ini atu dese | (atu == dese) = auxReplace xs (nova ++ [ini]) ini (atu + 1) dese
+                                  | otherwise = auxReplace xs (nova ++ [x]) ini (atu + 1) dese
 
 replaceIni :: GrupoDeInimigos -> Inimigo -> Int -> GrupoDeInimigos
-replaceIni gru ini index = GrupoDeInimigos (grupoQuantidade gru) (grupoLoot gru) (auxRepla (grupoInimigos gru) [] ini 0 index)
+replaceIni gru ini index = GrupoDeInimigos (grupoQuantidade gru) (grupoLoot gru) (auxReplace (grupoInimigos gru) [] ini 0 index)
 
 
 ataqueDoGrupo :: [Inimigo] -> Personagem -> Personagem

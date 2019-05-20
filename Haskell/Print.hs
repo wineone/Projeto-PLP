@@ -13,6 +13,7 @@ printaVida p =  do
 printaFases :: Personagem -> IO Int
 printaFases per =   do
                     system "clear"
+                    putStrLn "              #   MAPAS   #\n"
                     putStrLn "Com grandes escolhas vem grande responsabilidades.\nEscolha sabiamente.\n"
                     putStrLn "[1] -> Manguezal"
                     putStrLn "[2] -> Casa"
@@ -25,10 +26,12 @@ printaFases per =   do
                     a <- readLn :: IO Int
                     return a
 
+printLobbyAux :: Personagem -> IO()
+printLobbyAux p = putStrLn "                #   LOBBY   #\n\n\n"
 
 printLobby :: Personagem -> IO Int
 printLobby p =  do
-                putStrLn "\n\n"
+                printLobbyAux p
                 printaVida p
                 putStrLn ""
                 putStrLn "[1] -> Fases"
@@ -44,11 +47,11 @@ printLobby p =  do
 printLoja :: Personagem -> IO Int
 printLoja p =  do
                     putStrLn "#       LOJA      #\n\n"
-                    putStrLn "[1] -> Comprar uma arma\n"
-                    putStrLn "[2] -> Comprar uma armadura\n"
-                    putStrLn "[3] -> Comprar uma poção\n"
+                    putStrLn "[1] -> Comprar uma arma"
+                    putStrLn "[2] -> Comprar uma armadura"
+                    putStrLn "[3] -> Comprar uma poção"
                     putStrLn "[4] -> sair\n\n"
-                    putStrLn "Digite sua opção: "
+                    putStr "Digite sua opção: "
                     a <- readLn :: IO Int
                     return a
 
@@ -277,7 +280,7 @@ lerOpcoes = do
 opcoesBau :: IO Int     
 opcoesBau = do
     putStrLn "[1] -> Troque seu equipamento"
-    putStrLn "[2] -> Excluir iten da Bau"
+    putStrLn "[2] -> Excluir item da Bau"
     putStrLn "[3] -> Visualizar Equipamento"
     putStrLn "[4] -> Vasculhar sua Bolsa"
     putStrLn "[5] -> Voltar ao menu inicial"

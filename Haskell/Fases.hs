@@ -2,6 +2,7 @@ module Fases where
 
 import Estruturas
 import System.IO.Unsafe
+import System.Process
 import Print
 import Entidades
 import System.Random (randomRIO)
@@ -24,7 +25,8 @@ fases per = do
             else if (a == 6) then do 
                 return (unsafePerformIO (mapa per faseBoss)) -- função qeu chama o BOSS
             else if (a == 7) then do
-                return per -- função que sai
+                -- system "clear"
+                return per          -- função que sai
             else do
                 putStrLn "Opção invalida"
                 fases per
