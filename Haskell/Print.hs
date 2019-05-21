@@ -279,35 +279,49 @@ lerOpcoes = do
 
 opcoesBau :: IO Int
 opcoesBau = do
+    system "clear"
+    putStrLn "              #   BAU    #\n"
     putStrLn "[1] -> Troque seu equipamento"
     putStrLn "[2] -> Excluir item da Bau"
     putStrLn "[3] -> Visualizar Equipamento"
     putStrLn "[4] -> Vasculhar sua Bolsa"
     putStrLn "[5] -> Voltar ao menu inicial"
+    putStr "\nO que voce quer fazer?... "
     escolha <- readLn :: IO Int
 
     return escolha
 
 opcoesTroca :: IO Int
 opcoesTroca = do
+    putStrLn "              #   TROQUE SEU EQUIPAMENTO    #\n"
     putStrLn "[1] -> Troque sua armadura"
     putStrLn "[2] -> Troque sua arma"
     putStrLn "[3] -> voltar"
+    putStr "\nO que voce quer fazer?... "
     escolha <- readLn :: IO Int
     return escolha
 
 opcoesRemove :: IO Int
 opcoesRemove = do
+    putStrLn "              #   REMOVA SEU EQUIPAMENTO    #\n"
     putStrLn "[1] -> remova sua armadura"
     putStrLn "[2] -> remova sua arma"
     putStrLn "[3] -> voltar"
+    putStr "\nO que voce quer fazer?... "
     escolha <- readLn :: IO Int
     return escolha
 
-
-
-
-
+opcoesRemoveBolsa :: IO Int
+opcoesRemoveBolsa = do
+    system "clear"
+    putStrLn "              #   BOLSA    #\n\n"
+    putStrLn "[1] -> Visualizar poções"
+    putStrLn "[2] -> Usar uma poção"
+    putStrLn "[3] -> Jogar uma poção fora"
+    putStrLn "[4] -> Voltar a batalhar"
+    putStr "\n O que voce quer fazer?..."
+    escolha <- readLn :: IO Int
+    return escolha
 
 
 digite :: IO()
