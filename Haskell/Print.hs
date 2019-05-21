@@ -228,9 +228,12 @@ meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
                          (meetYourEnemies is)
 
 
-listaArma :: [Arma] -> IO()
+listaArma :: [Arma] -> IO Int
 listaArma ar = do
     putStr (conhecaArmas ar)
+    putStrLn "Digite sua escolha"
+    escolhaopcao <- readLn :: IO Int
+    return escolhaopcao
 
 conhecaArmas :: [Arma] -> String
 conhecaArmas [] = ""
@@ -243,9 +246,18 @@ conhecaArmas (x:xs) = (armaNome x) ++ "\n" ++
                       (conhecaArmas xs)
 
 
-listaArmadura :: [Armadura] -> IO()
+listaArmadura :: [Armadura] -> IO Int
 listaArmadura armadur = do
     putStr (conhecaArmadura armadur)
+    putStrLn "Digite sua escolha"
+    escolhaopcao <- readLn :: IO Int
+
+    --if(escolhaopcao < 0) 
+
+
+    return escolhaopcao
+
+
 
 conhecaArmadura :: [Armadura] -> String
 conhecaArmadura [] = ""
@@ -258,9 +270,12 @@ conhecaArmadura (x:xs) = (armaduraNome x) ++ "\n" ++
                       "     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++
                       (conhecaArmadura xs)
 
-listaPocao :: [Pocao] -> IO()
+listaPocao :: [Pocao] -> IO Int
 listaPocao po = do
     putStr (conhecaPocao po)
+    putStrLn "Digite sua escolha"
+    escolhaopcao <- readLn :: IO Int
+    return escolhaopcao
 
 conhecaPocao :: [Pocao] -> String
 conhecaPocao [] = ""
@@ -270,11 +285,11 @@ conhecaPocao (x:xs) = (pocaoNome x) ++ "\n" ++
                       "     Vida: " ++ show((pocaoVida x)) ++
                       (conhecaPocao xs)
 
-lerOpcoes :: IO Int
-lerOpcoes = do
-    putStrLn "Digite sua escolha"
-    escolhaopcao <- readLn :: IO Int
-    return escolhaopcao
+-- lerOpcoes :: IO Int
+-- lerOpcoes = do
+--     putStrLn "Digite sua escolha"
+--     escolhaopcao <- readLn :: IO Int
+--     return escolhaopcao
 
 
 opcoesBau :: IO Int
