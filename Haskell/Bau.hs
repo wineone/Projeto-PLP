@@ -78,6 +78,27 @@ usaPocao indPocaoSair indPocaoAtual (x:xs)
                 | (indPocaoSair == indPocaoAtual) = x
                 | otherwise = (usaPocao indPocaoSair (indPocaoAtual + 1) xs)
 
+-- +++++++++++++++++++++++++++++ retorna tamanho do array +++++++++++++++++++++++++++++
+
+tamanhoPocao :: [Pocao] -> Int
+tamanhoPocao [] = 0
+tamanhoPocao (x:[]) = 1
+tamanhoPocao (x:xs) = 1 + tamanhoPocao (xs)
+
+
+tamanhoArmadura :: [Armadura] -> Int
+tamanhoArmadura [] = 0
+tamanhoArmadura (x:[]) = 1
+tamanhoArmadura (x:xs) = 1 + tamanhoArmadura (xs)
+
+
+
+tamanhoArma :: [Arma] -> Int
+tamanhoArma [] = 0
+tamanhoArma (x:[]) = 1
+tamanhoArma (x:xs) = 1 + tamanhoArma (xs)
+
+
 -- +++++++++++++++++++++++++++++ lê entrada e executa as funções do bau +++++++++++++++++++++++++++++
 
 remove :: Bolsa -> IO Bolsa
@@ -87,14 +108,22 @@ remove bol = do -- remover item do bau
                 putStrLn (percorreArmadura 0 (bolsaArmadura bol))
                 putStrLn "digite qual armadura deseja remover"
                 remover <- readLn :: IO Int
-                
-                return (Bolsa (bolsaPocao bol) (removeArmadura remover 0 (bolsaArmadura bol)) (bolsaArma bol))
+                if(remover <= (tamanhoArmadura (bolsaArmadura bol))) then
+                    return (Bolsa (bolsaPocao bol) (removeArmadura remover 0 (bolsaArmadura bol)) (bolsaArma bol))
+                else do
+                    putStrLn "Indice Invalido, doido"
+                    digite
+                    return (unsafePerformIO(remove  bol))
             else if(op2 == 2) then do
                 putStrLn (percorreArma 0 (bolsaArma bol))
                 putStrLn "digite qual arma deseja remover"
                 remover <- readLn :: IO Int
-                
-                return (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma remover 0 (bolsaArma bol)))
+                if(remover <= (tamanhoArma (bolsaArma bol))) then
+                    return (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma remover 0 (bolsaArma bol)))
+                else do
+                    putStrLn "Indice Inválido,bicho"
+                    digite
+                    return (unsafePerformIO(remove  bol))
             else
                 return bol
 
@@ -140,7 +169,7 @@ bau per = do
             newBolsa <- remove bol
             return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa)
         else if(op == 3) then do --vizualizar equipamento
-            print(bolsa per)
+            vizualizarEquipamento per
             return per
         else if(op == 4) then   -- vasculhar sua bolsa
             return (unsafePerformIO (gerenciaBolsa per))

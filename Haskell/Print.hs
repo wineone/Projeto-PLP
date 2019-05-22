@@ -392,6 +392,39 @@ opcoesRemoveBolsa = do
     escolha <- readLn :: IO Int
     return escolha
 
+vizualizarEquipamento :: Personagem -> IO()
+vizualizarEquipamento per = do
+    system "clear"
+    putStrLn "++++++++++++++++++++++++++++++++++++++++\n"
+    putStrLn "          #CONHEÇA O HEROI#              \n"
+    putStrLn $ "Nome do Herói: " ++ (personagemNome per) ++ "     HP: " ++ show (personagemVidaAtual per) ++ "/"++ show(personagemVidaMax per)
+    putStrLn $ "\n       Dinheiro: " ++ (show (personagemDinheiro per)) ++ "\n" 
+
+    putStrLn "Atributos do jogador: "
+    putStrLn $ "    Defesa: " ++ show(personagemDefesa per)
+    putStrLn $ "    Dano: " ++ show (personagemDano per)
+    putStrLn $ "    Força: " ++ show (personagemForca per)
+    putStrLn $ "    Agilidade: " ++ show (personagemAgilidade per)
+    
+    let arma = personagemArma per
+    let armadura = personagemArmadura per
+
+    putStrLn $ "\nSua Arma: " ++ (armaNome arma)
+    putStrLn $ "        +> " ++ (armaDescricao arma)
+    putStrLn $ "    dano: " ++ show(armaDano arma)
+    putStrLn $ "    força: " ++ show(armaForca arma)
+    putStrLn $ "    agilidade: " ++ show(armaAgilidade arma)
+
+    putStrLn $ "\nSua Armadura " ++ (armaduraNome armadura)
+    putStrLn $ "        +> " ++ (armaduraDescricao armadura)
+    putStrLn $ "    armadura: " ++  show (armaduraArmadura armadura)
+    putStrLn $ "    força: " ++     show (armaduraForca armadura)
+    putStrLn $ "    agilidade: " ++ show (armaduraAgilidade armadura)
+    putStrLn $ "    vida: " ++      show (armaduraVida armadura)
+    putStrLn "\n\n++++++++++++++++++++++++++++++++++++++++"
+    digite
+    
+
 
 digite :: IO()
 digite = do
