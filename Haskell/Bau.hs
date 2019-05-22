@@ -98,9 +98,22 @@ tamanhoArma [] = 0
 tamanhoArma (x:[]) = 1
 tamanhoArma (x:xs) = 1 + tamanhoArma (xs)
 
+verificaValidadeArmadura :: Bolsa -> Int-> IO()
+verificaValidadeArmadura bol remover = do
+    if(remover >= tamanhoArmadura(bolsaArmadura bol)) then
+        putStrLn "Indice invalido, bicho"
+    else 
+        putStr ""
+
+verificaValidadeArma :: Bolsa -> Int-> IO()
+verificaValidadeArma bol remover = do
+    if(remover >= tamanhoArma(bolsaArma bol)) then
+        putStrLn "Indice invalido, bicho"
+    else 
+        putStr ""
+   
 
 -- +++++++++++++++++++++++++++++ lê entrada e executa as funções do bau +++++++++++++++++++++++++++++
-
 remove :: Bolsa -> IO Bolsa
 remove bol = do -- remover item do bau
             op2 <- opcoesRemove 
@@ -108,22 +121,15 @@ remove bol = do -- remover item do bau
                 putStrLn (percorreArmadura 0 (bolsaArmadura bol))
                 putStrLn "digite qual armadura deseja remover"
                 remover <- readLn :: IO Int
-                if(remover <= (tamanhoArmadura (bolsaArmadura bol))) then
-                    return (Bolsa (bolsaPocao bol) (removeArmadura remover 0 (bolsaArmadura bol)) (bolsaArma bol))
-                else do
-                    putStrLn "Indice Invalido, doido"
-                    digite
-                    return (unsafePerformIO(remove  bol))
+                verificaValidadeArmadura bol remover
+                return(Bolsa (bolsaPocao bol) (removeArmadura remover 0 (bolsaArmadura bol)) (bolsaArma bol))
+
             else if(op2 == 2) then do
                 putStrLn (percorreArma 0 (bolsaArma bol))
                 putStrLn "digite qual arma deseja remover"
                 remover <- readLn :: IO Int
-                if(remover <= (tamanhoArma (bolsaArma bol))) then
-                    return (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma remover 0 (bolsaArma bol)))
-                else do
-                    putStrLn "Indice Inválido,bicho"
-                    digite
-                    return (unsafePerformIO(remove  bol))
+                verificaValidadeArma bol remover
+                return (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma remover 0 (bolsaArma bol)))
             else
                 return bol
 
@@ -164,6 +170,7 @@ bau per = do
         op <- opcoesBau
         let bol = bolsa per 
         if (op == 1) then do --trocar equipamento
+            
             return per
         else if(op == 2) then do --excluir item do bau
             newBolsa <- remove bol

@@ -18,7 +18,7 @@ lobby per = do
             else if (o == 2) then do
                 lobby (unsafePerformIO (floja per lojao)) -- função que chama a loja
             else if (o == 3) then do
-                lobby (unsafePerformIO (fases per)) -- função que chama a bolsa
+                lobby (unsafePerformIO (gerenciaBolsa per)) -- função que chama a bolsa
             else if (o ==  4) then do
                 lobby (unsafePerformIO (bau per)) -- função que chama a bolsa completa
             else if (o == 5) then do
