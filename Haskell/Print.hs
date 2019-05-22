@@ -1,5 +1,6 @@
 module Print where
 import Estruturas
+import Entidades
 import System.IO.Unsafe
 import System.Process
 import System.IO
@@ -51,7 +52,7 @@ printLoja p =  do
                     putStrLn "[2] -> Comprar uma armadura"
                     putStrLn "[3] -> Comprar uma poção"
                     putStrLn "[4] -> sair\n\n"
-                    putStr "Digite sua opção: "
+                    putStr "Digite sua escolha: \n"
                     a <- readLn :: IO Int
                     return a
 
@@ -228,12 +229,84 @@ meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
                          (meetYourEnemies is)
 
 
-listaArma :: [Arma] -> IO Int
-listaArma ar = do
+listaArma :: [Arma] -> Personagem -> IO Int
+listaArma ar per = do
+    system "clear"
+    putStr "Dinheiro em caixa: "
+    print (personagemDinheiro per)
+    putStrLn ""
     putStr (conhecaArmas ar)
     putStrLn "Digite sua escolha"
     escolhaopcao <- readLn :: IO Int
-    return escolhaopcao
+    let esc = escolhaopcao - 1
+
+    let poiva = armaPreco (armas lojao !! esc)
+    if (esc >= 0 && esc < 9) then do
+         if personagemDinheiro per >= poiva then do
+            let nome = armaNome(armas lojao !! esc)
+            putStrLn ""
+            print(nome)
+            putStrLn "*Comprou, vá até o seu baú*\n"
+            return escolhaopcao
+         else do
+            putStrLn "Liseu bateu"
+            listaArma ar per           
+    else do
+        putStrLn "\nDigite uma opção válida"
+        listaArma ar per
+
+listaArmadura :: [Armadura] -> Personagem -> IO Int
+listaArmadura armadur per = do
+    system "clear"
+    putStr "Dinheiro em caixa: "
+    print (personagemDinheiro per)
+    putStrLn ""
+    putStr (conhecaArmadura armadur)
+    putStrLn "Digite sua escolha"
+    escolhaopcao <- readLn :: IO Int
+    let esc = escolhaopcao - 1
+
+    let poiva = armaduraPreco (armaduras lojao !! esc)
+    if (esc >= 0 && esc < 7) then do
+         if personagemDinheiro per >= poiva then do
+            let nome = armaduraNome(armaduras lojao !! esc)
+            putStrLn ""
+            print(nome)
+            putStrLn "*Comprou, vá até o seu baú*\n"
+            return escolhaopcao
+         else do
+            putStrLn "Liseu bateu"
+            listaArmadura armadur per           
+    else do
+        putStrLn "\nDigite uma opção válida"
+        listaArmadura armadur per
+
+listaPocao :: [Pocao] -> Personagem -> IO Int
+listaPocao po per = do
+    system "clear"
+    putStr "Dinheiro em caixa: "
+    print (personagemDinheiro per)
+    putStrLn ""
+    putStr (conhecaPocao po)
+    putStrLn "Digite sua escolha"
+    escolhaopcao <- readLn :: IO Int
+    let esc = escolhaopcao - 1
+
+    let poiva = pocaoPreco (pocoes lojao !! esc)
+    if (esc >= 0 && esc < 12) then do
+         if personagemDinheiro per >= poiva then do
+            let nome = pocaoNome(pocoes lojao !! esc)
+            putStrLn ""
+            print(nome)
+            putStrLn "*Comprou, vá até o seu baú*\n"
+            return escolhaopcao
+         else do
+            putStrLn "Liseu bateu"
+            listaPocao po per           
+    else do
+        putStrLn "\nDigite uma opção válida"
+        listaPocao po per
+    
 
 conhecaArmas :: [Arma] -> String
 conhecaArmas [] = ""
@@ -244,19 +317,6 @@ conhecaArmas (x:xs) = (armaNome x) ++ "\n" ++
                       "     Força: " ++ show((armaForca x)) ++
                       "     Agilidade: " ++show( (armaAgilidade x)) ++ "\n\n" ++
                       (conhecaArmas xs)
-
-
-listaArmadura :: [Armadura] -> IO Int
-listaArmadura armadur = do
-    putStr (conhecaArmadura armadur)
-    putStrLn "Digite sua escolha"
-    escolhaopcao <- readLn :: IO Int
-
-    --if(escolhaopcao < 0) 
-
-
-    return escolhaopcao
-
 
 
 conhecaArmadura :: [Armadura] -> String
@@ -270,19 +330,13 @@ conhecaArmadura (x:xs) = (armaduraNome x) ++ "\n" ++
                       "     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++
                       (conhecaArmadura xs)
 
-listaPocao :: [Pocao] -> IO Int
-listaPocao po = do
-    putStr (conhecaPocao po)
-    putStrLn "Digite sua escolha"
-    escolhaopcao <- readLn :: IO Int
-    return escolhaopcao
 
 conhecaPocao :: [Pocao] -> String
 conhecaPocao [] = ""
 conhecaPocao (x:xs) = (pocaoNome x) ++ "\n" ++
                       (pocaoDescricao x) ++ "\n" ++
                       "Preço: " ++ show ((pocaoPreco x)) ++
-                      "     Vida: " ++ show((pocaoVida x)) ++
+                      "     Vida: " ++ show((pocaoVida x)) ++ "\n\n" ++
                       (conhecaPocao xs)
 
 -- lerOpcoes :: IO Int

@@ -139,7 +139,8 @@ bau per = do
         else if(op == 2) then do --excluir item do bau
             newBolsa <- remove bol
             return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa)
-        else if(op == 3) then --vizualizar equipamento
+        else if(op == 3) then do --vizualizar equipamento
+            print(bolsa per)
             return per
         else if(op == 4) then   -- vasculhar sua bolsa
             return (unsafePerformIO (gerenciaBolsa per))

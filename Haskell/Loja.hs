@@ -7,44 +7,44 @@ import System.Random (randomRIO)
 import System.IO.Unsafe
 import Entidades
 import Bau
+import System.Process
+import System.IO
 
 
-floja :: Personagem -> Lojas-> IO Personagem
+floja :: Personagem -> Lojas -> IO Personagem
 floja per loj = do
+    system "clear"
+    putStr "Dinheiro em caixa: "
     print (personagemDinheiro per)
+    putStrLn ""
     let a = unsafePerformIO (printLoja per) 
     if(a == 1) then do -- função que chama arma
                 
-        let op = unsafePerformIO (listaArma((armas loj)))
+        let op = unsafePerformIO (listaArma(armas loj) per) - 1
         fazNada op
+        let poiva = armaPreco (armas lojao !! op)
         let novaBolsa = addArma ((armas loj) !! op) (bolsa per)
-        -- lerOpcoes
-        -- floja per loj
-        return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) (novaBolsa))
+
+        return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) ((personagemDinheiro per) - poiva) (personagemArma per) (personagemArmadura per) (novaBolsa))
     else if (a == 2) then do
 
-        let op = unsafePerformIO (listaArmadura((armaduras loj)))
+        let op = unsafePerformIO (listaArmadura(armaduras loj) per) - 1
         fazNada op
+        let poiva = armaduraPreco (armaduras lojao !! op)
         let novaBolsa = addArmadura ((armaduras loj) !! op) (bolsa per)
-        -- lerOpcoes
-        -- floja per loj
-        return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) (novaBolsa))
 
-        --listaArmadura((armaduras loj))-- função que chama armadura
-        --lerOpcoes
-        --floja per loj
+        return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) ((personagemDinheiro per) - poiva) (personagemArma per) (personagemArmadura per) (novaBolsa))
+
     else if (a == 3) then do
         
-        let op = unsafePerformIO (listaPocao((pocoes loj)))
+        let op = unsafePerformIO (listaPocao(pocoes loj) per) - 1
         fazNada op
+        let poiva = pocaoPreco (pocoes lojao !! op)
         let novaBolsa = addPocao ((pocoes loj) !! op) (bolsa per)
-        -- lerOpcoes
-        -- floja per loj
-        return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) (novaBolsa))
 
-        --listaPocao(pocoes loj)-- função que chama pocao
-        --lerOpcoes
-        --floja per loj
+        return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) ((personagemDinheiro per) - poiva) (personagemArma per) (personagemArmadura per) (novaBolsa))
+
+
     else if (a == 4) then do
         return per -- função que sai
     else do
@@ -52,20 +52,3 @@ floja per loj = do
         floja per loj
         return per
 
--- compraArma :: Personagem -> Arma -> IO Personagem
--- compraArma person arminha = do
---         if ((personagemDinheiro person) > (armaPreco arminha)) then do
---             putStrLn "ddd"
---             compraArma person arminha
---             return person arminha
---         else do
---             putStrLn "Liso"
---             compraArma person arminha
---             return person arminha
-
-
--- compraArmadura :: Personagem -> IO Personagem
---compraArmadura
-
--- compraPocao :: Personagem -> IO Personagem
---compraPocao

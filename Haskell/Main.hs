@@ -40,6 +40,6 @@ main =  do
         --let ar = Arma "pei pei" "esse é o barulho dela, que nem pokemons." 10 4 4 4
         --let ma = Armadura "bola gato" "em ingles" 10 4 4 4 50
         let bol = Bolsa [pocaoTransformice,pocaoTranquila,pocaoCapitao] [roupas, mofi, barril] [maos, lancaTris, armaADura]
-        let per = Personagem nome 100 100 50 5 5 5 10000 maos roupas bol
+        let per = Personagem nome 100 100 50 5 5 5 100000 maos roupas bol
         lobby per
         return ()
