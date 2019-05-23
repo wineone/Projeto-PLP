@@ -115,7 +115,7 @@ verificaValidadeArma bol remover = do
 -- -- +++++++++++++++++++++++++++++ funções para executar as trocas de itens +++++++++++++++++++++++++++++
 
 trocaArmadura :: Personagem -> Bolsa -> Int -> Personagem
-trocaArmadura per bol ind = Personagem (personagemNome per) ((personagemVidaAtual per) + vida) ((personagemVidaMax per) + vida) (personagemDano per) defesa forca agilidade (personagemDinheiro per) (personagemArma per) ((bolsaArmadura bol) !! ind) bolsa
+trocaArmadura per bol ind = Personagem (personagemNome per) ((personagemVidaAtual per) + vida) (personagemVidaMax per + vida) (personagemDano per) defesa forca agilidade (personagemDinheiro per) (personagemArma per) ((bolsaArmadura bol) !! ind) bolsa
       where vida = (div (armaduraForca ((bolsaArmadura bol) !! ind)) 2) + (armaduraVida ((bolsaArmadura bol) !! ind)) - (armaduraVida (personagemArmadura per)) - (div (armaduraForca (personagemArmadura per)) 2)
             forca =  (personagemForca per) + (armaduraForca ((bolsaArmadura bol) !! ind)) - (armaduraForca (personagemArmadura per))
             defesa =  (div (armaduraArmadura ((bolsaArmadura bol) !! ind)) 2) - (div (armaduraArmadura (personagemArmadura per)) 2)
@@ -206,15 +206,16 @@ bau per = do
         op <- opcoesBau
         let bol = bolsa per
         if (op == 1) then do --trocar equipamento
-            return (unsafePerformIO (trocaItens per (bolsa per)))
+            per <- trocaItens per (bolsa per)
+            bau per
         else if(op == 2) then do --excluir item do bau
             newBolsa <- remove bol
-            return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa)
+            bau (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa)
         else if(op == 3) then do --vizualizar equipamento
             vizualizarEquipamento per
-            return per
+            bau per
         else if(op == 4) then   -- vasculhar sua bolsa
-            return (unsafePerformIO (gerenciaBolsa per))
+            bau (unsafePerformIO (gerenciaBolsa per))
 
         else
             return per
