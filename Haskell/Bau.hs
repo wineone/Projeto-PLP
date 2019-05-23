@@ -92,11 +92,12 @@ tamanhoArmadura (x:[]) = 1
 tamanhoArmadura (x:xs) = 1 + tamanhoArmadura (xs)
 
 
-
 tamanhoArma :: [Arma] -> Int
 tamanhoArma [] = 0
 tamanhoArma (x:[]) = 1
 tamanhoArma (x:xs) = 1 + tamanhoArma (xs)
+
+-- 
 
 verificaValidadeArmadura :: Bolsa -> Int-> IO()
 verificaValidadeArmadura bol remover = do
@@ -216,6 +217,6 @@ bau per = do
             bau per
         else if(op == 4) then   -- vasculhar sua bolsa
             bau (unsafePerformIO (gerenciaBolsa per))
-
-        else 
+        else
+            system "clear"
             return per

@@ -5,6 +5,7 @@ import System.IO.Unsafe
 import System.Process
 import System.IO
 
+
 printaVida :: Personagem -> IO ()
 printaVida p =  do
                 putStrLn ((personagemNome p ) ++ "                   " ++ (show (personagemVidaAtual p)) ++ "/" ++ (show (personagemVidaMax p)) ++ "\n")
@@ -34,7 +35,6 @@ fn p = do
 
 printLobby :: Personagem -> IO Int
 printLobby p =  do
-                system "clear"
                 printaVida p  
                 putStrLn "\n              #   LOBBY   #\n\n\n"
                 putStrLn "[1] -> Fases"
@@ -49,12 +49,12 @@ printLobby p =  do
 
 printLoja :: Personagem -> IO Int
 printLoja p =  do
-                    putStrLn "#       LOJA      #\n\n"
+                    putStrLn "              #       LOJA      #\n\n"
                     putStrLn "[1] -> Comprar uma arma"
                     putStrLn "[2] -> Comprar uma armadura"
                     putStrLn "[3] -> Comprar uma poção"
                     putStrLn "[4] -> sair\n\n"
-                    putStr "Digite sua escolha: \n"
+                    putStr "Digite sua escolha: "
                     a <- readLn :: IO Int
                     return a
 
@@ -218,7 +218,7 @@ entraBatalha :: [Inimigo] -> IO()
 entraBatalha grupo = do
     system "clear"
     putStrLn "Você acaba de entrar em uma batalha!!\n"
-    --digite()
+
     putStrLn "Conheça seus inimigos:\n"
     putStrLn (meetYourEnemies grupo)
 
@@ -234,71 +234,111 @@ meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
 
 
 percorreArma1 :: Int -> [Arma] -> String
-percorreArma1 indArma (x:[]) = "[" ++ show (indArma) ++ "]" ++ " "++armaNome x ++ "\n" ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) [])
-percorreArma1 indArma [] = ""
-percorreArma1 indArma (x:xs) =  "[" ++ show (indArma) ++ "]" ++ " "++armaNome x ++ "\n" ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) xs)
+percorreArma1 indArma (x:[]) = "[" ++ (show (indArma + 1)) ++ "]" ++ " - " ++armaNome x ++ "\n    +->" ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) [])
+percorreArma1 indArma [] = "\n************************\n\n[0] -> Cancelar compra.\n\n************************\n\n\n"
+percorreArma1 indArma (x:xs) =  "[" ++ (show (indArma + 1)) ++ "]" ++ " "++armaNome x ++ "\n    +->" ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) xs)
 
 percorreArmadura1 :: Int -> [Armadura] -> String
-percorreArmadura1 indArmadura (x:[]) = "[" ++ show (indArmadura) ++ "]" ++" "++ (armaduraNome x) ++ "\n" ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++ "     Dano: " ++ show((armaduraArmadura x)) ++ "     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura+1) []) 
-percorreArmadura1 indArmadura [] = ""
-percorreArmadura1 indArmadura (x:xs) = "[" ++ show (indArmadura) ++ "]" ++" "++(armaduraNome x) ++ "\n" ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++"     Dano: " ++ show((armaduraArmadura x)) ++"     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura + 1) xs)
+percorreArmadura1 indArmadura (x:[]) = "[" ++ show ((indArmadura) + 1) ++ "]" ++" - "++ (armaduraNome x) ++ "\n   +->" ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++ "     Dano: " ++ show((armaduraArmadura x)) ++ "     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura+1) []) 
+percorreArmadura1 indArmadura [] = "\n************************\n\n[0] -> Cancelar compra.\n\n************************\n\n\n"
+percorreArmadura1 indArmadura (x:xs) = "[" ++ show ((indArmadura) + 1) ++ "]" ++" - "++(armaduraNome x) ++ "\n    +->" ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++"     Dano: " ++ show((armaduraArmadura x)) ++"     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura + 1) xs)
 
 percorrePocao1 :: Int -> [Pocao] -> String
-percorrePocao1 indPocao (x:[]) = "[" ++ show (indPocao) ++ "]" ++" "++ (pocaoNome x) ++ "\n" ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n"++ (percorrePocao1 (indPocao + 1) [])
-percorrePocao1 indPocao [] = ""
-percorrePocao1 indPocao (x:xs) = "[" ++ show (indPocao) ++ "]" ++" "++(pocaoNome x) ++ "\n" ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n" ++ (percorrePocao1(indPocao+1) xs)
+percorrePocao1 indPocao (x:[]) = "[" ++ (show (indPocao + 1)) ++ "]" ++" - "++ (pocaoNome x) ++ "\n   +->" ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n"++ (percorrePocao1 (indPocao + 1) [])
+percorrePocao1 indPocao [] = "\n************************\n\n[0] -> Cancelar compra.\n\n************************\n\n\n"
+percorrePocao1 indPocao (x:xs) = "[" ++ (show (indPocao + 1)) ++ "]" ++" - "++(pocaoNome x) ++ "\n    +->" ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n" ++ (percorrePocao1(indPocao+1) xs)
 
+-- Funções auxiliares para tamanho do array (importadas de Bau)
+
+tamanhouPocao :: [Pocao] -> Int
+tamanhouPocao [] = 0
+tamanhouPocao (x:[]) = 1
+tamanhouPocao (x:xs) = 1 + tamanhouPocao (xs)
+
+
+tamanhouArmadura :: [Armadura] -> Int
+tamanhouArmadura [] = 0
+tamanhouArmadura (x:[]) = 1
+tamanhouArmadura (x:xs) = 1 + tamanhouArmadura (xs)
+
+
+tamanhouArma :: [Arma] -> Int
+tamanhouArma [] = 0
+tamanhouArma (x:[]) = 1
+tamanhouArma (x:xs) = 1 + tamanhouArma (xs)
+
+-- fim 
 
 listaArma :: [Arma] -> Personagem -> IO Int
 listaArma ar per = do
     system "clear"
-    putStr "Dinheiro em caixa: "
+    putStr "Seu money -> "
     print (personagemDinheiro per)
     putStrLn ""
     putStr (percorreArma1 0 ar)
-    putStrLn "Digite sua escolha"
+    putStr "Digite sua escolha: "
     escolhaopcao <- readLn :: IO Int
     --let esc = escolhaopcao - 1
 
     let poiva = armaPreco (armas lojao !! escolhaopcao)
-    if (escolhaopcao >= 0 && escolhaopcao < 9) then do
+    let tam = tamanhouArma (armas lojao)
+
+    if (escolhaopcao > 0 && escolhaopcao <= tam) then do
          if personagemDinheiro per >= poiva then do
-            let nome = armaNome(armas lojao !! escolhaopcao)
-            putStrLn ""
-            print(nome)
-            putStrLn "*Comprou, vá até o seu baú*\n"
+            let nome = armaNome ( armas lojao !! (escolhaopcao - 1) )
+            
+            putStr "\n"
+            estrelinhas
+            putStr "\n Você comprou, "
+            putStr nome 
+            putStrLn " vá até o seu baú \n"
+            estrelinhas
+            putStr "\n"
+            
             return escolhaopcao
          else do
             let escolhaopcao = -1
             putStrLn "\n\nVc tá Liso $$$"
             return escolhaopcao
+    else if (escolhaopcao == 0) then
+        return (-1)
     else do
-        putStrLn "\nDigite uma opção válida"
+        putStrLn "\nDigite uma opção válida."
         listaArma ar per
 
 listaArmadura :: [Armadura] -> Personagem -> IO Int
 listaArmadura armadur per = do
     system "clear"
-    putStr "Dinheiro em caixa: "
+    putStr "Seu money -> "
     print (personagemDinheiro per)
     putStrLn ""
     putStr (percorreArmadura1 0 armadur)
-    putStrLn "Digite sua escolha"
+    putStr "Digite sua escolha: "
     escolhaopcao <- readLn :: IO Int
     --let esc = escolhaopcao - 1
 
     let poiva = armaduraPreco (armaduras lojao !! escolhaopcao)
-    if (escolhaopcao >= 0 && escolhaopcao < 7) then do
+    let tam = tamanhouArmadura (armaduras lojao)
+
+    if (escolhaopcao > 0 && escolhaopcao <= tam) then do
          if personagemDinheiro per >= poiva then do
-            let nome = armaduraNome(armaduras lojao !! escolhaopcao)
-            putStrLn ""
-            print(nome)
-            putStrLn "*Comprou, vá até o seu baú*\n"
+            let nome = armaduraNome ( armaduras lojao !! (escolhaopcao - 1) )
+            
+            putStr "\n"
+            estrelinhas
+            putStr "\n Você comprou, "
+            putStr nome 
+            putStrLn " vá até o seu baú \n"
+            estrelinhas
+            putStr "\n"
+
             return escolhaopcao
          else do
             let escolhaopcao = -1
             putStrLn "\n\nVc tá Liso $$$"
             return escolhaopcao
+    else if (escolhaopcao == 0) then
+        return (-1)
     else do
         putStrLn "\nDigite uma opção válida"
         listaArmadura armadur per
@@ -306,26 +346,36 @@ listaArmadura armadur per = do
 listaPocao :: [Pocao] -> Personagem -> IO Int
 listaPocao po per = do
     system "clear"
-    putStr "Dinheiro em caixa: "
+    putStr "Seu money -> "
     print (personagemDinheiro per)
     putStrLn ""
     putStr (percorrePocao1 0 po)
-    putStrLn "Digite sua escolha"
+    putStr "Digite sua escolha: "
     escolhaopcao <- readLn :: IO Int
     --let esc = escolhaopcao - 1
 
     let poiva = pocaoPreco (pocoes lojao !! escolhaopcao)
-    if (escolhaopcao >= 0 && escolhaopcao < 12) then do
-         if personagemDinheiro per >= poiva then do
-            let nome = pocaoNome(pocoes lojao !! escolhaopcao)
-            putStrLn ""
-            print(nome)
-            putStrLn "*Comprou, vá até o seu baú*\n"
+    let tam = tamanhouPocao (pocoes lojao)
+
+    if (escolhaopcao > 0 && escolhaopcao <= tam) then do
+        if personagemDinheiro per >= poiva then do
+            let nome = pocaoNome ( pocoes lojao !! (escolhaopcao - 1) )
+            
+            putStr "\n"
+            estrelinhas
+            putStr "\n Você comprou, "
+            putStr nome 
+            putStrLn " vá até o seu baú \n"
+            estrelinhas
+            putStr "\n"
+            
             return escolhaopcao
          else do
             let escolhaopcao = -1
             putStrLn "\n\nVc tá Liso $$$"
             return escolhaopcao
+    else if (escolhaopcao == 0) then
+        return (-1)
     else do
         putStrLn "\nDigite uma opção válida"
         listaPocao po per
@@ -347,6 +397,7 @@ opcoesBau = do
 
 opcoesTroca :: IO Int
 opcoesTroca = do
+    system "clear"
     putStrLn "              #   TROQUE SEU EQUIPAMENTO    #\n"
     putStrLn "[1] -> Troque sua armadura"
     putStrLn "[2] -> Troque sua arma"
