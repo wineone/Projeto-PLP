@@ -269,8 +269,9 @@ listaArma ar per = do
             putStrLn "*Comprou, vá até o seu baú*\n"
             return escolhaopcao
          else do
-            putStrLn "Liseu bateu"
-            listaArma ar per
+            let escolhaopcao = -1
+            putStrLn "\n\nVc tá Liso $$$"
+            return escolhaopcao
     else do
         putStrLn "\nDigite uma opção válida"
         listaArma ar per
@@ -295,8 +296,9 @@ listaArmadura armadur per = do
             putStrLn "*Comprou, vá até o seu baú*\n"
             return escolhaopcao
          else do
-            putStrLn "Liseu bateu"
-            listaArmadura armadur per
+            let escolhaopcao = -1
+            putStrLn "\n\nVc tá Liso $$$"
+            return escolhaopcao
     else do
         putStrLn "\nDigite uma opção válida"
         listaArmadura armadur per
@@ -321,49 +323,12 @@ listaPocao po per = do
             putStrLn "*Comprou, vá até o seu baú*\n"
             return escolhaopcao
          else do
-            putStrLn "Liseu bateu"
-            listaPocao po per
+            let escolhaopcao = -1
+            putStrLn "\n\nVc tá Liso $$$"
+            return escolhaopcao
     else do
         putStrLn "\nDigite uma opção válida"
         listaPocao po per
-
-
-conhecaArmas :: [Arma] -> String
-conhecaArmas [] = ""
-conhecaArmas (x:xs) = (armaNome x) ++ "\n" ++
-                      (armaDescricao x) ++ "\n" ++
-                      "Preço: " ++ show ((armaPreco x)) ++
-                      "     Dano: " ++ show((armaDano x)) ++
-                      "     Força: " ++ show((armaForca x)) ++
-                      "     Agilidade: " ++show( (armaAgilidade x)) ++ "\n\n" ++
-                      (conhecaArmas xs)
-
-
-conhecaArmadura :: [Armadura] -> String
-conhecaArmadura [] = ""
-conhecaArmadura (x:xs) = (armaduraNome x) ++ "\n" ++
-                      (armaduraDescricao x) ++ "\n" ++
-                      "Preço: " ++ show ((armaduraPreco x)) ++
-                      "     Dano: " ++ show((armaduraArmadura x)) ++
-                      "     Força: " ++ show((armaduraForca x)) ++
-                      "     Agilidade: " ++show( (armaduraAgilidade x)) ++
-                      "     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++
-                      (conhecaArmadura xs)
-
-
-conhecaPocao :: [Pocao] -> String
-conhecaPocao [] = ""
-conhecaPocao (x:xs) = (pocaoNome x) ++ "\n" ++
-                      (pocaoDescricao x) ++ "\n" ++
-                      "Preço: " ++ show ((pocaoPreco x)) ++
-                      "     Vida: " ++ show((pocaoVida x)) ++ "\n\n" ++
-                      (conhecaPocao xs)
-
--- lerOpcoes :: IO Int
--- lerOpcoes = do
---     putStrLn "Digite sua escolha"
---     escolhaopcao <- readLn :: IO Int
---     return escolhaopcao
 
 
 opcoesBau :: IO Int
