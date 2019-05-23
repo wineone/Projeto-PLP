@@ -216,8 +216,9 @@ bau per = do
         else if(op == 3) then do --vizualizar equipamento
             vizualizarEquipamento per
             bau per
-        else if(op == 4) then   -- vasculhar sua bolsa
-            bau (unsafePerformIO (gerenciaBolsa per))
+        else if(op == 4) then do  -- vasculhar sua bolsa
+            b <- gerenciaBolsa per
+            bau b
         else do
             system "clear"
             return per
