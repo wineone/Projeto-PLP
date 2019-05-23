@@ -116,8 +116,13 @@ ataqueDoGrupo :: [Inimigo] -> Personagem -> Personagem
 ataqueDoGrupo [] per = per
 ataqueDoGrupo (i:is) per = do
     if ( (inimigoVidaAtual i) > 0 ) then do
-        let p = heroiTomaDano per (inimigoDano i)
-        ataqueDoGrupo is (unsafePerformIO p)
+        let a = (unsafePerformIO (inimigoAtaca i))
+  
+        let p = heroiTomaDano per a
+        if(a == 1888888) then
+            ataqueDoGrupo is (unsafePerformIO p)
+        else
+            ataqueDoGrupo is (unsafePerformIO p)     
     else
         ataqueDoGrupo is per
 
