@@ -45,14 +45,14 @@ removePocao indPocaoSair indPocaoAtual (x:xs)
 
 -- +++++++++++++++++++++++++++++ Funcões que percorrem arrays +++++++++++++++++++++++++++++
 percorreArma :: Int -> [Arma] -> String
-percorreArma indArma (x:[]) = show (indArma) ++ " - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x ++ "\n" ++ (percorreArma (indArma + 1) [])
+percorreArma indArma (x:[]) = show (indArma) ++ " - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x  ++ "\n    dano: " ++ show(armaDano x) ++ "\n    força: " ++ show(armaForca x) ++ "\n    agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma (indArma + 1) [])
 percorreArma indArma [] = ""
-percorreArma indArma (x:xs) = show (indArma) ++ " - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x ++ "\n" ++ percorreArma (indArma + 1) xs
+percorreArma indArma (x:xs) = show (indArma) ++ " - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x ++ "\n    dano: " ++ show(armaDano x) ++ "\n    força: " ++ show(armaForca x) ++ "\n    agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma (indArma + 1) xs)
 
 percorreArmadura :: Int -> [Armadura] -> String
-percorreArmadura indArmadura (x:[]) = show (indArmadura) ++ " - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++ "\n" ++ (percorreArmadura (indArmadura + 1) [])
+percorreArmadura indArmadura (x:[]) = show (indArmadura) ++ " - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++  "\n    vida: " ++      show (armaduraVida x) ++ "\n    agilidade: " ++ show (armaduraAgilidade x) ++"\n    armadura: " ++  show (armaduraArmadura x) ++ "\n    força: " ++     show (armaduraForca x) ++ "\n\n"++(percorreArmadura (indArmadura + 1) [])
 percorreArmadura indArmadura [] = ""
-percorreArmadura indArmadura (x:xs) =  show (indArmadura) ++ " - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++ "\n" ++ percorreArmadura (indArmadura + 1) xs
+percorreArmadura indArmadura (x:xs) =  show (indArmadura) ++ " - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++ "\n    vida: " ++      show (armaduraVida x) ++ "\n    agilidade: " ++ show (armaduraAgilidade x) ++"\n    armadura: " ++  show (armaduraArmadura x) ++ "\n    força: " ++     show (armaduraForca x) ++ "\n\n"++percorreArmadura (indArmadura + 1) xs
 
 percorrePocao :: Int -> [Pocao] -> String
 percorrePocao indPocao (x:[]) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ ( percorrePocao (indPocao + 1) [])
@@ -217,5 +217,5 @@ bau per = do
         else if(op == 4) then   -- vasculhar sua bolsa
             bau (unsafePerformIO (gerenciaBolsa per))
 
-        else
+        else 
             return per
