@@ -63,13 +63,13 @@ percorrePocao indPocao (x:xs) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n  
 usaArmadura :: Int -> Int -> [Armadura] -> Armadura
 --usaArmadura indArmaduraSair indArmaduraAtual [] = []
 usaArmadura indArmaduraSair indArmaduraAtual (x:xs)
-            | (indArmaduraSair == indArmaduraAtual) = x 
+            | (indArmaduraSair == indArmaduraAtual) = x
             | otherwise =(usaArmadura indArmaduraSair (indArmaduraAtual + 1) xs)
 
 usaArma :: Int -> Int -> [Arma] -> Arma
 --usaArma indArmaSair indArmaAtual [] = []
 usaArma indArmaSair indArmaAtual (x:xs)
-        | (indArmaSair == indArmaAtual) = x 
+        | (indArmaSair == indArmaAtual) = x
         | otherwise = (usaArma indArmaSair (indArmaAtual + 1) xs)
 
 usaPocao :: Int -> Int -> [Pocao] -> Pocao
@@ -102,21 +102,57 @@ verificaValidadeArmadura :: Bolsa -> Int-> IO()
 verificaValidadeArmadura bol remover = do
     if(remover >= tamanhoArmadura(bolsaArmadura bol)) then
         putStrLn "Indice invalido, bicho"
-    else 
+    else
         putStr ""
 
 verificaValidadeArma :: Bolsa -> Int-> IO()
 verificaValidadeArma bol remover = do
     if(remover >= tamanhoArma(bolsaArma bol)) then
         putStrLn "Indice invalido, bicho"
-    else 
+    else
         putStr ""
-   
+
+-- -- +++++++++++++++++++++++++++++ funções para executar as trocas de itens +++++++++++++++++++++++++++++
+
+trocaArmadura :: Personagem -> Bolsa -> Int -> Personagem
+trocaArmadura per bol ind = Personagem (personagemNome per) ((personagemVidaAtual per) + vida) ((personagemVidaMax per) + vida) (personagemDano per) defesa forca agilidade (personagemDinheiro per) (personagemArma per) ((bolsaArmadura bol) !! ind) bolsa
+      where vida = (div (armaduraForca ((bolsaArmadura bol) !! ind)) 2) + (armaduraVida ((bolsaArmadura bol) !! ind)) - (armaduraVida (personagemArmadura per)) - (div (armaduraForca (personagemArmadura per)) 2)
+            forca =  (personagemForca per) + (armaduraForca ((bolsaArmadura bol) !! ind)) - (armaduraForca (personagemArmadura per))
+            defesa =  (div (armaduraArmadura ((bolsaArmadura bol) !! ind)) 2) - (div (armaduraArmadura (personagemArmadura per)) 2)
+            agilidade = (personagemAgilidade per) + (armaduraAgilidade ((bolsaArmadura bol) !! ind)) - (armaduraAgilidade (personagemArmadura per))
+            bolsa = addArmadura (personagemArmadura per) (Bolsa (bolsaPocao bol) (removeArmadura ind 0 (bolsaArmadura bol)) (bolsaArma bol))
+
+
+trocaArma :: Personagem -> Bolsa -> Int -> Personagem
+trocaArma per bol ind = Personagem (personagemNome per) ((personagemVidaAtual per) + vida) ((personagemVidaMax per) + vida) dano (personagemDefesa per) forca agilidade (personagemDinheiro per) ((bolsaArma bol) !! ind) (personagemArmadura per) bolsa
+      where vida = (div (armaForca ((bolsaArma bol) !! ind)) 2)
+            forca = (personagemForca per) + (armaForca ((bolsaArma bol) !! ind)) - (armaForca (personagemArma per))
+            agilidade = (personagemAgilidade per) + (armaAgilidade ((bolsaArma bol) !! ind)) - (armaAgilidade (personagemArma per))
+            bolsa = addArma (personagemArma per) (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma ind 0 (bolsaArma bol)))
+            dano = (armaDano ((bolsaArma bol) !! ind)) - (armaDano (personagemArma per))
 
 -- +++++++++++++++++++++++++++++ lê entrada e executa as funções do bau +++++++++++++++++++++++++++++
+
+trocaItens :: Personagem -> Bolsa -> IO Personagem
+trocaItens per bol = do
+      op3 <- opcoesTrocaItens
+      if(op3 == 1) then do
+        putStrLn (percorreArmadura 0 (bolsaArmadura bol))
+        putStrLn "digite qual a armadura que deseja equipar"
+        equipar <- readLn :: IO Int
+        return (trocaArmadura per bol equipar)
+        else if (op3 == 2) then do
+        putStrLn (percorreArma 0 (bolsaArma bol))
+        putStrLn "digite qual a arma que deseja equipar"
+        equipar <- readLn :: IO Int
+        return (trocaArma per bol equipar)
+      else
+         return per
+
+
 remove :: Bolsa -> IO Bolsa
 remove bol = do -- remover item do bau
-            op2 <- opcoesRemove 
+            op2 <- opcoesRemove
             if(op2 == 1) then do
                 putStrLn (percorreArmadura 0 (bolsaArmadura bol))
                 putStrLn "digite qual armadura deseja remover"
@@ -135,25 +171,25 @@ remove bol = do -- remover item do bau
 
 
 gerenciaBolsa :: Personagem -> IO Personagem
-gerenciaBolsa per = do 
+gerenciaBolsa per = do
         op <- opcoesRemoveBolsa
         let bol = bolsa per
         if(op == 1) then do --listar poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
             digite
             return (unsafePerformIO (gerenciaBolsa ((Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) bol) )))
-        
+
         else if (op == 2) then do -- usar poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
             putStr "Digite qual pocao deseja usar  "
-            usar <- readLn :: IO Int 
-            let x = usaPocao usar 0 (bolsaPocao bol)                
+            usar <- readLn :: IO Int
+            let x = usaPocao usar 0 (bolsaPocao bol)
             putStrLn ("Voce usou essa poção: " ++ (pocaoNome x))
             digite
             let newBolsa =  Bolsa (removePocao usar 0 (bolsaPocao bol)) (bolsaArmadura bol) (bolsaArma bol)
-            
+
             return (unsafePerformIO (gerenciaBolsa (Personagem (personagemNome per) ( min (personagemVidaMax per) ((personagemVidaAtual per) + pocaoVida x)   )  (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa) ))
-        
+
         else if (op == 3) then do -- remover poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
             putStr "Digite qual pocao deseja jogar fora  "
@@ -168,10 +204,9 @@ gerenciaBolsa per = do
 bau :: Personagem -> IO Personagem
 bau per = do
         op <- opcoesBau
-        let bol = bolsa per 
+        let bol = bolsa per
         if (op == 1) then do --trocar equipamento
-            
-            return per
+            return (unsafePerformIO (trocaItens per (bolsa per)))
         else if(op == 2) then do --excluir item do bau
             newBolsa <- remove bol
             return (Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa)
@@ -180,6 +215,6 @@ bau per = do
             return per
         else if(op == 4) then   -- vasculhar sua bolsa
             return (unsafePerformIO (gerenciaBolsa per))
-            
+
         else
             return per

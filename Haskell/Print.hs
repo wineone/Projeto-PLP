@@ -250,7 +250,7 @@ listaArma ar per = do
             return escolhaopcao
          else do
             putStrLn "Liseu bateu"
-            listaArma ar per           
+            listaArma ar per
     else do
         putStrLn "\nDigite uma opção válida"
         listaArma ar per
@@ -276,7 +276,7 @@ listaArmadura armadur per = do
             return escolhaopcao
          else do
             putStrLn "Liseu bateu"
-            listaArmadura armadur per           
+            listaArmadura armadur per
     else do
         putStrLn "\nDigite uma opção válida"
         listaArmadura armadur per
@@ -302,11 +302,11 @@ listaPocao po per = do
             return escolhaopcao
          else do
             putStrLn "Liseu bateu"
-            listaPocao po per           
+            listaPocao po per
     else do
         putStrLn "\nDigite uma opção válida"
         listaPocao po per
-    
+
 
 conhecaArmas :: [Arma] -> String
 conhecaArmas [] = ""
@@ -392,20 +392,31 @@ opcoesRemoveBolsa = do
     escolha <- readLn :: IO Int
     return escolha
 
+opcoesTrocaItens :: IO Int
+opcoesTrocaItens = do
+  system "clear"
+  putStrLn "              #   TROQUE SEU EQUIPAMENTO    #\n"
+  putStrLn "[1] -> troque sua armadura"
+  putStrLn "[2] -> troque sua arma"
+  putStrLn "[3] -> voltar"
+  putStrLn "O que voce quer fazer?... "
+  escolha <- readLn :: IO Int
+  return escolha
+
 vizualizarEquipamento :: Personagem -> IO()
 vizualizarEquipamento per = do
     system "clear"
     putStrLn "++++++++++++++++++++++++++++++++++++++++\n"
     putStrLn "          #CONHEÇA O HEROI#              \n"
     putStrLn $ "Nome do Herói: " ++ (personagemNome per) ++ "     HP: " ++ show (personagemVidaAtual per) ++ "/"++ show(personagemVidaMax per)
-    putStrLn $ "\n       Dinheiro: " ++ (show (personagemDinheiro per)) ++ "\n" 
+    putStrLn $ "\n       Dinheiro: " ++ (show (personagemDinheiro per)) ++ "\n"
 
     putStrLn "Atributos do jogador: "
     putStrLn $ "    Defesa: " ++ show(personagemDefesa per)
     putStrLn $ "    Dano: " ++ show (personagemDano per)
     putStrLn $ "    Força: " ++ show (personagemForca per)
     putStrLn $ "    Agilidade: " ++ show (personagemAgilidade per)
-    
+
     let arma = personagemArma per
     let armadura = personagemArmadura per
 
@@ -423,7 +434,7 @@ vizualizarEquipamento per = do
     putStrLn $ "    vida: " ++      show (armaduraVida armadura)
     putStrLn "\n\n++++++++++++++++++++++++++++++++++++++++"
     digite
-    
+
 
 
 digite :: IO()
