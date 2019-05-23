@@ -277,15 +277,16 @@ listaArma ar per = do
     putStrLn ""
     putStr (percorreArma1 0 ar)
     putStr "Digite sua escolha: "
+    
     escolhaopcao <- readLn :: IO Int
-    --let esc = escolhaopcao - 1
+    let esc = escolhaopcao - 1
 
-    let poiva = armaPreco (armas lojao !! (escolhaopcao - 1) )
-    let tam = tamanhouArma (armas lojao)
+    let poiva = armaPreco ( ar !! (esc) )
+    let tam = tamanhouArma ar
 
     if (escolhaopcao > 0 && escolhaopcao <= tam) then do
          if personagemDinheiro per >= poiva then do
-            let nome = armaNome ( armas lojao !! (escolhaopcao - 1) )
+            let nome = armaNome ( ar !! (esc) )
             
             putStr "\n"
             estrelinhas
@@ -295,11 +296,11 @@ listaArma ar per = do
             estrelinhas
             putStr "\n"
             
-            return escolhaopcao
+            return esc
          else do
             let escolhaopcao = -1
             putStrLn "\n\nVc tá Liso $$$"
-            return escolhaopcao
+            return esc
     else if (escolhaopcao == 0) then
         return (-1)
     else do
@@ -314,15 +315,16 @@ listaArmadura armadur per = do
     putStrLn ""
     putStr (percorreArmadura1 0 armadur)
     putStr "Digite sua escolha: "
+    
     escolhaopcao <- readLn :: IO Int
-    --let esc = escolhaopcao - 1
+    let esc = escolhaopcao - 1
 
-    let poiva = armaduraPreco (armaduras lojao !! (escolhaopcao - 1) )
-    let tam = tamanhouArmadura (armaduras lojao)
+    let poiva = armaduraPreco (armadur !! esc )
+    let tam = tamanhouArmadura (armadur)
 
     if (escolhaopcao > 0 && escolhaopcao <= tam) then do
          if personagemDinheiro per >= poiva then do
-            let nome = armaduraNome ( armaduras lojao !! (escolhaopcao - 1) )
+            let nome = armaduraNome ( armadur !! esc )
             
             putStr "\n"
             estrelinhas
@@ -332,11 +334,11 @@ listaArmadura armadur per = do
             estrelinhas
             putStr "\n"
 
-            return escolhaopcao
+            return esc
          else do
             let escolhaopcao = -1
             putStrLn "\n\nVc tá Liso $$$"
-            return escolhaopcao
+            return esc
     else if (escolhaopcao == 0) then
         return (-1)
     else do
@@ -351,15 +353,16 @@ listaPocao po per = do
     putStrLn ""
     putStr (percorrePocao1 0 po)
     putStr "Digite sua escolha: "
+    
     escolhaopcao <- readLn :: IO Int
-    --let esc = escolhaopcao - 1
+    let esc = escolhaopcao - 1
 
-    let poiva = pocaoPreco (pocoes lojao !! (escolhaopcao - 1) )
-    let tam = tamanhouPocao (pocoes lojao)
+    let poiva = pocaoPreco (po !! esc )
+    let tam = tamanhouPocao (po)
 
     if (escolhaopcao > 0 && escolhaopcao <= tam) then do
         if personagemDinheiro per >= poiva then do
-            let nome = pocaoNome ( pocoes lojao !! (escolhaopcao - 1) )
+            let nome = pocaoNome ( po !! esc )
             
             putStr "\n"
             estrelinhas
@@ -369,15 +372,15 @@ listaPocao po per = do
             estrelinhas
             putStr "\n"
             
-            return escolhaopcao
+            return esc
          else do
             let escolhaopcao = -1
             putStrLn "\n\nVc tá Liso $$$"
-            return escolhaopcao
+            return esc
     else if (escolhaopcao == 0) then
         return (-1)
     else do
-        putStrLn "\nDigite uma opção válida"
+        putStrLn "\nDigite uma opção válida."
         listaPocao po per
 
 
