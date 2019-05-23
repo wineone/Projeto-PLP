@@ -374,6 +374,7 @@ opcoesTroca = do
 
 opcoesRemove :: IO Int
 opcoesRemove = do
+    system "clear"
     putStrLn "              #   REMOVA SEU EQUIPAMENTO    #\n"
     putStrLn "[1] -> remova sua armadura"
     putStrLn "[2] -> remova sua arma"
