@@ -2,6 +2,7 @@ module Bau where
 
 import Estruturas
 import System.IO.Unsafe
+import System.Process
 import Print
 -- +++++++++++++++++++++++++++++ Funcões que adicionam itens no arrays ++++++++++++++++++++
 addArmadura :: Armadura -> Bolsa -> Bolsa
@@ -217,6 +218,6 @@ bau per = do
             bau per
         else if(op == 4) then   -- vasculhar sua bolsa
             bau (unsafePerformIO (gerenciaBolsa per))
-        else
+        else do
             system "clear"
             return per
