@@ -7,25 +7,38 @@ import Print
 import Entidades
 import System.Random (randomRIO)
 import Batalha
+import Bau
 
 
 fases :: Personagem -> IO Personagem
 fases per = do
             let a = unsafePerformIO (printaFases per) 
             if(a == 1) then do
-                return (unsafePerformIO (mapa per manguezal)) -- função que chama o manguezal
+                let h = unsafePerformIO (mapa per manguezal)
+                fn h
+                fases h -- função que chama o manguezal
             else if (a == 2) then do
-                return (unsafePerformIO (mapa per casa)) -- função que chama a casa
+                let h = unsafePerformIO (mapa per casa)
+                fn h
+                fases h -- função que chama a casa
             else if (a == 3) then do
-                return (unsafePerformIO (mapa per jogosVoraz)) -- função que chama o jogoses Voraz
+                let h = unsafePerformIO (mapa per jogosVoraz)
+                fn h
+                fases h -- função que chama o jogoses Voraz
             else if (a == 4) then do
-                return (unsafePerformIO (mapa per piloto)) -- função que cham o piloto
+                let h = unsafePerformIO (mapa per piloto)
+                fn h
+                fases h -- função que cham o piloto
             else if (a == 5) then do
-                return (unsafePerformIO (mapa per area51)) -- função que chama a Area 51
+                let h = unsafePerformIO (mapa per area51)
+                fn h
+                fases h -- função que chama a Area 51
             else if (a == 6) then do 
-                return (unsafePerformIO (mapa per faseBoss)) -- função qeu chama o BOSS
+                let h = unsafePerformIO (mapa per faseBoss)
+                fn h
+                fases h -- função qeu chama o BOSS
             else if (a == 7) then do
-                -- system "clear"
+                system "clear"
                 return per          -- função que sai
             else do
                 putStrLn "Opção invalida"
@@ -48,10 +61,10 @@ mapa heroi fase = do
         printaVida perso 
         mapa perso fase
     else if (op == 2) then do
-        putStrLn "função bolsa"
-        return heroi
+        let h = unsafePerformIO (gerenciaBolsa heroi)
+        fn h
+        mapa h fase
     else if (op == 3) then do
-        putStrLn "quereu sair"
         return heroi
     else do
         putStrLn "O que você pensa que está fazendo??\n\n"

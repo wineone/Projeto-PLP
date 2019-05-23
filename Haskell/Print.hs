@@ -5,16 +5,14 @@ import System.IO.Unsafe
 import System.Process
 import System.IO
 
-printaVida :: Personagem -> IO()
+printaVida :: Personagem -> IO ()
 printaVida p =  do
-                putStrLn ((personagemNome p ) ++ "                    " ++ (show (personagemVidaAtual p)) ++ "/" ++ (show (personagemVidaMax p)))
-                putStrLn ""
-                return ()
+                putStrLn ((personagemNome p ) ++ "                   " ++ (show (personagemVidaAtual p)) ++ "/" ++ (show (personagemVidaMax p)) ++ "\n")
 
 printaFases :: Personagem -> IO Int
 printaFases per =   do
                     system "clear"
-                    putStrLn "              #   MAPAS   #\n"
+                    putStrLn "              #   MAPAS   #\n\n"
                     putStrLn "Com grandes escolhas vem grande responsabilidades.\nEscolha sabiamente.\n"
                     putStrLn "[1] -> Manguezal"
                     putStrLn "[2] -> Casa"
@@ -27,14 +25,18 @@ printaFases per =   do
                     a <- readLn :: IO Int
                     return a
 
-printLobbyAux :: Personagem -> IO()
-printLobbyAux p = putStrLn "                #   LOBBY   #\n\n\n"
+fn :: Personagem -> IO Personagem
+fn p = do
+    if (personagemNome p == "") then
+        return p
+    else 
+        return p
 
 printLobby :: Personagem -> IO Int
 printLobby p =  do
-                printLobbyAux p
-                printaVida p
-                putStrLn ""
+                system "clear"
+                printaVida p  
+                putStrLn "\n              #   LOBBY   #\n\n\n"
                 putStrLn "[1] -> Fases"
                 putStrLn "[2] -> Loja"
                 putStrLn "[3] -> Bolsa"

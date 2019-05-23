@@ -2,6 +2,7 @@
 import Estruturas
 import System.IO.Unsafe
 import System.IO
+import System.Process
 import Print
 import Fases
 import Bau
