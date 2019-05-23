@@ -179,7 +179,9 @@ gerenciaBolsa per = do
         if(op == 1) then do --listar poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
             digite
-            return (unsafePerformIO (gerenciaBolsa ((Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) bol) )))
+            
+            let p = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) bol
+            gerenciaBolsa p
 
         else if (op == 2) then do -- usar poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
@@ -190,7 +192,8 @@ gerenciaBolsa per = do
             digite
             let newBolsa =  Bolsa (removePocao usar 0 (bolsaPocao bol)) (bolsaArmadura bol) (bolsaArma bol)
 
-            return (unsafePerformIO (gerenciaBolsa (Personagem (personagemNome per) ( min (personagemVidaMax per) ((personagemVidaAtual per) + pocaoVida x)   )  (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa) ))
+            let p = Personagem (personagemNome per) ( min (personagemVidaMax per) ((personagemVidaAtual per) + pocaoVida x)   )  (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa
+            gerenciaBolsa p
 
         else if (op == 3) then do -- remover poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
@@ -199,7 +202,9 @@ gerenciaBolsa per = do
             putStrLn ("Você jogou isso: " ++ (pocaoNome ((bolsaPocao bol) !! remover)))
             digite
             let newBolsa =  Bolsa (removePocao remover 0 (bolsaPocao bol)) (bolsaArmadura bol) (bolsaArma bol)
-            return (unsafePerformIO(gerenciaBolsa ( Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa)))
+            
+            let p = Personagem (personagemNome per) (personagemVidaAtual per) (personagemVidaMax per) (personagemDano per) (personagemDefesa per) (personagemForca per) (personagemAgilidade per) (personagemDinheiro per) (personagemArma per) (personagemArmadura per) newBolsa
+            gerenciaBolsa p
         else
             return (per)
 

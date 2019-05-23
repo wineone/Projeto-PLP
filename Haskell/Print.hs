@@ -280,7 +280,7 @@ listaArma ar per = do
     escolhaopcao <- readLn :: IO Int
     --let esc = escolhaopcao - 1
 
-    let poiva = armaPreco (armas lojao !! escolhaopcao)
+    let poiva = armaPreco (armas lojao !! (escolhaopcao - 1) )
     let tam = tamanhouArma (armas lojao)
 
     if (escolhaopcao > 0 && escolhaopcao <= tam) then do
@@ -317,7 +317,7 @@ listaArmadura armadur per = do
     escolhaopcao <- readLn :: IO Int
     --let esc = escolhaopcao - 1
 
-    let poiva = armaduraPreco (armaduras lojao !! escolhaopcao)
+    let poiva = armaduraPreco (armaduras lojao !! (escolhaopcao - 1) )
     let tam = tamanhouArmadura (armaduras lojao)
 
     if (escolhaopcao > 0 && escolhaopcao <= tam) then do
@@ -354,7 +354,7 @@ listaPocao po per = do
     escolhaopcao <- readLn :: IO Int
     --let esc = escolhaopcao - 1
 
-    let poiva = pocaoPreco (pocoes lojao !! escolhaopcao)
+    let poiva = pocaoPreco (pocoes lojao !! (escolhaopcao - 1) )
     let tam = tamanhouPocao (pocoes lojao)
 
     if (escolhaopcao > 0 && escolhaopcao <= tam) then do
