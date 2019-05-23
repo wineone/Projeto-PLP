@@ -56,9 +56,9 @@ percorreArmadura indArmadura [] = ""
 percorreArmadura indArmadura (x:xs) =  show (indArmadura) ++ " - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++ "\n    vida: " ++      show (armaduraVida x) ++ "\n    agilidade: " ++ show (armaduraAgilidade x) ++"\n    armadura: " ++  show (armaduraArmadura x) ++ "\n    força: " ++     show (armaduraForca x) ++ "\n\n"++percorreArmadura (indArmadura + 1) xs
 
 percorrePocao :: Int -> [Pocao] -> String
-percorrePocao indPocao (x:[]) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ ( percorrePocao (indPocao + 1) [])
+percorrePocao indPocao (x:[]) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ "    Vida: " ++ (show (pocaoVida x))++ "\n" ++ ( percorrePocao (indPocao + 1) [])
 percorrePocao indPocao [] = ""
-percorrePocao indPocao (x:xs) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ percorrePocao (indPocao + 1) xs
+percorrePocao indPocao (x:xs) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ "    Vida: " ++ (show (pocaoVida x)) ++ "\n" ++ percorrePocao (indPocao + 1) xs
 
 -- +++++++++++++++++++++++++++++ retorna os valores necessarios para uso de itens +++++++++++++++++++++++++++++
 usaArmadura :: Int -> Int -> [Armadura] -> Armadura

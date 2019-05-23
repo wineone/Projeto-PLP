@@ -214,28 +214,34 @@ maos :: Arma
 maos = Arma "Suas mãos" "Estilo minecraft" 1 10 10 10
 
 lancaTris :: Arma
-lancaTris = Arma "lança da tristeza" "mata seus inimigos de suicidio" 300 10 2 3
+lancaTris = Arma "lança da tristeza" "mata seus inimigos de suicidio" 300 20 20 20
 
 armaADura :: Arma
-armaADura = Arma "Arma A dura" "dizem que essa arma é feita de rapadura" 400 15 7 5
+armaADura = Arma "Arma A dura" "dizem que essa arma é feita de rapadura" 500 30 20 25
 
 adagasSile :: Arma
-adagasSile = Arma "Adagas Silenciosas" "Aqueles que gritam são seus inimigos" 500 15 5 15
+adagasSile = Arma "Adagas Silenciosas" "Aqueles que gritam são seus inimigos" 800 40 30 15
 
 donut :: Arma
-donut = Arma "Um donut" "não tem piadinha, é só um donut muito gostoso" 600 20 5 5
+donut = Arma "Um donut" "não tem piadinha, é só um donut muito gostoso" 1200 40 40 40
 
 tridente :: Arma
-tridente = Arma "tridente banguela" "é... agora ele é um bidente" 400 20 10 10
+tridente = Arma "tridente banguela" "é... agora ele é um bidente" 1600 50 30 30
 
 armaConfete :: Arma
-armaConfete = Arma "Arma de confete" "É carnaval meu povo" 200 10 5 2
+armaConfete = Arma "Arma de confete" "É carnaval meu povo" 2000 50 50 50
+
+lazy :: Arma
+lazy = Arma "Lazy Evaluation" "Mata todo mundo de RAIVA" 2200 60 40 50
 
 escudo :: Arma
-escudo = Arma "Escudo" "a melhor defesa é um ataque" 400 15 15 15
+escudo = Arma "Escudo" "a melhor defesa é um ataque" 2500 70 40 40
+
+
+
 
 metralha :: Arma
-metralha = Arma "Metralhadora de Golfinhos" "Vem dos confins do espaço..." 2000 200 200 200
+metralha = Arma "Metralhadora de Golfinhos" "Vem dos confins do espaço..." 5000 200 200 200
 
 
 -- +++++++++++++++++  FIM ARMAS   ++++++++++++++++++
@@ -304,32 +310,40 @@ roupas = Armadura "Roupas rasgadas" "Você chegou só com as roupas do corpo" 1 
 
 
 mofi :: Armadura
-mofi = Armadura "Mofi's vestments" "Nem precisa de descrição kk" 200 5 5 5 5
+mofi = Armadura "Mofi's vestments" "Nem precisa de descrição kk" 500 10 10 10 10
 
 
 barril :: Armadura
-barril = Armadura "Um barril de madeira""bixo, tu não tem dinheiro, vai ter que ser essa mesmo" 350 7 8 3 10
+barril = Armadura "Um barril de madeira""bixo, tu não tem dinheiro, vai ter que ser essa mesmo" 700 15 22 20 10
 
 couro :: Armadura
-couro = Armadura "Armadura de couro" "por que tem sangue pingando?" 400 8 10 3 10
+couro = Armadura "Armadura de couro" "por que tem sangue pingando?" 1000 20 25 15 20
 
 
 tempes :: Armadura
-tempes = Armadura "Armadura da Tempestade" "Tava chovendo nesse dia" 500 12 10 5 15
+tempes = Armadura "Armadura da Tempestade" "Tava chovendo nesse dia" 1200 15 15 30 30
 
 armaDoFim :: Armadura
-armaDoFim = Armadura "Armadura do fim" "Eu só queria terminar isso logo" 700 15 10 10 20
+armaDoFim = Armadura "Armadura do fim" "Eu só queria terminar isso logo" 1500 40 45 30 40
     
+gosmenta :: Armadura 
+gosmenta = Armadura "Armadura de catarro" "~gorfa~" 2000 60 30 30 40
+
+tormenta :: Armadura
+tormenta = Armadura "Fúria do Norte" "Essa armadura já viu o passar das eras" 2500 70 50 50 40
+
+eucli :: Armadura
+eucli = Armadura "Armadura Não-Euclidiana" "Eu não sei nem por onde começar pra explicar" 3000 70 80 60 70 
 
 divina :: Armadura
-divina = Armadura "Armadura de Virgem" "Quem veste isso se torna o mais próximo possível de Deus." 2000 200 200 200 200
+divina = Armadura "Armadura de Virgem" "Quem veste isso se torna o mais próximo possível de Deus." 5000 200 200 200 200
 
 -- +++++++++++++++++  FIM ARMADURAS   ++++++++++++++++++
 
 -- +++++++++++++++++ LOJA ++++++++++++++++++
 
 lojao :: Lojas
-lojao = Lojas 9 [maos,lancaTris,armaADura,adagasSile,donut,tridente,armaConfete,escudo,metralha] 7 [roupas,mofi,barril,couro,tempes,armaDoFim,divina] 12 [pocaoRestauraVida,pocaoBebada,pocaoNinja,pocaoAjudaAosDogs,pocaoStronda,pocaoTransformice,pocaoTranquila,pocaoApelona,pocaoCapitao,pocaoRedbull,pocaoRedBullDupla,pocaoCafeComGuarana]
+lojao = Lojas 10 [maos,lancaTris,armaADura,adagasSile,donut,tridente,armaConfete,escudo,lazy,metralha] 10 [roupas,mofi,barril,couro,tempes,armaDoFim,gosmenta,tormenta,eucli,divina] 12 [pocaoRestauraVida,pocaoBebada,pocaoNinja,pocaoAjudaAosDogs,pocaoStronda,pocaoTransformice,pocaoTranquila,pocaoApelona,pocaoCapitao,pocaoRedbull,pocaoRedBullDupla,pocaoCafeComGuarana]
 
 --7 armaduras
 --12 pocoes
