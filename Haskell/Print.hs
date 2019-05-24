@@ -234,19 +234,19 @@ meetYourEnemies (i:is) = (inimigoNome i) ++ " " ++
 
 
 percorreArma1 :: Int -> [Arma] -> String
-percorreArma1 indArma (x:[]) = "[" ++ (show (indArma + 1)) ++ "]" ++ " - " ++armaNome x ++ "\n    +->" ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) [])
+percorreArma1 indArma (x:[]) = "[" ++ (show (indArma + 1)) ++ "]" ++ " - " ++armaNome x ++ "\n    +-> " ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) [])
 percorreArma1 indArma [] = "\n************************\n\n[0] -> Cancelar compra.\n\n************************\n\n\n"
-percorreArma1 indArma (x:xs) =  "[" ++ (show (indArma + 1)) ++ "]" ++ " "++armaNome x ++ "\n    +->" ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) xs)
+percorreArma1 indArma (x:xs) =  "[" ++ (show (indArma + 1)) ++ "]" ++ " "++armaNome x ++ "\n    +-> " ++ armaDescricao x  ++ "\nPreço: " ++ show ((armaPreco x)) ++"    Dano:" ++ show(armaDano x) ++ "    Força: " ++ show(armaForca x) ++ "    Agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma1 (indArma + 1) xs)
 
 percorreArmadura1 :: Int -> [Armadura] -> String
-percorreArmadura1 indArmadura (x:[]) = "[" ++ show ((indArmadura) + 1) ++ "]" ++" - "++ (armaduraNome x) ++ "\n   +->" ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++ "     Dano: " ++ show((armaduraArmadura x)) ++ "     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura+1) []) 
+percorreArmadura1 indArmadura (x:[]) = "[" ++ show ((indArmadura) + 1) ++ "]" ++" - "++ (armaduraNome x) ++ "\n   +-> " ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++ "     Dano: " ++ show((armaduraArmadura x)) ++ "     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura+1) []) 
 percorreArmadura1 indArmadura [] = "\n************************\n\n[0] -> Cancelar compra.\n\n************************\n\n\n"
-percorreArmadura1 indArmadura (x:xs) = "[" ++ show ((indArmadura) + 1) ++ "]" ++" - "++(armaduraNome x) ++ "\n    +->" ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++"     Dano: " ++ show((armaduraArmadura x)) ++"     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura + 1) xs)
+percorreArmadura1 indArmadura (x:xs) = "[" ++ show ((indArmadura) + 1) ++ "]" ++" - "++(armaduraNome x) ++ "\n    +-> " ++ (armaduraDescricao x) ++ "\n" ++ "Preço: " ++ show ((armaduraPreco x)) ++"     Dano: " ++ show((armaduraArmadura x)) ++"     Força: " ++ show((armaduraForca x)) ++"     Agilidade: " ++show( (armaduraAgilidade x)) ++"     Vida: " ++show( (armaduraVida x)) ++ "\n\n" ++ (percorreArmadura1 (indArmadura + 1) xs)
 
 percorrePocao1 :: Int -> [Pocao] -> String
-percorrePocao1 indPocao (x:[]) = "[" ++ (show (indPocao + 1)) ++ "]" ++" - "++ (pocaoNome x) ++ "\n   +->" ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n"++ (percorrePocao1 (indPocao + 1) [])
+percorrePocao1 indPocao (x:[]) = "[" ++ (show (indPocao + 1)) ++ "]" ++" - "++ (pocaoNome x) ++ "\n   +-> " ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n"++ (percorrePocao1 (indPocao + 1) [])
 percorrePocao1 indPocao [] = "\n************************\n\n[0] -> Cancelar compra.\n\n************************\n\n\n"
-percorrePocao1 indPocao (x:xs) = "[" ++ (show (indPocao + 1)) ++ "]" ++" - "++(pocaoNome x) ++ "\n    +->" ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n" ++ (percorrePocao1(indPocao+1) xs)
+percorrePocao1 indPocao (x:xs) = "[" ++ (show (indPocao + 1)) ++ "]" ++" - "++(pocaoNome x) ++ "\n    +-> " ++ (pocaoDescricao x) ++ "\n" ++ "Preço: " ++ show ((pocaoPreco x)) ++ "     Vida: " ++ show((pocaoVida x)) ++ "\n\n" ++ (percorrePocao1(indPocao+1) xs)
 
 -- Funções auxiliares para tamanho do array (importadas de Bau)
 

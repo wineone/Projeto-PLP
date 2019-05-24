@@ -46,19 +46,19 @@ removePocao indPocaoSair indPocaoAtual (x:xs)
 
 -- +++++++++++++++++++++++++++++ Funcões que percorrem arrays +++++++++++++++++++++++++++++
 percorreArma :: Int -> [Arma] -> String
-percorreArma indArma (x:[]) = show (indArma) ++ " - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x  ++ "\n    dano: " ++ show(armaDano x) ++ "\n    força: " ++ show(armaForca x) ++ "\n    agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma (indArma + 1) [])
+percorreArma indArma (x:[]) = "[" ++ show (indArma + 1) ++ "] - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x  ++ "\n    dano: " ++ show(armaDano x) ++ "\n    força: " ++ show(armaForca x) ++ "\n    agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma (indArma + 1) [])
 percorreArma indArma [] = ""
-percorreArma indArma (x:xs) = show (indArma) ++ " - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x ++ "\n    dano: " ++ show(armaDano x) ++ "\n    força: " ++ show(armaForca x) ++ "\n    agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma (indArma + 1) xs)
+percorreArma indArma (x:xs) = "[" ++ show (indArma + 1) ++ "] - " ++ armaNome x ++ "\n            +-> " ++ armaDescricao x ++ "\n    dano: " ++ show(armaDano x) ++ "\n    força: " ++ show(armaForca x) ++ "\n    agilidade: " ++ show(armaAgilidade x) ++"\n\n" ++  (percorreArma (indArma + 1) xs)
 
 percorreArmadura :: Int -> [Armadura] -> String
-percorreArmadura indArmadura (x:[]) = show (indArmadura) ++ " - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++  "\n    vida: " ++      show (armaduraVida x) ++ "\n    agilidade: " ++ show (armaduraAgilidade x) ++"\n    armadura: " ++  show (armaduraArmadura x) ++ "\n    força: " ++     show (armaduraForca x) ++ "\n\n"++(percorreArmadura (indArmadura + 1) [])
+percorreArmadura indArmadura (x:[]) = "[" ++ show (indArmadura + 1) ++ "] - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++  "\n    vida: " ++      show (armaduraVida x) ++ "\n    agilidade: " ++ show (armaduraAgilidade x) ++"\n    armadura: " ++  show (armaduraArmadura x) ++ "\n    força: " ++     show (armaduraForca x) ++ "\n\n"++(percorreArmadura (indArmadura + 1) [])
 percorreArmadura indArmadura [] = ""
-percorreArmadura indArmadura (x:xs) =  show (indArmadura) ++ " - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++ "\n    vida: " ++      show (armaduraVida x) ++ "\n    agilidade: " ++ show (armaduraAgilidade x) ++"\n    armadura: " ++  show (armaduraArmadura x) ++ "\n    força: " ++     show (armaduraForca x) ++ "\n\n"++percorreArmadura (indArmadura + 1) xs
+percorreArmadura indArmadura (x:xs) = "[" ++ show (indArmadura + 1) ++ "] - " ++ (armaduraNome x) ++ "\n            +-> " ++ (armaduraDescricao x) ++ "\n    vida: " ++      show (armaduraVida x) ++ "\n    agilidade: " ++ show (armaduraAgilidade x) ++"\n    armadura: " ++  show (armaduraArmadura x) ++ "\n    força: " ++     show (armaduraForca x) ++ "\n\n"++percorreArmadura (indArmadura + 1) xs
 
 percorrePocao :: Int -> [Pocao] -> String
-percorrePocao indPocao (x:[]) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ "    Vida: " ++ (show (pocaoVida x))++ "\n" ++ ( percorrePocao (indPocao + 1) [])
+percorrePocao indPocao (x:[]) = "[" ++ show (indPocao + 1) ++ "] - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ "    Vida: " ++ (show (pocaoVida x))++ "\n" ++ ( percorrePocao (indPocao + 1) [])
 percorrePocao indPocao [] = ""
-percorrePocao indPocao (x:xs) = show (indPocao) ++ " - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ "    Vida: " ++ (show (pocaoVida x)) ++ "\n" ++ percorrePocao (indPocao + 1) xs
+percorrePocao indPocao (x:xs) = "[" ++ show (indPocao + 1) ++ "] - " ++ pocaoNome x ++ "\n            +-> " ++ pocaoDescricao x ++ "\n" ++ "    Vida: " ++ (show (pocaoVida x)) ++ "\n" ++ percorrePocao (indPocao + 1) xs
 
 -- +++++++++++++++++++++++++++++ retorna os valores necessarios para uso de itens +++++++++++++++++++++++++++++
 usaArmadura :: Int -> Int -> [Armadura] -> Armadura
@@ -142,12 +142,14 @@ trocaItens per bol = do
         putStrLn (percorreArmadura 0 (bolsaArmadura bol))
         putStrLn "digite qual a armadura que deseja equipar"
         equipar <- readLn :: IO Int
-        return (trocaArmadura per bol equipar)
+
+        return (trocaArmadura per bol (equipar - 1))
         else if (op3 == 2) then do
         putStrLn (percorreArma 0 (bolsaArma bol))
         putStrLn "digite qual a arma que deseja equipar"
         equipar <- readLn :: IO Int
-        return (trocaArma per bol equipar)
+
+        return (trocaArma per bol (equipar - 1))
       else
          return per
 
@@ -157,17 +159,22 @@ remove bol = do -- remover item do bau
             op2 <- opcoesRemove
             if(op2 == 1) then do
                 putStrLn (percorreArmadura 0 (bolsaArmadura bol))
-                putStrLn "digite qual armadura deseja remover"
+                putStrLn "Digite qual armadura deseja remover: "
                 remover <- readLn :: IO Int
-                verificaValidadeArmadura bol remover
-                return(Bolsa (bolsaPocao bol) (removeArmadura remover 0 (bolsaArmadura bol)) (bolsaArma bol))
+
+                let rem = remover - 1
+                verificaValidadeArmadura bol rem
+                return(Bolsa (bolsaPocao bol) (removeArmadura rem 0 (bolsaArmadura bol)) (bolsaArma bol))
 
             else if(op2 == 2) then do
                 putStrLn (percorreArma 0 (bolsaArma bol))
-                putStrLn "digite qual arma deseja remover"
+                putStrLn "Digite qual arma deseja remover: "
                 remover <- readLn :: IO Int
-                verificaValidadeArma bol remover
-                return (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma remover 0 (bolsaArma bol)))
+                
+                let rem = remover - 1
+
+                verificaValidadeArma bol rem
+                return (Bolsa (bolsaPocao bol) (bolsaArmadura bol) (removeArma rem 0 (bolsaArma bol)))
             else
                 return bol
 
@@ -185,10 +192,14 @@ gerenciaBolsa per = do
 
         else if (op == 2) then do -- usar poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
-            putStr "Digite qual pocao deseja usar  "
-            usar <- readLn :: IO Int
+            putStr "Digite qual poção deseja usar:  "
+            use <- readLn :: IO Int
+
+            let usar = use - 1
+
+            
             let x = usaPocao usar 0 (bolsaPocao bol)
-            putStrLn ("Voce usou essa poção: " ++ (pocaoNome x))
+            putStrLn ("Você usou essa poção: " ++ (pocaoNome x))
             digite
             let newBolsa =  Bolsa (removePocao usar 0 (bolsaPocao bol)) (bolsaArmadura bol) (bolsaArma bol)
 
@@ -197,8 +208,11 @@ gerenciaBolsa per = do
 
         else if (op == 3) then do -- remover poçoes
             putStrLn (percorrePocao 0 (bolsaPocao bol))
-            putStr "Digite qual pocao deseja jogar fora  "
-            remover <- readLn :: IO Int
+            putStr "Digite qual poção deseja jogar fora:  "
+            rem <- readLn :: IO Int
+
+            let remover = rem - 1
+
             putStrLn ("Você jogou isso: " ++ (pocaoNome ((bolsaPocao bol) !! remover)))
             digite
             let newBolsa =  Bolsa (removePocao remover 0 (bolsaPocao bol)) (bolsaArmadura bol) (bolsaArma bol)
