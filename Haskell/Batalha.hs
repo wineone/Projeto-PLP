@@ -142,7 +142,6 @@ batalha per gru = do
         return (penalidade per (div (grupoLoot gru) 10))
     else if (verificaMortoI (grupoInimigos gru)) then do
         wonBattle per (grupoLoot gru)
-        digite
         verificaBoss (grupoInimigos gru) per
         digite
         return (ganha per (grupoLoot gru))

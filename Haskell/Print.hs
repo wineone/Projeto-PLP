@@ -502,6 +502,7 @@ enterAux = do
 
 final :: Personagem -> IO()
 final p = do
+    digite
     system "clear"
     putStrLn "Tecle enter para prosseguir."
     

@@ -197,7 +197,7 @@ area51 = Fase "Área 51" "Ninguém sabe o que tem aí dentro" 4 [gru1Fase5,gru2F
 
 
 boss :: Inimigo
-boss = Inimigo "Light Theme IDE" "Fiquei ceguin" 10 500 50 50 50 50
+boss = Inimigo "Light Theme IDE" "Fiquei ceguin" 500 500 50 50 50 50
 
 gBoss :: GrupoDeInimigos
 gBoss = GrupoDeInimigos 1 50000000 [boss]
