@@ -296,6 +296,7 @@ listaArma ar per = do
             estrelinhas
             putStr "\n"
             
+            digite
             return esc
          else do
             let escolhaopcao = -1
@@ -333,7 +334,8 @@ listaArmadura armadur per = do
             putStrLn " vá até o seu baú \n"
             estrelinhas
             putStr "\n"
-
+            
+            digite
             return esc
          else do
             let escolhaopcao = -1
@@ -372,6 +374,7 @@ listaPocao po per = do
             estrelinhas
             putStr "\n"
             
+            digite
             return esc
          else do
             let escolhaopcao = -1
@@ -490,3 +493,40 @@ enter = do
     hSetBuffering stdin NoBuffering
     c <- getChar
     return c
+
+enterAux :: IO()
+enterAux = do
+    enter
+    hSetEcho stdin True
+    return ()
+
+final :: Personagem -> IO()
+final p = do
+    system "clear"
+    putStrLn "Tecle enter para prosseguir."
+    
+    enterAux
+    putStr "\n\n"
+    putStr "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
+    putStr "\n"
+    
+    putStrLn "..."
+    enterAux
+    putStrLn ("Parabéns " ++ personagemNome p ++ " você derrotou a terrível LIGHT THEME IDE")
+    enterAux
+    putStrLn "..."
+    enterAux
+    putStrLn "Mas infelizmente nada acontece."
+    enterAux
+    putStrLn "..."
+    enterAux
+    putStrLn "Você ainda pode jogar mais se quiser..."
+    enterAux
+    putStrLn "\nOu não, sei lá"
+    enterAux
+    putStrLn "..."
+    enterAux
+    putStrLn "eh isso\n"
+    putStr "+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"
+    putStr "\n\n"
+

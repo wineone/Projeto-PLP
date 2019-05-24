@@ -126,6 +126,13 @@ ataqueDoGrupo (i:is) per = do
     else
         ataqueDoGrupo is per
 
+verificaBoss :: [Inimigo] -> Personagem -> IO()
+verificaBoss (a:as) heroi = do
+    if ((inimigoNome a) == "Light Theme IDE") then
+        final heroi
+    else
+        return ()
+
 batalha :: Personagem -> GrupoDeInimigos -> IO Personagem
 batalha per gru = do
 
@@ -135,6 +142,8 @@ batalha per gru = do
         return (penalidade per (div (grupoLoot gru) 10))
     else if (verificaMortoI (grupoInimigos gru)) then do
         wonBattle per (grupoLoot gru)
+        digite
+        verificaBoss (grupoInimigos gru) per
         digite
         return (ganha per (grupoLoot gru))
     else do
