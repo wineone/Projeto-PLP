@@ -1,6 +1,6 @@
-:- module(print, [inicio_jogo/1,helloWorld/0]).
+:- module(print, []).
 
-inicio_jogo(X) :-
+inicioJogo(Nome) :-
     shell(clear),
     writeln("Você acorda em um local que você nunca viu antes,"),
     writeln("somente com as roupas do seu corpo."),
@@ -8,6 +8,16 @@ inicio_jogo(X) :-
     writeln("Tudo o que você sabe é o que você \nleu no bilhete que estava na sua mão quando acordou..."),
     writeln("Para escapar desse mundo, você deve derrotar a temível LIGHT THEME IDE.\n"),
     writeln("Você lembra do seu nome?... "), 
-    read(X).
+    read(Nome).
 
-helloWorld :- shell(clear), writeln("Hello World!").
+printLobby(Opcao) :-
+    writeln("           #   LOBBY   #\n\n\n"),
+    writeln("[1] -> Fases"),
+    writeln("[2] -> Loja"),
+    writeln("[3] -> Bolsa"),
+    writeln("[4] -> Baú"),
+    writeln("[5] -> Créditos"),
+    writeln("[6] -> Sair"),
+    writeln("\nDigite sua opção:  "),
+    read(Opcao).
+
