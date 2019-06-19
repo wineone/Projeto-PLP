@@ -3,14 +3,15 @@
 
 :- use_module(print).
 :- use_module(entidades).
+:- use_module(fases).
 
-
+/*modelo de como vai funcionar alterar a vida do personagem/inimigos */
 mudaVida([A,B,C,D,E], Vida, Sai) :- Nova is B - Vida, Sai = [A,Nova,C,D,E].
 
-loop(Per) :- print:printLobby(Op),
+loop(Per) :- print:printLobby(Op,Per),
              loopOp(Op,Per).
 
-loopOp(1,Per) :- writeln("Fases"),mudaVida(Per,10,Novo),writeln(Novo),loop(Novo).
+loopOp(1,Per) :- writeln("Fases"),fases:fases(Per,Novo),loop(Novo).
 loopOp(2,Per) :- writeln("Loja"),loop(Per).
 loopOp(3,Per) :- writeln("Bolsa"),loop(Per).
 loopOp(4,Per) :- writeln("Bau"),loop(Per).
