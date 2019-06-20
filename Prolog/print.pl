@@ -1,5 +1,7 @@
 :- module(print, []).
 
+:- use_module(util).
+
 
 printVida([Nome,VidaAtu,VidaMax,_,_,_,_,_,_,_,_]) :-
     write(Nome),
@@ -18,7 +20,7 @@ inicioJogo(Nome) :-
     writeln("Tudo o que você sabe é o que você \nleu no bilhete que estava na sua mão quando acordou..."),
     writeln("Para escapar desse mundo, você deve derrotar a temível LIGHT THEME IDE.\n"),
     writeln("Você lembra do seu nome?... "), 
-    read(Nome).
+    lerString(Nome).
 
 printLobby(Opcao,Per) :-
     writeln("           #   LOBBY   #\n\n\n"),
@@ -30,7 +32,7 @@ printLobby(Opcao,Per) :-
     writeln("[5] -> Créditos"),
     writeln("[6] -> Sair"),
     writeln("\nDigite sua opção:  "),
-    read(Opcao).
+    lerNumero(Opcao).
 
 printFases(Opcao,Per) :-
     shell(clear),
@@ -45,7 +47,7 @@ printFases(Opcao,Per) :-
     writeln("[6] -> BOSS"),
     writeln("[7] -> sair"),
     writeln("\nEscolha sabiamente a fase desejada... "),
-    read(Opcao).
+    lerNumero(Opcao).
 
 printLoja(Opcao, Per) :-
     shell(clear),
@@ -55,7 +57,7 @@ printLoja(Opcao, Per) :-
     writeln("[3] -> Comprar uma poção"),
     writeln("[4] -> sair\n\n"),
     writeln("Digite sua escolha: "),
-    read(Opcao).
+    lerNumero(Opcao).
 
 descrMapa([Nome, Descricao, _, _]) :-
     shell(clear),
@@ -66,7 +68,7 @@ descrMapa([Nome, Descricao, _, _]) :-
     write("\n\n\n\n").
 
 leOpMapa(Op) :-
-    read(X),
+    lerNumero(X),
     (X > 0, X < 4) -> Op is X;
     leOpMapa(Op).
 
@@ -159,7 +161,7 @@ escolhaTipoAtk(Heroi, GrupoInimigos, Opcao) :-
     auxEscolheTipoAtk(Opcao).
 
 lerOpcaoAtk(Opcao) :-
-    read(X),
+    lerNumero(X),
     (X =/= 1, X =/= 2) -> lerOpcaoAtk(Opcao);
     Opcao is X.
 
@@ -194,7 +196,7 @@ escolheInimigo(Opcao, [Qtd,_,Inimigos]) :-
     lerEscolhaInimigo(Opcao, Qtd).
 
 lerEscolhaInimigo(Opcao, Qtd) :-
-    read(X),
+    lerNumero(X),
     (X > 0, X =< Qtd) -> Opcao is X;
     lerEscolhaInimigo(Opcao, Qtd).
 
