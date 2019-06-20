@@ -2,6 +2,7 @@
 
 :- use_module(print).
 :- use_module(entidades).
+:- use_module(util).
 
 
 mudaVida([A,B,C,E,F,G,H,I,J,K,L], Vida, Sai) :- Nova is B - Vida, Sai = [A,Nova,C,E,F,G,H,I,J,K,L].
@@ -22,16 +23,24 @@ fases(Per,Novo) :-
 
 
 
+pegaAleatorio([Cab|Cor],1,Saida) :- Saida = Cab.
+pegaAleatorio([Cab|Cor],Ite,Saida) :- N is Ite - 1,pegaAleatorio(Cor,N,Saida).
 
 
 
-% mapaOp(1,Per,Novo) :-  
-%     entraBatalha()
+mapaOp(1,[Nome,Des,QuantGrupo,Lista],Per,Novo) :-  
+    pegaAleatorio(Lista,1,[QuaInimi,Loot,ListIni]),
+    print:entraBatalha(ListIni),
+    lerString(K),
+    mudaVida(Per,5,Aux),
+    mapa([Nome,Des,QuantGrupo,Lista],Aux,Novo).
+    
+mapaOp(_,[Nome,Des,QuantGrupo,Lista],Per,Novo) :- Novo = Per.
 
 mapa(Fase,Per,Novo) :-
     print:descrMapa(Fase),
     print:printMapa(Op),
-    mudaVida(Per,5,Novo).
+    mapaOp(Op,Fase,Per,Novo).
 
     
 

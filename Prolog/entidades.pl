@@ -104,16 +104,16 @@ pato(Inimigo) :- Inimigo = ["Pato no Tucupi", "ABC da Amazonia", 10, 10, 3, 4, 5
 
 
 
-gru1Fase1(GrupoDeInimigos) :- GrupoDeInimigos = [3, 120, [cururu,jacare,cururu]].
+gru1Fase1(GrupoDeInimigos) :- cururu(X),jacare(Y),cururu(Z),GrupoDeInimigos = [3, 120, [X,Y,Z]].
 
 
-gru2Fase1(GrupoDeInimigos) :- GrupoDeInimigos = [3, 100, [pato,slime,slime]].
+gru2Fase1(GrupoDeInimigos) :- pato(X),slime(Y),slime(Z),GrupoDeInimigos = [3, 100, [X,Y,Z]].
 
 
-gru3Fase1(GrupoDeInimigos) :- GrupoDeInimigos = [3, 100, [pato,jacare,cururu]].
+gru3Fase1(GrupoDeInimigos) :- pato(X),jacare(Y),cururu(Z),GrupoDeInimigos = [3, 100, [X,Y,Z]].
 
 
-manguezal(Fase) :- Fase = ["Manguezal", "Se não tiver usando botas, vai se sujar de lama", 3, [gru1Fase1,gru2Fase1,gru3Fase1]].
+manguezal(Fase) :- gru1Fase1(X),gru2Fase1(Y),gru3Fase1(Z), Fase = ["Manguezal", "Se não tiver usando botas, vai se sujar de lama", 3, [X,Y,Z]].
 
 /* Fase 2 */
 
