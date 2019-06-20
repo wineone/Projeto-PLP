@@ -51,8 +51,8 @@ data Personagem = Personagem{
 
     personagemDinheiro :: Int,
 
-    personagemArma :: Arma,    --, ageitar
-    personagemArmadura :: Armadura,    --ajeitar
+    personagemArma :: Arma,    
+    personagemArmadura :: Armadura,    
     
     bolsa :: Bolsa
 
