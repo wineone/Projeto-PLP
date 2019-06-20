@@ -28,7 +28,6 @@ pegaAleatorio([Cab|Cor],1,Saida) :- Saida = Cab.
 pegaAleatorio([Cab|Cor],Ite,Saida) :- N is Ite - 1,pegaAleatorio(Cor,N,Saida).
 
 
-
 mapaOp(1,[Nome,Des,QuantGrupo,Lista],Per,Novo) :-  
     pegaAleatorio(Lista,1,[QuaInimi,Loot,ListIni]),
     print:entraBatalha(ListIni),

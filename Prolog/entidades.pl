@@ -136,22 +136,22 @@ chao(Inimigo) :- Inimigo = ["Chão Movediço", "Quando você entrar o chão quas
 louca(Inimigo) :- Inimigo = ["Louça Suja", "Ela passou tanto tempo na pia que criou vida", 50, 50, 10, 10, 10, 7].
 
 
-gru1Fase2(GrupoDeInimigos) :- GrupoDeInimigos = [3, 200, [meia,meia,meia]].
+gru1Fase2(GrupoDeInimigos) :- meia(C),meia(B),meia(A),GrupoDeInimigos = [3, 200, [A,B,C]].
 
 
-gru2Fase2(GrupoDeInimigos) :- GrupoDeInimigos = [3, 300, [meia,bixo,parede]].
+gru2Fase2(GrupoDeInimigos) :- meia(C),bixo(B),parede(A),GrupoDeInimigos = [3, 300, [A,B,C]].
 
 
-gru3Fase2(GrupoDeInimigos) :- GrupoDeInimigos = [3, 400, [bixo,ventila,chao]].
+gru3Fase2(GrupoDeInimigos) :- bixo(A),ventila(B),chao(C),GrupoDeInimigos = [3, 400, [A,B,C]].
 
 
-gru4Fase2(GrupoDeInimigos) :- GrupoDeInimigos = [4, 400, [louca,chao,meia,meia]].
+gru4Fase2(GrupoDeInimigos) :- louca(D),chao(C),meia(B),meia(A),GrupoDeInimigos = [4, 400, [A,B,C,D]].
 
 
-gru5Fase2(GrupoDeInimigos) :- GrupoDeInimigos = [4, 500, [meia,meia,louca,ventila]].
+gru5Fase2(GrupoDeInimigos) :- meia(D),meia(C),louca(B),ventila(A),GrupoDeInimigos = [4, 500, [A,B,C,D]].
 
 
-casa(Fase) :- Fase = ["Casa da Mãe Joana", "Tem coisas aqui que os deixariam enojados", 5, [gru1Fase2,gru2Fase2,gru3Fase2,gru3Fase2,gru4Fase2,gru5Fase2]].
+casa(Fase) :- gru1Fase2(A),gru2Fase2(B),gru3Fase2(C),gru4Fase2(D),gru5Fase2(E), Fase = ["Casa da Mãe Joana", "Tem coisas aqui que os deixariam enojados", 5, [A,B,C,D,E]].
 
 /* Fase 3 */
 
