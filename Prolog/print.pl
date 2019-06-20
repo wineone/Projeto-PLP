@@ -65,13 +65,18 @@ descrMapa([Nome, Descricao, _, _]) :-
     writeln(Texto),
     write("\n\n\n\n").
 
-printMapa(Opcao, Per) :-
+leOpMapa(Op) :-
+    read(X),
+    (X > 0, X < 4) -> Op is X;
+    leOpMapa(Op).
+
+printMapa(Opcao) :-
     write("\n"),
     writeln("[1] -> Entrar em uma batalha"),
     writeln("[2] -> Vasculhar sua bolsa"),
     writeln("[3] -> Pausa para o café"),
     writeln("\nQual a sua escolha? "),
-    read(Opcao).
+    leOpMapa(Opcao).
 
 estrelinhas :- 
     writeln("****************************************\n").
