@@ -47,3 +47,168 @@ printFases(Opcao,Per) :-
     writeln("\nEscolha sabiamente a fase desejada... "),
     read(Opcao).
 
+printLoja(Opcao, Per) :-
+    shell(clear),
+    writeln("              #       LOJA      #\n\n"),
+    writeln("[1] -> Comprar uma arma"),
+    writeln("[2] -> Comprar uma armadura"),
+    writeln("[3] -> Comprar uma poção"),
+    writeln("[4] -> sair\n\n"),
+    writeln("Digite sua escolha: "),
+    read(Opcao).
+
+descrMapa([Nome, Descricao, _, _]) :-
+    shell(clear),
+    writeln("Você está no mapa:\n"),
+    writeln(Nome),
+    string_concat("\n    +-> ", Descricao, Texto),
+    writeln(Texto),
+    write("\n\n\n\n").
+
+printMapa(Opcao, Per) :-
+    write("\n"),
+    writeln("[1] -> Entrar em uma batalha"),
+    writeln("[2] -> Vasculhar sua bolsa"),
+    writeln("[3] -> Pausa para o café"),
+    writeln("\nQual a sua escolha? "),
+    read(Opcao).
+
+estrelinhas :- 
+    writeln("****************************************\n").
+
+divisorias :-
+    writeln("////////////////////////////////////////////////////////////////////////////////\n").
+
+atkCritico :-
+    writeln("Ataque Crítico!  ").
+
+printHeroiAtaca([Nome,_,_,_,_,_,_,_,_,_,_], Dano) :-
+    write("\n"),
+    write(Nome),
+    write(" deu "),
+    write(Dano),
+    write(" de dano."), nl.
+
+printInimigoAtaca([Nome,_,_,_,_,_,_,_], Dano) :-
+    write(Nome),
+    write(" deu "),
+    write(Dano),
+    write(" de dano."), nl.
+
+printInimigoTomaDano([Nome,_,VidaAtu,_,_,_,_,_], Dano) :-
+    VidaAtu =< 0,
+    writeln("Você tá chutando cachorro morto...").
+
+printInimigoTomaDano([Nome,_,VidaAtu,_,_,_,_,_], Dano) :-
+    VidaAtu > 0,
+    write(Nome),
+    write(" recebeu "),
+    write(Dano),
+    write(" de dano."), nl.
+
+lostBattle(Perda) :-
+    write("\n\n"),
+    estrelinhas,
+    write("Oxe doido tu perdeu feião visse ;(\n"),
+    write("Você perdeu "),
+    write(Perda),
+    write(" moedas."), nl.
+
+wonBattle([Nome,_,_,_,_,_,_,_,_,_,_], Moedas) :-
+    write("\n\n"),
+    estrelinhas
+    write("Parabéns "),
+    write(Nome),
+    write(".\n"),
+    write("Você ganhou "),
+    write(Moedas),
+    write(" moedas."),
+    estrelinhas, nl.
+
+interfaceAtk([]) :- write("\n\n"),!.
+
+interfaceAtk([[Nome,_,VidaAtu,VidaMax,_,_,_,_]|Inimigos]) :-
+    write(Nome),
+    write("                    "),     % 20 espaços
+    write(VidaAtu),
+    write("/"),
+    write(VidaMax), nl,
+    interfaceAtk(Inimigos).
+
+escolhaTipoAtk(Heroi, GrupoInimigos, Opcao) :-
+    % digite
+    shell(clear),
+
+
+    % CRIA A INTERFACE DA BATALHA
+    writeln("              #   BATALHA    #\n"),
+
+    printVida(Heroi),
+    interfaceAtk(GrupoInimigos),
+
+    writeln("\nComo você quer atacar?\n"),
+    writeln("[1] -> Ataque Forte"),
+    writeln("[2] -> Ataque Fraco"),
+    writeln("\nDigite sua opção: "),
+    lerOpcaoAtk(Opcao),
+    auxEscolheTipoAtk(Opcao).
+
+lerOpcaoAtk(Opcao) :-
+    read(X),
+    (X =/= 1, X =/= 2) -> lerOpcaoAtk(Opcao);
+    Opcao is X.
+
+auxEscolheTipoAtk(1) :-
+    writeln("Você selecionou ataque FORTE.\n"),!.
+
+auxEscolheTipoAtk(2) :-
+    writeln("Você selecionou ataque FRACO.\n"),!.
+
+auxAtkInim(1) :- write("\n").
+auxAtkInim(Ind) :- write("").
+
+printAtkInimigo(Ind, []) :- write("").
+
+printAtkInimigo(Ind, [ [Nome,_,VidaAtu,VidaMax,_,_,_,_] |Inimigos ]) :-
+    auxAtkInim(Ind),
+    write("Atacar: ["),
+    write(Ind),
+    write("] "),
+    write(Nome),
+    write(" "),
+    write(VidaAtu),
+    write("/"),
+    writeln(VidaMax),
+    Novo is (Ind + 1),
+    printAtkInimigo(Novo, Inimigos).
+
+escolheInimigo(Opcao, [Qtd,_,Inimigos]) :-
+    printAtkInimigo(1, Inimigos),
+
+    writeln("\nDigite quem você quer atacar: "),
+    lerEscolhaInimigo(Opcao, Qtd).
+
+lerEscolhaInimigo(Opcao, Qtd) :-
+    read(X),
+    (X > 0, X =< Qtd) -> Opcao is X;
+    lerEscolhaInimigo(Opcao, Qtd).
+
+conhecaInimigos([]) :-
+    write("").
+
+conhecaInimigos([ [Nome,Descr,VidaAtu,VidaMax,_,_,_,_] | Inimigos ]) :-
+    write(Nome),
+    write(" "),
+    write(VidaAtu),
+    write("/"),
+    writeln(VidaMax),
+    write("    +-> "),
+    write(Descr),
+    write("\n\n"),
+    conhecaInimigos(Inimigos).
+
+entraBatalha(Inimigos) :-
+    shell(clear),
+    writeln("Você acaba de entrar em uma batalha!!\n"),
+    writeln("Conheça seus inimigos:\n"),
+    conhecaInimigos(Inimigos).
