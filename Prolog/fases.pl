@@ -14,7 +14,8 @@ fasesOp(3,Per,Novo) :- entidades:jogosVoraz(X),mapa(X,Per,Aux),fases(Aux,Novo).
 fasesOp(4,Per,Novo) :- entidades:piloto(X),mapa(X,Per,Aux),fases(Aux,Novo).
 fasesOp(5,Per,Novo) :- entidades:area51(X),mapa(X,Per,Aux),fases(Aux,Novo).
 fasesOp(6,Per,Novo) :- entidades:faseBoss(X),mapa(X,Per,Aux),fases(Aux,Novo).
-fasesOp(_,Per,Novo) :- Novo = Per.
+fasesOp(7,Per,Novo) :- Novo = Per.
+fasesOp(_,Per,Novo) :- fases(Per,Novo).
 
 
 fases(Per,Novo) :-
@@ -34,8 +35,14 @@ mapaOp(1,[Nome,Des,QuantGrupo,Lista],Per,Novo) :-
     lerString(K),
     mudaVida(Per,5,Aux),
     mapa([Nome,Des,QuantGrupo,Lista],Aux,Novo).
-    
-mapaOp(_,[Nome,Des,QuantGrupo,Lista],Per,Novo) :- Novo = Per.
+
+mapaOp(2,Fase,Per,Novo) :- 
+    write("Bolsa foi chamada"),
+    mapa(Fase,Per,Novo).
+
+mapaOp(3,Fase,Per,Novo) :- Novo = Per.
+
+mapaOp(_Fase,Per,Novo) :- mapa(Fase,Per,Novo).
 
 mapa(Fase,Per,Novo) :-
     print:descrMapa(Fase),
