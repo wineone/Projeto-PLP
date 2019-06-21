@@ -161,9 +161,16 @@ escolhaTipoAtk(Heroi, GrupoInimigos, Opcao) :-
     auxEscolheTipoAtk(Opcao).
 
 lerOpcaoAtk(Opcao) :-
-    lerNumero(X),
-    (X =/= 1, X =/= 2) -> lerOpcaoAtk(Opcao);
-    Opcao is X.
+    lerNumero(Ler), verifica(Opcao, Ler).
+
+verifica(Opcao, 1) :- 
+    Opcao is 1.
+
+verifica(Opcao, 2) :- 
+    Opcao is 2.
+
+verifica(Opcao,_) :- 
+    lerOpcaoAtk(Opcao).
 
 auxEscolheTipoAtk(1) :-
     writeln("Você selecionou ataque FORTE.\n"),!.
