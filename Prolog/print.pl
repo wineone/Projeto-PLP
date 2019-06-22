@@ -121,14 +121,14 @@ lostBattle(Perda) :-
     write(Perda),
     write(" moedas."), nl.
 
-wonBattle([Nome,_,_,_,_,_,_,_,_,_,_], Moedas) :-
+wonBattle([Nome,_,_,_,_,_,_,_,_,_,_], Loot) :-
     write("\n\n"),
     estrelinhas
     write("Parabéns "),
     write(Nome),
     write(".\n"),
     write("Você ganhou "),
-    write(Moedas),
+    write(Loot),
     write(" moedas."),
     estrelinhas, nl.
 

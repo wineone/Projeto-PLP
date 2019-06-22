@@ -6,7 +6,7 @@ personagem(Personagem, Nome) :-
     roupas(Armadura),
     bolsa(Bolsa),
     Personagem = [Nome,
-                  100,
+                  0,
                   100,
                   10,
                   10,
@@ -176,19 +176,19 @@ esnou(Inimigo) :- Inimigo = ["Esnou", "Sou o presidente, talkei", 80, 80, 16, 8,
 finique(Inimigo) :- Inimigo = ["Finique", "Perdeu a cabeça, algo compreesível", 95, 95, 13, 15, 12, 11].
 
 
-gru1Fase3(GrupoDeInimigos) :- GrupoDeInimigos =  [2, 600, [seneca,reimite]].
+gru1Fase3(GrupoDeInimigos) :- seneca(A),reimite(B),GrupoDeInimigos =  [2, 600, [A,B]].
 
 
-gru2Fase3(GrupoDeInimigos) :- GrupoDeInimigos = [2, 600, [pita,katenisse]].
+gru2Fase3(GrupoDeInimigos) :- pita(A),katenisse(B),GrupoDeInimigos = [2, 600, [A,B]].
 
 
-gru3Fase3(GrupoDeInimigos) :- GrupoDeInimigos = [3, 600, [pita,katenisse, gueiou]].
+gru3Fase3(GrupoDeInimigos) :- pita(A),katenisse(B), gueiou(C),GrupoDeInimigos = [3, 600, [A,B,C]].
 
 
-gru4Fase3(GrupoDeInimigos) :- GrupoDeInimigos = [3, 600, [esnou,katenisse,finique]].
+gru4Fase3(GrupoDeInimigos) :- esnou(A),katenisse(B),finique(C),GrupoDeInimigos = [3, 600, [A,B,C]].
 
 
-jogosVoraz(Fase) :- Fase = ["Jogoses Voraz", "Tributos contra os zinimigos", 4, [gru1Fase3,gru2Fase3,gru3Fase3,gru4Fase3]].
+jogosVoraz(Fase) :- gru1Fase3(A),gru2Fase3(B),gru3Fase3(C),gru4Fase3(D),Fase = ["Jogoses Voraz", "Tributos contra os zinimigos", 4, [A,B,C,D]].
 
 /* Fase 4*/
 
@@ -213,22 +213,22 @@ pinky(Inimigo) :- Inimigo = ["Pinky", "Irmão Do Cérebro", 150, 150, 20, 25, 10
 cerebro(Inimigo) :- Inimigo = ["Cérebro", "Irmão do Pinky", 150, 150, 20, 20, 25, 10].
 
 
-gru1Fase4(GrupoDeInimigos) :- GrupoDeInimigos = [3, 700, [papaco,papaco,pauloGuedes]].
+gru1Fase4(GrupoDeInimigos) :- papaco(A),papaco(B),pauloGuedes(C),GrupoDeInimigos = [3, 700, [A,B,C]].
 
 
-gru2Fase4(GrupoDeInimigos) :- GrupoDeInimigos = [2, 800, [nemesis,pauloGuedes]].
+gru2Fase4(GrupoDeInimigos) :- nemesis(A),pauloGuedes(B),GrupoDeInimigos = [2, 800, [A,B]].
 
 
-gru3Fase4(GrupoDeInimigos) :- GrupoDeInimigos = [3, 900, [nemesis,nemesis]].
+gru3Fase4(GrupoDeInimigos) :- nemesis(A),nemesis(B),GrupoDeInimigos = [3, 900, [A,B]].
 
 
-gru4Fase4(GrupoDeInimigos) :- GrupoDeInimigos = [3, 800, [pinky,cerebro,conexaoRuim]].
+gru4Fase4(GrupoDeInimigos) :- pinky(A),cerebro(B),conexaoRuim(C),GrupoDeInimigos = [3, 800, [A,B,C]].
 
 
-gru5Fase4(GrupoDeInimigos) :- GrupoDeInimigos = [3, 900, [conexaoRuim,oCaraAlho,cerebro]].
+gru5Fase4(GrupoDeInimigos) :- conexaoRuim(A),oCaraAlho(B),cerebro(C),GrupoDeInimigos = [3, 900, [A,B,C]].
 
 
-piloto(Fase) :- Fase = ["Piloto", "Fase de testes, cuidado senão ela ele te derruba", 5, [gru1Fase4,gru2Fase4,gru3Fase4,gru4Fase4,gru5Fase4]].
+piloto(Fase) :- gru1Fase4(A),gru2Fase4(B),gru3Fase4(C),gru4Fase4(D),gru5Fase4(E),Fase = ["Piloto", "Fase de testes, cuidado senão ela ele te derruba", 5, [A,B,C,D,E]].
 
 /* Fase 5 */
 
@@ -248,19 +248,19 @@ jovem(Inimigo) :- Inimigo = ["Jovem", "Ninguém gosta de Jovem", 270, 270, 30, 3
 cowboy(Inimigo) :- Inimigo = ["Cowboy do Espaço", "See you Space Cowboy", 100, 100, 15, 15, 15, 15].
 
 
-gru1Fase5(GrupoDeInimigos) :- GrupoDeInimigos = [1000, 2, [gravida,filho]].
+gru1Fase5(GrupoDeInimigos) :- gravida(A),filho(B),GrupoDeInimigos = [1000, 2, [A,B]].
 
 
-gru2Fase5(GrupoDeInimigos) :- GrupoDeInimigos = [1100, 2, [etBilu,jovem]].
+gru2Fase5(GrupoDeInimigos) :- etBilu(A),jovem(B),GrupoDeInimigos = [1100, 2, [A,B]].
 
 
-gru3Fase5(GrupoDeInimigos) :- GrupoDeInimigos = [1000, 1, [cowboy]].
+gru3Fase5(GrupoDeInimigos) :- cowboy(A),GrupoDeInimigos = [1000, 1, [A]].
 
 
-gru4Fase5(GrupoDeInimigos) :- GrupoDeInimigos = [1200, 3, [gravida,jovem,etBilu]].
+gru4Fase5(GrupoDeInimigos) :- gravida(A),jovem(B),etBilu(C),GrupoDeInimigos = [1200, 3, [A,B,C]].
 
 
-area51(Fase) :- Fase = ["Área 51", "Ninguém sabe o que tem aí dentro", 4, [gru1Fase5,gru2Fase5,gru3Fase5,gru4Fase5]].
+area51(Fase) :- gru1Fase5(A),gru2Fase5(B),gru3Fase5(C),gru4Fase5(D),Fase = ["Área 51", "Ninguém sabe o que tem aí dentro", 4, [A,B,C,D]].
 
 /* Boss */
 
@@ -268,10 +268,10 @@ area51(Fase) :- Fase = ["Área 51", "Ninguém sabe o que tem aí dentro", 4, [gr
 boss(Inimigo) :- Inimigo = ["Light Theme IDE", "Fiquei ceguin", 500, 500, 50, 50, 50, 50].
 
 
-gBoss(GrupoDeInimigos) :- GrupoDeInimigos = [1, 50000000, [boss]].
+gBoss(GrupoDeInimigos) :- boss(A),GrupoDeInimigos = [1, 50000000, [A]].
 
 
-faseBoss(Fase) :- Fase = ["Última fase do jogo", "Se ligue não", 1, [gBoss]].
+faseBoss(Fase) :- gBoss(A),Fase = ["Última fase do jogo", "Se ligue não", 1, [A]].
 
 
 /* Pocoes */
@@ -316,8 +316,6 @@ pocaoCapitao(Pocao) :- Pocao = ["Soro do Super Soldado", "te deixará forte por 
 pocaoRedbull(Pocao) :- Pocao = ["RedBull", "te dará asas", 44, 10].
     
 
-
-
 pocaoRedBullDupla(Pocao) :- Pocao = ["RedBull com Café", "te dará 4 asas", 88, 20].
     
 
@@ -327,4 +325,10 @@ pocaoCafeComGuarana(Pocao) :- Pocao :- ["Cafe com Guarana", "Te despertará de u
 /* Loja */
 
 
-lojao(Loja) :- Lojas = [10, [maos,lancaTris,armaADura,adagasSile,donut,tridente,armaConfete,escudo,lazy,metralha], 10, [roupas,mofi,barril,couro,tempes,armaDoFim,gosmenta,tormenta,eucli,divina], 12, [pocaoRestauraVida,pocaoBebada,pocaoNinja,pocaoAjudaAosDogs,pocaoStronda,pocaoTransformice,pocaoTranquila,pocaoApelona,pocaoCapitao,pocaoRedbull,pocaoRedBullDupla,pocaoCafeComGuarana]].
+lojao(Loja) :- Lojas = 
+    maos(A),lancaTris(B),armaADura(C),adagasSile(D),donut(E),tridente(F),armaConfete(G),escudo(H),lazy(I),metralha(J),
+    roupas(A1),mofi(A2),barril(A3),couro(A4),tempes(A5),armaDoFim(A6),gosmenta(A7),tormenta(A8),eucli(A9),divina(A10),
+    pocaoRestauraVida(B1),pocaoBebada(B2),pocaoNinja(B3),pocaoAjudaAosDogs(B4),pocaoStronda(B5),pocaoTransformice(B6),pocaoTranquila(B7),pocaoApelona(B8),pocaoCapitao(B9),pocaoRedbull(B10),pocaoRedBullDupla(B11),pocaoCafeComGuarana(B12),
+    [10, [A,B,C,D,E,F,G,H,I,J], 
+    10, [A1,A2,A3,A4,A5,A6,A7,A8,A9,A10], 
+    12, [B1,B2,B3,B4,B5,B6,B7,B8,B9,B10,B11,B12]].

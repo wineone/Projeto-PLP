@@ -33,7 +33,7 @@ mapaOp(1,[Nome,Des,QuantGrupo,Lista],Per,Novo) :-
     pegaAleatorio(Lista,1,[QuaInimi,Loot,ListIni]), /* colocar uma função que gera os numeros aleatorios */
     print:entraBatalha(ListIni),
     lerString(K),
-    batalha:batalha(Per,ListaIni,Aux),
+    batalha:batalha(Per,[QuaInimi,Loot,ListIni],Aux),
     mapa([Nome,Des,QuantGrupo,Lista],Aux,Novo).
 
 mapaOp(2,Fase,Per,Novo) :- 
