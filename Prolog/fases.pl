@@ -26,23 +26,27 @@ fases(Per,Novo) :-
 
 
 pegaAleatorio([Cab|Cor],1,Saida) :- Saida = Cab.
-pegaAleatorio([Cab|Cor],Ite,Saida) :- N is Ite - 1,pegaAleatorio(Cor,N,Saida).
+pegaAleatorio([Cab|Cor],Ite,Saida) :- N is Ite - 1, pegaAleatorio(Cor,N,Saida).
 
 
 mapaOp(1,[Nome,Des,QuantGrupo,Lista],Per,Novo) :-  
-    pegaAleatorio(Lista,1,[QuaInimi,Loot,ListIni]), /* colocar uma função que gera os numeros aleatorios */
+    % gera numero aleatorio
+    Qtd is QuantGrupo + 1,
+    random(1, Qtd, RandomNumber),
+
+    pegaAleatorio(Lista,RandomNumber,[QuaInimi,Loot,ListIni]),  /* colocar uma função que gera os numeros aleatorios */
     print:entraBatalha(ListIni),
     lerString(K),
     batalha:batalha(Per,[QuaInimi,Loot,ListIni],Aux),
     mapa([Nome,Des,QuantGrupo,Lista],Aux,Novo).
 
 mapaOp(2,Fase,Per,Novo) :- 
-    write("Bolsa foi chamada"),
+    writeln("Bolsa foi chamada"),
     mapa(Fase,Per,Novo).
 
 mapaOp(3,Fase,Per,Novo) :- Novo = Per.
 
-mapaOp(Fase,Per,Novo) :- mapa(Fase,Per,Novo).
+mapaOp(_,Fase,Per,Novo) :- mapa(Fase,Per,Novo).
 
 mapa(Fase,Per,Novo) :-
     print:descrMapa(Fase),

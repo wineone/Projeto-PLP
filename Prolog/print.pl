@@ -102,6 +102,10 @@ printInimigoAtaca([Nome,_,_,_,_,_,_,_], Dano) :-
     write(Dano),
     write(" de dano."), nl.
 
+printEsquiva(Nome) :-
+    write(Nome),
+    write(" se esquivou.\n").
+
 printInimigoTomaDano([Nome,_,VidaAtu,_,_,_,_,_], Dano) :-
     VidaAtu =< 0,
     writeln("Você tá chutando cachorro morto...").
@@ -113,13 +117,20 @@ printInimigoTomaDano([Nome,_,VidaAtu,_,_,_,_,_], Dano) :-
     write(Dano),
     write(" de dano."), nl.
 
+printHeroiTomaDano(Nome, Dano) :-
+    write(Nome),
+    write(" recebeu "),
+    write(Dano),
+    write(" de dano."), nl.
+
 lostBattle(Perda) :-
     write("\n\n"),
     estrelinhas,
     write("Oxe doido tu perdeu feião visse ;(\n"),
     write("Você perdeu "),
     write(Perda),
-    write(" moedas."), nl.
+    write(" moedas.\n\n"),
+    estrelinhas.
 
 wonBattle([Nome,_,_,_,_,_,_,_,_,_,_], Loot) :-
     write("\n\n"),
@@ -129,8 +140,8 @@ wonBattle([Nome,_,_,_,_,_,_,_,_,_,_], Loot) :-
     write(".\n"),
     write("Você ganhou "),
     write(Loot),
-    write(" moedas."),
-    estrelinhas, nl.
+    write(" moedas.\n\n"),
+    estrelinhas.
 
 interfaceAtk([]) :- write("\n\n"),!.
 

@@ -6,7 +6,7 @@ personagem(Personagem, Nome) :-
     roupas(Armadura),
     bolsa(Bolsa),
     Personagem = [Nome,
-                  0,
+                  100,
                   100,
                   10,
                   10,

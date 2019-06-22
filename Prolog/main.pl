@@ -7,7 +7,7 @@
 :- use_module(loja).
 
 
-/*modelo de como vai funcionar alterar a vida do personagem/inimigos */
+/* modelo de como vai funcionar alterar a vida do personagem/inimigos */
 mudaVida([A,B,C,D,E], Vida, Sai) :- Nova is B - Vida, Sai = [A,Nova,C,D,E].
 
 loop(Per) :- print:printLobby(Op,Per),
