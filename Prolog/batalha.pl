@@ -165,15 +165,12 @@ batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :-
 
 batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
     print:escolhaTipoAtk(Heroi,ListaIni,Opcao),
-    tipoAtk(Opcao, BD, BE)
-    Novo = Heroi,         % observar isso no final da função
+    tipoAtk(Opcao, BD, BE),
+    Novo = Heroi,     % observar isso no final da função
     util:digite,
 
     escolheInimigo(OpIni, [QuaInimim,Loot,ListIni]),
     util:getElement(ListIni,OpIni,Enemy),
 
     heroiAtaca(Heroi, BD, DanoHeroi),
-    inimigoRecebeDano(Enemy, BE, DanoHeroi),
-
-
-    .
+    inimigoRecebeDano(Enemy, BE, DanoHeroi).
