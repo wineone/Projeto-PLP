@@ -1,4 +1,4 @@
-:- module(util, [lerString/1,lerNumero/1,digite/0,enter/0]).
+:- module(util, [lerString/1,lerNumero/1,digite/0,enter/0,getElement/3]).
 
 % -----------------------------------------------------------------
 
@@ -14,14 +14,14 @@ lerNumero(Input) :-
 
 % -----------------------------------------------------------------
 
-auxGetElement([Head | _], Index, CurrentInd, Return) :-
+auxGetElement([Head|Tail], Index, CurrentInd, Return) :-
     CurrentInd =:= Index,
     Return = Head.
 
-auxGetElement([Head | Tail], Index, CurrentInd, Return) :-
-    CurrentInd =/= Index,
-    Increment is CurrentInd + 1,
-    auxGetElement([Tail], Index, Increment, Return).
+auxGetElement([Head|Tail], Index, CurrentInd, Return) :-
+    CurrentInd =\= Index,
+    Increment is (CurrentInd + 1),
+    auxGetElement(Tail, Index, Increment, Return).
 
 getElement(List, Index, Element) :-
     auxGetElement(List, Index, 1, Element).

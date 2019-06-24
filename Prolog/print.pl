@@ -37,7 +37,9 @@ printLobby(Opcao,Per) :-
 printFases(Opcao,Per) :-
     shell(clear),
     writeln("              #   MAPAS   #\n\n"),
+
     printVida(Per),
+
     writeln("Com grandes escolhas vem grande responsabilidades.\nEscolha sabiamente.\n"),
     writeln("[1] -> Manguezal"),
     writeln("[2] -> Casa"),

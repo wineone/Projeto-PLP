@@ -5,35 +5,36 @@
 
 %-------------------------------------------
 
+% Inimigo = [nome, descr, vidaAtual, vidaMax, dano, forca, agilidade, defesa]
 verificaListaMortos([],Sai) :- 
     Sai is 1.
-verificaListaMortos([[_,V,_,_,_,_,_,_]|Resto], Sai) :- 
+verificaListaMortos([[_,_,V,_,_,_,_,_]|Resto], Sai) :- 
     (V =< 0) -> verificaListaMortos(Resto,Sai); 
     Sai is 0. 
 
 %-------------------------------------------
 
-tipoAtk(1, Bd, Be) :-       % bonus de dano, bonus de esquiva
-    Bd = 5,
-    Be = 4.
-tipoAtk(2, Bd, Be) :-
-    bd = 0,
-    Be = 0.
+tipoAtk(1, BD, BE) :-       % bonus de dano, bonus de esquiva
+    BD is 5,
+    BE is 4.
+tipoAtk(2, BD, BE) :-
+    BD is 0,
+    BE is 0.
 
 %-------------------------------------------
 
 critico(Agilidade, Sai) :-
-    random(1, 101, Random1),
+    random(1, 101, Random),
     random(1, 11, AuxRand),
-    Random2 is AuxRand + (Agilidade * 4 / 10),
-    (Random1 < Random2) -> Sai is 1; 
+    RandomA is AuxRand + (Agilidade * 4 / 10),
+    (Random < RandomA) -> Sai is 1; 
     Sai is 0.
 
 esquiva(Agilidade, Sai) :-
-    random(1, 101, Random1),
+    random(1, 101, Random),
     random(1, 11, AuxRand),
-    Random2 is AuxRand + (Agilidade * 4 / 10),
-    (Random1 < Random2) -> Sai is 1; 
+    RandomA is AuxRand + (Agilidade * 4 / 10),
+    (Random < RandomA) -> Sai is 1; 
     Sai is 0.
 
 %-------------------------------------------
@@ -102,7 +103,7 @@ inimigoTomaDano([Nome, Descr, Va, Vm, Dam, F, Ag, Def], 1, DanoHeroi, NovoEnemy)
 inimigoRecebeDano(Inimigo, BE, DanoHeroi, NovoEnemy) :-
     Agil is Ag + (Ag * BE / 10),
     esquiva(Agil, Dodge),
-    inimigoEsquiva(Inimigo, Dodge, DanoHeroi, NovoEnemy).
+    inimigoTomaDano(Inimigo, Dodge, DanoHeroi, NovoEnemy).
 
 %-------------------------------------------
 
@@ -126,7 +127,8 @@ inimigoAtacaSozinho(Inimigo, Heroi, NewHero) :-
 % __________________________ 
 
 auxGrupoAtaca([QtdIni,_,Inimigos], CurrIndex, Heroi, NewHero) :-
-    CurrIndex =:= QtdIni,
+    Aux is QtdIni + 1,
+    CurrIndex =:= Aux,
     NewHero = Heroi.
 
 auxGrupoAtaca([QtdIni,Loot,Inimigos], CurrIndex, Heroi, NewHero) :-
@@ -152,7 +154,9 @@ grupoAtaca(Grupo, Heroi, NewHero) :-
 %-------------------------------------------
 
 batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :- 
-    V =< 0,print:lostBattle(Loot),NLoot is G - Loot,
+    V =< 0,
+    print:lostBattle(Loot),
+    NLoot is G - Loot,
     Novo = [A,V,B,C,D,E,F,NLoot,H,I,J],
     lerString(K).       % ajeitar a porcentagem aqui
 
@@ -166,11 +170,16 @@ batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :-
 batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
     print:escolhaTipoAtk(Heroi,ListaIni,Opcao),
     tipoAtk(Opcao, BD, BE),
-    Novo = Heroi,     % observar isso no final da função
     util:digite,
 
-    escolheInimigo(OpIni, [QuaInimim,Loot,ListIni]),
-    util:getElement(ListIni,OpIni,Enemy),
+    print:escolheInimigo(OpIni, [QuaInimim,Loot,ListIni]),
+    util:getElement(ListIni,OpIni, Enemy),
 
     heroiAtaca(Heroi, BD, DanoHeroi),
-    inimigoRecebeDano(Enemy, BE, DanoHeroi).
+    inimigoRecebeDano(Enemy, BE, DanoHeroi, NovoEnemy),
+
+    
+
+    grupoAtaca([QuaInimi,Loot,ListIni], Heroi, NewHero),
+
+    batalha(NewHero, [QuaInimi,Loot,ListIni], Novo).
