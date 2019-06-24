@@ -91,7 +91,7 @@ divisorias :-
 atkCritico :-
     writeln("Ataque Crítico!  ").
 
-printHeroiAtaca([Nome,_,_,_,_,_,_,_,_,_,_], Dano) :-
+printHeroiAtaca(Nome, Dano) :-
     write("\n"),
     write(Nome),
     write(" deu "),
@@ -209,15 +209,14 @@ printAtkInimigo(Ind, [ [Nome,_,VidaAtu,VidaMax,_,_,_,_] |Inimigos ]) :-
     Novo is (Ind + 1),
     printAtkInimigo(Novo, Inimigos).
 
-escolheInimigo(Opcao, [Qtd,_,Inimigos]) :-
-    printAtkInimigo(1, Inimigos),
-
-    writeln("\nDigite quem você quer atacar: "),
-    lerEscolhaInimigo(Opcao, Qtd).
-
 lerEscolhaInimigo(Opcao, Qtd) :-
     lerNumero(X),
     (X > 0, X =< Qtd) -> Opcao is X;
+    lerEscolhaInimigo(Opcao,Qtd).
+
+escolheInimigo(Opcao, [Qtd,_,Inimigos]) :-
+    printAtkInimigo(1, Inimigos),
+    writeln("\nDigite quem você quer atacar: "),
     lerEscolhaInimigo(Opcao, Qtd).
 
 conhecaInimigos([]) :-

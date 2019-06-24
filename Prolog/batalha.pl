@@ -27,25 +27,27 @@ critico(Agilidade, Sai) :-
     random(1, 101, Random),
     random(1, 11, AuxRand),
     RandomA is AuxRand + (Agilidade * 4 / 10),
-    (Random < RandomA) -> Sai is 1; 
-    Sai is 0.
+    ((Random < RandomA) -> Sai is 1; 
+    Sai is 0).
 
 esquiva(Agilidade, Sai) :-
     random(1, 101, Random),
+     writeln(Random),
     random(1, 11, AuxRand),
     RandomA is AuxRand + (Agilidade * 4 / 10),
-    (Random < RandomA) -> Sai is 1; 
-    Sai is 0.
+   
+    ((Random < RandomA) -> Sai is 1; 
+    Sai is 0).
 
 %-------------------------------------------
 
 % Heroi = [Nome, vidaAtual, vidaMaxima, Dano, Defesa, Forca, Agilidade, Dinheiro, Arma, Armadura, Bolsa]
-heroiAtaca([Nome,_,_,D,F,A,_,_,_,_], Bonus, Dano) :-
-    Aux is D + (F / 10) + ((D * Bonus) / 100),
+heroiAtaca([Nome,_,_,D,F,A,_,_,_,_,_], Bonus, Dano) :-
+    Aux is (D + (F / 10) + ((D * Bonus) / 100)),
     critico(A, Critic),
-    (Critic =:= 1) -> Dano is Aux * 2;
-    Dano is Aux,
-    print:printHeroiAtaca([Nome,_,_,_,_,_,_,_,_,_,_], Dano).
+    ((Critic =:= 1) -> Dano is Aux * 2;
+    Dano is Aux),
+    print:printHeroiAtaca(Nome, Dano).
 
 %-------------------------------------------
 
@@ -100,9 +102,10 @@ inimigoTomaDano([Nome, Descr, Va, Vm, Dam, F, Ag, Def], 1, DanoHeroi, NovoEnemy)
     NovoEnemy = [Nome, Descr, Va, Vm, Dam, F, Ag, Def].
 
 % Inimigo = [nome, descr, vidaAtual, vidaMax, dano, forca, agilidade, defesa]
-inimigoRecebeDano(Inimigo, BE, DanoHeroi, NovoEnemy) :-
+inimigoRecebeDano([Nome, Descr, Va, Vm, Dam, F, Ag, Def], BE, DanoHeroi, NovoEnemy) :-
     Agil is Ag + (Ag * BE / 10),
     esquiva(Agil, Dodge),
+    writeln(Dodge),
     inimigoTomaDano(Inimigo, Dodge, DanoHeroi, NovoEnemy).
 
 %-------------------------------------------
@@ -153,6 +156,25 @@ grupoAtaca(Grupo, Heroi, NewHero) :-
 
 %-------------------------------------------
 
+
+% substituiInimigo([Head|[]], IndAtual, Destino, Inimigo, [Come|Fim]) :-
+%     Come = Head.
+
+% substituiInimigo([Head|Tail],IndAtual, Destino, Inimigo, [Come|Fim]) :-
+%     IndAtual =\= Destino,
+%     Come = Head,
+%     Aux is IndAtual + 1,
+%     substituiInimigo(Tail,Aux,Destino,Inimigo,Fim).
+
+% substituiInimigo([Head|Tail] ,IndAtual, Destino, Inimigo, [Come|Fim]) :-
+%     IndAtual =:= Destino,
+%     Come = Inimigo,
+%     Aux is IndAtual + 1,
+%     substituiInimigo(Tail,Aux,Destino,Inimigo,Fim).
+
+
+%-----------------------------------------------
+
 batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :- 
     V =< 0,
     print:lostBattle(Loot),
@@ -172,14 +194,16 @@ batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
     tipoAtk(Opcao, BD, BE),
     util:digite,
 
-    print:escolheInimigo(OpIni, [QuaInimim,Loot,ListIni]),
+    print:escolheInimigo(OpIni, [QuaInimi,Loot,ListIni]),
+    
+    heroiAtaca(Heroi, BD, DanoHeroi),
+
     util:getElement(ListIni,OpIni, Enemy),
 
-    heroiAtaca(Heroi, BD, DanoHeroi),
     inimigoRecebeDano(Enemy, BE, DanoHeroi, NovoEnemy),
 
-    
+    substituiInimigo(ListIni,1,OpIni,NovoEnemy,NovaLista),
 
-    grupoAtaca([QuaInimi,Loot,ListIni], Heroi, NewHero),
+    % grupoAtaca([QuaInimi,Loot,NovaLista], Heroi, NewHero),
 
-    batalha(NewHero, [QuaInimi,Loot,ListIni], Novo).
+    batalha(NewHero, [QuaInimi,Loot,NovaLista], Novo).
