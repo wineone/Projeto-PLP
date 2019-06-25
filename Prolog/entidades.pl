@@ -18,7 +18,7 @@ personagem(Personagem, Nome) :-
                   Bolsa]. 
                   
 
-/* Bolsa */
+/* Bolsa :- [[Pocao], [Armadura], [Arma]]*/
 bolsa(Bolsa) :- Bolsa = [[],[],[]].
 
 /* Armas */
@@ -103,7 +103,7 @@ slime(Inimigo) :- Inimigo = ["Slime de Lama", "Parece uma po√ßa, cuidado para n√
 pato(Inimigo) :- Inimigo = ["Pato no Tucupi", "ABC da Amazonia", 10, 10, 3, 4, 5, 4].
 
 
-
+QuantGrup
 gru1Fase1(GrupoDeInimigos) :- cururu(X),jacare(Y),cururu(Z),GrupoDeInimigos = [3, 120, [X,Y,Z]].
 
 
