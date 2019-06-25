@@ -86,7 +86,7 @@ estrelinhas :-
     writeln("****************************************\n").
 
 divisorias :-
-    writeln("////////////////////////////////////////////////////////////////////////////////\n").
+    writeln("////////////////////////////////////////////////////////////////////////////////").
 
 atkCritico :-
     writeln("Ataque Crítico!  ").
@@ -158,7 +158,6 @@ interfaceAtk([[Nome,_,VidaAtu,VidaMax,_,_,_,_]|Inimigos]) :-
     interfaceAtk(Inimigos).
 
 escolhaTipoAtk(Heroi, GrupoInimigos, Opcao) :-
-    % digite
     shell(clear),
 
 
@@ -173,7 +172,8 @@ escolhaTipoAtk(Heroi, GrupoInimigos, Opcao) :-
     writeln("[2] -> Ataque Fraco"),
     writeln("\nDigite sua opção: "),
     lerOpcaoAtk(Opcao),
-    auxEscolheTipoAtk(Opcao).
+    auxEscolheTipoAtk(Opcao),
+    write("\n***** Quem você quer atacar? *****\n\n").
 
 lerOpcaoAtk(Opcao) :-
     lerNumero(Ler), verifica(Opcao, Ler).

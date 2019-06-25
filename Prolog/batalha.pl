@@ -40,12 +40,16 @@ esquiva(Agilidade, Sai) :-
 
 %-------------------------------------------
 
+atkCritico(Atk, 0, NewAtk) :-
+	fixNum(Atk, NewAtk).
+atkCritico(Atk, 1, NewAtk) :-
+	fixNum((Atk * 2), NewAtk).
+
 % Heroi = [Nome, vidaAtual, vidaMaxima, Dano, Defesa, Forca, Agilidade, Dinheiro, Arma, Armadura, Bolsa]
 heroiAtaca([Nome,_,_,D,F,A,_,_,_,_,_], Bonus, Dano) :-
 	Aux is (D + (F / 10) + ((D * Bonus) / 100)),
 	critico(A, Critic),
-	((Critic =:= 1) -> Dano is Aux * 2;
-	Dano is Aux),
+	atkCritico(Aux, Critic, Dano),
 	print:printHeroiAtaca(Nome, Dano).
 
 %-------------------------------------------
@@ -53,10 +57,8 @@ heroiAtaca([Nome,_,_,D,F,A,_,_,_,_,_], Bonus, Dano) :-
 % Inimigo = [nome, descr, vidaAtual, vidaMax, dano, forca, agilidade, defesa]
 inimigoAtaca([Nome,_,_,_,D,F,A,_], Dano) :-
 	Aux is (D + (F / 10)),
-	writeln(Nome),
 	critico(A,Critic),
-	((Critic =:= 1) -> Dano is (Aux * 2);
-	Dano is Aux),
+	atkCritico(Aux, Critic, Dano),
 	print:printInimigoAtaca([Nome,_,_,_,_,_,_,_], Dano).
 
 
@@ -66,7 +68,7 @@ consertaVida(VidaAtual, 0) :-
 	VidaAtual =< 0.
 consertaVida(VidaAtual, Nova) :-
 	VidaAtual > 0,
-	Nova is VidaAtual.
+	fixNum(VidaAtual, Nova).
 	
 %-------------------------------------------
 
@@ -81,9 +83,9 @@ heroiTomaDano([N,Va,Vm,D,Def,F,Agi,M,Wea,Arm,Bag], _, NovoPer, 1) :-
 	print:printEsquiva(N),
 	NovoPer = [N,Va,Vm,D,Def,F,Agi,M,Wea,Arm,Bag].
 
-heroiRecebeDano(Heroi, DanoInimigo, NovoPer) :-
-	esquiva(A, Dodge),
-	heroiTomaDano(Heroi, DanoInimigo, NovoPer, Dodge).
+heroiRecebeDano([N,Va,Vm,D,Def,F,Agi,M,Wea,Arm,Bag], DanoInimigo, NovoPer) :-
+	esquiva(Agi, Dodge),
+	heroiTomaDano([N,Va,Vm,D,Def,F,Agi,M,Wea,Arm,Bag], DanoInimigo, NovoPer, Dodge).
 	
 
 %-------------------------------------------
@@ -95,13 +97,11 @@ inimigoTomaDano([Nome, Descr, Va, Vm, Dam, F, Ag, Def], 0, DanoHeroi, NovoEnemy)
 	Vida is (Va - DanoArmor),
 	consertaVida(Vida, NewVida),
 	NovoEnemy = [Nome, Descr, NewVida, Vm, Dam, F, Ag, Def],
-	print:printInimigoTomaDano([Nome,_,Va,_,_,_,_,_], DanoArmor),
-	digite.
+	print:printInimigoTomaDano([Nome,_,Va,_,_,_,_,_], DanoArmor).
 
 % esquivou
 inimigoTomaDano([Nome, Descr, Va, Vm, Dam, F, Ag, Def], 1, DanoHeroi, NovoEnemy) :-
 	print:printEsquiva(Nome),
-	digite,
 	NovoEnemy = [Nome, Descr, Va, Vm, Dam, F, Ag, Def].
 
 % Inimigo = [nome, descr, vidaAtual, vidaMax, dano, forca, agilidade, defesa]
@@ -132,11 +132,9 @@ inimigoAtacaSozinho(Inimigo, Heroi, NewHero) :-
 % _______________________________________________
 
 grupoAtaca([I|[]] , Heroi, NewHero) :-
-	writeln(I),
 	inimigoAtacaSozinho(I, Heroi, NewHero).
 
 grupoAtaca([I|Inimigos], Heroi, NewHero) :-
-	writeln(I),
 	inimigoAtacaSozinho(I, Heroi, Aux),
 	grupoAtaca(Inimigos, Aux, NewHero).
 
@@ -182,14 +180,14 @@ batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :-
 	Novo = [A,V,B,C,D,E,F,NLoot,H,I,J].
 
 batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
-	
+
 	print:escolhaTipoAtk(Heroi,ListIni,Opcao),
-	writeln("OIOIOI"),
 	tipoAtk(Opcao, BD, BE),
-	util:digite,
 
 	print:escolheInimigo(OpIni, [QuaInimi,Loot,ListIni]),
 	
+	write("\n"), print:divisorias,
+
 	heroiAtaca(Heroi, BD, DanoHeroi),
 
 	util:getElement(ListIni,OpIni, Enemy),
@@ -198,7 +196,8 @@ batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
 	substituiInimigo(ListIni,1,OpIni,NovoEnemy,NovaLista),
 	
 	grupoAtaca(NovaLista, Heroi, NewHero),
-	writeln(NewHero),
+	
+	write("\n"), print:divisorias, write("\n"),
+	digite,
 
-	% Tem que colocar NewHero em vez de Heroi
-	batalha(Heroi, [QuaInimi,Loot,NovaLista], Novo).
+	batalha(NewHero, [QuaInimi,Loot,NovaLista], Novo).
