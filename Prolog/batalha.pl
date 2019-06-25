@@ -131,12 +131,14 @@ inimigoAtacaSozinho(Inimigo, Heroi, NewHero) :-
 
 % _______________________________________________
 
-grupoAtaca([Qtd,_,[I| [] ]], Heroi, NewHero) :-
+grupoAtaca([I|[]] , Heroi, NewHero) :-
+	writeln(I),
 	inimigoAtacaSozinho(I, Heroi, NewHero).
 
-grupoAtaca([Qtd,_,[I|Inimigos]], Heroi, NewHero) :-
+grupoAtaca([I|Inimigos], Heroi, NewHero) :-
+	writeln(I),
 	inimigoAtacaSozinho(I, Heroi, Aux),
-	grupoAtaca([Qtd,_,Inimigos], Aux, NewHero).
+	grupoAtaca(Inimigos, Aux, NewHero).
 
 %-------------------------------------------
 
@@ -195,7 +197,8 @@ batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
 
 	substituiInimigo(ListIni,1,OpIni,NovoEnemy,NovaLista),
 	
-	% grupoAtaca([QuaInimi,Loot,NovaLista], Heroi, NewHero),
-	% writeln(NewHero),
+	grupoAtaca(NovaLista, Heroi, NewHero),
+	writeln(NewHero),
 
+	% Tem que colocar NewHero em vez de Heroi
 	batalha(Heroi, [QuaInimi,Loot,NovaLista], Novo).
