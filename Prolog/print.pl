@@ -273,3 +273,28 @@ opcoesRemoveBolsa(Opcao) :-
     write ("[4] -> Voltar a batalhar\n"),
     write ("\n O que voce quer fazer?..."),
     leOpRemoveBolsa(Opcao).
+
+
+leOpArma(Op) :-
+    writeln("Digite sua escolha: "),
+    lerNumero(X),
+    (X > 0, X < 11) -> Op is X;
+    leOpArma(Op).
+
+leOpArmadura(Op) :-
+    writeln("Digite sua escolha: "),
+    lerNumero(X),
+    (X > 0, X < 11) -> Op is X;
+    leOpArmadura(Op).
+
+leOpPocao(Op) :-
+    writeln("Digite sua escolha: "),
+    lerNumero(X),
+    (X > 0, X < 13) -> Op is X;
+    leOpPocao(Op).
+
+
+printDinheiro([_,_,_,_,_,_,_,Dindin,_,_,_]) :-
+    write("Dinheiro: "),
+    write(Dindin),
+    write("\n\n").

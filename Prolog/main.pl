@@ -14,7 +14,7 @@ loop(Per) :- print:printLobby(Op,Per),
              loopOp(Op,Per).
 
 loopOp(1,Per) :- fases:fases(Per,Novo),loop(Novo).
-loopOp(2,Per) :- writeln("Loja"),loja:loja(Per,(entidades:lojao),N),loop(N).
+loopOp(2,Per) :- writeln("Loja"),entidades:lojao(F),loja:loja(Per,F,N),loop(N).
 loopOp(3,Per) :- writeln("Bolsa"),loop(Per).
 loopOp(4,Per) :- writeln("Bau"),loop(Per).
 loopOp(5,Per) :- writeln("Creditos"),loop(Per).
