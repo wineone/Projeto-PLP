@@ -132,18 +132,20 @@ lostBattle(Perda) :-
     write("Você perdeu "),
     write(Perda),
     write(" moedas.\n\n"),
-    estrelinhas.
+    estrelinhas,
+    digite.
 
-wonBattle([Nome,_,_,_,_,_,_,_,_,_,_], Loot) :-
+wonBattle(Nome, Loot) :-
     write("\n\n"),
-    estrelinhas
+    estrelinhas,
     write("Parabéns "),
     write(Nome),
     write(".\n"),
     write("Você ganhou "),
     write(Loot),
     write(" moedas.\n\n"),
-    estrelinhas.
+    estrelinhas,
+    digite.
 
 interfaceAtk([]) :- write("\n\n"),!.
 
