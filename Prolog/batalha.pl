@@ -74,10 +74,13 @@ consertaVida(VidaAtual, Nova) :-
 
 heroiTomaDano([N,Va,Vm,D,Def,F,Agi,M,Wea,Arm,Bag], DanoInimigo, NovoPer, 0) :-
 	Dano_c_armor is (DanoInimigo - (DanoInimigo * Def / 100)),
-	Vida is (Va - Dano_c_armor),
+
+	fixNum(Dano_c_armor, Dano),
+	Vida is (Va - Dano),
+
 	consertaVida(Vida, NewVida),
 	NovoPer = [N,NewVida,Vm,D,Def,F,Agi,M,Wea,Arm,Bag],
-	print:printHeroiTomaDano(N, Dano_c_armor).
+	print:printHeroiTomaDano(N, Dano).
 
 heroiTomaDano([N,Va,Vm,D,Def,F,Agi,M,Wea,Arm,Bag], _, NovoPer, 1) :-
 	print:printEsquiva(N),
@@ -92,12 +95,14 @@ heroiRecebeDano([N,Va,Vm,D,Def,F,Agi,M,Wea,Arm,Bag], DanoInimigo, NovoPer) :-
 
 % não esquivou
 inimigoTomaDano([Nome, Descr, Va, Vm, Dam, F, Ag, Def], 0, DanoHeroi, NovoEnemy) :-
-	
 	DanoArmor is (DanoHeroi - (DanoHeroi * Def / 100)),
+	fixNum(DanoArmor, Dano),
+
 	Vida is (Va - DanoArmor),
 	consertaVida(Vida, NewVida),
+
 	NovoEnemy = [Nome, Descr, NewVida, Vm, Dam, F, Ag, Def],
-	print:printInimigoTomaDano([Nome,_,Va,_,_,_,_,_], DanoArmor).
+	print:printInimigoTomaDano([Nome,_,Va,_,_,_,_,_], Dano).
 
 % esquivou
 inimigoTomaDano([Nome, Descr, Va, Vm, Dam, F, Ag, Def], 1, DanoHeroi, NovoEnemy) :-
@@ -199,5 +204,6 @@ batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
 	
 	write("\n"), print:divisorias, write("\n"),
 	digite,
+	
 
 	batalha(NewHero, [QuaInimi,Loot,NovaLista], Novo).
