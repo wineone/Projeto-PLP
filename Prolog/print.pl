@@ -305,3 +305,71 @@ printComprou(Item) :-
     writeln(Item),
     write("\n\n"),
     util:digite.
+
+
+armas(Ind, []):- write("").
+armas(Ind, [[NomeArma, DescArma, PrecoArma, DanoArma, ForcaArma, AgilidadeArma]|Resto]):-
+    write("[ "),write(Ind),write(" ]"), write(" - "),
+    write(NomeArma),
+    write(" "),
+    write("Preço: "),
+    write(PrecoArma),
+    write(" "),
+    write("Dano: "),
+    write(DanoArma),
+    write(" "),
+    write("Força: "),
+    write(ForcaArma),
+    write(" "),
+    write("Agilidade: "),
+    write(AgilidadeArma),
+    write("\n"),
+    write("    +-> "),
+    write(DescArma),
+    write("\n\n"),
+    Nind is (Ind + 1),
+    armas(Nind, Resto).
+
+
+armaduras(IndArmad, []):-  write("").
+armaduras(IndArmad, [[NomeArmadura, DesArmadura, PrecoArmadura, DanoArmadura, ForcaArmadura, AgilidadeArmadura, VidaArmadura]|Resto]):-
+    write("[ "),write(IndArmad),write(" ]"), write(" - "),
+    write(NomeArmadura),
+    write(" "),
+    write("Preço: "),
+    write(PrecoArmadura),
+    write(" "),
+    write("Dano: "),
+    write(DanoArmadura),
+    write(" "),
+    write("Força: "),
+    write(ForcaArmadura),
+    write(" "),
+    write("Agilidade: "),
+    write(AgilidadeArmadura),
+    write(" "),
+    write("Vida: "),
+    write(VidaArmadura),
+    write("\n"),
+    write("    +-> "),
+    write(DesArmadura),
+    write("\n\n"),
+    Nind is (IndArmad + 1),
+    armaduras(Nind,Resto).
+
+pocoes(IndPocao, []):-  write("").
+pocoes(IndPocao, [[NomePocao,DescPocao,PrecoPocao,VidaPocao]|Resto]):-
+    write("[ "),write(IndPocao),write(" ]"), write(" - "),
+    write(NomePocao),
+    write(" "),
+    write("Preço: "),
+    write(PrecoPocao),
+    write(" "),
+    write("Vida: "),
+    write(VidaPocao),
+    write("\n"),
+    write("    +-> "),
+    write(DescPocao),
+    write("\n\n"),
+    Nind is (IndPocao + 1),
+    pocoes(Nind, Resto).
