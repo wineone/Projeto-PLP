@@ -4,7 +4,9 @@
 personagem(Personagem, Nome) :- 
     maos(Arma),
     roupas(Armadura),
-    bolsa(Bolsa),
+    maos(A),lancaTris(B),roupas(C),mofi(D),pocaoRedbull(E),pocaoRedBullDupla(F), 
+    Bolsa =  [[E,F] ,[C,D],[A,B]]   ,
+    
     Personagem = [Nome,
                   100,
                   100,

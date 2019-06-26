@@ -250,26 +250,27 @@ leOpBau(Op) :-
 opcoesBau(Opcao) :-
     shell(clear),
     write("              #   BAU    #\n"),
-    write ("[1] -> Troque seu equipamento\n"),
-    write ("[2] -> Excluir item da Bau\n"),
-    write ("[3] -> Visualizar Equipamento\n"),
-    write ("[4] -> Vasculhar sua Bolsa\n"),
-    write ("[5] -> Voltar ao menu inicial\n"),
-    write ("\nO que voce quer fazer?... "),
+    write("[1] -> Troque seu equipamento\n"),
+    write("[2] -> Excluir item da Bau\n"),
+    write("[3] -> Visualizar Equipamento\n"),
+    write("[4] -> Vasculhar sua Bolsa\n"),
+    write("[5] -> Voltar ao menu inicial\n"),
+    write("\nO que voce quer fazer?... "),
     leOpBau(Opcao). 
 
 
 leOpRemoveBolsa(Op) :-
     lerNumero(X),
-    (X > 0, X < 5) -> Op is X;
-    leOpRemoveBolsa(Op).
+    ((X > 0, X < 5) -> Op is X;
+    leOpRemoveBolsa(Op)).
 
 opcoesRemoveBolsa(Opcao) :-
     shell(clear),
     write( "              #   BOLSA    #\n\n"),
-    write ("[1] -> Visualizar poções\n"),
-    write ("[2] -> Usar uma poção\n"),
-    write ("[3] -> Jogar uma poção fora\n"),
-    write ("[4] -> Voltar a batalhar\n"),
-    write ("\n O que voce quer fazer?..."),
-    leOpRemoveBolsa(Opcao).
+    write("[1] -> Visualizar poções\n"),
+    write("[2] -> Usar uma poção\n"),
+    write("[3] -> Jogar uma poção fora\n"),
+    write("[4] -> Voltar a batalhar\n"),
+    write("\n O que voce quer fazer?..."),
+    leOpRemoveBolsa(Opcao),
+    writeln(Opcao).
