@@ -9,36 +9,26 @@ addPocao(Bolsa,Pocao) :- Bolsa = [Pocao|X, _, _].
 addArmadura(Bolsa,Armadura) :- Bolsa = [_, Armadura|Y, _].
 addArma(Bolsa,Arma) :- Bolsa = [_, _, Arma|Z].
 
-getElee
+
+pegaPocao(Per,Pocao) :- Per =[_, _, _,_, _, _, _, _, _, _, [Pocao,_,_]].
+pegaArmadura(Per,Armadura) :- Per =[_, _, _,_, _, _, _, _, _, _, [_,Armadura,_]].
+pegaArma(Per,Arma) :- Per = [_, _, _,_, _, _, _, _, _, _, [_,_,Arma]].
+
 
 /* [(Nome, Descricao, _, Dano, Forca, Agilidade) |Teste] */
-percorrePocao(_,[]).
-percorrePocao(Ind, Pocao) :- getElement(Pocao,1,Teste)
+percorrePocao(Ind, []) :- write("").
+percorrePocao(Ind, Pocao) :- print:pocoes(Ind, Pocao).
 
-                                                                A is Ind+1,
-                                                                 write(Ind),write(" "),
-                                                                 write(Nome),write(" "),
-                                                                 write(Descricao),
-                                                                 nl,
-                                                                 write("       +-> "),
-                                                                 write(Dano), write(" "),
-                                                                 write(Forca), write(" "),
-                                                                 write(Agilidade), write(" "),
-                                                                 percorrePocao(A,Teste).
-
-bolsaOp(1,Per,NewPer) :- write("Vizualizar Uma Pocao"),gerenciaBolsa(Per,NewPer).
+bolsaOp(1,Per,NewPer) :- write("Vizualizar Uma Pocao"),pegaPocao(Per,Pocao),percorrePocao(1,Pocao),nl,gerenciaBolsa(Per,NewPer).
 bolsaOp(2,Per,NewPer) :- write("Usar uma Pocao"),gerenciaBolsa(Per,NewPer).
 bolsaOp(3,Per,NewPer) :- write("Jogar uma pocao fora"),gerenciaBolsa(Per,NewPer).
 bolsaOp(4,Per,NewPer) :- NewPer = Per.
-bolsaOp(_,Per,NewPer) :- write("NUMSEUMSEI"),gerenciaBolsa(Per,NewPer).
+bolsaOp(_,Per,NewPer) :- write("NUMSEI\n\n"),gerenciaBolsa(Per,NewPer).
+/* [_, _, _,_, _, _, _, _, _, _, [Pocao,Armadura,Arma]] */
 
-gerenciaBolsa([_, _, _,_, _, _, _, _, _, _, [Pocao,Armadura,Arma]], NewPer) :- 
+gerenciaBolsa(Per, NewPer) :- 
     print:opcoesRemoveBolsa(Opcao),
-    percorrePocao(1,Pocao),
-    writeln(Opcao),
-    write("VSF2\n"),
-    writeln(Str),
-    bolsaOp(Opcao,Per,Novo).
+    bolsaOp(Opcao,Per,N).
 
 
 bauOp(1,Per,NewPer) :- write("Troque seu equipamento"),bau(Per,NewPer).

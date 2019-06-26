@@ -1,4 +1,4 @@
-:- module(util, [lerString/1,lerNumero/1,digite/0,enter/0,getElement/3]).
+:- module(util, [lerString/1,lerNumero/1,digite/0,enter/0,getElement/3,fixNum/2]).
 
 % -----------------------------------------------------------------
 
@@ -36,3 +36,8 @@ enter :-
     lerString(D).
 
 % -----------------------------------------------------------------
+
+fixNum(Number, Return) :-
+    format(atom(Atom),'~0f', Number),
+    atom_number(Atom, NumAtom),
+    Return is NumAtom.

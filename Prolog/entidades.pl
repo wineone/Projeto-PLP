@@ -4,8 +4,8 @@
 personagem(Personagem, Nome) :- 
     maos(Arma),
     roupas(Armadura),
-    maos(A),lancaTris(B),roupas(C),mofi(D),pocaoRedbull(E),pocaoRedBullDupla(F), 
-    Bolsa =  [[E,F] ,[C,D],[A,B]]   ,
+    maos(A),lancaTris(B),tempes(C),mofi(D),pocaoRedbull(E),pocaoRedBullDupla(F), 
+    Bolsa = [[E,F] ,[C,D],[A,B]],
     
     Personagem = [Nome,
                   100,
@@ -33,13 +33,13 @@ maos(Arma) :- Arma = ["Suas mãos", "Estilo minecraft", 1, 10, 10, 10].
 lancaTris(Arma) :- Arma = ["lança da tristeza", "mata seus inimigos de suicidio", 300, 20, 20, 20].
 
 
-armaADura(Arma) :- Arma = ["Arma A dura" "dizem que essa arma é feita de rapadura" 500 30 20 25].
+armaADura(Arma) :- Arma = ["Arma A dura", "dizem que essa arma é feita de rapadura", 500, 30, 20, 25].
 
 
 adagasSile(Arma) :- Arma = ["Adagas Silenciosas", "Aqueles que gritam são seus inimigos", 800, 40, 30, 15].
 
 
-donut(Arma) :- Arma = ["Um donut" "não tem piadinha, é só um donut muito gostoso" 1200 40 40 40].
+donut(Arma) :- Arma = ["Um donut", "não tem piadinha, é só um donut muito gostoso", 1200, 40, 40, 40].
 
 
 tridente(Arma) :- Arma = ["tridente banguela", "é... agora ele é um bidente", 1600, 50, 30, 30].
@@ -105,7 +105,6 @@ slime(Inimigo) :- Inimigo = ["Slime de Lama", "Parece uma poça, cuidado para n�
 pato(Inimigo) :- Inimigo = ["Pato no Tucupi", "ABC da Amazonia", 10, 10, 3, 4, 5, 4].
 
 
-QuantGrup
 gru1Fase1(GrupoDeInimigos) :- cururu(X),jacare(Y),cururu(Z),GrupoDeInimigos = [3, 120, [X,Y,Z]].
 
 
@@ -283,7 +282,7 @@ pocaoRestauraVida(Pocao) :- Pocao = ["Liquido Filosofal", "a pedra derreteu", 40
     
 
 
-pocaoBebada(Pocao) = Pocao = ["Agua que passarinho nao bebe", "vamos tomar uma", 30, 10].
+pocaoBebada(Pocao) :- Pocao = ["Agua que passarinho nao bebe", "vamos tomar uma", 30, 10].
     
 
 
@@ -321,16 +320,16 @@ pocaoRedbull(Pocao) :- Pocao = ["RedBull", "te dará asas", 44, 10].
 pocaoRedBullDupla(Pocao) :- Pocao = ["RedBull com Café", "te dará 4 asas", 88, 20].
     
 
-pocaoCafeComGuarana(Pocao) :- Pocao :- ["Cafe com Guarana", "Te despertará de um jeito...", 100, -35].
+pocaoCafeComGuarana(Pocao) :- Pocao = ["Cafe com Guarana", "Te despertará de um jeito...", 100, -35].
 
 
 /* Loja */
 
 
-lojao(Loja) :- Lojas = 
+lojao(Loja) :- 
     maos(A),lancaTris(B),armaADura(C),adagasSile(D),donut(E),tridente(F),armaConfete(G),escudo(H),lazy(I),metralha(J),
     roupas(A1),mofi(A2),barril(A3),couro(A4),tempes(A5),armaDoFim(A6),gosmenta(A7),tormenta(A8),eucli(A9),divina(A10),
     pocaoRestauraVida(B1),pocaoBebada(B2),pocaoNinja(B3),pocaoAjudaAosDogs(B4),pocaoStronda(B5),pocaoTransformice(B6),pocaoTranquila(B7),pocaoApelona(B8),pocaoCapitao(B9),pocaoRedbull(B10),pocaoRedBullDupla(B11),pocaoCafeComGuarana(B12),
-    [10, [A,B,C,D,E,F,G,H,I,J], 
+     Loja =  [10, [A,B,C,D,E,F,G,H,I,J], 
     10, [A1,A2,A3,A4,A5,A6,A7,A8,A9,A10], 
     12, [B1,B2,B3,B4,B5,B6,B7,B8,B9,B10,B11,B12]].
