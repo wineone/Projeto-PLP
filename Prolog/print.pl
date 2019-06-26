@@ -374,3 +374,33 @@ pocoes(IndPocao, [[NomePocao,DescPocao,PrecoPocao,VidaPocao]|Resto]):-
     Nind is (IndPocao + 1),
     pocoes(Nind, Resto).
 
+vizualizarEquipamento(Per) :-
+    Per = [Nome, VidaAtual, VidaMaxima, Dano, Defesa, Forca, Agilidade, Dinheiro, Arma, Armadura, Bolsa],
+    write("++++++++++++++++++++++++++++++++++++++++\n"),
+    write("          #CONHEÇA O HEROI#              \n"),
+    write("Nome do Herói: "),write(Nome),write("    "),write(VidaAtual),write("/"), write(VidaMaxima),nl,
+    write("\n       Dinheiro: "),write(Dinheiro),nl,
+
+    write("Atributos do jogador: "),nl,
+    write("    Defesa: "),write(Defesa),nl,
+    write("    Dano: "),write(Dano),nl,
+    write("    Força: "),write(Forca),nl,
+    write("    Agilidade:  "),write(Agilidade),nl,
+
+    Arma = [NomeArma, DescricaoArma, PrecoArma, DanoArma, ForcaArma, AgilidadeArma],
+    Armadura  = [NomeArmadura, DescricaoArmadura, PrecoArmadura, ArmaduraArmadura, ForcaArmadura, AgilidadeArmadura, VidaArmadura],
+    nl,
+    write("Sua Arma: "), write(NomeArma),nl,
+    write("        +> "), write(DescricaoArma),nl,
+    write("    dano: "), write(DanoArma),nl,
+    write("    força: "),write(ForcaArma),nl,
+    write("    agilidade: "),write(AgilidadeArma),nl,
+    nl,
+    write("Sua Armadura: ") ,write(NomeArmadura),nl,
+    write("        +> "),write(DescricaoArmadura),nl,
+    write("    armadura: "),write(ArmaduraArmadura),nl,
+    write("    força: "), write(ForcaArmadura),nl,
+    write("    agilidade: ") ,write(AgilidadeArmadura),nl,
+    write("    vida: "),write(VidaArmadura),nl,
+    write("\n\n++++++++++++++++++++++++++++++++++++++++"),nl,nl,
+    util:digite.
