@@ -3,39 +3,52 @@
 :- use_module(print).
 :- use_module(entidades).
 :- use_module(util).
+:- use_module(bau).
 
 
-lojaOp(1,Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :-
-     print:printDinheiro(Per),   
-     armas(ListAr),
-     print:leOpArma(Opcao),
-     util:getElement(ListAr,Opcao,Y),
-     write(Y),
+lojaOp(1,[A,B,C,D,E,F,G,H,I,J,K],[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :-
+     print:printDinheiro(H),%mostra o dinheiro atual do personagem   
+     armas(1,ListAr),%funcao que lista as armas
+     print:leOpArma(Opcao),%funcao que le a opção escolhida pelo usuario
+     util:getElement(ListAr,Opcao,[Na,Da,Pa,Daa,Fa,Aa]),% pega a opcao escolhida pelo usuario
+     ((H >= Pa) -> % Se o personagem tiver dinheiro suficiente, a compra é feita
+     Ndinheiro is (H - Pa),%Diminui do dinheiro do persogem o valor do item
+     Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,K],
+     print:printComprou(Na);%printa o item comprado
+     writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,K],util:digite),
      loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
 
-lojaOp(2,Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- 
-    print:printDinheiro(Per), 
-    armaduras(ListaArmadura),
+lojaOp(2,[A,B,C,D,E,F,G,H,I,J,K],[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- 
+    print:printDinheiro(H), 
+    armaduras(1,ListaArmadura),
     print:leOpArmadura(Opcao),
-    util:getElement(ListaArmadura,Opcao,Y),
-    write(Y),
+    util:getElement(ListaArmadura,Opcao,[Nar,Dar,Par,Daar,Far,Aar,Var]),
+    ((H >= Par) ->
+    Ndinheiro is (H - Par),
+    Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,K],
+    print:printComprou(Nar);
+    writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,K],util:digite),
     loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
 
-lojaOp(3,Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- 
-    print:printDinheiro(Per), 
-    pocoes(ListaPocoes),
+lojaOp(3,[A,B,C,D,E,F,G,H,I,J,K],[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- 
+    print:printDinheiro(H), 
+    pocoes(1,ListaPocoes),
     print:leOpPocao(Opcao),
-    util:getElement(ListaPocoes,Opcao,Y),
-    write(Y),
+    util:getElement(ListaPocoes,Opcao,[Np,Dp,Pp,Vp]),
+    ((H >= Pp) -> 
+    Ndinheiro is (H - Pp),
+    Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,K],
+    print:printComprou(Np);
+    writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,K],util:digite),
     loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
 
-LojaOp(4,Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- Novo = Per.
+lojaOp(4,Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- Novo = Per.
 
-LojaOp(_,Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- 
-    loja(Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
+lojaOp(_,Per,Lojinha,Novo) :- loja(Per,Lojinha,Novo).
 
-armas([]):- util:digite.
-armas([[NomeArma, DescArma, PrecoArma, DanoArma, ForcaArma, AgilidadeArma]|Resto]):-
+armas(Ind, []):- write("").
+armas(Ind, [[NomeArma, DescArma, PrecoArma, DanoArma, ForcaArma, AgilidadeArma]|Resto]):-
+    write("[ "),write(Ind),write(" ]"), write(" - "),
     write(NomeArma),
     write(" "),
     write("Preço: "),
@@ -53,10 +66,12 @@ armas([[NomeArma, DescArma, PrecoArma, DanoArma, ForcaArma, AgilidadeArma]|Resto
     write("    +-> "),
     write(DescArma),
     write("\n\n"),
-    armas(Resto).
+    Nind is (Ind + 1),
+    armas(Nind, Resto).
 
-armaduras([]):- util:digite.
-armaduras([[NomeArmadura, DesArmadura, PrecoArmadura, DanoArmadura, ForcaArmadura, AgilidadeArmadura, VidaArmadura]|Resto]):-
+armaduras(IndArmad, []):-  write("").
+armaduras(IndArmad, [[NomeArmadura, DesArmadura, PrecoArmadura, DanoArmadura, ForcaArmadura, AgilidadeArmadura, VidaArmadura]|Resto]):-
+    write("[ "),write(IndArmad),write(" ]"), write(" - "),
     write(NomeArmadura),
     write(" "),
     write("Preço: "),
@@ -77,10 +92,12 @@ armaduras([[NomeArmadura, DesArmadura, PrecoArmadura, DanoArmadura, ForcaArmadur
     write("    +-> "),
     write(DesArmadura),
     write("\n\n"),
-    armaduras(Resto).
+    Nind is (IndArmad + 1),
+    armaduras(Nind,Resto).
 
-pocoes([]):- util:digite.
-pocoes([[NomePocao,DescPocao,PrecoPocao,VidaPocao]|Resto]):-
+pocoes(IndPocao, []):-  write("").
+pocoes(IndPocao, [[NomePocao,DescPocao,PrecoPocao,VidaPocao]|Resto]):-
+    write("[ "),write(IndPocao),write(" ]"), write(" - "),
     write(NomePocao),
     write(" "),
     write("Preço: "),
@@ -92,7 +109,8 @@ pocoes([[NomePocao,DescPocao,PrecoPocao,VidaPocao]|Resto]):-
     write("    +-> "),
     write(DescPocao),
     write("\n\n"),
-    pocoes(Resto).
+    Nind is (IndPocao + 1),
+    pocoes(Nind, Resto).
 
 
 

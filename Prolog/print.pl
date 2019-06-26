@@ -294,7 +294,14 @@ leOpPocao(Op) :-
     leOpPocao(Op).
 
 
-printDinheiro([_,_,_,_,_,_,_,Dindin,_,_,_]) :-
+%printDinheiro([_,_,_,_,_,_,_,Dindin,_,_,_]) :-
+printDinheiro(Dindin) :-
     write("Dinheiro: "),
     write(Dindin),
     write("\n\n").
+
+printComprou(Item) :-
+    write("\nVocê comprou : "),
+    writeln(Item),
+    write("\n\n"),
+    util:digite.
