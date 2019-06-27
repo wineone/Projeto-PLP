@@ -404,3 +404,32 @@ vizualizarEquipamento(Per) :-
     write("    vida: "),write(VidaArmadura),nl,
     write("\n\n++++++++++++++++++++++++++++++++++++++++"),nl,nl,
     util:digite.
+
+
+leOpRemoveItemBau(Op) :-
+    lerNumero(X),
+    ((X > 0, X < 4) -> Op is X;
+    leOpRemoveItemBau(Op)).
+
+printRemoveItemBau(Opcao) :- 
+    shell(clear),
+    write("              #   REMOVA SEU EQUIPAMENTO    #\n") ,nl,
+    write("[1] -> remova sua armadura"),nl, 
+    write("[2] -> remova sua arma"),nl,
+    write("[3] -> voltar"),nl, 
+    write("\nO que voce quer fazer?... "),
+    leOpRemoveItemBau(Opcao).
+
+leOpTrocaItens(Op) :- 
+    lerNumero(X),
+    ((X > 0, X < 4) -> Op is X;
+    leOpTrocaItens(Op)).
+
+opcoesTrocaItens(Opcao) :-
+  shell(clear),
+  write("              #   TROQUE SEU EQUIPAMENTO    #\n"),nl,
+  write("[1] -> troque sua armadura"),nl,
+  write("[2] -> troque sua arma"),nl,
+  write("[3] -> voltar"),nl,
+  write("O que voce quer fazer?... "),
+  leOpTrocaItens(Opcao).

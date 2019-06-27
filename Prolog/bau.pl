@@ -66,8 +66,8 @@ gerenciaBolsa(Per, NewPer) :-
     print:opcoesRemoveBolsa(Opcao),
     bolsaOp(Opcao,Per,N).
 
-bauOp(1,Per,NewPer) :- write("Troque seu equipamento"),bau(Per,NewPer).
-bauOp(2,Per,NewPer) :- write("Excluir item do Bau"),bau(Per,NewPer).
+bauOp(1,Per,NewPer) :- write("Troque seu equipamento"),print:opcoesTrocaItens(Opcao),bau(Per,NewPer).
+bauOp(2,Per,NewPer) :- write("Excluir item do Bau"),print:printRemoveItemBau(Opcao),bau(Per,NewPer).
 bauOp(3,Per,NewPer) :- print:vizualizarEquipamento(Per),bau(Per,NewPer).
 bauOp(4,Per,NewPer) :- gerenciaBolsa(Per,NewPer),bau(Per,NewPer).
 bauOp(5,Per,NewPer) :- NewPer = Per.
