@@ -7,8 +7,9 @@
 :- use_module(loja).
 :- use_module(bau).
 
-loop(Per) :- print:printLobby(Op,Per),
-             loopOp(Op,Per).
+loop(Per) :-
+			print:printLobby(Op,Per),	
+            loopOp(Op,Per).
 
 loopOp(1,Per) :- fases:fases(Per,Novo),loop(Novo).
 

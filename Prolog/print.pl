@@ -303,6 +303,8 @@ printDinheiro(Dindin) :-
 printComprou(Item) :-
     write("\nVocê comprou : "),
     writeln(Item),
+    writeln("Vá até o seu baú "),
+    estrelinhas,
     write("\n\n"),
     util:digite.
 
