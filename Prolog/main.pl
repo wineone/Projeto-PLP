@@ -7,16 +7,13 @@
 :- use_module(loja).
 :- use_module(bau).
 
-/* modelo de como vai funcionar alterar a vida do personagem/inimigos */
-mudaVida([A,B,C,D,E], Vida, Sai) :- Nova is B - Vida, Sai = [A,Nova,C,D,E].
-
 loop(Per) :- print:printLobby(Op,Per),
              loopOp(Op,Per).
 
 loopOp(1,Per) :- fases:fases(Per,Novo),loop(Novo).
 
 loopOp(2,Per) :- writeln("Loja"),entidades:lojao(F),loja:loja(Per,F,N),loop(N).
-loopOp(3,Per) :- writeln("Bolsa"),bau:gerenciaBolsa(Per,NewPer).
+loopOp(3,Per) :- writeln("Bolsa"),bau:gerenciaBolsa(Per,NewPer),loop(NewPer).
 loopOp(4,Per) :- writeln("Bau"),bau:bau(Per, NewPer),loop(Per).
 loopOp(5,Per) :- writeln("Creditos"),loop(Per).
 loopOp(6,Per) :- writeln("Sair"),!.

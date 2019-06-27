@@ -8,7 +8,7 @@ personagem(Personagem, Nome) :-
     Bolsa = [[E,F] ,[C,D],[A,B]],
     
     Personagem = [Nome,
-                  100,
+                  10,
                   100,
                   10,
                   10,
