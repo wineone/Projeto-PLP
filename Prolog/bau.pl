@@ -161,7 +161,7 @@ trocaArmaVelha([NomePer, VidaPer, VidaMax, Dano, Defesa, Forca, Agilidade, D,[No
      NewForca is (Forca - ForcaArma),
      NewAgilidade is (Agilidade - AgilidadeArma),
      NewDano is (Dano - DanoArma),
-     ArmaSaida = [NomeVelha ,DescricaoVelha, PrecoVeha, ArmaduraVelha, ForcaVelha, AgilidadeVelha, VidaVelha],
+     ArmaSaida = [NomeArma, DescriçãoArma, PreçoArma, DanoArma, ForcaArma, AgilidadeArma],
      NewPer = [NomePer, VidaPer, NewVida, NewDano, Defesa, NewForca, NewAgilidade, D, ArmaSaida, Armadura, Bolsa].
 
 trocaArmaNova([N, Vida, VidaMax, Dano, Defesa, Forca, Agilidade, D, Arma, Armadura2, Bolsa],
