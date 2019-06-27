@@ -15,6 +15,7 @@ lojaOp(1,[A,B,C,D,E,F,G,H,I,J,[_,_,PerArmas]],[QtdArmas , ListAr , QtdArmadura, 
      Ndinheiro is (H - Pa),%Diminui do dinheiro do persogem o valor do item
      bau:insereFim([Na,Da,Pa,Daa,Fa,Aa],PerArmas,SaidaArmas),
      Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,[_,_,SaidaArmas]],
+     %write(SaidaArmas),
      print:printComprou(Na);%printa o item comprado
      writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[_,_,PerArmas]],util:digite),
      loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
@@ -28,6 +29,7 @@ lojaOp(2,[A,B,C,D,E,F,G,H,I,J,[_,PerArmaduras,_]],[QtdArmas , ListAr , QtdArmadu
     Ndinheiro is (H - Par),
     bau:insereFim([Nar,Dar,Par,Daar,Far,Aar,Var],PerArmaduras,SaidaArmaduras),
     Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,[_,SaidaArmaduras,_]],
+    %write(SaidaArmaduras),
     print:printComprou(Nar);
     writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[_,PerArmaduras,_]],util:digite),
     loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
@@ -39,8 +41,9 @@ lojaOp(3,[A,B,C,D,E,F,G,H,I,J,[PerPocoes,_,_]],[QtdArmas , ListAr , QtdArmadura,
     util:getElement(ListaPocoes,Opcao,[Np,Dp,Pp,Vp]),
     ((H >= Pp) -> 
     Ndinheiro is (H - Pp),
-    bau:insereFim([Np,Dp,Pp,Vp],PerPocoes,Saida),
-    Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,[Saida,_,_]],
+    bau:insereFim([Np,Dp,Pp,Vp],PerPocoes,SaidaPocoes),
+    Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,[SaidaPocoes,_,_]],
+    %write(SaidaPocoes),
     print:printComprou(Np);
     writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[PerPocoes,_,_]],util:digite),
     loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
