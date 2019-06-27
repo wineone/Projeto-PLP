@@ -39,7 +39,7 @@ removePocao(Element, [H|Resto], [H|Saida]):- removePocao(Element,Resto,Saida).
 
 
 renovaPocaoPersonagem([N, V, Vi, D, De, F, A, Dinh, Ar, Arma1, [PocaoOld,Armadura,Arma]],Pocao,NovaPer) :-
-                                        NovaPer = [N, V, Vi, D, De, F, A, Dinh, Ar, Arma1, [Pocao,Armadura,Arma]].
+            NovaPer = [N, V, Vi, D, De, F, A, Dinh, Ar, Arma1, [Pocao,Armadura,Arma]].
 
 
 renovaArmaduraPersonagem([N, V, Vi, D, De, F, A, Dinh, Ar, Arma1, [Pocao,Armadura1,Arma]], Armadura, NovaPer) :-
@@ -64,8 +64,6 @@ percorreArmadura(Ind, Armadura) :- print:armaduras(Ind, Armadura).
 
 percorreArma(Ind, []) :- write("").
 percorreArma(Ind, Arma) :- print:armas(Ind, Arma).
-
-
 
 bolsaOp(1,Per,NewPer) :- pegaPocao(Per,Pocao),
                         percorrePocao(1,Pocao),
@@ -137,11 +135,91 @@ gerenciaExclusao(Per,NewPer) :-
     print:printRemoveItemBau(Opcao),
     gerenciaExclusaoOp(Opcao,Per,NewPer).
 
+trocaArmaduraVelha([NomePer, VidaPer, VidaMax, Dano, Defesa, Forca, Agilidade, D, Arma, [NomeVelha ,DescricaoVelha, PrecoVeha, ArmaduraVelha, ForcaVelha, AgilidadeVelha, VidaVelha], Bolsa],
+            ArmaduraSaida, NewPer) :- 
+     NewVida is (VidaMax - VidaVelha - (ArmaduraVelha // 2)),
+     writeln(NewVida),
+     NewForca is (Forca - ForcaVelha),
+     NewDefesa is (Defesa - (ArmaduraVelha // 2)),
+     NewAgilidade is (Agilidade - AgilidadeVelha),
+     ArmaduraSaida = [NomeVelha ,DescricaoVelha, PrecoVeha, ArmaduraVelha, ForcaVelha, AgilidadeVelha, VidaVelha],
+     NewPer = [NomePer, VidaPer, NewVida, Dano, NewDefesa, NewForca, NewAgilidade, D, Arma, ArmaduraSaida, Bolsa].
 
-bauOp(1,Per,NewPer) :- write("Troque seu equipamento"),print:opcoesTrocaItens(Opcao),bau(Per,NewPer).
-bauOp(2,Per,NewPer) :- gerenciaExclusao(Per,NewPer),bau(Per,NewPer).
+trocaArmaduraNova([N, Vida, VidaMax, Dano, Defesa, Forca, Agilidade, D, Arma, Armadura2, Bolsa],
+                [NomeArmadura, DescricaoArmadura, PrecoArmadura, ArmaduraNova, ForcaNova, AgilidadeNova, VidaNova], NewPer) :- 
+     NewArmadura = [NomeArmadura, DescricaoArmadura, PrecoArmadura, ArmaduraNova, ForcaNova, AgilidadeNova, VidaNova],
+     NewVida is (VidaMax + VidaNova + (ArmaduraNova // 2)),
+     NewForca is (Forca + ForcaNova),
+     NewDefesa is (Defesa + (ArmaduraNova // 2)),
+     NewAgilidade is (Agilidade + AgilidadeNova), 
+     NewPer = [N, Vida, NewVida, Dano, NewDefesa, NewForca, NewAgilidade, D, Arma, NewArmadura, Bolsa].
+
+
+trocaArmaVelha([NomePer, VidaPer, VidaMax, Dano, Defesa, Forca, Agilidade, D,[NomeArma, DescriçãoArma, PreçoArma, DanoArma, ForcaArma, AgilidadeArma],Armadura, Bolsa],
+            ArmaSaida, NewPer) :- 
+     NewVida is (VidaMax - (ForcaArma // 2)),
+     NewForca is (Forca - ForcaArma),
+     NewAgilidade is (Agilidade - AgilidadeArma),
+     NewDano is (Dano - DanoArma),
+     ArmaSaida = [NomeVelha ,DescricaoVelha, PrecoVeha, ArmaduraVelha, ForcaVelha, AgilidadeVelha, VidaVelha],
+     NewPer = [NomePer, VidaPer, NewVida, NewDano, Defesa, NewForca, NewAgilidade, D, ArmaSaida, Armadura, Bolsa].
+
+trocaArmaNova([N, Vida, VidaMax, Dano, Defesa, Forca, Agilidade, D, Arma, Armadura2, Bolsa],
+                [NomeArma, DescriçãoArma, PreçoArma, DanoArma, ForcaArma, AgilidadeArma], NewPer) :- 
+     NewArma = [NomeArma, DescriçãoArma, PreçoArma, DanoArma, ForcaArma, AgilidadeArma],
+     NewVida is (VidaMax + (ForcaArma // 2)),
+     NewForca is (Forca + ForcaArma),
+     NewAgilidade is (Agilidade + AgilidadeArma), 
+     NewDano is (Dano + DanoArma),
+     NewPer = [N, Vida, NewVida, NewDano, Defesa, NewForca, NewAgilidade, D, NewArma, Armadura2, Bolsa].
+
+
+%Troque sua armadura
+gerenciaTrocaOp(1,Per,NewPer) :- pegaArmadura(Per,ArrayArmadura),
+                                 percorreArmadura(1,ArrayArmadura),
+                                 write("Digite o indice da armadura que voce deseja trocar:"),
+                                 lerNumero(Indice),
+                                 digite,
+                                 getElement(ArrayArmadura, Indice, ArmaduraSimples),
+                                 trocaArmaduraVelha(Per,ArmaduraVelha,NovoPer),
+                                 trocaArmaduraNova(NovoPer,ArmaduraSimples,PerFinal),
+                                 removeArmadura(ArmaduraSimples,ArrayArmadura,ArraySaidaSemSimples),
+                                 insereFim(ArmaduraVelha, ArraySaidaSemSimples, ListaSaida),
+                                 renovaArmaduraPersonagem(PerFinal, ListaSaida, AtualPer),
+                                 gerenciaTroca(AtualPer,NewPer).
+
+
+
+%Troque sua arma
+gerenciaTrocaOp(2,Per,NewPer)  :-pegaArma(Per,ArrayArma),
+                                 percorreArma(1,ArrayArma),
+                                 write("Digite o indice da arma que voce deseja trocar:"),
+                                 lerNumero(Indice),
+                                 digite,
+                                 getElement(ArrayArma, Indice, ArmaSimples),
+                                 trocaArmaVelha(Per,ArmaVelha,NovoPer),
+                                 trocaArmaNova(NovoPer,ArmaSimples,PerFinal),
+                                 removeArma(ArmaSimples,ArrayArma,ArraySaidaSemSimples),
+                                 insereFim(ArmaVelha, ArraySaidaSemSimples, ListaSaida),
+                                 renovaArmaPersonagem(PerFinal, ListaSaida, AtualPer),
+                                 gerenciaTroca(AtualPer,NewPer).
+
+gerenciaTrocaOp(3,Per,NewPer) :- NewPer = Per.
+
+gerenciaTrocaOp(_,Per,NewPer):- write("Errou feio, errou rude"), gerenciaTroca(Per,NewPer).
+
+
+
+
+gerenciaTroca(Per,NewPer) :-
+    print:opcoesTrocaItens(Opcao),
+    gerenciaTrocaOp(Opcao,Per,NewPer).
+
+
+bauOp(1,Per,NewPer) :- gerenciaTroca(Per,NovoPer),bau(NovoPer,NewPer).
+bauOp(2,Per,NewPer) :- gerenciaExclusao(Per,NovoPer),bau(NovoPer,NewPer).
 bauOp(3,Per,NewPer) :- print:vizualizarEquipamento(Per),bau(Per,NewPer).
-bauOp(4,Per,NewPer) :- gerenciaBolsa(Per,NewPer),bau(Per,NewPer).
+bauOp(4,Per,NewPer) :- gerenciaBolsa(Per,NovoPer),bau(NovoPer,NewPer).
 bauOp(5,Per,NewPer) :- NewPer = Per.
 bauOp(_,Per,NewPer) :- write("Ta dificil adivinhar o que voce quer..."),bau(Per,NewPer).
 
