@@ -4,6 +4,10 @@
 :- use_module(print).
 :- use_module(util).
 
+insereInicio(Element, Lista, [Element|Lista]):- !.
+
+insereFim(Elem, [Element], ListaSaida):- insereInicio(Element,[Elem],ListaSaida), !.
+insereFim(NewElement, [Element|Lista], ListaSaida):- insereFim(NewElement,Lista,X), insereInicio(Element, X, ListaSaida).
 
 /* Funcao que adiciona elementos na Bolsa*/
 addPocao(Bolsa,Pocao) :- Bolsa = [Pocao|X, _, _].
