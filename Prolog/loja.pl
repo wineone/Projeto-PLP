@@ -17,7 +17,7 @@ lojaOp(1,[A,B,C,D,E,F,G,H,I,J,[AAA,BBB,PerArmas]],[QtdArmas , ListAr , QtdArmadu
      Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,[AAA,BBB,SaidaArmas]],
      %write(SaidaArmas),
      print:printComprou(Na);%printa o item comprado
-     writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[_,_,PerArmas]],util:digite),
+     writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[AAA,BBB,PerArmas]],util:digite),
      loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
 
 lojaOp(2,[A,B,C,D,E,F,G,H,I,J,[AAA,PerArmaduras,BBB]],[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- 
@@ -31,7 +31,7 @@ lojaOp(2,[A,B,C,D,E,F,G,H,I,J,[AAA,PerArmaduras,BBB]],[QtdArmas , ListAr , QtdAr
     Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,[AAA,SaidaArmaduras,BBB]],
     %write(SaidaArmaduras),
     print:printComprou(Nar);
-    writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[_,PerArmaduras,_]],util:digite),
+    writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[AAA,PerArmaduras,BBB]],util:digite),
     loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
 
 lojaOp(3,[A,B,C,D,E,F,G,H,I,J,[PerPocoes,AAA,BBB]],[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- 
@@ -45,7 +45,7 @@ lojaOp(3,[A,B,C,D,E,F,G,H,I,J,[PerPocoes,AAA,BBB]],[QtdArmas , ListAr , QtdArmad
     Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,[SaidaPocoes,AAA,BBB]],
     %write(SaidaPocoes),
     print:printComprou(Np);
-    writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[PerPocoes,_,_]],util:digite),
+    writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,[PerPocoes,AAA,BBB]],util:digite),
     loja(Aux,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo).
 
 lojaOp(4,Per,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :- Novo = Per.
