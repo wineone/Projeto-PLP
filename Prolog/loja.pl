@@ -6,13 +6,14 @@
 :- use_module(bau).
 
 
-lojaOp(1,[A,B,C,D,E,F,G,H,I,J,[[],[],[]]],[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :-
+lojaOp(1,[A,B,C,D,E,F,G,H,I,J,K,[QtdArmas , ListAr , QtdArmadura, ListaArmadura,QtdPocoes ,ListaPocoes],Novo) :-
      print:printDinheiro(H),%mostra o dinheiro atual do personagem   
      print:armas(1,ListAr),%funcao que lista as armas
      print:leOpArma(Opcao),%funcao que le a opção escolhida pelo usuario
      util:getElement(ListAr,Opcao,[Na,Da,Pa,Daa,Fa,Aa]),% pega a opcao escolhida pelo usuario
      ((H >= Pa) -> % Se o personagem tiver dinheiro suficiente, a compra é feita
      Ndinheiro is (H - Pa),%Diminui do dinheiro do persogem o valor do item
+     bau:addArma([Na,Da,Pa,Daa,Fa,Aa],K,FF),
      Aux = [A,B,C,D,E,F,G,Ndinheiro,I,J,K],
      print:printComprou(Na);%printa o item comprado
      writeln("\nDinheiro insuficiente\n"),Aux = [A,B,C,D,E,F,G,H,I,J,K],util:digite),

@@ -4,10 +4,12 @@
 :- use_module(print).
 :- use_module(util).
 
+
 /* Funcao que adiciona elementos na Bolsa*/
 addPocao(Bolsa,Pocao) :- Bolsa = [Pocao|X, _, _].
 addArmadura(Bolsa,Armadura) :- Bolsa = [_, Armadura|Y, _].
-addArma(Bolsa,Arma) :- Bolsa = [_, _, Arma|Z].
+%addArma(Bolsa,Arma) :- Bolsa = [_, _, Arma|Z].
+addArma(Arma,[_,_,[ListaArma]],[Arma|ListaArma]) :- !.
 
 /* Funcoes que retornam apenas um array da bolsa */
 pegaPocao(Per,Pocao) :- Per = [_, _, _,_, _, _, _, _, _, _, [Pocao,_,_]].
