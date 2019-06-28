@@ -181,7 +181,10 @@ batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :-
 	Sai =:= 1,
 	print:wonBattle(A,Loot),
 	NLoot is (G + Loot), 
-	Novo = [A,V,B,C,D,E,F,NLoot,H,I,J].
+	Novo = [A,V,B,C,D,E,F,NLoot,H,I,J],
+	getElement(ListIni, 1, [Nome,_,_,_,_,_,_,_]),
+	((Nome == "Light Theme IDE") -> print:final(A);
+	write("")).
 
 batalha(Heroi,[QuaInimi,Loot,ListIni],Novo) :-
 

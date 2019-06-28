@@ -14,11 +14,19 @@ printVida([Nome,VidaAtu,VidaMax,_,_,_,_,_,_,_,_]) :-
 
 inicioJogo(Nome) :-
     shell(clear),
+    writeln("Tecle enter para prosseguir"),nl,
     writeln("Você acorda em um local que você nunca viu antes,"),
+    enter,
     writeln("somente com as roupas do seu corpo."),
+    enter,
     writeln("Você não sabe onde está..."),
-    writeln("Tudo o que você sabe é o que você \nleu no bilhete que estava na sua mão quando acordou..."),
+    enter,
+    writeln("Tudo o que você sabe é o que você"),
+    enter,
+    writeln("leu no bilhete que estava na sua mão quando acordou..."),
+    enter,
     writeln("Para escapar desse mundo, você deve derrotar a temível LIGHT THEME IDE.\n"),
+    enter,
     writeln("Você lembra do seu nome?... "), 
     lerString(Nome).
 
@@ -435,3 +443,33 @@ opcoesTrocaItens(Opcao) :-
   write("[3] -> voltar"),nl,
   write("O que voce quer fazer?... "),
   leOpTrocaItens(Opcao).
+
+final(Nome) :-
+    shell(clear),
+    writeln("Tecle enter para prosseguir."),nl,
+    enter,
+
+    write("\n\n"),
+    write("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"),
+    write("\n...\n"),
+    
+    enter,
+    write("Parabéns "),
+    write(Nome),
+    write(" você derrotou a terrível LIGHT THEME IDE"),
+    enter,
+    writeln("..."),
+    enter,
+    writeln("Mas infelizmente nada acontece."),
+    enter,
+    writeln("..."),
+    enter,
+    writeln("Você ainda pode jogar mais se quiser..."),
+    enter,
+    writeln("\nOu não, sei lá"),
+    enter,
+    writeln("..."),
+    enter,
+    writeln("eh isso\n"),
+    writeln("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++\n"),
+    enter.
