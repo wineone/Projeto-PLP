@@ -4,6 +4,7 @@
 :- use_module(entidades).
 :- use_module(util).
 :- use_module(batalha).
+:- use_module(bau).
 
 
 mudaVida([A,B,C,E,F,G,H,I,J,K,L], Vida, Sai) :- Nova is B - Vida, Sai = [A,Nova,C,E,F,G,H,I,J,K,L].
@@ -41,8 +42,8 @@ mapaOp(1,[Nome,Des,QuantGrupo,Lista],Per,Novo) :-
     mapa([Nome,Des,QuantGrupo,Lista],Aux,Novo).
 
 mapaOp(2,Fase,Per,Novo) :- 
-    writeln("Bolsa foi chamada"),
-    mapa(Fase,Per,Novo).
+    bau:gerenciaBolsa(Per,NewPer),
+    mapa(Fase,NewPer,Novo).
 
 mapaOp(3,Fase,Per,Novo) :- Novo = Per.
 

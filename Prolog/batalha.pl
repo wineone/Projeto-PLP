@@ -174,8 +174,7 @@ batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :-
 	V =< 0,
 	print:lostBattle(Loot),
 	NLoot is (G - Loot),
-	Novo = [A,V,B,C,D,E,F,NLoot,H,I,J],
-	lerString(K).       % ajeitar a porcentagem aqui
+	Novo = [A,V,B,C,D,E,F,NLoot,H,I,J].       % ajeitar a porcentagem aqui
 
 batalha([A,V,B,C,D,E,F,G,H,I,J],[QuaInimi,Loot,ListIni],Novo) :- 
 	verificaListaMortos(ListIni,Sai), 
